@@ -1,52 +1,78 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
-var applicationConfiguration = require('./config/config');
-
 // Karma configuration
 module.exports = function(config) {
-	config.set({
-		// Frameworks to use
-		frameworks: ['jasmine'],
+  var _ = require('lodash'),
+    basePath = '.',
+    assets = require(basePath + '/config/assets.json');
 
-		// List of files / patterns to load in the browser
-		files: applicationConfiguration.assets.lib.js.concat(applicationConfiguration.assets.js, applicationConfiguration.assets.tests),
+  config.set({
 
-		// Test results reporter to use
-		// Possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-		//reporters: ['progress'],
-		reporters: ['progress'],
+    // base path, that will be used to resolve files and exclude
+    basePath: basePath,
 
-		// Web server port
-		port: 9876,
+    // frameworks to use
+    frameworks: ['jasmine'],
 
-		// Enable / disable colors in the output (reporters and logs)
-		colors: true,
+    // list of files / patterns to load in the browser
+    files: _.flatten(_.values(assets.core.js)).concat([
+      'packages/*/public/*.js',
+      'packages/*/public/*/*.js'
+    ]),
 
-		// Level of logging
-		// Possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-		logLevel: config.LOG_INFO,
+    // list of files to exclude
+    exclude: [],
 
-		// Enable / disable watching file and executing tests whenever any file changes
-		autoWatch: true,
+    // test results reporter to use
+    // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+    reporters: ['progress', 'coverage'],
 
-		// Start these browsers, currently available:
-		// - Chrome
-		// - ChromeCanary
-		// - Firefox
-		// - Opera
-		// - Safari (only Mac)
-		// - PhantomJS
-		// - IE (only Windows)
-		browsers: ['PhantomJS'],
+    // coverage
+    preprocessors: {
+      // source files that you want to generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'packages/*/public/controllers/*.js': ['coverage'],
+      'packages/*/public/services/*.js': ['coverage']
+    },
 
-		// If browser does not capture in given timeout [ms], kill it
-		captureTimeout: 60000,
+    coverageReporter: {
+      type: 'html',
+      dir: 'test/coverage/'
+    },
 
-		// Continuous Integration mode
-		// If true, it capture browsers, run tests and exit
-		singleRun: true
-	});
+    // web server port
+    port: 9876,
+    // Look for server on port 3001 (invoked by mocha) - via @brownman
+    proxies: {
+      '/': 'http://localhost:3001/'
+    },
+    
+    // enable / disable colors in the output (reporters and logs)
+    colors: true,
+
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_DEBUG,
+
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: true,
+
+    // Start these browsers, currently available:
+    // - Chrome
+    // - ChromeCanary
+    // - Firefox
+    // - Opera
+    // - Safari (only Mac)
+    // - PhantomJS
+    // - IE (only Windows)
+    browsers: ['PhantomJS'],
+
+    // If browser does not capture in given timeout [ms], kill it
+    captureTimeout: 60000,
+
+    // Continuous Integration mode
+    // if true, it capture browsers, run tests and exit
+    singleRun: true
+  });
 };
