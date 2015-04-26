@@ -1,23 +1,403 @@
 <section data-ng-controller="GridsController" data-ng-init="findOne()">
-    <div class="page-header">
-        <h1>Edit Grid</h1>
+  <div class="container-responsive" role="main" id="main">
+
+
+    <div class="row">
+      <div class="col-xs-6">
+        <h2 id="menuname" data-ng-bind="grid.name">
+          <small><i class="fa fa-fw fa-pencil text-muted"></i></small>
+        </h2>
+        <small>
+        </small>
+      </div>
+      <small>
+        <div class="col-xs-6 text-right innerAll">
+          <a href="#" class="btn btn-sm btn-default pull-right"><i class="fa fa-users fa-fw"></i> Collaborate</a>
+          <a href="#" class="btn btn-sm btn-default pull-right mR10">
+            <i class="fa fa-print fa-fw"></i> Print</a>
+
+          <div class="input-group input-group-sm col-xs-4 pull-right mR10">
+            <span class="input-group-addon">Share</span>
+            <input type="text" class="form-control" aria-label="URL" value="ftm.co/746dd6">
+            <span class="input-group-addon"><i class="fa fa-copy"></i></span>
+          </div>
+        </div>
+      </small>
     </div>
-    <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="grid.name" id="name" class="form-control" placeholder="Name" required>
+    <small>
+      <div class="row">
+        <div class="col-xs-12">
+          <form role="form" class="form-horizontal">
+            <table class="table table-condensed table-bordered" id="allergygrid">
+              <thead>
+                <tr id="svg">
+                  <th></th>
+                  <th>
+                    <img src="image/bones.svg">
+                  </th>
+                  <th>
+                    <img src="image/celery.svg">
+                  </th>
+                  <th>
+                    <img src="image/gluten.svg">
+                  </th>
+                  <th>
+                    <img src="image/crustacean.svg">
+                  </th>
+                  <th>
+                    <img src="image/eggs.svg">
+                  </th>
+                  <th>
+                    <img src="image/fish.svg">
+                  </th>
+                  <th>
+                    <img src="image/lupin.svg">
+                  </th>
+                  <th>
+                    <img src="image/milk.svg">
+                  </th>
+                  <th>
+                    <img src="image/mollusc.svg">
+                  </th>
+                  <th>
+                    <img src="image/mustard.svg">
+                  </th>
+                  <th>
+                    <img src="image/nuts.svg">
+                  </th>
+                  <th>
+                    <img src="image/peanuts.svg">
+                  </th>
+                  <th>
+                    <img src="image/sesame.svg">
+                  </th>
+                  <th>
+                    <img src="image/soy.svg">
+                  </th>
+                  <th>
+                    <img src="image/sulphur.svg">
+                  </th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th>Veggie?</th>
+                  <th>Celery</th>
+                  <th>
+
+                    Cereals containing gluten
+                    <acronym data-toggle="toolip" title="Info about what contains glutens">
+                      <i class="fa fa-info-circle text-muted"></i>
+                    </acronym>
+
+                  </th>
+                  <th>
+                    Crustaceans
+                    <acronym data-toggle="toolip" title="Info about what contains glutens">
+                      <i class="fa fa-info-circle text-muted"></i>
+                    </acronym>
+                  </th>
+                  <th>Eggs</th>
+                  <th>Fish</th>
+                  <th>Lupin</th>
+                  <th>Milk</th>
+                  <th>Molluscs</th>
+                  <th>Mustard</th>
+                  <th>Nuts</th>
+                  <th>Peanuts</th>
+                  <th>Sesame seeds</th>
+                  <th>Soya</th>
+                  <th>Sulphur dioxide</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="dish">Sourdough, hummus, &amp; olive oil</td>
+                  <td class="meat"></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="dish">Vegetable soup</td>
+                  <td class="meat"></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="dish">Tuna salad</td>
+                  <td class="meat"></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i>
+                    <small>hazlenut</small>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="dish">Salad Nicoise
+                    <p class="notes">
+                      The tuna is line-caught
+                    </p>
+                  </td>
+                  <td class="meat">
+                    <span class="state2"><i class="fa fa-square-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                  <td>
+                    <span class="state1"><i class="fa fa-circle-o fa-2x"></i></span>
+                  </td>
+                </tr>
+                <tr class="parent">
+                  <td class="dish">BBQ Chicken Burger and coleslaw</td>
+                  <td class="meat"></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class="ingredient">
+                  <td class="dish">Bap</td>
+                  <td class="meat"></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class="ingredient">
+                  <td class="dish">Chicken</td>
+                  <td class="meat"></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class="ingredient">
+                  <td class="dish">BBQ Sauce</td>
+                  <td class="meat"></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="small"></td>
+                </tr>
+                <tr class="ingredient">
+                  <td class="dish">Coleslaw</td>
+                  <td class="meat"></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><i class="fa fa-fw fa-lg fa-check-square-o"></i></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="small"></td>
+                </tr>
+                <tr class="newdish">
+                  <td>
+
+
+                    <input type="input" class="form-control" placeholder="Dish name">
+
+                    <div class="actions">
+                      add:
+                      <a data-toggle="collapse" href="#notes">notes</a>
+                      <a data-toggle="collapse" href="#price">price</a>
+                      <a data-toggle="collapse" href="#character">characteristics</a>
                     </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
-                </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-            </fieldset>
-        </form>
-    </div>
+
+                    <textarea id="notes" class="form-control collapse" style="font-size: 11px; margin-top: 3px;" placeholder="Notes"></textarea>
+
+                    <div class=" collapse" id="price" style="font-size: 11px; margin-top: 3px;">
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">£</span>
+                        <input type="text" class="form-control" placeholder="Price" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+
+                    <select class="form-control collapse" id="character" style="font-size: 11px; margin-top: 3px;">
+                      <option value="chrome">MSC 5</option>
+                      <option value="chrome">MSC 4</option>
+                      <option value="chrome">MSC 3</option>
+                      <option value="chrome">MSC 2</option>
+                      <option value="chrome">MSC 1</option>
+                      <option value="firefox">Organic</option>
+                      <option value="ie">Locally sourced (within 30m/50km)</option>
+                      <option value="safari">Fairtrade</option>
+                    </select>
+
+                  </td>
+                  <td class="meat"></td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                  <td>
+                    <input type="checkbox">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="text-muted small">
+              <strong><i class="fa fa-fw fa-lg fa-keyboard-o"></i></strong>
+              Add a : after dish name to make a section · Use TAB key to move to next checkbox, SPACE to select it · Keep pressing TAB to add a new row · ⌘+ ↓ Move Down · ⌘+ ↓ Move Up
+            </p>
+          </form>
+        </div>
+      </div>
+    </small>
+  </div>
 </section>
