@@ -61,7 +61,18 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 			$scope.grid = Grids.get({
 				gridId: $stateParams.gridId
 			});
-            $scope.grid.tableData = [];
 		};
+
+        $scope.addNewRowFn = function($event) {
+          if ($event.keyCode == 13) {
+            console.log($scope.grid);
+            if ($scope.grid.tableData) {
+              $scope.grid.tableData.push([{cellType: 1, type: 1, text: $scope.newRowText}]);
+            } else {
+              $scope.grid.tableData = [[{cellType: 1, type: 1, text: $scope.newRowText}]];
+            }
+            $scope.newRowText = '';
+          }
+        };
 	}
 ]);
