@@ -25,7 +25,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
 		// Remove existing Grid
 		$scope.remove = function(grid) {
-			if ( grid ) { 
+			if ( grid ) {
 				grid.$remove();
 
 				for (var i in $scope.grids) {
@@ -58,9 +58,10 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
 		// Find existing Grid
 		$scope.findOne = function() {
-			$scope.grid = Grids.get({ 
+			$scope.grid = Grids.get({
 				gridId: $stateParams.gridId
 			});
+            $scope.grid.tableData = [];
 		};
 	}
 ]);
