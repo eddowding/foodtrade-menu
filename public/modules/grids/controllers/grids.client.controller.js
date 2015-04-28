@@ -92,7 +92,6 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
               $scope.placeholderRow[0].text = line;
               var rowEntry = angular.copy($scope.placeholderRow);
-              rowEntry[0].text = $scope.newRowText;
               if ($scope.grid.tableData) {
                 $scope.grid.tableData.push(rowEntry);
               } else {
