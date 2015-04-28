@@ -73,13 +73,32 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
         $scope.addNewRowFn = function($event) {
           if ($event.keyCode == 13) {
-            var rowEntry = angular.copy($scope.placeholderRow);
-            rowEntry[0].text = $scope.newRowText;
-            if ($scope.grid.tableData) {
-              $scope.grid.tableData.push(rowEntry);
-            } else {
-              $scope.grid.tableData = [rowEntry];
-            }
+            var lineSplit = $scope.newRowText.split('\n');
+            lineSplit.forEach(function(line, index) {
+              line = line.trim();
+              if (line.length == 0) {
+                return;
+              }
+              var isSection = false;
+              if (line.charAt(line.length - 1) == ':') {
+                isSection = true;
+              }
+
+              if (isSection) {
+                $scope.placeholderRow[0].type = 1;
+              } else {
+                $scope.placeholderRow[0].type = 2;
+              }
+
+              $scope.placeholderRow[0].text = line;
+              var rowEntry = angular.copy($scope.placeholderRow);
+              rowEntry[0].text = $scope.newRowText;
+              if ($scope.grid.tableData) {
+                $scope.grid.tableData.push(rowEntry);
+              } else {
+                $scope.grid.tableData = [rowEntry];
+              }
+            });
             $scope.newRowText = '';
           }
         };
