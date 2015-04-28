@@ -67,6 +67,10 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
         $scope.placeholderRow = [{cellType: 1, type: 1, text: $scope.newRowText}];
 
+        for(var i=1; i<$scope.gridColumnCount; i++) {
+          $scope.placeholderRow.push({cellType: 2, value: true});
+        }
+
         $scope.addNewRowFn = function($event) {
           if ($event.keyCode == 13) {
             var rowEntry = angular.copy($scope.placeholderRow);
