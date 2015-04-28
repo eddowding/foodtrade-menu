@@ -72,7 +72,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
         }
 
         $scope.addNewRowFn = function($event) {
-          if ($event.keyCode == 13) {
+          if ($event.ctrlKey && ($event.keyCode == 13 || $event.keyCode == 10)) {
             var lineSplit = $scope.newRowText.split('\n');
             lineSplit.forEach(function(line, index) {
               line = line.trim();
