@@ -148,8 +148,8 @@
                                         </select>
 
                                     </td>
-                                    <td ng-repeat="cell in placeholderRow" ng-if="cell.cellType == 2">
-                                        <input type='checkbox' ng-model='cell.value' ng-checked='cell.value'/>
+                                    <td data-ng-repeat="cell in placeholderRow" data-ng-if="cell.cellType == 2">
+                                        <input type='checkbox' data-ng-model='cell.value' data-ng-checked='cell.value' data-ng-keypress="addNewRowFn($event)"/>
                                     </td>
                                 </tr>
                             </tbody>
