@@ -118,7 +118,7 @@
                                 </tr>
                                 <tr class="newdish">
                                     <td>
-                                        <textarea class="form-control" placeholder="Dish name" data-ng-model="newRowText" data-ng-keypress="addNewRowFn($event)"></textarea>
+                                        <textarea class="form-control" placeholder="Dish name" data-ng-model="placeholderRow[0].text" data-ng-keypress="addNewRowFn($event)"></textarea>
 
                                         <div class="actions">
                                             add:
@@ -148,48 +148,8 @@
                                         </select>
 
                                     </td>
-                                    <td class="meat"></td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox">
+                                    <td ng-repeat="cell in placeholderRow" ng-if="cell.cellType == 2">
+                                        <input type='checkbox' ng-model='cell.value' ng-checked='cell.value'/>
                                     </td>
                                 </tr>
                             </tbody>

@@ -65,15 +65,17 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
         $scope.gridColumnCount = 16;
 
-        $scope.placeholderRow = [{cellType: 1, type: 1, text: $scope.newRowText}];
+        $scope.placeholderRow = [{cellType: 1, type: 1, text: ''}];
 
         for(var i=1; i<$scope.gridColumnCount; i++) {
-          $scope.placeholderRow.push({cellType: 2, value: true});
+          $scope.placeholderRow.push({cellType: 2, value: false});
         }
+
+        $scope.resetRow = angular.copy($scope.placeholderRow);
 
         $scope.addNewRowFn = function($event) {
           if ($event.ctrlKey && ($event.keyCode == 13 || $event.keyCode == 10)) {
-            var lineSplit = $scope.newRowText.split('\n');
+            var lineSplit = $scope.placeholderRow[0].text.split('\n');
             lineSplit.forEach(function(line, index) {
               line = line.trim();
               if (line.length == 0) {
@@ -90,15 +92,17 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
                 $scope.placeholderRow[0].type = 2;
               }
 
-              $scope.placeholderRow[0].text = line;
               var rowEntry = angular.copy($scope.placeholderRow);
+              rowEntry[0].text = line;
+
               if ($scope.grid.tableData) {
                 $scope.grid.tableData.push(rowEntry);
               } else {
                 $scope.grid.tableData = [rowEntry];
               }
             });
-            $scope.newRowText = '';
+
+            $scope.placeholderRow = angular.copy($scope.resetRow);
           }
         };
 	}
