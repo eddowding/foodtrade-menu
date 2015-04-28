@@ -63,13 +63,18 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 			});
 		};
 
+        $scope.gridColumnCount = 16;
+
+        $scope.placeholderRow = [{cellType: 1, type: 1, text: $scope.newRowText}];
+
         $scope.addNewRowFn = function($event) {
           if ($event.keyCode == 13) {
-            console.log($scope.grid);
+            var rowEntry = angular.copy($scope.placeholderRow);
+            rowEntry[0].text = $scope.newRowText;
             if ($scope.grid.tableData) {
-              $scope.grid.tableData.push([{cellType: 1, type: 1, text: $scope.newRowText}]);
+              $scope.grid.tableData.push(rowEntry);
             } else {
-              $scope.grid.tableData = [[{cellType: 1, type: 1, text: $scope.newRowText}]];
+              $scope.grid.tableData = [rowEntry];
             }
             $scope.newRowText = '';
           }
