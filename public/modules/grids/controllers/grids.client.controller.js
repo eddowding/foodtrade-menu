@@ -128,5 +128,10 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
             console.info('New grid entry >>>', $scope.grid.tableData);
           }
         };
+
+        $scope.editCellFn = function(cell) {
+          $scope.selectedCell = cell;
+          $('#cellEditModal').modal('show');
+        };
 	}
 ]);
