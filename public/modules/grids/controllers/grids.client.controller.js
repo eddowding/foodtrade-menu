@@ -63,19 +63,32 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 			});
 		};
 
-        $scope.gridColumnCount = 16;
 
-        $scope.placeholderRow = [{cellType: 1, type: 1, text: ''}];
-
-        for(var i=1; i<$scope.gridColumnCount; i++) {
-          $scope.placeholderRow.push({cellType: 2, value: false});
-        }
+        $scope.placeholderRow = {
+          item: {},
+          veggie: {},
+          celery: {},
+          cereal: {},
+          crustacean: {},
+          egg: {},
+          fish: {},
+          lupin: {},
+          milk: {},
+          mollusc: {},
+          mustard: {},
+          nut: {},
+          peanut: {},
+          sesameSeed: {},
+          soya: {},
+          sulphurDioxide: {},
+          other: {}
+        };
 
         $scope.resetRow = angular.copy($scope.placeholderRow);
 
         $scope.addNewRowFn = function($event) {
           if ($event.ctrlKey && ($event.keyCode == 13 || $event.keyCode == 10)) {
-            var lineSplit = $scope.placeholderRow[0].text.split('\n');
+            var lineSplit = $scope.placeholderRow.item.name.split('\n');
             lineSplit.forEach(function(line, index) {
               line = line.trim();
               if (line.length == 0) {
@@ -87,13 +100,13 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
               }
 
               if (isSection) {
-                $scope.placeholderRow[0].type = 1;
+                $scope.placeholderRow.item.type = 1;
               } else {
-                $scope.placeholderRow[0].type = 2;
+                $scope.placeholderRow.item.type = 2;
               }
 
               var rowEntry = angular.copy($scope.placeholderRow);
-              rowEntry[0].text = line;
+              rowEntry.item.name = line;
 
               if ($scope.grid.tableData) {
                 $scope.grid.tableData.push(rowEntry);
