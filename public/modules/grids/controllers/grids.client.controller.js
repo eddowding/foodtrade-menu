@@ -130,7 +130,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
         };
 
         $scope.editCellFn = function(cell) {
-          $scope.selectedCell = cell;
+          $scope.selectedEditCell = cell;
           $('#cellEditModal').modal('show');
         };
 	}
