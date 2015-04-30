@@ -124,6 +124,8 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
             });
 
             $scope.placeholderRow = angular.copy($scope.resetRow);
+
+            console.info('New grid entry >>>', $scope.grid.tableData);
           }
         };
 	}

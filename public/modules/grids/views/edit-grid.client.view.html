@@ -151,9 +151,16 @@
                                         </select>
 
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        <select data-ng-model='placeholderRow.veggie.type'>
+                                            <option value='Meat'>Meat</option>
+                                            <option value='Veggie'>Veggie</option>
+                                            <option value='Fish'>Fish</option>
+                                            <option value='Vegan'>Vegan</option>
+                                        </select>
+                                    </td>
                                     <td data-ng-repeat="column in gridColumns">
-                                        <input type='checkbox' data-ng-model='placeHolderRow[column].status' data-ng-checked='placeHolderRow[column].status' data-ng-keypress="addNewRowFn($event)" />
+                                        <input type='checkbox' data-ng-model='placeholderRow[column].status' data-ng-checked='placeholderRow[column].status' data-ng-keypress="addNewRowFn($event)" />
                                     </td>
                                 </tr>
                                 <tr>
