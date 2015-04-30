@@ -163,46 +163,53 @@
                                         <input type='checkbox' data-ng-model='placeholderRow[column].status' data-ng-checked='placeholderRow[column].status' data-ng-keypress="addNewRowFn($event)" />
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="14">
-
-                                        <h1>EXAMPLE OF WHAT SHOULD BE IN POPOVER</h1>
-
-                                        <form class="">
-                                            <div class="btn-group" role="group" aria-label="..." style="padding: 10px 0;">
-                                                <button type="button" class="btn btn-default">No allergen</button>
-                                                <button type="button" class="btn btn-default">Removable</button>
-                                                <button type="button" class="btn btn-default">Fixed</button>
-                                            </div>
-
-                                            <div class="form- group">
-                                                <label for="exampleInputName2" class="sr-only">Allergen name</label>
-                                                <input type="text" class="form-control" id="nnn" placeholder="Which allergen(s) specifically?">
-                                            </div>
-                                            <div style="background:#eee; padding: 3px 5px; text-align: left;">
-                                                <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-
-                                                <button type="submit" class="btn btn-default">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
-                                            </div>
-                                        </form>
-
-
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
 
                         <p class="text-muted small">
-                            <strong><i class="fa fa-fw fa-lg fa-keyboard-o"></i></strong>
-                            Add a : after dish name to make a section · Use TAB key to move to next checkbox, SPACE to select it · Keep pressing TAB to add a new row · ⌘+ ↓ Move Down · ⌘+ ↓ Move Up
+                        <strong><i class="fa fa-fw fa-lg fa-keyboard-o"></i></strong>
+                        Add a : after dish name to make a section · Use TAB key to move to next checkbox, SPACE to select it · Keep pressing TAB to add a new row · ⌘+ ↓ Move Down · ⌘+ ↓ Move Up
                         </p>
                     </form>
                 </div>
             </div>
         </small>
+    </div>
+    <div class="modal fade" id="cellEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cell Edit</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <div class="btn-group" role="group" aria-label="..." style="padding: 10px 0;">
+                            <button type="button" class="btn btn-default">No allergen</button>
+                            <button type="button" class="btn btn-default">Removable</button>
+                            <button type="button" class="btn btn-default">Fixed</button>
+                        </div>
+
+                        <div class="form- group">
+                            <label for="exampleInputName2" class="sr-only">Allergen name</label>
+                            <input type="text" class="form-control" id="nnn" placeholder="Which allergen(s) specifically?">
+                        </div>
+                        <div style="background:#eee; padding: 3px 5px; text-align: left;">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-check"></i>
+                            </button>
+
+                            <button type="submit" class="btn btn-default">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
