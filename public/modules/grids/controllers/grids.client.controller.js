@@ -64,25 +64,33 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 		};
 
 
+        $scope.gridColumns = [
+          'celery',
+          'cereal',
+          'crustacean',
+          'egg',
+          'fish',
+          'lupin',
+          'milk',
+          'mollusc',
+          'mustard',
+          'nut',
+          'peanut',
+          'sesameSeed',
+          'soya',
+          'sulphurDioxide',
+          'other'
+        ];
+
+
         $scope.placeholderRow = {
           item: {},
           veggie: {},
-          celery: {},
-          cereal: {},
-          crustacean: {},
-          egg: {},
-          fish: {},
-          lupin: {},
-          milk: {},
-          mollusc: {},
-          mustard: {},
-          nut: {},
-          peanut: {},
-          sesameSeed: {},
-          soya: {},
-          sulphurDioxide: {},
-          other: {}
         };
+
+        $scope.gridColumns.forEach(function(column, index) {
+          $scope.placeholderRow[column] = {};
+        });
 
         $scope.resetRow = angular.copy($scope.placeholderRow);
 
