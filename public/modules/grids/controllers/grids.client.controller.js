@@ -128,8 +128,13 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
         };
 
         $scope.addNewRowFn = function($event) {
-          if ($event.ctrlKey && ($event.keyCode == 13 || $event.keyCode == 10)) {
-            $scope.newRowLogicFn();
+          if ($event.keyCode == 13 || $event.keyCode == 10) {
+            if ($event.ctrlKey) {
+              $scope.placeholderRow.item.name += '\n';
+            } else {
+              $event.preventDefault();
+              $scope.newRowLogicFn();
+            }
           }
         };
 
