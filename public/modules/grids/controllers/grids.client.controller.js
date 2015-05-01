@@ -94,8 +94,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
         $scope.resetRow = angular.copy($scope.placeholderRow);
 
-        $scope.addNewRowFn = function($event) {
-          if ($event.ctrlKey && ($event.keyCode == 13 || $event.keyCode == 10)) {
+        $scope.newRowLogicFn = function() {
             var lineSplit = $scope.placeholderRow.item.name.split('\n');
             lineSplit.forEach(function(line, index) {
               line = line.trim();
@@ -126,6 +125,11 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
             $scope.placeholderRow = angular.copy($scope.resetRow);
 
             console.info('New grid entry >>>', $scope.grid.tableData);
+        };
+
+        $scope.addNewRowFn = function($event) {
+          if ($event.ctrlKey && ($event.keyCode == 13 || $event.keyCode == 10)) {
+            $scope.newRowLogicFn();
           }
         };
 
