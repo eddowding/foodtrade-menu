@@ -117,7 +117,7 @@
                                 <tr data-ng-repeat='row in grid.tableData'>
                                     <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' data-ng-bind="row.item.name"></td>
                                     <td data-ng-bind='row.veggie.type'></td>
-                                    <td data-ng-repeat="column in gridColumns" data-ng-click='editCellFn(row[column])'><i class="fa fa-fw fa-lg" data-ng-class="{'fa-check-square': !row[column].status, 'fa-check-square-o': row[column].status}"></i>{{row[column].allergens}}({{row[column].allergenType}})</td>
+                                    <td data-ng-repeat="column in gridColumns"><cell-edit row-number=$parent.$index column-name=column></cell-edit></td>
                                 </tr>
                                 <tr class="newdish">
                                     <td>

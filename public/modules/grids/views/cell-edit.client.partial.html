@@ -1,0 +1,24 @@
+<div><i class="fa fa-fw fa-lg" data-ng-class="{'fa-check-square': !cell.status, 'fa-check-square-o': cell.status}"></i>{{cell.allergens}}({{cell.allergenType}})</div>
+<div class="cell-edit-form hidden">
+    <form class="">
+        <div class="btn-group" role="group" aria-label="" style="padding: 10px 0;">
+            <button type="button" class="btn btn-default" ng-click='cell.allergenType="No allergen"'>No allergen</button>
+            <button type="button" class="btn btn-default" ng-click='cell.allergenType="Removable"'>Removable</button>
+            <button type="button" class="btn btn-default" ng-click='cell.allergenType="Fixed"'>Fixed</button>
+        </div>
+
+        <div class="form- group">
+            <label for="exampleInputName2" class="sr-only">Allergen name</label>
+            <input type="text" class="form-control" id="nnn" placeholder="Which allergen(s) specifically?" ng-model='cell.allergens' ng-hide='cell.allergenType=="No allergen"'>
+        </div>
+        <div style="background:#eee; padding: 3px 5px; text-align: left;">
+            <button type="button" class="btn btn-primary" ng-click='cell.status=true'>
+                <i class="fa fa-check"></i>
+            </button>
+
+            <button type="button" class="btn btn-default" ng-click='cell.status=false'>
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+    </form>
+</div>
