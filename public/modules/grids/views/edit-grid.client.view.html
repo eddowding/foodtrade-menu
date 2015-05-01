@@ -117,7 +117,7 @@
                                 <tr data-ng-repeat='row in grid.tableData'>
                                     <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' data-ng-bind="row.item.name"></td>
                                     <td data-ng-bind='row.veggie.type'></td>
-                                    <td data-ng-repeat="column in gridColumns" class="cell"><i class="fa fa-fw fa-lg" data-ng-class="{'fa-check-square': !row[column].status, 'fa-check-square-o': row[column].status}"></i>{{row[column].allergens}}({{row[column].allergenType}})</td>
+                                    <td data-ng-repeat="column in gridColumns" data-ng-click='editCellFn(row[column])'><i class="fa fa-fw fa-lg" data-ng-class="{'fa-check-square': !row[column].status, 'fa-check-square-o': row[column].status}"></i>{{row[column].allergens}}({{row[column].allergenType}})</td>
                                 </tr>
                                 <tr class="newdish">
                                     <td>
@@ -175,27 +175,40 @@
             </div>
         </small>
     </div>
-    <div class="cell-edit-form hidden">
-        <form class="">
-            <div class="btn-group" role="group" aria-label="" style="padding: 10px 0;">
-                <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="No allergen"'>No allergen</button>
-                <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="Removable"'>Removable</button>
-                <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="Fixed"'>Fixed</button>
-            </div>
+    <div class="modal fade" id="cellEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cell Edit</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <div class="btn-group" role="group" aria-label="" style="padding: 10px 0;">
+                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="No allergen"'>No allergen</button>
+                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="Removable"'>Removable</button>
+                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="Fixed"'>Fixed</button>
+                        </div>
 
-            <div class="form- group">
-                <label for="exampleInputName2" class="sr-only">Allergen name</label>
-                <input type="text" class="form-control" id="nnn" placeholder="Which allergen(s) specifically?" ng-model='selectedEditCell.allergens' ng-hide='selectedEditCell.allergenType=="No allergen"'>
-            </div>
-            <div style="background:#eee; padding: 3px 5px; text-align: left;">
-                <button type="button" class="btn btn-primary" ng-click='selectedEditCell.status=true'>
-                    <i class="fa fa-check"></i>
-                </button>
+                        <div class="form- group">
+                            <label for="exampleInputName2" class="sr-only">Allergen name</label>
+                            <input type="text" class="form-control" id="nnn" placeholder="Which allergen(s) specifically?" ng-model='selectedEditCell.allergens' ng-hide='selectedEditCell.allergenType=="No allergen"'>
+                        </div>
+                        <div style="background:#eee; padding: 3px 5px; text-align: left;">
+                            <button type="button" class="btn btn-primary" ng-click='selectedEditCell.status=true'>
+                                <i class="fa fa-check"></i>
+                            </button>
 
-                <button type="button" class="btn btn-default" ng-click='selectedEditCell.status=false'>
-                    <i class="fa fa-times"></i>
-                </button>
+                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.status=false'>
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 </section>

@@ -123,13 +123,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
             });
 
             $scope.placeholderRow = angular.copy($scope.resetRow);
-            $('.cell').popover({
-              html: true,
-              title: 'Cell edit',
-              content: function() {
-                return $('.cell-edit-form').html();
-              }
-            });
+
             console.info('New grid entry >>>', $scope.grid.tableData);
         };
 
@@ -146,6 +140,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
         $scope.editCellFn = function(cell) {
           $scope.selectedEditCell = cell;
+          $('#cellEditModal').modal('show');
         };
 	}
 ]);
