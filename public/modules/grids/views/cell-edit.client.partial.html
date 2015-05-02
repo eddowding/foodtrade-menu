@@ -5,9 +5,9 @@
         <div class="spacing">
 
             <div class="btn-group btn-group-sm" role="group" aria-label="" style="padding: 10px 0;">
-                <button type="button" class="btn btn-success" ng-click='cell.allergenType="No allergen"'>No allergen</button>
-                <button type="button" class="btn btn-warning" ng-click='cell.allergenType="Removable"'>Removable</button>
-                <button type="button" class="btn btn-danger" ng-click='cell.allergenType="Fixed"'>Fixed</button>
+                <button type="button" class="btn btn-default" ng-class="{'btn-success': cell.allergenType == 'No allergen'}" ng-click='cell.allergenType="No allergen"'>No allergen</button>
+                <button type="button" class="btn btn-default" ng-class="{'btn-warning': cell.allergenType == 'Removable'}" ng-click='cell.allergenType="Removable"'>Removable</button>
+                <button type="button" class="btn btn-default" ng-class="{'btn-danger': cell.allergenType == 'Fixed'}" ng-click='cell.allergenType="Fixed"'>Fixed</button>
             </div>
 
             <div class="form- group">
