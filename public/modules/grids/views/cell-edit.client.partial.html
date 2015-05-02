@@ -1,4 +1,5 @@
-<div><i class="fa fa-fw fa-lg" data-ng-class="{'fa-check-square': !cell.status, 'fa-check-square-o': cell.status}"></i>{{cell.allergens}}({{cell.allergenType}})</div>
+<div>
+<i class="fa" data-ng-class="{'fa-square': cell.allergenType == 'Removable', 'fa-check-square-o': cell.allergenType == 'No allergen', 'fa-check-square': cell.allergenType == 'Fixed'}"></i>{{cell.allergens}}({{cell.allergenType}})</div>
 <div class="cell-edit-form hidden">
     <form class="">
         <div class="btn-group" role="group" aria-label="" style="padding: 10px 0;">
