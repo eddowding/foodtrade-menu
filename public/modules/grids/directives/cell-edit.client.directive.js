@@ -13,7 +13,7 @@ angular.module('grids').directive('cellEdit', ['$compile',
               scope.cell = scope.$parent.grid.tableData[scope.rowNumber][scope.columnName];
               $(element).popover({
                 html: true,
-                title: 'Cell edit',
+                title: false, 
                 content: function() {
                   return $compile($('.cell-edit-form').html())(scope);
                 }

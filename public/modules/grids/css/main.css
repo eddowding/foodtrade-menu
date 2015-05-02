@@ -323,3 +323,14 @@ h5 {
 .actions a {
   margin-right: 3px;
 }
+.popover .popover-content {
+  padding: 0 ;
+}
+.popover .spacing {
+  padding: 3px 10px 10px 10px;
+}
+.popover .form-actions {
+  background: #eee;
+  padding: 3px 5px;
+  text-align: left;
+}
