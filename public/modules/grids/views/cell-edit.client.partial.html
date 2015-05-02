@@ -12,7 +12,7 @@
 
             <div class="form- group">
                 <label for="exampleInputName2" class="sr-only">Allergen name</label>
-                <input type="text" class="form-control" id="nnn" placeholder="Which allergen(s) specifically?" ng-model='cell.allergens' ng-hide='cell.allergenType=="No allergen"'>
+                <input type="text" class="form-control" id="nnn" placeholder="Which allergen(s) specifically?" ng-model='cell.allergens' ng-hide='cell.allergenType=="No allergen"' ng-keypress='inputDismissFn($event)'>
             </div>
         </div>
 

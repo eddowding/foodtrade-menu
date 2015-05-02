@@ -25,6 +25,12 @@ angular.module('grids').directive('cellEdit', ['$compile',
                   $(element).popover('hide');
                 }
               });
+
+              scope.inputDismissFn = function($event) {
+                if ($event.keyCode == 13) {
+                  $(element).popover('hide');
+                }
+              };
 			}
 		};
 	}
