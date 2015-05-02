@@ -14,8 +14,15 @@ angular.module('grids').directive('cellEdit', ['$compile',
               $(element).popover({
                 html: true,
                 title: false,
+                placement: 'bottom',
                 content: function() {
                   return $compile($('.cell-edit-form').html())(scope);
+                }
+              });
+
+              scope.$watch('cell.allergenType', function(newValue, oldValue) {
+                if (newValue == 'No allergen') {
+                  $(element).popover('hide');
                 }
               });
 			}
