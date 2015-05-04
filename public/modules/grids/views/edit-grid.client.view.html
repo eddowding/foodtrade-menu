@@ -115,19 +115,27 @@
                             </thead>
                             <tbody>
                                 <tr data-ng-repeat='row in grid.tableData'>
-                                    <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' data-ng-bind="row.item.name"></td>
+                                    <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}'>
+                                        <div class="name">{{row.item.name}}</div>
+                                        <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
+                                        <div class="price" ng-if="row.item.hasPrice">{{row.item.price}}</div>
+                                        <div class="characteristic" ng-if="row.item.hasCharacteristic">{{row.item.characteristic}}</div>
+                                    </td>
                                     <td data-ng-bind='row.veggie.type'></td>
                                     <td data-ng-repeat="column in gridColumns"><cell-edit row-number=$parent.$index column-name=column></cell-edit></td>
                                 </tr>
                                 <tr class="newdish">
                                     <td>
                                         <textarea class="form-control" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
+                                        <textarea class="form-control" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
+                                        <input type='text' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice"/>
+                                        <textarea class="form-control" placeholder="Characteristic" data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic"></textarea>
 
                                         <div class="actions">
                                             add:
-                                            <a data-toggle="collapse" href="#notes">notes</a>
-                                            <a data-toggle="collapse" href="#price">price</a>
-                                            <a data-toggle="collapse" href="#character">characteristics</a>
+                                            <a data-toggle="collapse" ng-click='toggleNoteFn()'>notes</a>
+                                            <a data-toggle="collapse" ng-click='togglePriceFn()'>price</a>
+                                            <a data-toggle="collapse" ng-click='toggleCharacteristicFn()'>characteristics</a>
                                         </div>
 
                                         <textarea id="notes" class="form-control collapse" style="font-size: 11px; margin-top: 3px;" placeholder="Notes"></textarea>

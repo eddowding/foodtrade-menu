@@ -142,5 +142,29 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
           $scope.selectedEditCell = cell;
           $('#cellEditModal').modal('show');
         };
-	}
+
+        $scope.toggleNoteFn = function() {
+          if ($scope.placeholderRow.item.hasNote) {
+            $scope.placeholderRow.item.hasNote = false;
+          } else {
+            $scope.placeholderRow.item.hasNote = true;
+          }
+        };
+
+        $scope.togglePriceFn = function() {
+          if ($scope.placeholderRow.item.hasPrice) {
+            $scope.placeholderRow.item.hasPrice = false;
+          } else {
+            $scope.placeholderRow.item.hasPrice = true;
+          }
+        };
+
+        $scope.toggleCharacteristicFn = function() {
+          if ($scope.placeholderRow.item.hasCharacteristic) {
+            $scope.placeholderRow.item.hasCharacteristic = false;
+          } else {
+            $scope.placeholderRow.item.hasCharacteristic = true;
+          }
+        };
+    }
 ]);
