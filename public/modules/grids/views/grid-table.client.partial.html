@@ -61,7 +61,7 @@
                         <td>
                             <textarea class="form-control" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
                             <textarea class="form-control" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
-                            <input type='text' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice"/>
+                            <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice" />
                             <textarea class="form-control" placeholder="Characteristic" data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic"></textarea>
 
                             <div class="actions">
