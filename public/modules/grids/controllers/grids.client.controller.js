@@ -6,11 +6,11 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 		$scope.authentication = Authentication;
 
 		// Create new Grid
+        $scope.grid = {};
+
 		$scope.create = function() {
 			// Create new Grid object
-			var grid = new Grids ({
-				name: this.name
-			});
+			var grid = new Grids ($scope.grid);
 
 			// Redirect after save
 			grid.$save(function(response) {
