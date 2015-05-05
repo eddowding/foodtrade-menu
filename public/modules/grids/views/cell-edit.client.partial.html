@@ -4,7 +4,7 @@
     <form class="">
         <div class="spacing">
 
-            <div class="btn-group btn-group-sm" role="group" aria-label="" style="padding: 10px 0;">
+            <div class="btn-group btn-group-xs" role="group" aria-label="" style="padding: 10px 0;">
                 <button type="button" class="btn btn-default" ng-class="{'btn-success': cell.allergenType == 'No allergen'}" ng-click='cell.allergenType="No allergen"'>No allergen</button>
                 <button type="button" class="btn btn-default" ng-class="{'btn-warning': cell.allergenType == 'Removable'}" ng-click='cell.allergenType="Removable"'>Removable</button>
                 <button type="button" class="btn btn-default" ng-class="{'btn-danger': cell.allergenType == 'Fixed'}" ng-click='cell.allergenType="Fixed"'>Fixed</button>
@@ -12,17 +12,17 @@
 
             <div class="form- group">
                 <label for="exampleInputName2" class="sr-only">Allergen name</label>
-                <input type="text" class="form-control" id="nnn" placeholder="Which allergen(s) specifically?" ng-model='cell.allergens' ng-hide='cell.allergenType=="No allergen"' ng-keypress='inputDismissFn($event)'>
+                <input type="text" class="form-control input-sm" id="nnn" placeholder="Which allergen(s) specifically?" ng-model='cell.allergens' ng-hide='cell.allergenType=="No allergen"' ng-keypress='inputDismissFn($event)'>
             </div>
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-primary" ng-click='cell.status=true'>
-                <i class="fa fa-check"></i>
+            <button type="button" class="btn btn-success btn-xs" ng-click='cell.status=true'>
+                <i class="fa fa-save"></i> Save
             </button>
 
-            <button type="button" class="btn btn-default" ng-click='cell.status=false'>
-                <i class="fa fa-times"></i>
+            <button type="button" class="btn btn-default btn-xs pull-right" ng-click='cell.status=false'>
+                <i class="fa fa-times"></i> Cancel
             </button>
         </div>
     </form>
