@@ -66,7 +66,7 @@
             </li>
 
             <li>
-                <a ng-show="authentication.user" ng-click="create()" class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
+                <a ng-show="authentication.user" onclick='$(".create-grid-submit").trigger("click")' class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
                 <a ng-hide="authentication.user" data-toggle="modal" data-target="#signupModal" class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
             </li>
         </ul>
