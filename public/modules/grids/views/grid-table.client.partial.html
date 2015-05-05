@@ -64,11 +64,11 @@
                             <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice" />
                             <textarea class="form-control" placeholder="Characteristic" data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic"></textarea>
 
-                            <div class="actions">
+                            <div class="actions" ng-show="!placeholderRow.item.hasNote || !placeholderRow.item.hasPrice || !placeholderRow.item.hasCharacteristic">
                                 add:
-                                <a data-toggle="collapse" ng-click='toggleNoteFn()'>notes</a>
-                                <a data-toggle="collapse" ng-click='togglePriceFn()'>price</a>
-                                <a data-toggle="collapse" ng-click='toggleCharacteristicFn()'>characteristics</a>
+                                <a data-toggle="collapse" ng-click='toggleNoteFn()' ng-show="!placeholderRow.item.hasNote">notes</a>
+                                <a data-toggle="collapse" ng-click='togglePriceFn()' ng-show="!placeholderRow.item.hasPrice">price</a>
+                                <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
                             </div>
 
                             <textarea id="notes" class="form-control collapse" style="font-size: 11px; margin-top: 3px;" placeholder="Notes"></textarea>
