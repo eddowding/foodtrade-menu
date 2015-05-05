@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form role="form" class="form-horizontal">
+            <table class="table table-condensed table-bordered" id="allergygrid">
+                <thead>
+                    <tr id="svg">
+                        <th></th>
+                        <th><img src="modules/grids/img/bones.svg"></th>
+
+                        <th><img src="modules/grids/img/eggs.svg"></th>
+                        <th><img src="modules/grids/img/milk.svg"></th>
+                        <th><img src="modules/grids/img/fish.svg"></th>
+                        <th><img src="modules/grids/img/crustacean.svg"></th>
+                        <th><img src="modules/grids/img/mollusc.svg"></th>
+                        <th><img src="modules/grids/img/nuts.svg"></th>
+                        <th><img src="modules/grids/img/peanuts.svg"></th>
+                        <th><img src="modules/grids/img/sesame.svg"></th>
+                        <th><img src="modules/grids/img/gluten.svg"></th>
+                        <th><img src="modules/grids/img/lupin.svg"></th>
+                        <th><img src="modules/grids/img/celery.svg"></th>
+                        <th><img src="modules/grids/img/mustard.svg"></th>
+                        <th><img src="modules/grids/img/soy.svg"></th>
+                        <th><img src="modules/grids/img/sulphur.svg"></th>
+                        <th>
+                            Other
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>Veggie?</th>
+
+                        <th>Eggs</th>
+                        <th>Milk</th>
+                        <th>Fish</th>
+                        <th>Crustaceans</th>
+                        <th>Molluscs</th>
+                        <th>Nuts</th>
+                        <th>Peanuts</th>
+                        <th>Sesame seeds</th>
+                        <th>Cereals containing gluten</th>
+                        <th>Lupin</th>
+                        <th>Celery</th>
+                        <th>Mustard</th>
+                        <th>Soya</th>
+                        <th>Sulphur dioxide</th>
+                        <th>Other</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat='row in grid.tableData'>
+                        <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}'>
+                            <div class="name">{{row.item.name}}</div>
+                            <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
+                            <div class="price" ng-if="row.item.hasPrice">{{row.item.price}}</div>
+                            <div class="characteristic" ng-if="row.item.hasCharacteristic">{{row.item.characteristic}}</div>
+                        </td>
+                        <td data-ng-bind='row.veggie.type'></td>
+                        <td data-ng-repeat="column in gridColumns"><cell-edit row-number=$parent.$index column-name=column></cell-edit></td>
+                    </tr>
+                    <tr class="newdish">
+                        <td>
+                            <textarea class="form-control" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
+                            <textarea class="form-control" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
+                            <input type='text' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice"/>
+                            <textarea class="form-control" placeholder="Characteristic" data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic"></textarea>
+
+                            <div class="actions">
+                                add:
+                                <a data-toggle="collapse" ng-click='toggleNoteFn()'>notes</a>
+                                <a data-toggle="collapse" ng-click='togglePriceFn()'>price</a>
+                                <a data-toggle="collapse" ng-click='toggleCharacteristicFn()'>characteristics</a>
+                            </div>
+
+                            <textarea id="notes" class="form-control collapse" style="font-size: 11px; margin-top: 3px;" placeholder="Notes"></textarea>
+
+                            <div class=" collapse" id="price" style="font-size: 11px; margin-top: 3px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">£</span>
+                                    <input type="text" class="form-control" placeholder="Price" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+
+                            <select class="form-control collapse" id="character" style="font-size: 11px; margin-top: 3px;">
+                                <option value="chrome">MSC 5</option>
+                                <option value="chrome">MSC 4</option>
+                                <option value="chrome">MSC 3</option>
+                                <option value="chrome">MSC 2</option>
+                                <option value="chrome">MSC 1</option>
+                                <option value="firefox">Organic</option>
+                                <option value="ie">Locally sourced (within 30m/50km)</option>
+                                <option value="safari">Fairtrade</option>
+                            </select>
+
+                        </td>
+                        <td>
+                            <select data-ng-model='placeholderRow.veggie.type'>
+                                <option value='Meat'>Meat</option>
+                                <option value='Veggie'>Veggie</option>
+                                <option value='Fish'>Fish</option>
+                                <option value='Vegan'>Vegan</option>
+                            </select>
+                        </td>
+                        <td data-ng-repeat="column in gridColumns">
+                            <input type='checkbox' data-ng-model='placeholderRow[column].status' data-ng-checked='placeholderRow[column].status' data-ng-keypress="addNewRowFn($event)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="text-muted small">
+            <strong><i class="fa fa-fw fa-lg fa-keyboard-o"></i></strong>
+            Add a : after dish name to make a section · Use TAB key to move to next checkbox, SPACE to select it · Keep pressing TAB to add a new row · ⌘+ ↓ Move Down · ⌘+ ↓ Move Up
+            </p>
+        </form>
+    </div>
+</div>
