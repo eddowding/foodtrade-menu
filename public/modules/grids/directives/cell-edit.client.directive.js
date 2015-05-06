@@ -21,12 +21,6 @@ angular.module('grids').directive('cellEdit', ['$compile',
                 }
               });
 
-              scope.$watch('cell.allergenType', function(newValue, oldValue) {
-                if (newValue == 'No allergen') {
-                  scope.saveCellEditFn();
-                }
-              });
-
               scope.inputDismissFn = function($event) {
                 if ($event.keyCode == 13) {
                   scope.saveCellEditFn();
@@ -36,6 +30,7 @@ angular.module('grids').directive('cellEdit', ['$compile',
               scope.saveCellEditFn = function() {
                 scope.cell = angular.copy(scope.placeholderCell);
                 scope.placeholderCell = {};
+                console.info('cell update >>> ', scope.cell);
                 $(element).popover('hide');
               };
 
