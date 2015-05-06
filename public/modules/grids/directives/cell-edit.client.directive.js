@@ -10,6 +10,7 @@ angular.module('grids').directive('cellEdit', ['$compile',
               columnName: '=columnName'
             },
 			link: function postLink(scope, element, attrs) {
+              scope.placeholderCell = {};
               scope.cell = scope.$parent.grid.tableData[scope.rowNumber][scope.columnName];
               $(element).popover({
                 html: true,
@@ -22,14 +23,24 @@ angular.module('grids').directive('cellEdit', ['$compile',
 
               scope.$watch('cell.allergenType', function(newValue, oldValue) {
                 if (newValue == 'No allergen') {
-                  $(element).popover('hide');
+                  scope.saveCellEditFn();
                 }
               });
 
               scope.inputDismissFn = function($event) {
                 if ($event.keyCode == 13) {
-                  $(element).popover('hide');
+                  scope.saveCellEditFn();
                 }
+              };
+
+              scope.saveCellEditFn = function() {
+                scope.cell = angular.copy(scope.placeholderCell);
+                scope.placeholderCell = {};
+                $(element).popover('hide');
+              };
+
+              scope.cancelCellEditFn = function() {
+                $(element).popover('hide');
               };
 			}
 		};
