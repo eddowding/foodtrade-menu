@@ -147,26 +147,33 @@ h5 {
   background: #fff;
 }
 #allergygrid th {
-  text-align: center;
-  vertical-align: bottom;
   background: #d9e6c2;
-  overflow: hidden;
   font-weight: normal;
   font-size: 12px;
+  border-color: darkgreen;
+  border-collapse: collapse;
 }
-@media (max-width: 768px) {
-  #allergygrid th {
+@media (max-width: 992px) {
+  #allergygrid th img {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media (max-width: 992px) {
+  #allergygrid th.rotate {
+    height: 170px;
+    white-space: nowrap;
+  }
+  #allergygrid th.rotate > div {
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
+    width: 30px;
   }
-  #allergygrid th svg {
-    display: none;
+  #allergygrid th.rotate > div > span {
+    padding: 5px;
   }
 }
 #allergygrid td {
@@ -324,10 +331,10 @@ h5 {
   margin-right: 3px;
 }
 .popover .popover-content {
-  padding: 0 ;
+  padding: 0;
 }
 .popover .spacing {
-  padding: 3px 10px 10px 10px;
+  padding: 3px 10px 10px;
 }
 .popover .form-actions {
   background: #eee;
