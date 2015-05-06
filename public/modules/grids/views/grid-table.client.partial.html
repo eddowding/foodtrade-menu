@@ -55,7 +55,7 @@
                             <div class="characteristic" ng-if="row.item.hasCharacteristic">{{row.item.characteristic}}</div>
                         </td>
                         <td ng-click='toggleVeggieEditFn(row.veggie)'>
-                            {{row.veggie.type}}
+                            <i class="fa" ng-class="{'fa-github-alt': row.veggie.type == 'Meat', 'fa-leaf': row.veggie.type == 'Veggie', 'fa-pagelines': row.veggie.type == 'Fish', 'fa-ship': row.veggie.type == 'Vegan'}"></i>
                             <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit'>
                                 <option value='Meat'>Meat</option>
                                 <option value='Veggie'>Veggie</option>
