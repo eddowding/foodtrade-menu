@@ -89,7 +89,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
         };
 
         $scope.gridColumns.forEach(function(column, index) {
-          $scope.placeholderRow[column] = {};
+          $scope.placeholderRow[column] = {allergenType: 'No allergen'};
         });
 
         $scope.resetRow = angular.copy($scope.placeholderRow);
