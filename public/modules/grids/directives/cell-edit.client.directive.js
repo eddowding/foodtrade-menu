@@ -37,6 +37,12 @@ angular.module('grids').directive('cellEdit', ['$compile',
               scope.cancelCellEditFn = function() {
                 $(element).popover('hide');
               };
+
+              scope.$watch('placeholderCell.allergenType', function(newValue, oldValue) {
+                if (newValue == 'No allergen') {
+                  scope.saveCellEditFn();
+                }
+              });
 			}
 		};
 	}
