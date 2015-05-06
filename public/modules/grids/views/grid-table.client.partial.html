@@ -54,7 +54,15 @@
                             <div class="price" ng-if="row.item.hasPrice">{{row.item.price}}</div>
                             <div class="characteristic" ng-if="row.item.hasCharacteristic">{{row.item.characteristic}}</div>
                         </td>
-                        <td data-ng-bind='row.veggie.type'></td>
+                        <td ng-click='toggleVeggieEditFn(row.veggie)'>
+                            {{row.veggie.type}}
+                            <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit'>
+                                <option value='Meat'>Meat</option>
+                                <option value='Veggie'>Veggie</option>
+                                <option value='Fish'>Fish</option>
+                                <option value='Vegan'>Vegan</option>
+                            </select>
+                        </td>
                         <td data-ng-repeat="column in gridColumns"><cell-edit row-number=$parent.$index column-name=column></cell-edit></td>
                     </tr>
                     <tr class="newdish">

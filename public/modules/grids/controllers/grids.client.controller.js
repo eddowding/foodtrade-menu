@@ -166,5 +166,13 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
             $scope.placeholderRow.item.hasCharacteristic = true;
           }
         };
+
+        $scope.toggleVeggieEditFn = function(veggie) {
+          if (veggie.edit) {
+            veggie.edit = false;
+          } else {
+            veggie.edit = true;
+          }
+        };
     }
 ]);
