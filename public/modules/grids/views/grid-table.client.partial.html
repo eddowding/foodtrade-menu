@@ -24,7 +24,7 @@
                         <th class="rotate"><div><span>Other</span></div></th>
                     </tr>
                     <tr id="svg">
-                        <th></th>
+                        <th class="itemname" nowrap>Item name</th>
                         <th><img src="modules/grids/img/bones.svg"></th>
 
                         <th><img src="modules/grids/img/eggs.svg"></th>
@@ -48,7 +48,7 @@
                 </thead>
                 <tbody>
                     <tr data-ng-repeat='row in grid.tableData'>
-                        <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}'>
+                        <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
                             <div class="name">{{row.item.name}}</div>
                             <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
                             <div class="price" ng-if="row.item.hasPrice">{{row.item.price}}</div>
@@ -66,10 +66,13 @@
                         <td data-ng-repeat="column in gridColumns"><cell-edit row-number=$parent.$index column-name=column></cell-edit></td>
                     </tr>
                     <tr class="newdish">
-                        <td>
+                        <td class="itemname" nowrap>
                             <textarea class="form-control" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
                             <textarea class="form-control" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
-                            <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice" />
+
+                            <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price"  />
+
+
                             <select class="form-control" id="character" style="font-size: 11px; margin-top: 3px;" data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic">
                                 <option value="chrome">MSC 5</option>
                                 <option value="chrome">MSC 4</option>
@@ -89,14 +92,21 @@
                                 <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
                             </div>
 
-                            <textarea id="notes" class="form-control collapse" style="font-size: 11px; margin-top: 3px;" placeholder="Notes"></textarea>
 
-                            <div class=" collapse" id="price" style="font-size: 11px; margin-top: 3px;">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1">£</span>
-                                    <input type="text" class="form-control" placeholder="Price" aria-describedby="basic-addon1">
-                                </div>
-                            </div>
+                            MOCKUP TAGS INPUT
+
+                            <input type='text' class="form-control" placeholder="Characteristics" />
+                            <small>
+                                <a href="#">MSC2</a>
+                                <a href="#">Organic</a>
+                                <a href="#">Locally sour&hellip;</a>
+                                <a href="#">Fairtrade</a>
+                                <a href="#">MSC1</a>
+                                <a href="#">MSC5</a>
+                            </small>
+
+
+
                         </td>
                         <td>
                             <select data-ng-model='placeholderRow.veggie.type'>

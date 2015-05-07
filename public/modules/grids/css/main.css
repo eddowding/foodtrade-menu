@@ -176,6 +176,31 @@ h5 {
     padding: 5px;
   }
 }
+#allergygrid .itemname {
+  white-space: nowrap !important;
+  width: 210px !important;
+}
+#allergygrid .itemname textarea {
+  height: 30px;
+  padding: 1px 5px;
+  line-height: 30px;
+  margin: 0 0 4px 0;
+}
+#allergygrid .itemname input {
+  margin-bottom: 4px;
+}
+#allergygrid .itemname select {
+  width: 200px;
+}
+#allergygrid .itemname small a {
+  margin-right: 2px;
+  font-size: 10px;
+  border-bottom: 1px dotted #aaa;
+}
+#allergygrid .itemname small a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
 #allergygrid td {
   border: 2px solid #ccc;
   border-right: 1px solid #ccc;
