@@ -94,6 +94,9 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 
         $scope.resetRow = angular.copy($scope.placeholderRow);
 
+        $scope.updatePlaceholderRowCellFn = function(columnName, cell) {
+          $scope.placeholderRow[columnName] = cell;
+        };
         $scope.newRowLogicFn = function() {
             var lineSplit = $scope.placeholderRow.item.name.split('\n');
             lineSplit.forEach(function(line, index) {

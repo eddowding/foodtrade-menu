@@ -30,8 +30,8 @@ angular.module('grids').directive('cellEditNew', ['$compile',
               scope.saveCellEditFn = function() {
                 scope.cell = angular.copy(scope.placeholderCell);
                 scope.placeholderCell = angular.copy(scope.cell);
+                scope.$parent.updatePlaceholderRowCellFn(scope.columnName, scope.placeholderCell);
                 console.info('cell update >>> ', scope.cell);
-                console.log(scope.$parent.placeholderRow);
                 $(element).popover('hide');
               };
 
