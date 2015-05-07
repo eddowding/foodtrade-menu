@@ -1,8 +1,5 @@
 <section data-ng-controller="GridsController">
     <div class="container-responsive" role="main" id="main">
-        <div class="page-header">
-            <h1>New Grid</h1>
-        </div>
         <div class="col-md-12">
             <form class="form-horizontal" data-ng-submit="create()" novalidate>
                 <fieldset>
@@ -30,7 +27,7 @@
                     <h4 class="modal-title" id="myModalLabel">Saved please confirm email!</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <!-- <form>
                         <div class="form-group">
                             <label for="business-name" class="control-label">Business Name</label>
                             <input type="text" class="form-control" id="business-name">
@@ -43,7 +40,63 @@
                             <label for="website" class="control-label">Website</label>
                             <input type="text" class="form-control" id="website">
                         </div>
-                    </form>
+                    </form> -->
+                    <form class="form-horizontal">
+                        <fieldset>
+                        <!-- Prepended text-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="email">Email</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                              <input id="email" name="email" class="form-control" placeholder="Your email" type="text" required="">
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="postcode">Postal code</label>
+                          <div class="col-md-4">
+                          <input id="postcode" name="postcode" type="text" placeholder="Postal code" class="form-control input-md" required="">
+                          <span class="help-block">Business postal / zip code</span>
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="establishment">Business name</label>
+                          <div class="col-md-4">
+                          <input id="establishment" name="establishment" type="text" placeholder="Start typing to match.. " class="form-control input-md" required="">
+                          <span class="help-block">This pulls information from the Food Standards Agency database. If you're not listed, click here</span>
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="phone">Phone number</label>
+                          <div class="col-md-4">
+                          <input id="phone" name="phone" type="text" placeholder="0207 193 2999" class="form-control input-md">
+                          <span class="help-block">What number can customers call you on?</span>
+                          </div>
+                        </div>
+
+                        <!-- Prepended text-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="website">Website</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <span class="input-group-addon">http://</span>
+                              <input id="website" name="website" class="form-control" placeholder="www.yoursite.com" type="text">
+                            </div>
+
+                          </div>
+                        </div>
+
+                        </fieldset>
+                        </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
