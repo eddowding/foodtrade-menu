@@ -129,10 +129,6 @@ body {
   -moz-box-shadow: 2px 2px 20px #cccccc;
   box-shadow: 2px 2px 20px #cccccc;
 }
-section {
-  border-top: 1px solid #ccc;
-  padding: 20px 0;
-}
 h1,
 h2,
 h3,
@@ -182,6 +178,7 @@ h5 {
 }
 #allergygrid .itemname {
   white-space: nowrap !important;
+  text-align: left !important;
 }
 #allergygrid .itemname textarea {
   height: 30px;
@@ -227,17 +224,17 @@ h5 {
   color: #fff;
   text-align: left;
 }
-#allergygrid .dish {
+#allergygrid .dish div {
   text-align: left;
   white-space: nowrap;
   width: 10%;
 }
-#allergygrid .dish::before {
+#allergygrid .dish div::before {
   content: ':: ';
   color: #ccc;
   font-weight: bold;
 }
-#allergygrid .dish::before:hover {
+#allergygrid .dish div::before:hover {
   cursor: move;
 }
 #allergygrid .ingredient .dish {
@@ -272,6 +269,7 @@ h5 {
   -moz-box-shadow: 0 0 8px #cccccc;
   box-shadow: 0 0 8px #cccccc;
   padding: 10px;
+  margin: 0;
 }
 .navbar a {
   padding: 2px 10px;
@@ -280,6 +278,7 @@ h5 {
 }
 .navbar .navbar-brand {
   padding: 0 15px 0 0;
+  height: auto;
 }
 .navbar .navbar-nav li a {
   padding: 2px 10px;
@@ -372,4 +371,7 @@ h5 {
   background: #eee;
   padding: 3px 5px;
   text-align: left;
+}
+.popover .btn {
+  text-shadow: none;
 }

@@ -41,7 +41,7 @@
             <li><a href="dashboard.html">About</a></li>
             <li><a href="gridlite.html">Feedback</a></li>
 
-            <li class="dropdown" style="border-left: 1px solid #ccc;">
+            <!-- <li class="dropdown">
                 <div class="pull-left">
                     <img src="https://rebelryterwrites.files.wordpress.com/2009/09/chef-angry-mad-cook-south-park.gif" class="img-thumbnail img-circle" style="width:30px; height:30px;">
                 </div>
@@ -63,11 +63,16 @@
                         <a href="/auth/signout">Signout</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <li>
+                <p class="navbar-btn nomargin">
+
                 <a ng-show="authentication.user" onclick='$(".create-grid-submit").trigger("click")' class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
+
                 <a ng-hide="authentication.user" data-toggle="modal" data-target="#signupModal" class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
+
+                </p>
             </li>
         </ul>
     </div>
