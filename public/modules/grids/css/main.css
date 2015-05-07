@@ -375,3 +375,7 @@ h5 {
 .popover .btn {
   text-shadow: none;
 }
+.help-block {
+  font-size: 12px;
+  color: #999;
+}
