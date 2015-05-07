@@ -123,9 +123,7 @@
                                 <option value='Vegan'>Vegan</option>
                             </select>
                         </td>
-                        <td data-ng-repeat="column in gridColumns">
-                            <input type='checkbox' data-ng-model='placeholderRow[column].status' data-ng-checked='placeholderRow[column].status' data-ng-keypress="addNewRowFn($event)" />
-                        </td>
+                        <td data-ng-repeat="column in gridColumns"><cell-edit-new column-name=column></cell-edit-new></td>
                     </tr>
                 </tbody>
             </table>
