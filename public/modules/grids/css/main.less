@@ -30,6 +30,10 @@ h5 {
     background: #fff;
 }
 #allergygrid {
+    #save {
+        float: right;
+        padding: 5px 10px;
+    }
     th {
         background: @light;
         font-weight: normal;
@@ -58,12 +62,13 @@ h5 {
     }
     .itemname {
         white-space: nowrap !important;
-        width: 210px !important;
         textarea {
             height: 30px;
             padding: 1px 5px;
             line-height: 30px;
             margin: 0 0 4px 0;
+            float: left;
+            width: 210px;
         }
         input {
             margin-bottom: 4px;
@@ -91,10 +96,12 @@ h5 {
     #svg th {
         background: none;
         vertical-align: middle;
+        text-align: center;
         img,
         svg {
             width: 30px;
             max-height: 80px;
+            margin: 0 auto;
         }
     }
     .section {
