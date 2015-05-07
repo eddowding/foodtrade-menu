@@ -69,7 +69,7 @@
                         <td class="itemname" nowrap>
                             <div class="clearfix">
 
-                                <button class="btn btn-sm btn-success" ng-click='newRowLogicFn()' id="save">
+                                <button class="btn btn-sm btn-success" ng-click='newRowLogicFn()' ng-class="{'disabled': !placeholderRow.item.name}" id="save">
                                 <i class="fa fa-check"></i>
                                 </button>
                                 <textarea class="form-control" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
