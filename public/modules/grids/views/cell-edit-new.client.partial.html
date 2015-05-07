@@ -1,7 +1,7 @@
 <div>
 
     <div class="clearfix">
-        <i class="fa" data-ng-class="{'fa-minus-square-o': cell.allergenType == 'Removable', 'fa-square-o': cell.allergenType == 'No allergen', 'fa-check-square-o': cell.allergenType == 'Fixed'}"></i> 
+        <i class="fa" data-ng-class="{'fa-minus-square-o': cell.allergenType == 'Removable', 'fa-square-o': cell.allergenType == 'No allergen', 'fa-check-square-o': cell.allergenType == 'Fixed'}"></i>
     </div>
 
     <span ng-show="cell.allergens">{{cell.allergens}}</span>
@@ -18,7 +18,7 @@
 
             <div class="form- group">
                 <label for="exampleInputName2" class="sr-only">Allergen name</label>
-                <input type="text" class="form-control input-sm" id="nnn" placeholder="Which allergen(s) specifically?" ng-model='placeholderCell.allergens' ng-hide='placeholderCell.allergenType=="No allergen"' ng-keypress='inputDismissFn($event)'>
+                <input type="text" class="form-control input-sm" id="nnn" placeholder="Notes / specify allergen(s)" ng-model='placeholderCell.allergens' ng-hide='placeholderCell.allergenType=="No allergen"' ng-keypress='inputDismissFn($event)'>
             </div>
         </div>
 

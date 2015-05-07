@@ -24,7 +24,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Saved please confirm email!</h4>
+                    <h4 class="modal-title" id="myModalLabel">Create an account - it's free.</h4>
                 </div>
                 <div class="modal-body">
                     <!-- <form>
@@ -43,22 +43,35 @@
                     </form> -->
                     <form class="form-horizontal">
                         <fieldset>
-                        <!-- Prepended text-->
+                        <!-- EMAIL -->
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="email">Email</label>
-                          <div class="col-md-4">
+                          <label class="col-md-3 control-label" for="email">Email</label>
+                          <div class="col-md-8">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
                               <input id="email" name="email" class="form-control" placeholder="Your email" type="text" required="">
                             </div>
 
                           </div>
+                          </div>
+
+                      <!-- PASSWORD -->
+                      <div class="form-group">
+                            <label class="col-md-3 control-label" for="email">Password</label>
+                            <div class="col-md-8">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input id="password" name="password" class="form-control" placeholder="" type="password" required="">
+                              </div>
+
+                            </div>
                         </div>
+
 
                         <!-- Text input-->
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="postcode">Postal code</label>
-                          <div class="col-md-4">
+                          <label class="col-md-3 control-label" for="postcode">Postal code</label>
+                          <div class="col-md-8">
                           <input id="postcode" name="postcode" type="text" placeholder="Postal code" class="form-control input-md" required="">
                           <span class="help-block">Business postal / zip code</span>
                           </div>
@@ -66,8 +79,8 @@
 
                         <!-- Text input-->
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="establishment">Business name</label>
-                          <div class="col-md-4">
+                          <label class="col-md-3 control-label" for="establishment">Business name</label>
+                          <div class="col-md-8">
                           <input id="establishment" name="establishment" type="text" placeholder="Start typing to match.. " class="form-control input-md" required="">
                           <span class="help-block">This pulls information from the Food Standards Agency database. If you're not listed, click here</span>
                           </div>
@@ -75,8 +88,8 @@
 
                         <!-- Text input-->
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="phone">Phone number</label>
-                          <div class="col-md-4">
+                          <label class="col-md-3 control-label" for="phone">Phone number</label>
+                          <div class="col-md-8">
                           <input id="phone" name="phone" type="text" placeholder="0207 193 2999" class="form-control input-md">
                           <span class="help-block">What number can customers call you on?</span>
                           </div>
@@ -84,8 +97,8 @@
 
                         <!-- Prepended text-->
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="website">Website</label>
-                          <div class="col-md-4">
+                          <label class="col-md-3 control-label" for="website">Website</label>
+                          <div class="col-md-8">
                             <div class="input-group">
                               <span class="input-group-addon">http://</span>
                               <input id="website" name="website" class="form-control" placeholder="www.yoursite.com" type="text">
