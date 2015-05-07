@@ -146,6 +146,10 @@ h5 {
   padding: 10px 10px 50px;
   background: #fff;
 }
+#allergygrid #save {
+  float: right;
+  padding: 5px 10px;
+}
 #allergygrid th {
   background: #d9e6c2;
   font-weight: normal;
@@ -178,13 +182,14 @@ h5 {
 }
 #allergygrid .itemname {
   white-space: nowrap !important;
-  width: 210px !important;
 }
 #allergygrid .itemname textarea {
   height: 30px;
   padding: 1px 5px;
   line-height: 30px;
   margin: 0 0 4px 0;
+  float: left;
+  width: 210px;
 }
 #allergygrid .itemname input {
   margin-bottom: 4px;
@@ -209,11 +214,13 @@ h5 {
 #allergygrid #svg th {
   background: none;
   vertical-align: middle;
+  text-align: center;
 }
 #allergygrid #svg th img,
 #allergygrid #svg th svg {
   width: 30px;
   max-height: 80px;
+  margin: 0 auto;
 }
 #allergygrid .section {
   background: #444;

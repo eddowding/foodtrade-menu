@@ -67,7 +67,16 @@
                     </tr>
                     <tr class="newdish">
                         <td class="itemname" nowrap>
-                            <textarea class="form-control" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
+                            <div class="clearfix">
+
+                                <button class="btn btn-sm btn-success" ng-click='newRowLogicFn()' id="save">
+                                <i class="fa fa-check"></i>
+                                </button>
+                                <textarea class="form-control" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
+
+                            </div>
+
+
                             <textarea class="form-control" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
 
                             <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice" />
@@ -89,7 +98,6 @@
                                 <a data-toggle="collapse" ng-click='togglePriceFn()' ng-show="!placeholderRow.item.hasPrice">price</a>
                                 <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
                             </div>
-                            <button ng-click='newRowLogicFn()'>Submit</button>
 
 
                             MOCKUP TAGS INPUT
