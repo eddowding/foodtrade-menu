@@ -190,5 +190,9 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
           });
           return retList;
         };
+
+        $scope.addToCharFn = function(val) {
+          $scope.placeholderRow.item.characteristic.push({text: val});
+        };
     }
 ]);

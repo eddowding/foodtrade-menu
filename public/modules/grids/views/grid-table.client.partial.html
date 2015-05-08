@@ -86,12 +86,12 @@
                                 <auto-complete source="loadCharTagFn($query)"></auto-complete>
                             </tags-input>
                             <small data-ng-show="placeholderRow.item.hasCharacteristic">
-                                <a href="#">MSC2</a>
-                                <a href="#">Organic</a>
-                                <a href="#">Locally sour&hellip;</a>
-                                <a href="#">Fairtrade</a>
-                                <a href="#">MSC1</a>
-                                <a href="#">MSC5</a>
+                                <a ng-click='addToCharFn("MSC 2")'>MSC2</a>
+                                <a ng-click='addToCharFn("Organic")'>Organic</a>
+                                <a ng-click='addToCharFn("Locally sourced (within 30m/50km)")'>Locally sour&hellip;</a>
+                                <a ng-click='addToCharFn("Fairtrade")'>Fairtrade</a>
+                                <a ng-click='addToCharFn("MSC 1")'>MSC1</a>
+                                <a ng-click='addToCharFn("MSC 5")'>MSC5</a>
                             </small>
 
                             <div class="actions" ng-show="!placeholderRow.item.hasNote || !placeholderRow.item.hasPrice || !placeholderRow.item.hasCharacteristic">
