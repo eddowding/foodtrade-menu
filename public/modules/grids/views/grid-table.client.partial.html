@@ -52,7 +52,9 @@
                             <div class="name">{{row.item.name}}</div>
                             <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
                             <div class="price" ng-if="row.item.hasPrice">{{row.item.price}}</div>
-                            <div class="characteristic" ng-if="row.item.hasCharacteristic">{{row.item.characteristic.join(', ')}}</div>
+                            <div class="characteristic" ng-if="row.item.hasCharacteristic">
+                                <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
+                            </div>
                         </td>
                         <td ng-click='toggleVeggieEditFn(row.veggie)'>
                             <i class="fa" ng-class="{'fa-github-alt': row.veggie.type == 'Meat', 'fa-leaf': row.veggie.type == 'Veggie', 'fa-pagelines': row.veggie.type == 'Fish', 'fa-ship': row.veggie.type == 'Vegan'}"></i>
@@ -80,33 +82,10 @@
                             <textarea class="form-control msd-elastic" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
 
                             <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice" />
-                            <tags-input data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic" replace-spaces-with-dashes='false'>
+                            <tags-input data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic" replace-spaces-with-dashes='false' placeholder='Add a characteristic' add-from-autocomplete-only='true'>
                                 <auto-complete source="loadCharTagFn($query)"></auto-complete>
                             </tags-input>
-                            <select multiple class="form-control" id="character" style="font-size: 11px; margin-top: 3px;" data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic">
-                                <option value="MSC 5">MSC 5</option>
-                                <option value="MSC 4">MSC 4</option>
-                                <option value="MSC 3">MSC 3</option>
-                                <option value="MSC 2">MSC 2</option>
-                                <option value="MSC 1">MSC 1</option>
-                                <option value="Organic">Organic</option>
-                                <option value="Locally sourced (within 30m/50km)">Locally sourced (within 30m/50km)</option>
-                                <option value="Fairtrade">Fairtrade</option>
-                            </select>
-
-
-                            <div class="actions" ng-show="!placeholderRow.item.hasNote || !placeholderRow.item.hasPrice || !placeholderRow.item.hasCharacteristic">
-                                add:
-                                <a data-toggle="collapse" ng-click='toggleNoteFn()' ng-show="!placeholderRow.item.hasNote">notes</a>
-                                <a data-toggle="collapse" ng-click='togglePriceFn()' ng-show="!placeholderRow.item.hasPrice">price</a>
-                                <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
-                            </div>
-
-
-                            MOCKUP TAGS INPUT
-
-                            <input type='text' class="form-control" placeholder="Characteristics" />
-                            <small>
+                            <small data-ng-show="placeholderRow.item.hasCharacteristic">
                                 <a href="#">MSC2</a>
                                 <a href="#">Organic</a>
                                 <a href="#">Locally sour&hellip;</a>
@@ -115,7 +94,12 @@
                                 <a href="#">MSC5</a>
                             </small>
 
-
+                            <div class="actions" ng-show="!placeholderRow.item.hasNote || !placeholderRow.item.hasPrice || !placeholderRow.item.hasCharacteristic">
+                                add:
+                                <a data-toggle="collapse" ng-click='toggleNoteFn()' ng-show="!placeholderRow.item.hasNote">notes</a>
+                                <a data-toggle="collapse" ng-click='togglePriceFn()' ng-show="!placeholderRow.item.hasPrice">price</a>
+                                <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
+                            </div>
 
                         </td>
                         <td>
