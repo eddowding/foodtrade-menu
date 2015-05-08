@@ -80,6 +80,9 @@
                             <textarea class="form-control msd-elastic" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
 
                             <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice" />
+                            <tags-input data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic" replace-spaces-with-dashes='false'>
+                                <auto-complete source="loadCharTagFn($query)"></auto-complete>
+                            </tags-input>
                             <select multiple class="form-control" id="character" style="font-size: 11px; margin-top: 3px;" data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic">
                                 <option value="MSC 5">MSC 5</option>
                                 <option value="MSC 4">MSC 4</option>

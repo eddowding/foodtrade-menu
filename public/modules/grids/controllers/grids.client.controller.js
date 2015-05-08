@@ -177,5 +177,18 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
             veggie.edit = true;
           }
         };
+
+        $scope.characterList = ['MSC 5', 'MSC 4', 'MSC 3', 'MSC 2', 'MSC 1', 'Organic', 'Locally sourced (within 30m/50km)', 'Fairtrade'];
+
+        $scope.loadCharTagFn = function($query) {
+          var retList = [];
+          var regex = new RegExp('^' + $query, 'i');
+          $scope.characterList.forEach(function(value, index) {
+            if (regex.test(value)) {
+              retList.push({text: value});
+            }
+          });
+          return retList;
+        };
     }
 ]);

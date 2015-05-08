@@ -7,7 +7,9 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.min.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
-                'public/lib/font-awesome/css/font-awesome.min.css'
+                'public/lib/font-awesome/css/font-awesome.min.css',
+                'public/lib/ng-tags-input/ng-tags-input.min.css',
+                'public/lib/ng-tags-input/ng-tags-input.bootstrap.min.css'
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
@@ -21,7 +23,8 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
                 'public/lib/jquery/dist/jquery.min.js',
                 'public/lib/bootstrap/dist/js/bootstrap.min.js',
-                'public/lib/angular-elastic/elastic.js'
+                'public/lib/angular-elastic/elastic.js',
+                'public/lib/ng-tags-input/ng-tags-input.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',
