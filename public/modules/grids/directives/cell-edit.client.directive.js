@@ -23,7 +23,9 @@ angular.module('grids').directive('cellEdit', ['$compile',
 
               scope.inputDismissFn = function($event) {
                 if ($event.keyCode == 13) {
-                  scope.saveCellEditFn();
+                  if (scope.specialColumnAllergenReqFn() == false) {
+                    scope.saveCellEditFn();
+                  }
                 }
               };
 
@@ -44,16 +46,20 @@ angular.module('grids').directive('cellEdit', ['$compile',
               });
 
 
-              scope.specialColumns = ['cereal', 'crustacean', 'mollusc', 'nut'];
-
               scope.specialColumnAllergenReqFn = function() {
-                var retStatus = null;
-                if (scope.specialColumns.indexOf(scope.columnName) == -1) {
-                  retStatus = false;
+                if (['cereal', 'crustacean', 'mollusc', 'nut'].indexOf(scope.columnName) == -1) {
+                  return false;
                 } else {
-                  retStatus = true;
+                  if (['Removable', 'Fixed'].indexOf(scope.placeholderCell.allergenType) == -1) {
+                    return false;
+                  } else {
+                    if (scope.placeholderCell.allergens && scope.placeholderCell.allergens.length) {
+                      return false;
+                    } else {
+                      return true;
+                    }
+                  }
                 }
-                return retStatus;
               };
 			}
 		};
