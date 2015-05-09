@@ -5,8 +5,8 @@
 
     <span ng-show="cell.allergens">{{cell.allergens}}</span>
 </div>
-<div class="cell-edit-form hidden">
-    <form class="">
+<div class="cell-edit-form hidden cell-{{rowNumber}}-{{columnName}}">
+    <form>
         <div class="spacing">
 
             <div class="btn-group btn-group-xs" role="group" aria-label="" style="padding: 10px 0;">
@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="button" class="btn btn-success btn-xs" ng-click='saveCellEditFn()'>
+            <button type="button" class="btn btn-success btn-xs" ng-click='saveCellEditFn()' ng-class="{'disabled': specialColumnAllergenReqFn()}">
                 <i class="fa fa-save"></i> Save
             </button>
 

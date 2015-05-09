@@ -17,7 +17,7 @@ angular.module('grids').directive('cellEdit', ['$compile',
                 title: false,
                 placement: 'bottom',
                 content: function() {
-                  return $compile($('.cell-edit-form').html())(scope);
+                  return $compile($('.cell-' + scope.rowNumber + '-' + scope.columnName).html())(scope);
                 }
               });
 
@@ -30,7 +30,6 @@ angular.module('grids').directive('cellEdit', ['$compile',
               scope.saveCellEditFn = function() {
                 scope.cell = angular.copy(scope.placeholderCell);
                 scope.placeholderCell = angular.copy(scope.cell);
-                console.info('cell update >>> ', scope.cell);
                 $(element).popover('hide');
               };
 
@@ -43,6 +42,19 @@ angular.module('grids').directive('cellEdit', ['$compile',
                   scope.saveCellEditFn();
                 }
               });
+
+
+              scope.specialColumns = ['cereal', 'crustacean', 'mollusc', 'nut'];
+
+              scope.specialColumnAllergenReqFn = function() {
+                var retStatus = null;
+                if (scope.specialColumns.indexOf(scope.columnName) == -1) {
+                  retStatus = false;
+                } else {
+                  retStatus = true;
+                }
+                return retStatus;
+              };
 			}
 		};
 	}

@@ -9,7 +9,6 @@ angular.module('grids').directive('cellEditNew', ['$compile',
               columnName: '=columnName'
             },
 			link: function postLink(scope, element, attrs) {
-              console.log(scope.columnName);
               scope.cell = scope.$parent.placeholderRow[scope.columnName];
               scope.placeholderCell = angular.copy(scope.cell);
               $(element).popover({
@@ -31,7 +30,6 @@ angular.module('grids').directive('cellEditNew', ['$compile',
                 scope.cell = angular.copy(scope.placeholderCell);
                 scope.placeholderCell = angular.copy(scope.cell);
                 scope.$parent.updatePlaceholderRowCellFn(scope.columnName, scope.placeholderCell);
-                console.info('cell update >>> ', scope.cell);
                 $(element).popover('hide');
               };
 
