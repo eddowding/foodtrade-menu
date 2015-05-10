@@ -64,8 +64,7 @@
                     </li>
                 </ul>
             </li> -->
-
-            <li>
+            <li ng-show="$state.includes('createGrid')"> 
                 <p class="navbar-btn nomargin">
 
                 <a ng-show="authentication.user" onclick='$(".create-grid-submit").trigger("click")' class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
