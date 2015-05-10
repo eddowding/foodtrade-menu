@@ -129,13 +129,12 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
               if (line.length == 0) {
                 return;
               }
-              var isSection = false;
               if (line.charAt(line.length - 1) == ':') {
-                isSection = true;
-              }
-
-              if (isSection) {
                 $scope.placeholderRow.item.type = 1;
+              } else if (line.charAt(0) == '-') {
+                $scope.placeholderRow.item.type = 3;
+              } else if (line.charAt(0) == '*') {
+                $scope.placeholderRow.item.type = 3;
               } else {
                 $scope.placeholderRow.item.type = 2;
               }

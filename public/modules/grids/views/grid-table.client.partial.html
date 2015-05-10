@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1}'>
+                    <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}'>
                         <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
                             <div class="name">{{row.item.name}}</div>
                             <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
