@@ -51,7 +51,7 @@
                         <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
                             <div class="name">{{row.item.name}}</div>
                             <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
-                            <div class="price" ng-if="row.item.hasPrice">{{row.item.price}}</div>
+                            <div class="priced" ng-if="row.item.hasPrice">{{row.item.price}}</div>
                             <div class="characteristic" ng-if="row.item.hasCharacteristic">
                                 <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
                             </div>
@@ -74,7 +74,7 @@
                                 <button class="btn btn-sm btn-success" ng-click='newRowLogicFn()' ng-class="{'disabled': !placeholderRow.item.name}" id="save">
                                 <i class="fa fa-check"></i>
                                 </button>
-                                <textarea class="form-control msd-elastic" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
+                                <textarea class="form-control msd-elastic dish" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
 
                             </div>
 
