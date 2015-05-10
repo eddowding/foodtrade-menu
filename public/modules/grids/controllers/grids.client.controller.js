@@ -11,8 +11,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
         $scope.isSaveBtnClicked = false;
 
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-          console.log(fromState, toState);
-          if (!$scope.isSaveBtnClicked) {
+          if (!$scope.isSaveBtnClicked && $rootScope.$state.includes('createGrid')) {
             var status = confirm("You're about to leave this page without saving!");
             if (!status) {
               event.preventDefault();
