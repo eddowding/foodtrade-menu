@@ -1,12 +1,26 @@
 'use strict';
 
 // Grids controller
-angular.module('grids').controller('GridsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Grids',
-	function($scope, $stateParams, $location, Authentication, Grids) {
+angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Grids) {
 		$scope.authentication = Authentication;
 
 		// Create new Grid
         $scope.grid = {};
+
+        $scope.isSaveBtnClicked = false;
+
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+          console.log(fromState, toState);
+          if (!$scope.isSaveBtnClicked) {
+            var status = confirm("You're about to leave this page without saving!");
+            if (!status) {
+              event.preventDefault();
+            } else {
+              $scope.isSaveBtnClicked = true;
+            }
+          }
+        });
 
 		$scope.create = function() {
 			// Create new Grid object
@@ -20,6 +34,9 @@ angular.module('grids').controller('GridsController', ['$scope', '$stateParams',
 				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
+                if (!errorResponse) {
+                  $scope.isSaveBtnClicked = true;
+                }
 			});
 		};
 
