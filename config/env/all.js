@@ -17,7 +17,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
                 'public/lib/font-awesome/css/font-awesome.css',
                 'public/lib/ng-tags-input/ng-tags-input.css',
-                'public/lib/ng-tags-input/ng-tags-input.bootstrap.css'
+                'public/lib/ng-tags-input/ng-tags-input.bootstrap.css',
+                'public/lib/sweetalert/lib/sweet-alert.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -32,7 +33,10 @@ module.exports = {
                 'public/lib/jquery/dist/jquery.js',
                 'public/lib/bootstrap/dist/js/bootstrap.js',
                 'public/lib/angular-elastic/elastic.js',
-                'public/lib/ng-tags-input/ng-tags-input.js'
+                'public/lib/ng-tags-input/ng-tags-input.js',
+                'public/lib/sweetalert/lib/sweet-alert.js',
+                'public/lib/angular-sweetalert/SweetAlert.js'
+
 			]
 		},
 		css: [
