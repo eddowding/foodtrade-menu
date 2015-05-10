@@ -92,10 +92,24 @@ h5 {
             }
         }
     }
+    .ingredient {
+        padding-left: 18px;
+        * {
+            font-weight: normal !important;
+        }
+    }
     td {
-        border: 2px solid #ccc;
+        border-top: 1px solid #999;
         border-right: 1px solid #ccc;
         border-left: 1px solid #ccc;
+        border-collapse: collapse;
+        padding: 4px 3px;
+        i {
+            font-size: 16px !important;
+            &.text-muted {
+                color: #ddd !important;
+            }
+        }
     }
     #svg th {
         background: none;
@@ -118,6 +132,12 @@ h5 {
             i {
                 display: none;
             }
+        }
+    }
+    .child {
+        border: 0;
+        td {
+            border: 1px dotted #ccc;
         }
     }
     .dish div {
@@ -167,6 +187,7 @@ h5 {
 .navbar {
     border-bottom: 1px solid #ccc;
     height: 51px;
+    background: #fff;
     min-height: 28px;
     .box-shadow (0 0 8px #ccc);
     padding: 10px;

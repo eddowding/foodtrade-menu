@@ -207,10 +207,24 @@ h5 {
   text-decoration: none;
   border-bottom: 1px solid;
 }
+#allergygrid .ingredient {
+  padding-left: 18px;
+}
+#allergygrid .ingredient * {
+  font-weight: normal !important;
+}
 #allergygrid td {
-  border: 2px solid #ccc;
+  border-top: 1px solid #999;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
+  border-collapse: collapse;
+  padding: 4px 3px;
+}
+#allergygrid td i {
+  font-size: 16px !important;
+}
+#allergygrid td i.text-muted {
+  color: #ddd !important;
 }
 #allergygrid #svg th {
   background: none;
@@ -234,6 +248,12 @@ h5 {
 }
 #allergygrid .section td i {
   display: none;
+}
+#allergygrid .child {
+  border: 0;
+}
+#allergygrid .child td {
+  border: 1px dotted #ccc;
 }
 #allergygrid .dish div {
   text-align: left;
@@ -267,6 +287,7 @@ h5 {
 .navbar {
   border-bottom: 1px solid #ccc;
   height: 51px;
+  background: #fff;
   min-height: 28px;
   -webkit-box-shadow: 0 0 8px #cccccc;
   -moz-box-shadow: 0 0 8px #cccccc;
