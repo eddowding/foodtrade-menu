@@ -3,6 +3,7 @@
 @import 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.2.1/bootstrap-social.min.css';
 @import url(http://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,700);
 @light: #d9e6c2;
+@dark: darken(@light, 30%);
 .mR10 {
     margin-right: 10px;
 }
@@ -37,7 +38,7 @@ h5 {
         background: @light;
         font-weight: normal;
         font-size: 12px;
-        border-color: darkgreen;
+        border-color: @dark;
         border-collapse: collapse;
         @media (max-width: 992px) {
             img {
