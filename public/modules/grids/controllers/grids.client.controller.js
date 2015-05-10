@@ -1,8 +1,8 @@
 'use strict';
 
 // Grids controller
-angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids',
-	function($scope, $rootScope, $stateParams, $location, Authentication, Grids) {
+angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state) {
 		$scope.authentication = Authentication;
 
 		// Create new Grid
@@ -12,12 +12,21 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
 
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
           if (!$scope.isSaveBtnClicked && $rootScope.$state.includes('createGrid')) {
-            var status = confirm("You're about to leave this page without saving!");
-            if (!status) {
-              event.preventDefault();
-            } else {
-              $scope.isSaveBtnClicked = true;
-            }
+            event.preventDefault();
+            SweetAlert.swal({
+               title: "Are you sure?",
+               text: "You're about to leave this page without saving!",
+               type: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#DD6B55",
+               confirmButtonText: "Yes, delete it!",
+               closeOnConfirm: true},
+            function(isConfirm){
+              if (isConfirm) {
+                $scope.isSaveBtnClicked = true;
+                $state.go(toState, toParams);
+              }
+            });
           }
         });
 
