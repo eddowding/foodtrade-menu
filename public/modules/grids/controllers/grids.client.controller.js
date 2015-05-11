@@ -218,5 +218,20 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
         $scope.addToCharFn = function(val) {
           $scope.placeholderRow.item.characteristic.push({text: val});
         };
+
+        $scope.checkIfCharAddedFn = function(val) {
+          var retStatus = false;
+          if (!$scope.placeholderRow.item.characteristic) {
+            return retStatus;
+          }
+
+          $scope.placeholderRow.item.characteristic.forEach(function(value, index) {
+            if (value.text == val) {
+              retStatus = true;
+            }
+          });
+
+          return retStatus;
+        };
     }
 ]);
