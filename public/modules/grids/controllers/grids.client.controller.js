@@ -132,8 +132,10 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
               if (line.charAt(line.length - 1) == ':') {
                 $scope.placeholderRow.item.type = 1;
               } else if (line.charAt(0) == '-') {
+                line = line.substring(1, line.length);
                 $scope.placeholderRow.item.type = 3;
               } else if (line.charAt(0) == '*') {
+                line = line.substring(1, line.length);
                 $scope.placeholderRow.item.type = 3;
               } else {
                 $scope.placeholderRow.item.type = 2;
