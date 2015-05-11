@@ -123,6 +123,9 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
           $scope.placeholderRow[columnName] = cell;
         };
         $scope.newRowLogicFn = function() {
+          if (!$scope.placeholderRow.item.name) {
+            return;
+          }
             var lineSplit = $scope.placeholderRow.item.name.split('\n');
             lineSplit.forEach(function(line, index) {
               line = line.trim();
