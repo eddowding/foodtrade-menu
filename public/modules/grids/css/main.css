@@ -150,7 +150,7 @@ h5 {
   background: #d9e6c2;
   font-weight: normal;
   font-size: 12px;
-  border-color: darkgreen;
+  border-color: #95ba55;
   border-collapse: collapse;
 }
 @media (max-width: 992px) {
@@ -184,9 +184,13 @@ h5 {
   height: 30px;
   padding: 1px 5px;
   line-height: 30px;
-  margin: 0 0 4px 0;
-  float: left;
+  margin: 0 0 4px;
   width: 210px;
+}
+#allergygrid .itemname .dish {
+  float: left;
+  width: 75%;
+  height: 30px !important;
 }
 #allergygrid .itemname input {
   margin-bottom: 4px;
@@ -203,10 +207,24 @@ h5 {
   text-decoration: none;
   border-bottom: 1px solid;
 }
+#allergygrid .ingredient {
+  padding-left: 18px;
+}
+#allergygrid .ingredient * {
+  font-weight: normal !important;
+}
 #allergygrid td {
-  border: 2px solid #ccc;
+  border-top: 1px solid #999;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
+  border-collapse: collapse;
+  padding: 4px 3px;
+}
+#allergygrid td i {
+  font-size: 16px !important;
+}
+#allergygrid td i.text-muted {
+  color: #ddd !important;
 }
 #allergygrid #svg th {
   background: none;
@@ -223,19 +241,24 @@ h5 {
   background: #444;
   color: #fff;
   text-align: left;
+  border: 0;
+}
+#allergygrid .section td {
+  border: 0;
+}
+#allergygrid .section td i {
+  display: none;
+}
+#allergygrid .child {
+  border: 0;
+}
+#allergygrid .child td {
+  border: 1px dotted #ccc;
 }
 #allergygrid .dish div {
   text-align: left;
   white-space: nowrap;
   width: 10%;
-}
-#allergygrid .dish div::before {
-  content: ':: ';
-  color: #ccc;
-  font-weight: bold;
-}
-#allergygrid .dish div::before:hover {
-  cursor: move;
 }
 #allergygrid .ingredient .dish {
   font-style: italic;
@@ -264,6 +287,7 @@ h5 {
 .navbar {
   border-bottom: 1px solid #ccc;
   height: 51px;
+  background: #fff;
   min-height: 28px;
   -webkit-box-shadow: 0 0 8px #cccccc;
   -moz-box-shadow: 0 0 8px #cccccc;
@@ -378,4 +402,42 @@ h5 {
 .help-block {
   font-size: 12px;
   color: #999;
+}
+tags-input .tags .tag-item {
+  font-size: 12px;
+  padding: 2px 4px !important;
+  line-height: 1;
+  height: 21px;
+}
+tags-input .tags .tag-item .remove-button {
+  color: rgba(255, 255, 255, 0.6);
+}
+@media (max-width: 992px) {
+  .modal-body .form-group {
+    margin-bottom: 3px;
+  }
+}
+.itemname .name {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.itemname .note {
+  font-style: italic;
+  color: #999;
+}
+.itemname .priced {
+  float: right;
+  margin-right: 3px;
+}
+.itemname .priced::before {
+  content: '£';
+}
+.itemname .characteristic span {
+  color: #999;
+  font-size: 10px;
+  margin-right: 4px;
+  padding: 0 2px;
+  border: 1px solid #ddd;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
