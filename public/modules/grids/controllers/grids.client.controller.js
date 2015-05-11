@@ -235,5 +235,19 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
 
           return retStatus;
         };
+
+        $scope.toggleItemEditFn = function(item) {
+          if (item.isEdit) {
+            item.isEdit = false;
+          } else {
+            item.isEdit = true;
+          }
+        };
+
+        $scope.saveItemEditFn = function($event, item) {
+          if ($event.keyCode == 13 || $event.keyCode == 10) {
+            $scope.toggleItemEditFn(item);
+          }
+        }
     }
 ]);
