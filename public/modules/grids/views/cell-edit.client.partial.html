@@ -11,8 +11,8 @@
 
             <div class="btn-group btn-group-xs" role="group" aria-label="" style="padding: 10px 0;">
                 <button type="button" class="btn btn-default" ng-class="{'btn-success': placeholderCell.allergenType == 'No allergen'}" ng-click='placeholderCell.allergenType="No allergen"'>No allergen</button>
-                <button type="button" class="btn btn-default" ng-class="{'btn-warning': placeholderCell.allergenType == 'Removable'}" ng-click='placeholderCell.allergenType="Removable"'>Removable</button>
-                <button type="button" class="btn btn-default" ng-class="{'btn-danger': placeholderCell.allergenType == 'Fixed'}" ng-click='placeholderCell.allergenType="Fixed"'>Fixed</button>
+                <button type="button" class="btn btn-default" ng-class="{'btn-warning': placeholderCell.allergenType == 'Removable'}" ng-click='placeholderCell.allergenType="Removable"' ng-dblclick="saveCellEditFn()">Removable</button>
+                <button type="button" class="btn btn-default" ng-class="{'btn-danger': placeholderCell.allergenType == 'Fixed'}" ng-click='placeholderCell.allergenType="Fixed"' ng-dblclick="saveCellEditFn()">Fixed</button>
             </div>
 
             <div class="form- group">
