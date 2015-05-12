@@ -254,6 +254,14 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
           if ($event.keyCode == 13 || $event.keyCode == 10) {
             $scope.toggleItemEditFn(item);
           }
-        }
+        };
+
+        $scope.signupSubmitFn = function() {
+          Users.save($scope.user)
+          .$promise
+          .then(function(user) {
+            console.log(user);
+          });
+        };
     }
 ]);
