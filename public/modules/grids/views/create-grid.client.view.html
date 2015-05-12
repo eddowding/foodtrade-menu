@@ -29,20 +29,6 @@
                     <h4 class="modal-title" id="myModalLabel">Create an account - it's free.</h4>
                 </div>
                 <div class="modal-body">
-                    <!-- <form>
-                        <div class="form-group">
-                            <label for="business-name" class="control-label">Business Name</label>
-                            <input type="text" class="form-control" id="business-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="mobile-number" class="control-label">Mobile Number</label>
-                            <input type="text" class="form-control" id="mobile-number">
-                        </div>
-                        <div class="form-group">
-                            <label for="website" class="control-label">Website</label>
-                            <input type="text" class="form-control" id="website">
-                        </div>
-                    </form> -->
                     <form class="form-horizontal">
                         <fieldset>
                         <!-- EMAIL -->
@@ -51,7 +37,7 @@
                           <div class="col-md-8">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                              <input id="email" name="email" class="form-control" placeholder="Your email" type="text" required="">
+                              <input id="email" name="email" class="form-control" placeholder="Your email" type="text" required="" ng-model='user.email'>
                             </div>
 
                           </div>
@@ -63,7 +49,7 @@
                             <div class="col-md-8">
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input id="password" name="password" class="form-control" placeholder="" type="password" required="">
+                                <input id="password" name="password" class="form-control" placeholder="" type="password" required="" ng-model='user.password'>
                               </div>
 
                             </div>
@@ -74,7 +60,7 @@
                         <div class="form-group">
                           <label class="col-md-3 control-label" for="postcode">Postal code</label>
                           <div class="col-md-8">
-                          <input id="postcode" name="postcode" type="text" placeholder="Postal code" class="form-control input-md" required="">
+                          <input id="postcode" name="postcode" type="text" placeholder="Postal code" class="form-control input-md" required="" ng-model='establishment.PostCode'>
                           <span class="help-block">Business postal / zip code</span>
                           </div>
                         </div>
@@ -83,7 +69,7 @@
                         <div class="form-group">
                           <label class="col-md-3 control-label" for="establishment">Business name</label>
                           <div class="col-md-8">
-                          <input id="establishment" name="establishment" type="text" placeholder="Start typing to match.. " class="form-control input-md" required="">
+                          <input id="establishment" name="establishment" type="text" placeholder="Start typing to match.. " class="form-control input-md" required="" ng-model='establishment.BusinessName'>
                           <span class="help-block">This pulls information from the Food Standards Agency database. If you're not listed, click here</span>
                           </div>
                         </div>
@@ -92,7 +78,7 @@
                         <div class="form-group">
                           <label class="col-md-3 control-label" for="phone">Phone number</label>
                           <div class="col-md-8">
-                          <input id="phone" name="phone" type="text" placeholder="0207 193 2999" class="form-control input-md">
+                          <input id="phone" name="phone" type="text" placeholder="0207 193 2999" class="form-control input-md" ng-model='establishment.Phone'>
                           <span class="help-block">What number can customers call you on?</span>
                           </div>
                         </div>
@@ -103,7 +89,7 @@
                           <div class="col-md-8">
                             <div class="input-group">
                               <span class="input-group-addon">http://</span>
-                              <input id="website" name="website" class="form-control" placeholder="www.yoursite.com" type="text">
+                              <input id="website" name="website" class="form-control" placeholder="www.yoursite.com" type="text" ng-model='establishment.WebSite'>
                             </div>
 
                           </div>

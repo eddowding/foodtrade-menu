@@ -1,12 +1,15 @@
 'use strict';
 
 // Grids controller
-angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state',
-	function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state) {
+angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments) {
 		$scope.authentication = Authentication;
 
 		// Create new Grid
         $scope.grid = {};
+        $scope.user = {};
+        $scope.account = {};
+        $scope.establishment = {};
 
         $scope.isSaveBtnClicked = false;
 

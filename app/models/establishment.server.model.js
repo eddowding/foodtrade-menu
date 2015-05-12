@@ -112,6 +112,10 @@ var EstablishmentSchema = new Schema({
     type: String,
     required: false
   },
+  WebSite: {
+    type: String,
+    required: false
+  },
   created: {
     type: Date,
     default: Date.now
