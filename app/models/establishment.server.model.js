@@ -10,19 +10,13 @@ var mongoose = require('mongoose'),
  * Establishment Schema
  */
 var EstablishmentSchema = new Schema({
-	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Establishment name',
-		trim: true
-	},
 	created: {
 		type: Date,
 		default: Date.now
 	},
-	user: {
+	account: {
 		type: Schema.ObjectId,
-		ref: 'User'
+		ref: 'Account'
 	}
 });
 
