@@ -7,9 +7,15 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Account Schema
+ * Establishment Schema
  */
-var AccountSchema = new Schema({
+var EstablishmentSchema = new Schema({
+	name: {
+		type: String,
+		default: '',
+		required: 'Please fill Establishment name',
+		trim: true
+	},
 	created: {
 		type: Date,
 		default: Date.now
@@ -20,4 +26,4 @@ var AccountSchema = new Schema({
 	}
 });
 
-mongoose.model('Account', AccountSchema);
+mongoose.model('Establishment', EstablishmentSchema);
