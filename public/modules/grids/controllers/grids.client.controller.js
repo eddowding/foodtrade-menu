@@ -1,8 +1,8 @@
 'use strict';
 
 // Grids controller
-angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments',
-	function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments) {
+angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http) {
 		$scope.authentication = Authentication;
 
 		// Create new Grid
@@ -257,10 +257,11 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
         };
 
         $scope.signupSubmitFn = function() {
-          Users.save($scope.user)
-          .$promise
-          .then(function(user) {
-            console.log(user);
+          $scope.user.username = $scope.user.email;
+          $http.post('/auth/signup', $scope.user).success(function(response) {
+            $scope.authentication.user = response;
+          }).error(function(response) {
+            $scope.error = response.message;
           });
         };
     }
