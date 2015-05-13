@@ -260,6 +260,18 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
           $scope.user.username = $scope.user.email;
           $http.post('/auth/signup', $scope.user).success(function(response) {
             $scope.authentication.user = response;
+            $scope.account.user = response._id;
+            Accounts.save($scope.account)
+            .$promise
+            .then(function(account) {
+              $scope.account = account;
+              $scope.establishment.account = $scope.account._id;
+              Establishments.save($scope.establishment)
+              .$promise
+              .then(function(establishment) {
+                $scope.establishment = establishment;
+              });
+            });
           }).error(function(response) {
             $scope.error = response.message;
           });
