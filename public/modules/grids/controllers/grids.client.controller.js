@@ -265,12 +265,12 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
             .$promise
             .then(function(account) {
               $scope.account = account;
-              $scope.establishment.account = $scope.account._id;
-              Establishments.save($scope.establishment)
-              .$promise
-              .then(function(establishment) {
-                $scope.establishment = establishment;
-              });
+            });
+            $scope.establishment.user = response._id;
+            Establishments.save($scope.establishment)
+            .$promise
+            .then(function(establishment) {
+              $scope.establishment = establishment;
             });
           }).error(function(response) {
             $scope.error = response.message;

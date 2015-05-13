@@ -120,9 +120,9 @@ var EstablishmentSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  account: {
+  user: {
     type: Schema.ObjectId,
-    ref: 'Account'
+    ref: 'User'
   }
 });
 
