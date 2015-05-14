@@ -16,6 +16,10 @@ var GridSchema = new Schema({
 		required: 'Please fill Grid name',
 		trim: true
 	},
+    tableData: {
+      type: Array,
+      default: {}
+    },
 	created: {
 		type: Date,
 		default: Date.now
