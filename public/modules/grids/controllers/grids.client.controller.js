@@ -256,8 +256,13 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
         $scope.saveItemEditFn = function($event, $index, item) {
           if ($event.keyCode == 13 || $event.keyCode == 10) {
             $scope.toggleItemEditFn(item);
-            if (item.name.length == 0) {
+            if (!item.name) {
               $scope.grid.tableData.splice($index, 1);
+            } else if (item.name.length == 0) {
+              $scope.grid.tableData.splice($index, 1);
+            } else {
+              $scope.grid.tableData.splice($index + 1, 0, angular.copy($scope.resetRow));
+              $scope.grid.tableData[$index + 1].item.isEdit = true;
             }
           }
         };
