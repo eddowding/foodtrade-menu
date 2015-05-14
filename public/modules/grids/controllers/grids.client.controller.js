@@ -35,6 +35,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
 
 		$scope.create = function() {
 			// Create new Grid object
+            $scope.isSaveBtnClicked = true;
 			var grid = new Grids ($scope.grid);
 
 			// Redirect after save
@@ -45,9 +46,6 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
 				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
-                if (!errorResponse) {
-                  $scope.isSaveBtnClicked = true;
-                }
 			});
 		};
 
@@ -272,6 +270,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
             .then(function(establishment) {
               $scope.establishment = establishment;
             });
+            $scope.create();
           }).error(function(response) {
             $scope.error = response.message;
           });
