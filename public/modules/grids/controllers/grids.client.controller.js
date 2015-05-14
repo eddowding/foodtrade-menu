@@ -123,6 +123,11 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
         $scope.updatePlaceholderRowCellFn = function(columnName, cell) {
           $scope.placeholderRow[columnName] = cell;
         };
+
+        $scope.updateTableDataRowCellFn = function(columnName, rowNumber, cell) {
+          $scope.grid.tableData[rowNumber][columnName] = cell;
+        };
+
         $scope.newRowLogicFn = function() {
           if (!$scope.placeholderRow.item.name) {
             return;
