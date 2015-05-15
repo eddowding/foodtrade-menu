@@ -17,7 +17,7 @@ angular.module('users').config(['$httpProvider',
 								$location.path('signin');
 								break;
 							case 403:
-								// Add unauthorized behaviour 
+								// Add unauthorized behaviour
 								break;
 						}
 
@@ -26,5 +26,12 @@ angular.module('users').config(['$httpProvider',
 				};
 			}
 		]);
+	}
+]).run(['Menus',
+	function(Menus) {
+		// Set top bar menu items
+		Menus.addMenuItem('topbar', 'Users', 'users', 'dropdown', '/users(/create)?');
+		Menus.addSubMenuItem('topbar', 'users', 'List Users', 'users');
+		Menus.addSubMenuItem('topbar', 'users', 'New User', 'users/create');
 	}
 ]);
