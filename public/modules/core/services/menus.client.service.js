@@ -5,12 +5,12 @@ angular.module('core').service('Menus', [
 
 	function() {
 		// Define a set of default roles
-		this.defaultRoles = ['*'];
+		this.defaultRoles = ['admin'];
 
 		// Define the menus object
 		this.menus = {};
 
-		// A private function for rendering decision 
+		// A private function for rendering decision
 		var shouldRender = function(user) {
 			if (user) {
 				if (!!~this.roles.indexOf('*')) {
