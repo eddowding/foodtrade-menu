@@ -1,19 +1,19 @@
-<section data-ng-controller="AccountsController" data-ng-init="find()">
+<section data-ng-controller="UsersController" data-ng-init="find()">
     <div class="page-header">
-        <h1>Accounts</h1>
+        <h1>Users</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="account in accounts" data-ng-href="#!/accounts/{{account._id}}" class="list-group-item">
+        <a data-ng-repeat="user in users" data-ng-href="#!/users/{{user._id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
-				<span data-ng-bind="account.created | date:'medium'"></span>
+				<span data-ng-bind="user.created | date:'medium'"></span>
 				by
-				<span data-ng-bind="account.user.displayName"></span>
+				<span data-ng-bind="user.displayName"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="account.name"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="user.email"></h4>
         </a>
     </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!accounts.$resolved || accounts.length">
-    	No Accounts yet, why don't you <a href="/#!/accounts/create">create one</a>?
+    <div class="alert alert-warning text-center" data-ng-hide="!users.$resolved || users.length">
+    	No Users yet, why don't you <a href="/#!/users/create">create one</a>?
     </div>
 </section>
