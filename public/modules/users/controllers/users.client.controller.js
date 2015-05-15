@@ -1,8 +1,8 @@
 'use strict';
 
 // Users controller
-angular.module('users').controller('UsersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Users',
-  function($scope, $stateParams, $location, Authentication, Users) {
+angular.module('users').controller('UsersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Users', '$http',
+  function($scope, $stateParams, $location, Authentication, Users, $http) {
     $scope.authentication = Authentication;
 
     // Create new User
@@ -60,6 +60,15 @@ angular.module('users').controller('UsersController', ['$scope', '$stateParams',
     $scope.findOne = function() {
       $scope.user = Users.get({
         userId: $stateParams.userId
+      });
+    };
+
+    $scope.userFetchExtraDataFn = function(user) {
+      $http.get('/establishments/by/user/' + user._id)
+      .success(function(data) {
+        if (data.length) {
+          user.establishment = data[0];
+        }
       });
     };
   }
