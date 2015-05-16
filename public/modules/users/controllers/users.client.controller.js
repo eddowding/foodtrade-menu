@@ -70,6 +70,10 @@ angular.module('users').controller('UsersController', ['$scope', '$stateParams',
           user.establishment = data[0];
         }
       });
+      $http.get('/grids/by/user/' + user._id)
+      .success(function(data) {
+        user.grids = data;
+      });
     };
   }
 ]);

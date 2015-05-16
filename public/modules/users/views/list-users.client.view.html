@@ -11,6 +11,8 @@
         <th>Website</th>
         <th>Phone</th>
         <th>FSA ID</th>
+        <th>No. of Grids</th>
+        <th>No. of items in Grids</th>
         <th>Details</th>
       </tr>
     </thead>
@@ -22,6 +24,12 @@
         <td>{{user.establishment.WebSite}}</td>
         <td>{{user.establishment.Phone}}</td>
         <td>{{user.establishment.FHRSID || 'NA'}}</td>
+        <td>{{user.grids.length}}</td>
+        <td>
+          <ul>
+            <li ng-repeat='grid in user.grids'>{{grid.name}} ({{grid.tableData.length}})</li>
+          </ul>
+        </td>
         <td><a ng-href="#!/users/{{user._id}}">Details</a></td>
       </tr>
     </tbody>
