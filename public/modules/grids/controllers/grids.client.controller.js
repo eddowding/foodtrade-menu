@@ -288,5 +288,14 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
             $scope.error = response.message;
           });
         };
+
+				$scope.gridFetchExtraDataFn = function(grid) {
+					$http.get('/establishments/by/user/' + grid.user._id)
+					.success(function(data) {
+						if (data.length) {
+							grid.establishment = data[0];
+						}
+					});
+				};
     }
 ]);
