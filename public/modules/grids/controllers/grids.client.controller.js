@@ -226,7 +226,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
           }
         };
 
-        $scope.characterList = ['MSC 5', 'MSC 4', 'MSC 3', 'MSC 2', 'MSC 1', 'Organic', 'Locally sourced (within 30m/50km)', 'Fairtrade'];
+        $scope.characterList = ['MSC 5', 'MSC 4', 'MSC 3', 'MSC 2', 'MSC 1', 'Organic', 'Local 30m/50km', 'Local 50m/80km', 'Local 100m/160km', 'Fairtrade'];
 
         $scope.loadCharTagFn = function($query) {
           var retList = [];
