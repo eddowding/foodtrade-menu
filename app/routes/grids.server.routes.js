@@ -11,7 +11,7 @@ module.exports = function(app) {
 
   app.route('/grids/:gridId')
     .get(grids.read)
-    .put(users.requiresLogin, grids.hasAuthorization, grids.update)
+    .post(users.requiresLogin, grids.hasAuthorization, grids.update)
     .delete(users.requiresLogin, grids.hasAuthorization, grids.delete);
 
   app.route('/grids/by/user/:userId')
