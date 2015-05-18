@@ -16,7 +16,7 @@ angular.module('grids').directive('cellEditNew', ['$compile',
                 title: false,
                 placement: 'bottom',
                 content: function() {
-                  return $compile($('.cell-edit-form').html())(scope);
+                  return $compile($('.cell-new-' + scope.columnName).html())(scope);
                 }
               });
 
