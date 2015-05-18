@@ -277,6 +277,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
               $scope.grid.tableData.splice($index + 1, 0, angular.copy($scope.resetRow));
               $scope.grid.tableData[$index + 1].item.isEdit = true;
             }
+            $scope.saveGridFn();
           }
         };
 
