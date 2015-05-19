@@ -57,9 +57,9 @@
                                 <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
                             </div>
                         </td>
-                        <td ng-click='toggleVeggieEditFn(row.veggie)'>
-                            <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'icon-vegetarian': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan'}"></i>
-                            <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit'>
+                        <td>
+                            <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'icon-vegetarian': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan', 'fa fa-square-o': !row.veggie.type}" ng-click='toggleVeggieEditFn(row.veggie)'></i>
+                            <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit' ng-blur='toggleVeggieEditFn(row.veggie)'>
                                 <option value='Meat'>Meat</option>
                                 <option value='Veggie'>Veggie</option>
                                 <option value='Fish'>Fish</option>
