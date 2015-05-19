@@ -98,6 +98,12 @@ exports.gridsByUserID = function(req, res) {
   });
 };
 
+exports.gridPrint = function(req, res) {
+  Grid.findById(req.params.gridId).exec(function(err, grid) {
+    res.render('grid-print', {grid: grid});
+  });
+};
+
 /**
  * Grid middleware
  */

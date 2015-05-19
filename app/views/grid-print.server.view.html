@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>{{title}}</title>
+
+	<!-- General META -->
+	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<!-- Semantic META -->
+	<meta name="keywords" content="{{keywords}}">
+	<meta name="description" content="{{description}}">
+
+	<!-- Facebook META -->
+	<meta property="fb:app_id" content="{{facebookAppId}}">
+	<meta property="og:site_name" content="{{title}}">
+	<meta property="og:title" content="{{title}}">
+	<meta property="og:description" content="{{description}}">
+	<meta property="og:url" content="{{url}}">
+	<meta property="og:image" content="/img/brand/logo.png">
+	<meta property="og:type" content="website">
+
+	<!-- Twitter META -->
+	<meta name="twitter:title" content="{{title}}">
+	<meta name="twitter:description" content="{{description}}">
+	<meta name="twitter:url" content="{{url}}">
+	<meta name="twitter:image" content="/img/brand/logo.png">
+
+	<!-- Fav Icon -->
+	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!--Application CSS Files-->
+	{% for cssFile in cssFiles %}<link rel="stylesheet" href="/{{cssFile}}">{% endfor %}
+
+	<!-- HTML5 Shim -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<header class="navbar navbar-fixed-top">
+         <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/#!/">
+            <img src="http://www.foodtrade.com/static/images/logo_28.png" alt="alrg">
+        </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+            <li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
+                <a ng-switch-when="dropdown" class="dropdown-toggle">
+                    <span data-ng-bind="item.title"></span>
+                    <b class="caret"></b>
+                </a>
+                <ul ng-switch-when="dropdown" class="dropdown-menu">
+                    <li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+                        <a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+                    </li>
+                </ul>
+                <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" id="menus" data-toggle="dropdown" role="button" aria-expanded="false">Lunch menu <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Breakfast</a></li>
+                    <li><a href="#">Lunch</a></li>
+                    <li><a href="#">Dinner</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Add new</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right innerR">
+            <li><a href="dashboard.html">About</a></li>
+            <li><a href="gridlite.html">Feedback</a></li>
+
+            <!-- <li class="dropdown">
+                <div class="pull-left">
+                    <img src="https://rebelryterwrites.files.wordpress.com/2009/09/chef-angry-mad-cook-south-park.gif" class="img-thumbnail img-circle" style="width:30px; height:30px;">
+                </div>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" class="pull-left text-muted" style="max-width:130px; margin-left: 5px; line-height: 1.2;">
+                    <strong data-ng-bind="authentication.user.displayName"></strong><small data-ng-bind='authentication.user.email'></small>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/#!/settings/profile">Edit Profile</a>
+                    </li>
+                    <li>
+                        <a href="/#!/settings/accounts">Manage Social Accounts</a>
+                    </li>
+                    <li data-ng-show="authentication.user.provider === 'local'">
+                        <a href="/#!/settings/password">Change Password</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="/auth/signout">Signout</a>
+                    </li>
+                </ul>
+            </li> -->
+            <li ng-show="$state.includes('createGrid')"> 
+                <p class="navbar-btn nomargin">
+
+                <a ng-show="authentication.user" onclick='$(".create-grid-submit").trigger("click")' class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
+
+                <a ng-hide="authentication.user" data-toggle="modal" data-target="#signupModal" class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+    </header>
+
+	<section class="container-responsive">
+
+
+        <div class="row">
+            <div class="col-xs-6">
+                <h2 id="menuname" data-ng-bind="grid.name">
+                    <small><i class="fa fa-fw fa-pencil text-muted"></i></small>
+                </h2>
+                <small>
+                </small>
+            </div>
+            <small>
+                <div class="col-xs-6 text-right innerAll">
+                    <a href="#" class="btn btn-sm btn-default pull-right"><i class="fa fa-users fa-fw"></i> Collaborate</a>
+                    <a href="#" class="btn btn-sm btn-default pull-right mR10">
+                        <i class="fa fa-print fa-fw"></i> Print</a>
+
+                    <div class="input-group input-group-sm col-xs-4 pull-right mR10">
+                        <span class="input-group-addon">Share</span>
+                        <input type="text" class="form-control" aria-label="URL" value="ftm.co/746dd6">
+                        <span class="input-group-addon"><i class="fa fa-copy"></i></span>
+                    </div>
+                </div>
+            </small>
+        </div>
+        <small ng-include="'modules/grids/views/grid-table.client.partial.html'"></small>
+    </div>
+    <div class="modal fade" id="cellEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cell Edit</h4>
+                </div> -->
+                <div class="modal-body">
+                    <form class="">
+                        <div class="btn-group" role="group" aria-label="" style="padding: 10px 0;">
+                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="No allergen"'>No allergen</button>
+                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="Removable"'>Removable</button>
+                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="Fixed"'>Fixed</button>
+                        </div>
+
+                        <div class="form- group">
+                            <label for="exampleInputName2" class="sr-only">Allergen name</label>
+                            <input type="text" class="form-control" id="nnn" placeholder="Notes / specify allergen(s)" ng-model='selectedEditCell.allergens' ng-hide='selectedEditCell.allergenType=="No allergen"'>
+                        </div>
+                        <div style="background:#eee; padding: 3px 5px; text-align: left;">
+                            <button type="button" class="btn btn-primary" ng-click='selectedEditCell.status=true'>
+                                <i class="fa fa-check"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.status=false'>
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+	</section>
+</body>
+
+</html>
