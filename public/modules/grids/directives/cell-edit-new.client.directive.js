@@ -11,6 +11,10 @@ angular.module('grids').directive('cellEditNew', ['$compile',
 			link: function postLink(scope, element, attrs) {
               scope.cell = scope.$parent.placeholderRow[scope.columnName];
               scope.placeholderCell = angular.copy(scope.cell);
+			  scope.$watch('$parent.placeholderRow', function(newValue, oldValue) {
+				scope.cell = scope.$parent.placeholderRow[scope.columnName];
+				scope.placeholderCell = angular.copy(scope.cell);
+			  });
               $(element).popover({
                 html: true,
                 title: false,
