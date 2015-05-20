@@ -215,9 +215,20 @@
                         </td>
                         <td>
 							<i class="{% if row.veggie.type == 'Meat' %}icon-meat{% endif %}{% if row.veggie.type == 'Veggie' %}icon-vegetarian{% endif %}{% if row.veggie.type == 'Fish' %}icon-fish{% endif %}{% if row.veggie.type == 'Vegan' %}icon-vegan{% endif %}{% if !row.veggie.type %}fa fa-square-o{% endif %}"></i>
-                            <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'icon-vegetarian': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan', 'fa fa-square-o': !row.veggie.type}" ng-click='toggleVeggieEditFn(row.veggie)'></i>
                         </td>
-                        <td data-ng-repeat="column in gridColumns"><cell-edit row-number='$parent.$index' column-name='column'></cell-edit></td>
+						{% for column in gridColumns %}
+							<td>
+								<div>					
+									<div class="clearfix">
+										<i class="fa {% if row[column].allergenType == 'Removable' %}fa-minus-square-o{% endif %}{% if row[column].allergenType == 'No allergen' %}fa-square-o{% endif %}{% if row[column].allergenType == 'Fixed' %}fa-check-square-o{% endif %}"></i>
+									</div>
+									
+									{% if row[column].allergens %}
+										<span ng-show="cell.allergens">{{row[column].allergens}}</span>
+									{% endif %}
+								</div>
+							</td>
+						{% endfor %}
                     </tr>
 					{% endfor %}
                 </tbody>

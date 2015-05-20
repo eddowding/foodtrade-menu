@@ -99,8 +99,25 @@ exports.gridsByUserID = function(req, res) {
 };
 
 exports.gridPrint = function(req, res) {
+  var gridColumns = [
+    'nut',
+    'peanut',
+    'sesameSeed',
+    'fish',
+    'crustacean',
+    'mollusc',
+    'egg',
+    'milk',
+    'cereal',
+    'lupin',
+    'celery',
+    'mustard',
+    'soya',
+    'sulphurDioxide',
+    'other'
+  ];
   Grid.findById(req.params.gridId).exec(function(err, grid) {
-    res.render('grid-print', {grid: grid});
+    res.render('grid-print', {grid: grid, gridColumns: gridColumns});
   });
 };
 
