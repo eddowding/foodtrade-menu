@@ -124,8 +124,6 @@
     </header>
 
 	<section class="container-responsive">
-
-
         <div class="row">
             <div class="col-xs-6">
                 <h2 id="menuname" data-ng-bind="grid.name">
@@ -148,43 +146,92 @@
                 </div>
             </small>
         </div>
-        <small ng-include="'modules/grids/views/grid-table.client.partial.html'"></small>
+        <small>
+			<div class="row">
+    <div class="col-xs-12">
+        <form role="form" class="form-horizontal">
+            <table class="table table-condensed table-bordered table-header-rotated" id="allergygrid">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="rotate"><div><span>Veggie?</span></div></th>
+
+                        <th class="rotate"><div><span>Nuts</span></div></th>
+                        <th class="rotate"><div><span>Peanuts</span></div></th>
+                        <th class="rotate"><div><span>Sesame seeds</span></div></th>
+                        <th class="rotate"><div><span>Fish</span></div></th>
+                        <th class="rotate"><div><span>Crustaceans</span></div></th>
+                        <th class="rotate"><div><span>Molluscs</span></div></th>
+                        <th class="rotate"><div><span>Eggs</span></div></th>
+                        <th class="rotate"><div><span>Milk</span></div></th>
+                        <th class="rotate"><div><span>Cereals containing gluten</span></div></th>
+                        <th class="rotate"><div><span>Lupin</span></div></th>
+                        <th class="rotate"><div><span>Celery</span></div></th>
+                        <th class="rotate"><div><span>Mustard</span></div></th>
+                        <th class="rotate"><div><span>Soya</span></div></th>
+                        <th class="rotate"><div><span>Sulphur dioxide</span></div></th>
+                        <th class="rotate"><div><span>Other</span></div></th>
+                    </tr>
+                    <tr id="svg">
+                        <th class="itemname" nowrap>Item name</th>
+                        <th><img src="/modules/grids/img/bones.svg"></th>
+                        <th><img src="/modules/grids/img/nuts.svg"></th>
+                        <th><img src="/modules/grids/img/peanuts.svg"></th>
+                        <th><img src="/modules/grids/img/sesame.svg"></th>
+                        <th><img src="/modules/grids/img/fish.svg"></th>
+                        <th><img src="/modules/grids/img/crustacean.svg"></th>
+                        <th><img src="/modules/grids/img/mollusc.svg"></th>
+                        <th><img src="/modules/grids/img/eggs.svg"></th>
+                        <th><img src="/modules/grids/img/milk.svg"></th>
+                        <th><img src="/modules/grids/img/gluten.svg"></th>
+                        <th><img src="/modules/grids/img/lupin.svg"></th>
+                        <th><img src="/modules/grids/img/celery.svg"></th>
+                        <th><img src="/modules/grids/img/mustard.svg"></th>
+                        <th><img src="/modules/grids/img/soy.svg"></th>
+                        <th><img src="/modules/grids/img/sulphur.svg"></th>
+                        <th>
+                            Other
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}'>
+                        <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
+                            <div class="name" ng-click='toggleItemEditFn(row.item)' ng-hide="row.item.isEdit">{{row.item.name}}</div>
+                            <input type="text" ng-model='row.item.name' class='form-control' ng-show="row.item.isEdit" ng-keypress='saveItemEditFn($event, $index, row.item)'/>
+                            <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
+                            <div class="priced" ng-if="row.item.hasPrice">{{row.item.price}}</div>
+                            <div class="characteristic" ng-if="row.item.hasCharacteristic">
+                                <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'icon-vegetarian': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan', 'fa fa-square-o': !row.veggie.type}" ng-click='toggleVeggieEditFn(row.veggie)'></i>
+                            <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit' ng-blur='toggleVeggieEditFn(row.veggie)'>
+                                <option value='Meat'>Meat</option>
+                                <option value='Veggie'>Veggie</option>
+                                <option value='Fish'>Fish</option>
+                                <option value='Vegan'>Vegan</option>
+                            </select>
+                        </td>
+                        <td data-ng-repeat="column in gridColumns"><cell-edit row-number='$parent.$index' column-name='column'></cell-edit></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="text-muted small">
+            <strong><i class="fa fa-fw fa-lg fa-keyboard-o"></i></strong>
+            Add a : to make a new section, <em>eg</em> <span class="b">Lunch:</span> or <span class="b">Dinner:</span>  <strong style="color: #000; margin: 0 5px;">&bull;</strong>
+            Use - or * to add components / ingredients to the dish.
+            <strong style="color: #000; margin: 0 5px;">&bull;</strong>
+            You can edit anything, any time.
+            </p>
+        </form>
     </div>
-    <div class="modal fade" id="cellEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Cell Edit</h4>
-                </div> -->
-                <div class="modal-body">
-                    <form class="">
-                        <div class="btn-group" role="group" aria-label="" style="padding: 10px 0;">
-                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="No allergen"'>No allergen</button>
-                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="Removable"'>Removable</button>
-                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.allergenType="Fixed"'>Fixed</button>
-                        </div>
+</div>
 
-                        <div class="form- group">
-                            <label for="exampleInputName2" class="sr-only">Allergen name</label>
-                            <input type="text" class="form-control" id="nnn" placeholder="Notes / specify allergen(s)" ng-model='selectedEditCell.allergens' ng-hide='selectedEditCell.allergenType=="No allergen"'>
-                        </div>
-                        <div style="background:#eee; padding: 3px 5px; text-align: left;">
-                            <button type="button" class="btn btn-primary" ng-click='selectedEditCell.status=true'>
-                                <i class="fa fa-check"></i>
-                            </button>
-
-                            <button type="button" class="btn btn-default" ng-click='selectedEditCell.status=false'>
-                                <i class="fa fa-times"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
+		</small>
+    </div>
 	</section>
 </body>
 
