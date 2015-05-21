@@ -127,6 +127,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
         $scope.saveGridFn = function() {
           var tmpGrid = angular.copy($scope.grid);
           try {
+			tmpGrid.updated = new Date();
             tmpGrid.$save();
             console.info('Saving grid');
           } catch(err) {
