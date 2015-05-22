@@ -1,3 +1,64 @@
 <section data-ng-controller="DashboardController">
-	This is the Dashboard view
+	<div class="container-responsive" role="main" id="main">
+
+    <div class="row">
+      <div class="col-xs-8 ">
+        <div class=" " style="background: #fff; margin:0; padding: 10px 5px; border-bottom: 1px solid #999;">
+
+          <a href="#" class="text-success"><i class="fa fa-fw fa-plus-circle"></i> New Chart</a>
+          &nbsp;&nbsp;
+          &nbsp;&nbsp;
+          <a href="#" class="text-success"><i class="fa fa-fw fa-folder-open-o"></i> New Folder</a>
+
+        </div>
+
+        <table class="table">
+          <tbody>
+			<tr ng-repeat="grid in grids">
+            <td>
+              <h4 class="nomargin"><a href="grid_lite.html">{{grid.name}} (Items {{grid.tableData.length}})</a></h4>
+              <small>{{grid.user.email}}<!--<em class="text-muted">(free)</em>--></small>
+            </td>
+            <td class="text-muted text-center">
+              {{grid.updated | date:'fullDate'}}
+            </td>
+            <td class="text-muted text-right">
+
+              <div class="btn-group btn-group-xs">
+                <button class="btn btn-default" type="button">Open</button>
+                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Delete</a></li>
+                  <li><a href="#">Share</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Properties</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody></table>
+      </div>
+      <div class="col-xs-4" style="border-left: 1px solid #ccc;">
+        <h2>Want more features?</h2>
+        <div class="row">
+          <div class="col-xs-5">
+            <a href="#" class="btn btn-success pull-left">Upgrade Now</a>
+          </div>
+          <div class="col-xs-7">
+            <small class="pull-left text-muted">for menu management, sourcing, promotion &amp; more.</small>
+          </div>
+        </div>
+        <hr>
+
+        Hi - I'm Ed - If there's anything you need just call me on 0207 193 2999 or <a href="mailto:hello@foodtrade.com">email us</a>! Meantime, happy cooking!
+<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10961_10155391655265051_3328845962715856450_n.jpg?oh=1bdf1823078665bbdec0ac93e3c45613&amp;oe=55A395CC&amp;__gda__=1437268823_650b9b6c8a3c7db2bc7a4ee556d13888" class="center-block img-circle img-thumbnail" width="80" style="margin-top: 20px">
+        <hr>
+        <div class="text-muted text-center">
+          <a href="dashboard.html">About</a> ·
+          <a href="gridlite.html">Feedback</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
