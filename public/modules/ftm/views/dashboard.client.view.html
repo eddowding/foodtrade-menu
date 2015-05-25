@@ -16,13 +16,13 @@
           <tbody>
 			<tr ng-repeat="grid in grids">
             <td>
-              <h4 class="nomargin"><a href="grid_lite.html">{{grid.name}} (Items {{grid.tableData.length}})</a></h4>
+              <h4 class="nomargin"><a ui-sref='grid-detail({gridId: grid._id})'>{{grid.name}} (Items {{grid.tableData.length}})</a></h4>
               <small>{{grid.user.email}}<!--<em class="text-muted">(free)</em>--></small>
             </td>
             <td class="text-muted text-center">
               {{grid.updated | date:'fullDate'}}
             </td>
-            <td class="text-muted text-right">
+            <!-- <td class="text-muted text-right">
 
               <div class="btn-group btn-group-xs">
                 <button class="btn btn-default" type="button">Open</button>
@@ -35,7 +35,7 @@
                   <li><a href="#">Properties</a></li>
                 </ul>
               </div>
-            </td>
+            </td> -->
           </tr>
         </tbody></table>
       </div>
