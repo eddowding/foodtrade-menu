@@ -12,7 +12,14 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
         $scope.establishment = {};
 
         $scope.isSaveBtnClicked = false;
-
+				$rootScope.enableSaveBtn = false;
+				$scope.$watch('grid.name', function(newValue, oldValue) {
+					if (newValue) {
+						$rootScope.enableSaveBtn = true;
+					} else {
+						$rootScope.enableSaveBtn = false;
+					}
+				});
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
           if (!$scope.isSaveBtnClicked && $rootScope.$state.includes('createGrid')) {
             event.preventDefault();
