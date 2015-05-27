@@ -40,7 +40,11 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
 				// And redirect to the listing view
-				$location.path('/grids');
+				if (response.roles.indexOf('admin') > -1) {
+					$location.path('/grids');
+				} else {
+					$location.path('/dashboard');
+				}
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
