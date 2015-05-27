@@ -10,6 +10,10 @@
           &nbsp;&nbsp;
           <a href="#" class="text-success"><i class="fa fa-fw fa-folder-open-o"></i> New Folder</a> -->
 
+		<div class="pull-right">
+	          <a href="#" class="btn btn-default"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+		</div>
+
         </div>
 
         <table class="table">
@@ -22,20 +26,21 @@
             <td class="text-muted text-center">
               {{grid.updated | date:'fullDate'}}
             </td>
-            <!-- <td class="text-muted text-right">
+            <td class="text-muted text-right">
 
               <div class="btn-group btn-group-xs">
-                <button class="btn btn-default" type="button">Open</button>
+                <button class="btn btn-default" type="button" ui-sref='grid-detail({gridId: grid._id})'>Open</button>
                 <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"><span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Delete</a></li>
-                  <li><a href="#">Share</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Properties</a></li>
+				  <li><a href="https://twitter.com/home?status=LINKLINKLINK" target="_blank">Share on twitter</a></li>
+				  <li><a href="https://www.facebook.com/sharer/sharer.php?u=LINKLINKLINK" target="_blank">Share on facebook</a></li>
+				  <li><a href="#">Delete</a></li>
+                  <!-- <li class="divider"></li>
+                  <li><a href="#">Properties</a></li> -->
                 </ul>
               </div>
-            </td> -->
+            </td>
           </tr>
         </tbody></table>
       </div>
@@ -49,8 +54,8 @@
             <small class="pull-left text-muted">for menu management, sourcing, promotion &amp; more.</small>
           </div>
         </div>
-
-		<p class="lead"><img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10961_10155391655265051_3328845962715856450_n.jpg?oh=1bdf1823078665bbdec0ac93e3c45613&amp;oe=55A395CC&amp;__gda__=1437268823_650b9b6c8a3c7db2bc7a4ee556d13888" class="center-block img-circle img-thumbnail pull-right" width="80">
+		<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10961_10155391655265051_3328845962715856450_n.jpg?oh=1bdf1823078665bbdec0ac93e3c45613&amp;oe=55A395CC&amp;__gda__=1437268823_650b9b6c8a3c7db2bc7a4ee556d13888" class="center-block img-circle img-thumbnail" width="80">
+		<p class="lead">
 
         Hi - I'm Ed, CEO of FoodTrade.
 			</p>
