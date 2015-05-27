@@ -25,7 +25,7 @@
                 <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
             </li>
         </ul>
-        <ul class="nav navbar-nav">
+        <!-- <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" id="menus" data-toggle="dropdown" role="button" aria-expanded="false">Lunch menu <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
@@ -36,10 +36,16 @@
                     <li><a href="#">Add new</a></li>
                 </ul>
             </li>
-        </ul>
+        </ul> -->
         <ul class="nav navbar-nav navbar-right innerR">
-            <li><a href="dashboard.html">About</a></li>
-            <li><a href="gridlite.html">Feedback</a></li>
+
+            <!-- only show if user is logged in -->
+            <li><a href="/">Dashboard</a></li>
+            <!--or if not, show -->
+            <li><a href="/">Login</a></li>
+
+            <li><a href="/about">About</a></li>
+            <li><a href="mailto:hello@foodtrade.com">Feedback</a></li>
 
             <!-- <li class="dropdown">
                 <div class="pull-left">
@@ -64,7 +70,7 @@
                     </li>
                 </ul>
             </li> -->
-            <li ng-show="$state.includes('createGrid')"> 
+            <li ng-show="$state.includes('createGrid')">
                 <p class="navbar-btn nomargin">
 
                 <a ng-show="authentication.user" onclick='$(".create-grid-submit").trigger("click")' class="btn btn-sm btn-info"> <i class="fa fa-save fa-fw"></i> Save</a>
