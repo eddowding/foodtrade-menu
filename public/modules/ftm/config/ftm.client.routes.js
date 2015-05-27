@@ -5,6 +5,10 @@ angular.module('ftm').config(['$stateProvider',
 	function($stateProvider) {
 		// Ftm state routing
 		$stateProvider.
+		state('about', {
+			url: '/about',
+			templateUrl: 'modules/ftm/views/about.client.view.html'
+		}).
 		state('grid-create', {
 			url: '/grid-create',
 			templateUrl: 'modules/ftm/views/grid-create.client.view.html'
