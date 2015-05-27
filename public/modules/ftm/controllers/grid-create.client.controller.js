@@ -63,7 +63,6 @@ angular.module('ftm').controller('GridCreateController', ['$scope', 'Authenticat
 						tmpGrid.$save();
 						console.info('Saving grid');
 					} catch(err) {
-						console.error(err);
 					}
 				};
 

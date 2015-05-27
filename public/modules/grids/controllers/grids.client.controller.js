@@ -123,7 +123,7 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
         $scope.updatePlaceholderRowCellFn = function(columnName, cell) {
           $scope.placeholderRow[columnName] = cell;
         };
-        
+
         $scope.saveGridFn = function() {
           var tmpGrid = angular.copy($scope.grid);
           try {
@@ -131,10 +131,9 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
             tmpGrid.$save();
             console.info('Saving grid');
           } catch(err) {
-            console.error(err);
           }
         };
-        
+
         $scope.updateTableDataRowCellFn = function(columnName, rowNumber, cell) {
           $scope.grid.tableData[rowNumber][columnName] = cell;
           $scope.saveGridFn();
@@ -173,9 +172,9 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
             });
 
             $scope.placeholderRow = angular.copy($scope.resetRow);
-            
+
             $scope.saveGridFn();
-            
+
             console.info('New grid entry >>>', $scope.grid.tableData);
         };
 
