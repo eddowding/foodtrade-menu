@@ -49,10 +49,10 @@
                 <tbody>
                     <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}'>
                         <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
+                            <div class="priced" ng-if="row.item.hasPrice">{{row.item.price}}</div>
                             <div class="name" ng-click='toggleItemEditFn(row.item)' ng-hide="row.item.isEdit">{{row.item.name}}</div>
                             <input type="text" ng-model='row.item.name' class='form-control' ng-show="row.item.isEdit" ng-keypress='saveItemEditFn($event, $index, row.item)'/>
                             <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
-                            <div class="priced" ng-if="row.item.hasPrice">{{row.item.price}}</div>
                             <div class="characteristic" ng-if="row.item.hasCharacteristic">
                                 <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
                             </div>
