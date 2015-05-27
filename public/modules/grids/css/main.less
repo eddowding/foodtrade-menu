@@ -332,6 +332,14 @@ tags-input .tags .tag-item {
     .name {
         font-weight: bold;
         text-transform: capitalize;
+        &:hover {
+            &:after {
+                content: 'edit';
+                font-weight: normal;
+                color: #337ab7;
+                padding-left: 10px;
+            }
+        }
     }
     .note {
         font-style: italic;

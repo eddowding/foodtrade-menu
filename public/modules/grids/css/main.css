@@ -421,6 +421,12 @@ tags-input .tags .tag-item .remove-button {
   font-weight: bold;
   text-transform: capitalize;
 }
+.itemname .name:hover:after {
+  content: 'edit';
+  font-weight: normal;
+  color: #337ab7;
+  padding-left: 10px;
+}
 .itemname .note {
   font-style: italic;
   color: #999;
