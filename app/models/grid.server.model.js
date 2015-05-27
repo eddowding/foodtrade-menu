@@ -13,7 +13,7 @@ var GridSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Grid name',
+		required: 'Please give this a name',
 		trim: true
 	},
     tableData: {

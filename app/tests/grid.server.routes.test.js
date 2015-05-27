@@ -114,8 +114,8 @@ describe('Grid CRUD tests', function() {
 					.expect(400)
 					.end(function(gridSaveErr, gridSaveRes) {
 						// Set message assertion
-						(gridSaveRes.body.message).should.match('Please fill Grid name');
-						
+						(gridSaveRes.body.message).should.match('Please give this a name');
+
 						// Handle Grid save error
 						done(gridSaveErr);
 					});
@@ -238,7 +238,7 @@ describe('Grid CRUD tests', function() {
 	});
 
 	it('should not be able to delete Grid instance if not signed in', function(done) {
-		// Set Grid user 
+		// Set Grid user
 		grid.user = user;
 
 		// Create new Grid model instance
