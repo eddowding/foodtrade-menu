@@ -154,12 +154,12 @@
                         </td>
 						{% for column in gridColumns %}
 							<td>
-								<div>					
+								<div>
 									<div class="clearfix">
-										<i class="fa {% if row[column].allergenType == 'Removable' %}fa-minus-square-o{% endif %}{% if row[column].allergenType == 'Fixed' %}fa-check-square-o{% endif %}"></i>
+										<i class="fa {% if row[column] && row[column].allergenType == 'Removable' %}fa-minus-square-o{% endif %}{% if row[column] && row[column].allergenType == 'Fixed' %}fa-check-square-o{% endif %}"></i>
 									</div>
-									
-									{% if row[column].allergens %}
+
+									{% if row[column] && row[column].allergens %}
 										<span ng-show="cell.allergens">{{row[column].allergens}}</span>
 									{% endif %}
 								</div>
