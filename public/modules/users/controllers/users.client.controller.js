@@ -1,9 +1,12 @@
 'use strict';
 
 // Users controller
-angular.module('users').controller('UsersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Users', '$http',
-  function($scope, $stateParams, $location, Authentication, Users, $http) {
+angular.module('users').controller('UsersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Users', '$http', '$state',
+  function($scope, $stateParams, $location, Authentication, Users, $http, $state) {
     $scope.authentication = Authentication;
+    if ($scope.authentication.user.roles.indexOf('admin') == -1) {
+      $state.go('dashboard');
+    }
 
     // Create new User
     $scope.create = function() {

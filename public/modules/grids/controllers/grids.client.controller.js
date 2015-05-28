@@ -4,6 +4,9 @@
 angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http',
 	function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http) {
 		$scope.authentication = Authentication;
+		if ($scope.authentication.user.roles.indexOf('admin') == -1) {
+			$state.go('dashboard');
+		}
 
 		// Create new Grid
         $scope.grid = {};

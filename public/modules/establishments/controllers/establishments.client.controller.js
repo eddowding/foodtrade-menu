@@ -1,9 +1,12 @@
 'use strict';
 
 // Establishments controller
-angular.module('establishments').controller('EstablishmentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Establishments',
-	function($scope, $stateParams, $location, Authentication, Establishments) {
+angular.module('establishments').controller('EstablishmentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Establishments', '$state',
+	function($scope, $stateParams, $location, Authentication, Establishments, $state) {
 		$scope.authentication = Authentication;
+		if ($scope.authentication.user.roles.indexOf('admin') == -1) {
+			$state.go('dashboard');
+		}
 
 		// Create new Establishment
 		$scope.create = function() {
@@ -25,7 +28,7 @@ angular.module('establishments').controller('EstablishmentsController', ['$scope
 
 		// Remove existing Establishment
 		$scope.remove = function(establishment) {
-			if ( establishment ) { 
+			if ( establishment ) {
 				establishment.$remove();
 
 				for (var i in $scope.establishments) {
@@ -58,7 +61,7 @@ angular.module('establishments').controller('EstablishmentsController', ['$scope
 
 		// Find existing Establishment
 		$scope.findOne = function() {
-			$scope.establishment = Establishments.get({ 
+			$scope.establishment = Establishments.get({
 				establishmentId: $stateParams.establishmentId
 			});
 		};

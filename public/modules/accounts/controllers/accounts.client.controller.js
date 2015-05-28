@@ -1,9 +1,12 @@
 'use strict';
 
 // Accounts controller
-angular.module('accounts').controller('AccountsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Accounts',
-	function($scope, $stateParams, $location, Authentication, Accounts) {
+angular.module('accounts').controller('AccountsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Accounts', '$state',
+	function($scope, $stateParams, $location, Authentication, Accounts, $state) {
 		$scope.authentication = Authentication;
+		if ($scope.authentication.user.roles.indexOf('admin') == -1) {
+			$state.go('dashboard');
+		}
 
 		// Create new Account
 		$scope.create = function() {
@@ -25,7 +28,7 @@ angular.module('accounts').controller('AccountsController', ['$scope', '$statePa
 
 		// Remove existing Account
 		$scope.remove = function(account) {
-			if ( account ) { 
+			if ( account ) {
 				account.$remove();
 
 				for (var i in $scope.accounts) {
@@ -58,7 +61,7 @@ angular.module('accounts').controller('AccountsController', ['$scope', '$statePa
 
 		// Find existing Account
 		$scope.findOne = function() {
-			$scope.account = Accounts.get({ 
+			$scope.account = Accounts.get({
 				accountId: $stateParams.accountId
 			});
 		};
