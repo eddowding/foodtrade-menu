@@ -5,6 +5,7 @@
                 <thead>
                     <tr>
                         <th></th>
+                        <th></th>
                         <th class="rotate"><div><span>Veggie?</span></div></th>
 
                         <th class="rotate"><div><span>Nuts</span></div></th>
@@ -25,6 +26,7 @@
                     </tr>
                     <tr id="svg">
                         <th class="itemname" nowrap>Item name</th>
+                        <th>Delete</th>
                         <th><img src="modules/grids/img/bones.svg"></th>
 
                         <th><img src="modules/grids/img/nuts.svg"></th>
@@ -57,6 +59,7 @@
                                 <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
                             </div>
                         </td>
+                        <td><button ng-click='deleteRowFn($index)'>Delete</td>
                         <td>
                             <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'icon-vegetarian': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan', 'fa fa-square-o': !row.veggie.type}" ng-click='toggleVeggieEditFn(row.veggie)'></i>
                             <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit' ng-blur='toggleVeggieEditFn(row.veggie)'>
@@ -105,6 +108,7 @@
                             </div>
 
                         </td>
+                        <td></td>
                         <td>
                             <select data-ng-model='placeholderRow.veggie.type'>
                                 <option value='Meat'>Meat</option>

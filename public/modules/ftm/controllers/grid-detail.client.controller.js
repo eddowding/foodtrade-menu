@@ -203,5 +203,10 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
 						$scope.saveGridFn();
 					}
 				};
+
+				$scope.deleteRowFn = function($index) {
+					$scope.grid.tableData.splice($index, 1);
+					$scope.saveGridFn();
+				};
 	}
 ]);
