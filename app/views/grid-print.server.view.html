@@ -43,46 +43,12 @@
 	<![endif]-->
 </head>
 
-<body>
-	<header class="navbar navbar-fixed-top">
-         <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/#!/">
-            <img src="http://www.foodtrade.com/static/images/logo_28.png" alt="alrg">
-        </a>
-		<div class='navbar-brand'><h5>{{grid.name}} (updated on: {{grid.updated|date('F jS, Y')}})</h5></div>
-    </div>
-    </header>
+<body  onload="window.print()">
 
 	<section class="container-responsive">
-        <div class="row">
-            <div class="col-xs-6">
-                <h2 id="menuname" data-ng-bind="grid.name">
-                    <small><i class="fa fa-fw fa-pencil text-muted"></i></small>
-                </h2>
-                <small>
-                </small>
-            </div>
-            <small>
-                <div class="col-xs-6 text-right innerAll">
-                    <a href="#" class="btn btn-sm btn-default pull-right"><i class="fa fa-users fa-fw"></i> Collaborate</a>
-                    <a href="#" class="btn btn-sm btn-default pull-right mR10">
-                        <i class="fa fa-print fa-fw"></i> Print</a>
-
-                    <div class="input-group input-group-sm col-xs-4 pull-right mR10">
-                        <span class="input-group-addon">Share</span>
-                        <input type="text" class="form-control" aria-label="URL" value="ftm.co/746dd6">
-                        <span class="input-group-addon"><i class="fa fa-copy"></i></span>
-                    </div>
+		<h3>{{grid.name}} <small>(updated on: {{grid.updated|date('F jS, Y')}})</small></h3>
                 </div>
-            </small>
-        </div>
-        <small>
+
 			<div class="row">
     <div class="col-xs-12">
         <form role="form" class="form-horizontal">
@@ -173,7 +139,6 @@
     </div>
 </div>
 
-		</small>
     </div>
 	</section>
 </body>
