@@ -44,10 +44,7 @@
             </li>
         </ul> -->
         <ul class="nav navbar-nav navbar-right innerR">
-
-            <!-- only show if user is admin -->
-            <li><a class="text-danger" href="/#!/users" data-ng-if="menu.shouldRender(authentication.user);">GRIDS</a></li>
-            <li><a class="text-danger" href="/#!/grids" data-ng-if="menu.shouldRender(authentication.user);">USERS</a></li>
+ 
 
             <!-- only show if user is logged in -->
             <li ng-if='authentication.user'><a ui-sref='dashboard'>Dashboard</a></li>
