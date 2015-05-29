@@ -35,7 +35,9 @@ module.exports = {
                 'public/lib/angular-elastic/elastic.js',
                 'public/lib/ng-tags-input/ng-tags-input.js',
                 'public/lib/sweetalert/dist/sweetalert-dev.js',
-                'public/lib/angular-sweetalert/SweetAlert.js'
+                'public/lib/angular-sweetalert/SweetAlert.js',
+								'public/lib/zeroclipboard/dist/ZeroClipboard.js',
+								'public/lib/ng-clip/src/ngClip.js'
 
 			]
 		},

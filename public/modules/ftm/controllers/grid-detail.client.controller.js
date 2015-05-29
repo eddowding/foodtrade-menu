@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('ftm').controller('GridDetailController', ['$scope', 'Authentication', '$stateParams', 'Grids',
-	function($scope, Authentication, $stateParams, Grids) {
+angular.module('ftm').controller('GridDetailController', ['$scope', 'Authentication', '$stateParams', 'Grids', '$location',
+	function($scope, Authentication, $stateParams, Grids, $location) {
+		$scope.shareUrl = $location.absUrl();
 		$scope.authentication = Authentication;
 
 		// Find existing Grid

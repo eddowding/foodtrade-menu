@@ -25,7 +25,9 @@ module.exports = {
                 'public/lib/angular-elastic/elastic.js',
                 'public/lib/ng-tags-input/ng-tags-input.min.js',
                 'public/lib/sweetalert/dist/sweet-alert.min.js',
-                'public/lib/angular-sweetalert/SweetAlert.min.js'
+                'public/lib/angular-sweetalert/SweetAlert.min.js',
+								'public/lib/zeroclipboard/dist/ZeroClipboard.min.js',
+								'public/lib/ng-clip/dest/ng-clip.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',
