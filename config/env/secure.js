@@ -11,7 +11,8 @@ module.exports = {
                 'public/lib/font-awesome/css/font-awesome.min.css',
                 'public/lib/ng-tags-input/ng-tags-input.min.css',
                 'public/lib/ng-tags-input/ng-tags-input.bootstrap.min.css',
-								'public/lib/sweetalert/dist/sweetalert.css'
+								'public/lib/sweetalert/dist/sweetalert.css',
+								'public/lib/angular-xeditable/dist/css/xeditable.css'
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
@@ -27,7 +28,8 @@ module.exports = {
                 'public/lib/sweetalert/dist/sweet-alert.min.js',
                 'public/lib/angular-sweetalert/SweetAlert.min.js',
 								'public/lib/zeroclipboard/dist/ZeroClipboard.min.js',
-								'public/lib/ng-clip/dest/ng-clip.min.js'
+								'public/lib/ng-clip/dest/ng-clip.min.js',
+								'public/lib/angular-xeditable/dist/js/xeditable.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',

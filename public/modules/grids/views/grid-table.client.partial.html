@@ -1,134 +1,234 @@
 <div class="row">
-    <div class="col-xs-12">
-        <form role="form" class="form-horizontal">
-            <table class="table table-condensed table-bordered table-header-rotated" id="allergygrid">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th class="rotate"><div><span>Veggie?</span></div></th>
+  <div class="col-xs-12">
+    <table class="table table-condensed table-bordered table-header-rotated" id="allergygrid">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th class="rotate">
+            <div>
+              <span>Veggie?</span>
+            </div>
+          </th>
 
-                        <th class="rotate"><div><span>Nuts</span></div></th>
-                        <th class="rotate"><div><span>Peanuts</span></div></th>
-                        <th class="rotate"><div><span>Sesame seeds</span></div></th>
-                        <th class="rotate"><div><span>Fish</span></div></th>
-                        <th class="rotate"><div><span>Crustaceans</span></div></th>
-                        <th class="rotate"><div><span>Molluscs</span></div></th>
-                        <th class="rotate"><div><span>Eggs</span></div></th>
-                        <th class="rotate"><div><span>Milk</span></div></th>
-                        <th class="rotate"><div><span>Cereals containing gluten</span></div></th>
-                        <th class="rotate"><div><span>Lupin</span></div></th>
-                        <th class="rotate"><div><span>Celery</span></div></th>
-                        <th class="rotate"><div><span>Mustard</span></div></th>
-                        <th class="rotate"><div><span>Soya</span></div></th>
-                        <th class="rotate"><div><span>Sulphur dioxide</span></div></th>
-                        <th class="rotate"><div><span>Other</span></div></th>
-                    </tr>
-                    <tr id="svg">
-                        <th class="itemname" nowrap>Item name</th>
-                        <th><i class="fa fa-trash-o"></i></th>
-                        <th><img src="modules/grids/img/bones.svg"></th>
+          <th class="rotate">
+            <div>
+              <span>Nuts</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Peanuts</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Sesame seeds</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Fish</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Crustaceans</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Molluscs</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Eggs</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Milk</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Cereals containing gluten</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Lupin</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Celery</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Mustard</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Soya</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Sulphur dioxide</span>
+            </div>
+          </th>
+          <th class="rotate">
+            <div>
+              <span>Other</span>
+            </div>
+          </th>
+        </tr>
+        <tr id="svg">
+          <th class="itemname" nowrap>Item name</th>
+          <th><i class="fa fa-trash-o"></i></th>
+          <th>
+            <img src="modules/grids/img/bones.svg">
+          </th>
 
-                        <th><img src="modules/grids/img/nuts.svg"></th>
-                        <th><img src="modules/grids/img/peanuts.svg"></th>
-                        <th><img src="modules/grids/img/sesame.svg"></th>
-                        <th><img src="modules/grids/img/fish.svg"></th>
-                        <th><img src="modules/grids/img/crustacean.svg"></th>
-                        <th><img src="modules/grids/img/mollusc.svg"></th>
-                        <th><img src="modules/grids/img/eggs.svg"></th>
-                        <th><img src="modules/grids/img/milk.svg"></th>
-                        <th><img src="modules/grids/img/gluten.svg"></th>
-                        <th><img src="modules/grids/img/lupin.svg"></th>
-                        <th><img src="modules/grids/img/celery.svg"></th>
-                        <th><img src="modules/grids/img/mustard.svg"></th>
-                        <th><img src="modules/grids/img/soy.svg"></th>
-                        <th><img src="modules/grids/img/sulphur.svg"></th>
-                        <th>
-                            Other
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}'>
-                        <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
-                            <div class="priced" ng-if="row.item.hasPrice">{{row.item.price}}</div>
-                            <div class="name" ng-click='toggleItemEditFn(row.item)' ng-hide="row.item.isEdit">{{row.item.name}}</div>
-                            <input type="text" ng-model='row.item.name' class='form-control' ng-show="row.item.isEdit" ng-keypress='saveItemEditFn($event, $index, row.item)'/>
-                            <div class="note" ng-if="row.item.hasNote">{{row.item.note}}</div>
-                            <div class="characteristic" ng-if="row.item.hasCharacteristic">
-                                <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
-                            </div>
-                        </td>
-                        <td><a ng-click='deleteRowFn($index)'><i class="fa fa-trash-o text-danger"></i></a></td>
-                        <td>
-                            <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'icon-vegetarian': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan', 'fa fa-square-o': !row.veggie.type}" ng-click='toggleVeggieEditFn(row.veggie)'></i>
-                            <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit' ng-blur='toggleVeggieEditFn(row.veggie)'>
-                                <option value='Meat'>Meat</option>
-                                <option value='Veggie'>Veggie</option>
-                                <option value='Fish'>Fish</option>
-                                <option value='Vegan'>Vegan</option>
-                            </select>
-                        </td>
-                        <td data-ng-repeat="column in gridColumns"><cell-edit row-number='$parent.$index' column-name='column'></cell-edit></td>
-                    </tr>
-                    <tr class="newdish">
-                        <td class="itemname" nowrap>
-                            <div class="clearfix">
+          <th>
+            <img src="modules/grids/img/nuts.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/peanuts.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/sesame.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/fish.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/crustacean.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/mollusc.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/eggs.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/milk.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/gluten.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/lupin.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/celery.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/mustard.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/soy.svg">
+          </th>
+          <th>
+            <img src="modules/grids/img/sulphur.svg">
+          </th>
+          <th>
+            Other
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}'>
+          <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
+            <a class="priced" editable-text="row.item.price">{{row.item.price || 0}}</a>
+            <div class="name" ng-click='toggleItemEditFn(row.item)' ng-hide="row.item.isEdit">{{row.item.name}}</div>
+            <input type="text" ng-model='row.item.name' class='form-control' ng-show="row.item.isEdit" ng-keypress='saveItemEditFn($event, $index, row.item)' />
+            <a class="note" editable-textarea="row.item.note">{{row.item.note || 'empty note'}}</a>
+            <div class="characteristic" ng-if="row.item.hasCharacteristic">
+              <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
+            </div>
+          </td>
+          <td><a ng-click='deleteRowFn($index)'><i class="fa fa-trash-o text-danger"></i></a></td>
+          <td>
+            <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'icon-vegetarian': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan', 'fa fa-square-o': !row.veggie.type}" ng-click='toggleVeggieEditFn(row.veggie)'></i>
+            <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit' ng-blur='toggleVeggieEditFn(row.veggie)'>
+              <option value='Meat'>Meat</option>
+              <option value='Veggie'>Veggie</option>
+              <option value='Fish'>Fish</option>
+              <option value='Vegan'>Vegan</option>
+            </select>
+          </td>
+          <td data-ng-repeat="column in gridColumns">
+            <cell-edit row-number='$parent.$index' column-name='column'></cell-edit>
+          </td>
+        </tr>
+        <tr class="newdish">
+          <td class="itemname" nowrap>
+            <div class="clearfix">
 
-                                <button class="btn btn-sm btn-success" ng-click='newRowLogicFn()' ng-class="{'disabled': !placeholderRow.item.name}" id="save">
-                                <i class="fa fa-check"></i>
-                                </button>
-                                <textarea class="form-control msd-elastic dish" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
+              <button class="btn btn-sm btn-success" ng-click='newRowLogicFn()' ng-class="{'disabled': !placeholderRow.item.name}" id="save">
+                <i class="fa fa-check"></i>
+              </button>
+              <textarea class="form-control msd-elastic dish" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
 
-                            </div>
+            </div>
 
 
-                            <textarea class="form-control msd-elastic" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
+            <textarea class="form-control msd-elastic" placeholder="Note" data-ng-model="placeholderRow.item.note" data-ng-show="placeholderRow.item.hasNote"></textarea>
 
-                            <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice" />
-                            <tags-input data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic" replace-spaces-with-dashes='false' placeholder='Add a characteristic' add-from-autocomplete-only='true'>
-                                <auto-complete source="loadCharTagFn($query)"></auto-complete>
-                            </tags-input>
-                            <small data-ng-show="placeholderRow.item.hasCharacteristic">
-                                <a ng-click='addToCharFn("MSC 2")' ng-hide='checkIfCharAddedFn("MSC 2")'>MSC2</a>
-                                <a ng-click='addToCharFn("Organic")' ng-hide='checkIfCharAddedFn("Organic")'>Organic</a>
-                                <a ng-click='addToCharFn("Local 30m/50km")' ng-hide='checkIfCharAddedFn("Local 30m/50km")'>Local 30m/50km</a>
-                                <a ng-click='addToCharFn("Local 50m/80km")' ng-hide='checkIfCharAddedFn("Local 50m/80km")'>Local 50m/80km</a>
-                                <a ng-click='addToCharFn("Local 100m/160km")' ng-hide='checkIfCharAddedFn("Local 100m/160km")'>Local 100m/160km</a>
-                                <a ng-click='addToCharFn("Fairtrade")' ng-hide='checkIfCharAddedFn("Fairtrade")'>Fairtrade</a>
-                                <a ng-click='addToCharFn("MSC 1")' ng-hide='checkIfCharAddedFn("MSC 1")'>MSC1</a>
-                                <a ng-click='addToCharFn("MSC 5")' ng-hide='checkIfCharAddedFn("MSC 5")'>MSC5</a>
-                            </small>
+            <input type='number' class="form-control" placeholder="Price" data-ng-model="placeholderRow.item.price" data-ng-show="placeholderRow.item.hasPrice" />
+            <tags-input data-ng-model="placeholderRow.item.characteristic" data-ng-show="placeholderRow.item.hasCharacteristic" replace-spaces-with-dashes='false' placeholder='Add a characteristic' add-from-autocomplete-only='true'>
+              <auto-complete source="loadCharTagFn($query)"></auto-complete>
+            </tags-input>
+            <small data-ng-show="placeholderRow.item.hasCharacteristic">
+              <a ng-click='addToCharFn("MSC 2")' ng-hide='checkIfCharAddedFn("MSC 2")'>MSC2</a>
+              <a ng-click='addToCharFn("Organic")' ng-hide='checkIfCharAddedFn("Organic")'>Organic</a>
+              <a ng-click='addToCharFn("Local 30m/50km")' ng-hide='checkIfCharAddedFn("Local 30m/50km")'>Local 30m/50km</a>
+              <a ng-click='addToCharFn("Local 50m/80km")' ng-hide='checkIfCharAddedFn("Local 50m/80km")'>Local 50m/80km</a>
+              <a ng-click='addToCharFn("Local 100m/160km")' ng-hide='checkIfCharAddedFn("Local 100m/160km")'>Local 100m/160km</a>
+              <a ng-click='addToCharFn("Fairtrade")' ng-hide='checkIfCharAddedFn("Fairtrade")'>Fairtrade</a>
+              <a ng-click='addToCharFn("MSC 1")' ng-hide='checkIfCharAddedFn("MSC 1")'>MSC1</a>
+              <a ng-click='addToCharFn("MSC 5")' ng-hide='checkIfCharAddedFn("MSC 5")'>MSC5</a>
+            </small>
 
-                            <div class="actions" ng-show="!placeholderRow.item.hasNote || !placeholderRow.item.hasPrice || !placeholderRow.item.hasCharacteristic">
-                                add:
-                                <a data-toggle="collapse" ng-click='toggleNoteFn()' ng-show="!placeholderRow.item.hasNote">notes</a>
-                                <a data-toggle="collapse" ng-click='togglePriceFn()' ng-show="!placeholderRow.item.hasPrice">price</a>
-                                <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
-                            </div>
+            <div class="actions" ng-show="!placeholderRow.item.hasNote || !placeholderRow.item.hasPrice || !placeholderRow.item.hasCharacteristic">
+              add:
+              <a data-toggle="collapse" ng-click='toggleNoteFn()' ng-show="!placeholderRow.item.hasNote">notes</a>
+              <a data-toggle="collapse" ng-click='togglePriceFn()' ng-show="!placeholderRow.item.hasPrice">price</a>
+              <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
+            </div>
 
-                        </td>
-                        <td></td>
-                        <td>
-                            <select data-ng-model='placeholderRow.veggie.type'>
-                                <option value='Meat'>Meat</option>
-                                <option value='Veggie'>Veggie</option>
-                                <option value='Fish'>Fish</option>
-                                <option value='Vegan'>Vegan</option>
-                            </select>
-                        </td>
-                        <td data-ng-repeat="column in gridColumns"><cell-edit-new column-name=column></cell-edit-new></td>
-                    </tr>
-                </tbody>
-            </table>
+          </td>
+          <td></td>
+          <td>
+            <select data-ng-model='placeholderRow.veggie.type'>
+              <option value='Meat'>Meat</option>
+              <option value='Veggie'>Veggie</option>
+              <option value='Fish'>Fish</option>
+              <option value='Vegan'>Vegan</option>
+            </select>
+          </td>
+          <td data-ng-repeat="column in gridColumns">
+            <cell-edit-new column-name=column></cell-edit-new>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-            <p class="text-muted small">
-            <strong><i class="fa fa-fw fa-lg fa-keyboard-o"></i></strong>
-            Add a : to make a new section, <em>eg</em> <span class="b">Lunch:</span> or <span class="b">Dinner:</span>  <strong style="color: #000; margin: 0 5px;">&bull;</strong>
-            Use - or * to add components / ingredients to the dish.
-            <strong style="color: #000; margin: 0 5px;">&bull;</strong>
-            You can edit anything, any time.
-            </p>
-        </form>
-    </div>
+    <p class="text-muted small">
+      <strong><i class="fa fa-fw fa-lg fa-keyboard-o"></i></strong>
+      Add a : to make a new section,
+      <em>eg</em>
+      <span class="b">Lunch:</span> or
+      <span class="b">Dinner:</span>
+      <strong style="color: #000; margin: 0 5px;">&bull;</strong>
+      Use - or * to add components / ingredients to the dish.
+      <strong style="color: #000; margin: 0 5px;">&bull;</strong>
+      You can edit anything, any time.
+    </p>
+  </div>
 </div>

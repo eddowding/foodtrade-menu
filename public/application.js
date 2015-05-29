@@ -13,6 +13,8 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 }]).run(function($rootScope, $state, $stateParams) {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
+}).run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
 });
 
 //Then define the init function for starting up the application
