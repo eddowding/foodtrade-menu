@@ -39,7 +39,8 @@ module.exports = {
                 'public/lib/angular-sweetalert/SweetAlert.js',
 								'public/lib/zeroclipboard/dist/ZeroClipboard.js',
 								'public/lib/ng-clip/src/ngClip.js',
-								'public/lib/angular-xeditable/dist/js/xeditable.js'
+								'public/lib/angular-xeditable/dist/js/xeditable.js',
+								'public/lib/ng-autofocus/dist/ng-autofocus.js'
 
 			]
 		},
