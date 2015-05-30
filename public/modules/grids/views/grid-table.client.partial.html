@@ -149,7 +149,10 @@
             <input type="text" ng-model='row.item.name' class='form-control' ng-show="row.item.isEdit" ng-keypress='saveItemEditFn($event, $index, row.item)' />
             <a class="note" editable-textarea="row.item.note">{{row.item.note || 'empty note'}}</a>
             <div class="characteristic" ng-if="row.item.hasCharacteristic">
-              <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
+              <span ng-repeat="char in row.item.characteristic" ng-show='!charEditStatus[$index]'>{{char.text}}</span><div ng-click='toggleCharEditFn($index)' ng-show="!charEditStatus[$index]">edit</div>
+              <tags-input data-ng-model="row.item.characteristic" data-ng-show="charEditStatus[$index]" replace-spaces-with-dashes='false' placeholder='Add a characteristic' add-from-autocomplete-only='true'>
+                <auto-complete source="loadCharTagFn($query)"></auto-complete>
+              </tags-input><div ng-click='toggleCharEditFn($index)' ng-show="charEditStatus[$index]">done</div>
             </div>
           </td>
           <td><a ng-click='deleteRowFn($index)'><i class="fa fa-trash-o text-danger"></i></a></td>

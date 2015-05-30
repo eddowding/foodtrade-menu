@@ -209,5 +209,15 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
 					$scope.grid.tableData.splice($index, 1);
 					$scope.saveGridFn();
 				};
+
+				$scope.charEditStatus = {};
+
+				$scope.toggleCharEditFn = function($index) {
+					if ($scope.charEditStatus[$index]) {
+						$scope.charEditStatus[$index] = false;
+					} else {
+						$scope.charEditStatus[$index] = true;
+					}
+				};
 	}
 ]);
