@@ -97,6 +97,14 @@ h5 {
                 }
             }
         }
+        .editable-empty {
+            visibility: hidden;
+        }
+        &:hover {
+            .editable-empty {
+                visibility: visible;
+            }
+        }
     }
     .ingredient {
         padding-left: 18px;
@@ -138,6 +146,9 @@ h5 {
             i {
                 display: none;
             }
+        }
+        .editable-empty {
+            display: none;
         }
     }
     .child {
@@ -371,6 +382,19 @@ tags-input .tags .tag-item {
         border: 1px solid #ddd;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        }
+    }
+}
+
+
+// PRINT CSS
+#print {
+    tr.child {
+        td {
+            padding-left: 20px;
+            .name {
+                font-weight: normal !important;
+            }
         }
     }
 }

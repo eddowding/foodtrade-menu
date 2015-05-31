@@ -43,7 +43,7 @@
 	<![endif]-->
 </head>
 
-<body  onload="window.print()">
+<body id="print" onload="window.print()">
 
 	<section class="container-responsive">
 		<h3>{{grid.name}} <small>(updated on: {{grid.updated|date('F jS, Y')}})</small></h3>
@@ -100,12 +100,12 @@
 					{% for row in grid.tableData %}
                     <tr class="{% if row.item.type == 1 %}section{% endif %}{% if row.item.type == 3 %}child{% endif %}">
                         <td class="itemname" nowrap>
+							{% if row.item.price %}
+								<div class="priced">{{row.item.price}}</div>
+							{% endif %}
                             <div class="name">{{row.item.name}}</div>
 							{% if row.item.note %}
 								<div class="note">{{row.item.note}}</div>
-							{% endif %}
-							{% if row.item.price %}
-								<div class="priced">{{row.item.price}}</div>
 							{% endif %}
 							{% if row.item.characteristic %}
 								<div class="characteristic">

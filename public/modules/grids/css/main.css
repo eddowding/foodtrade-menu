@@ -212,6 +212,12 @@ h5 {
   text-decoration: none;
   border-bottom: 1px solid;
 }
+#allergygrid .itemname .editable-empty {
+  visibility: hidden;
+}
+#allergygrid .itemname:hover .editable-empty {
+  visibility: visible;
+}
 #allergygrid .ingredient {
   padding-left: 18px;
 }
@@ -254,6 +260,9 @@ h5 {
 #allergygrid .section td i {
   display: none;
 }
+#allergygrid .section .editable-empty {
+  display: none;
+}
 #allergygrid .child {
   border: 0;
 }
@@ -263,7 +272,7 @@ h5 {
 #allergygrid .dish div {
   text-align: left;
   white-space: nowrap;
-  /*width: 10%;*/
+  width: 10%;
 }
 #allergygrid .ingredient .dish {
   font-style: italic;
@@ -451,4 +460,10 @@ tags-input .tags .tag-item .remove-button {
   border: 1px solid #ddd;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+#print tr.child td {
+  padding-left: 20px;
+}
+#print tr.child td .name {
+  font-weight: normal !important;
 }
