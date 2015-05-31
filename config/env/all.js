@@ -40,7 +40,8 @@ module.exports = {
 								'public/lib/zeroclipboard/dist/ZeroClipboard.js',
 								'public/lib/ng-clip/src/ngClip.js',
 								'public/lib/angular-xeditable/dist/js/xeditable.js',
-								'public/lib/ng-autofocus/dist/ng-autofocus.js'
+								'public/lib/ng-autofocus/dist/ng-autofocus.js',
+								'public/lib/floatThead/dist/jquery.floatThead.js'
 
 			]
 		},

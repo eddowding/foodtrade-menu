@@ -29,7 +29,9 @@ module.exports = {
                 'public/lib/angular-sweetalert/SweetAlert.min.js',
 								'public/lib/zeroclipboard/dist/ZeroClipboard.min.js',
 								'public/lib/ng-clip/dest/ng-clip.min.js',
-								'public/lib/angular-xeditable/dist/js/xeditable.min.js'
+								'public/lib/angular-xeditable/dist/js/xeditable.min.js',
+								'public/lib/ng-autofocus/dist/ng-autofocus.js',
+								'public/lib/floatThead/dist/jquery.floatThead.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',

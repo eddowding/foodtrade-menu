@@ -64,6 +64,7 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
 
     $scope.updateTableDataRowCellFn = function(columnName, rowNumber, cell) {
       $scope.grid.tableData[rowNumber][columnName] = cell;
+			$scope.updateSectionsFn();
       $scope.saveGridFn();
     };
 
@@ -245,12 +246,14 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
           $scope.grid.tableData.splice($index + 1, 0, angular.copy($scope.resetRow));
           $scope.grid.tableData[$index + 1].item.isEdit = true;
         }
+				$scope.updateSectionsFn();
         $scope.saveGridFn();
       }
     };
 
     $scope.deleteRowFn = function($index) {
       $scope.grid.tableData.splice($index, 1);
+			$scope.updateSectionsFn();
       $scope.saveGridFn();
     };
 
@@ -263,5 +266,19 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
         $scope.charEditStatus[$index] = true;
       }
     };
+
+		$scope.nameEditBlurFn = function(item) {
+			item.isEdit = false;
+			$scope.updateSectionsFn();
+			$scope.saveGridFn();
+		};
+
+		$scope.$watch('grid.name', function(newValue, oldValue) {
+			if (newValue) {
+				$scope.saveGridFn();
+			}
+		});
+
+		$('#allergygrid').floatThead();
   }
 ]);
