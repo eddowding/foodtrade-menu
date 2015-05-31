@@ -266,5 +266,11 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
         $scope.charEditStatus[$index] = true;
       }
     };
+
+		$scope.nameEditBlurFn = function(item) {
+			item.isEdit = false;
+			$scope.updateSectionsFn();
+			$scope.saveGridFn();
+		};
   }
 ]);
