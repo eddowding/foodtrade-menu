@@ -243,7 +243,10 @@ h5 {
   font-size: 16px !important;
 }
 #allergygrid td i.text-muted {
-  color: #ddd !important;
+  color: #bbb !important;
+}
+#allergygrid td:hover i.text-muted {
+  color: #666 !important;
 }
 #allergygrid #svg th {
   background: none;
