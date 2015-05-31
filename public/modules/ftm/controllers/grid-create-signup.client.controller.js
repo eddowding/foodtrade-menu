@@ -233,7 +233,7 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
           }
         };
 
-        $scope.characterList = ['MSC 5', 'MSC 4', 'MSC 3', 'MSC 2', 'MSC 1', 'Organic', 'Local 30m/50km', 'Local 50m/80km', 'Local 100m/160km', 'Fairtrade'];
+        $scope.characterList = ['MCS 5', 'MCS 4', 'MCS 3', 'MCS 2', 'MCS 1', 'Organic', 'Local 30m/50km', 'Local 50m/80km', 'Local 100m/160km', 'Fairtrade'];
 
         $scope.loadCharTagFn = function($query) {
           var retList = [];

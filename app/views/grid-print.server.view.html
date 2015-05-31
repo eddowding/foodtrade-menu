@@ -43,7 +43,7 @@
 	<![endif]-->
 </head>
 
-<body  onload="window.print()">
+<body id="print" onload="window.print()">
 
 	<section class="container-responsive">
 		<h3>{{grid.name}} <small>(updated on: {{grid.updated|date('F jS, Y')}})</small></h3>
@@ -56,23 +56,24 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="rotate"><div><span>Veggie?</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /> 
+							<div><span>Veggie?</span></div></th>
 
-                        <th class="rotate"><div><span>Nuts</span></div></th>
-                        <th class="rotate"><div><span>Peanuts</span></div></th>
-                        <th class="rotate"><div><span>Sesame seeds</span></div></th>
-                        <th class="rotate"><div><span>Fish</span></div></th>
-                        <th class="rotate"><div><span>Crustaceans</span></div></th>
-                        <th class="rotate"><div><span>Molluscs</span></div></th>
-                        <th class="rotate"><div><span>Eggs</span></div></th>
-                        <th class="rotate"><div><span>Milk</span></div></th>
-                        <th class="rotate"><div><span>Cereals containing gluten</span></div></th>
-                        <th class="rotate"><div><span>Lupin</span></div></th>
-                        <th class="rotate"><div><span>Celery</span></div></th>
-                        <th class="rotate"><div><span>Mustard</span></div></th>
-                        <th class="rotate"><div><span>Soya</span></div></th>
-                        <th class="rotate"><div><span>Sulphur dioxide</span></div></th>
-                        <th class="rotate"><div><span>Other</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Nuts</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Peanuts</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Sesame seeds</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Fish</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Crustaceans</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Molluscs</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Eggs</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Milk</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Cereals containing gluten</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Lupin</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Celery</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Mustard</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Soya</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Sulphur dioxide</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Other</span></div></th>
                     </tr>
                     <tr id="svg">
                         <th class="itemname" nowrap>Item name</th>
@@ -100,12 +101,12 @@
 					{% for row in grid.tableData %}
                     <tr class="{% if row.item.type == 1 %}section{% endif %}{% if row.item.type == 3 %}child{% endif %}">
                         <td class="itemname" nowrap>
+							{% if row.item.price %}
+								<div class="priced">{{row.item.price}}</div>
+							{% endif %}
                             <div class="name">{{row.item.name}}</div>
 							{% if row.item.note %}
 								<div class="note">{{row.item.note}}</div>
-							{% endif %}
-							{% if row.item.price %}
-								<div class="priced">{{row.item.price}}</div>
 							{% endif %}
 							{% if row.item.characteristic %}
 								<div class="characteristic">
