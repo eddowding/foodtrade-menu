@@ -97,12 +97,20 @@ h5 {
                 }
             }
         }
+        .editable-click,
+        a.editable-click {
+            border: 0;
+        }
         .editable-empty {
             visibility: hidden;
         }
         &:hover {
             .editable-empty {
                 visibility: visible;
+            }
+            .editable-click,
+            a.editable-click {
+                border-bottom: 1px dashed #337ab7;
             }
         }
     }
@@ -394,6 +402,22 @@ tags-input .tags .tag-item {
             padding-left: 20px;
             .name {
                 font-weight: normal !important;
+            }
+        }
+    }
+    #allergygrid {
+        th.rotate {
+            background-color: #fff !important;
+            // background: url('/modules/grids/img/green.png') repeat;
+            padding: 0;
+            img {
+                height: 100% !important;
+                width: 100% !important;
+                position: relative;
+                top: 27px;
+            }
+            div {
+                padding: 5px;
             }
         }
     }

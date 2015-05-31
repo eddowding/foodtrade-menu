@@ -212,11 +212,19 @@ h5 {
   text-decoration: none;
   border-bottom: 1px solid;
 }
+#allergygrid .itemname .editable-click,
+#allergygrid .itemname a.editable-click {
+  border: 0;
+}
 #allergygrid .itemname .editable-empty {
   visibility: hidden;
 }
 #allergygrid .itemname:hover .editable-empty {
   visibility: visible;
+}
+#allergygrid .itemname:hover .editable-click,
+#allergygrid .itemname:hover a.editable-click {
+  border-bottom: 1px dashed #337ab7;
 }
 #allergygrid .ingredient {
   padding-left: 18px;
@@ -466,4 +474,17 @@ tags-input .tags .tag-item .remove-button {
 }
 #print tr.child td .name {
   font-weight: normal !important;
+}
+#print #allergygrid th.rotate {
+  background-color: #fff !important;
+  padding: 0;
+}
+#print #allergygrid th.rotate img {
+  height: 100% !important;
+  width: 100% !important;
+  position: relative;
+  top: 27px;
+}
+#print #allergygrid th.rotate div {
+  padding: 5px;
 }
