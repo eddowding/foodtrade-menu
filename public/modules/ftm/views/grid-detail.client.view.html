@@ -14,10 +14,12 @@
 									<a ng-href='/grids/{{grid._id}}/print' target="_blank" class="btn btn-sm btn-default pull-right mR10">
 											<i class="fa fa-print fa-fw"></i> Print</a>
 
-									<div class="input-group input-group-sm col-xs-4 pull-right mR10">
+									<div class="input-group input-group-sm  pull-right mR10 col-sm-4">
 											<span class="input-group-addon">Share</span>
 											<input type="text" class="form-control" aria-label="URL" ng-model='shareUrl'>
-											<button clip-copy="shareUrl"><i class="fa fa-copy"></i></button>
+											<span class="input-group-btn">
+											<button clip-copy="shareUrl" class="btn btn-sm btn-default"><i class="fa fa-copy"></i></button>
+											</span>
 									</div>
 							</div>
 					</small>
