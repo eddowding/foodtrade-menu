@@ -272,5 +272,11 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
 			$scope.updateSectionsFn();
 			$scope.saveGridFn();
 		};
+
+		$scope.$watch('grid.name', function(newValue, oldValue) {
+			if (newValue) {
+				$scope.saveGridFn();
+			}
+		});
   }
 ]);
