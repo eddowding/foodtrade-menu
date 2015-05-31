@@ -199,6 +199,7 @@ h5 {
   margin-bottom: 4px;
   padding: 2px 5px;
   height: auto;
+  width: 80%;
 }
 #allergygrid .itemname select {
   width: 200px;
@@ -215,9 +216,17 @@ h5 {
 #allergygrid .itemname .editable-click,
 #allergygrid .itemname a.editable-click {
   border: 0;
+  display: block;
 }
 #allergygrid .itemname .editable-empty {
   visibility: hidden;
+  display: inline-block !important;
+}
+#allergygrid .itemname:hover .name:after {
+  content: 'edit';
+  font-weight: normal;
+  color: #337ab7;
+  padding: 0 5px;
 }
 #allergygrid .itemname:hover .editable-empty {
   visibility: visible;
@@ -270,6 +279,13 @@ h5 {
 }
 #allergygrid .section td i {
   display: none;
+}
+#allergygrid .section td.trash {
+  border: 0;
+}
+#allergygrid .section td.trash i {
+  display: block;
+  color: #fff;
 }
 #allergygrid .section .editable-empty {
   display: none;
@@ -358,6 +374,11 @@ h5 {
 #menuname:hover {
   border: 1px solid #ccc;
 }
+#menuname .editable-click,
+#menuname a.editable-click {
+  color: #444;
+  border: 0;
+}
 .btn-xl {
   font-size: 40px;
   font-family: 'Fira Sans', sans-serif;
@@ -445,12 +466,6 @@ tags-input .tags .tag-item .remove-button {
 .itemname .name {
   font-weight: bold;
   text-transform: capitalize;
-}
-.itemname .name:hover:after {
-  content: 'edit';
-  font-weight: normal;
-  color: #337ab7;
-  padding-left: 10px;
 }
 .itemname .note {
   font-style: italic;
