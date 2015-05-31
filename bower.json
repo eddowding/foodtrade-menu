@@ -21,6 +21,7 @@
     "zeroclipboard": "~2.2.0",
     "ng-clip": "~0.2.6",
     "angular-xeditable": "~0.1.9",
-    "ng-autofocus": "~0.0.1"
+    "ng-autofocus": "~0.0.1",
+    "floatThead": "~1.2.12"
   }
 }

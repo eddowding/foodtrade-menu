@@ -278,5 +278,7 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
 				$scope.saveGridFn();
 			}
 		});
+
+		$('#allergygrid').floatThead();
   }
 ]);
