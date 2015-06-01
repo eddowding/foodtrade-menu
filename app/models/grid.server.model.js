@@ -34,4 +34,6 @@ var GridSchema = new Schema({
 	}
 });
 
+GridSchema.set('versionKey', false);
+
 mongoose.model('Grid', GridSchema);
