@@ -506,3 +506,14 @@ tags-input .tags .tag-item .remove-button {
 #print #allergygrid th.rotate div {
   padding: 5px;
 }
+.floatThead-table {
+  top: 50px;
+  position: relative;
+}
+.floatThead-table th {
+  background: #d9e6c2 !important;
+  text-align: center;
+}
+.floatThead-table th img {
+  width: 30px;
+}
