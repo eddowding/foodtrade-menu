@@ -154,6 +154,7 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
           $scope.placeholderRow.item.name += '\n';
         } else {
           $event.preventDefault();
+          $scope.placeholderRow.item.isEdit = true;
           $scope.newRowLogicFn();
         }
       }
