@@ -33,7 +33,8 @@ module.exports = {
 								'public/lib/ng-clip/dest/ng-clip.min.js',
 								'public/lib/angular-xeditable/dist/js/xeditable.min.js',
 								'public/lib/ng-autofocus/dist/ng-autofocus.js',
-								'public/lib/floatThead/dist/jquery.floatThead.min.js'
+								'public/lib/floatThead/dist/jquery.floatThead.min.js',
+								'public/lib/moment/min/moment.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',
