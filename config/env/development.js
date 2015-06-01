@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://localhost/alrg-dev',
 	app: {
-		title: 'alrg - Development Environment'
+		title: 'FoodTrade Menu - simple allergen compliance'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
