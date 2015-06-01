@@ -35,13 +35,13 @@ angular.module('ftm').controller('DashboardController', ['$scope', 'Grids', 'Aut
     };
 
 		$scope.getAbsoluteUrlFn = function(grid) {
-			var url = $location.host();
+			var url = $location.protocol() + '://' + $location.host();
 			console.log($location.host(), $location.port());
 			if (!($location.port() == 80 || $location.port() == 443)) {
 				url += ':' + $location.port();
 			}
 			url += '/#!/grid-detail/' + grid._id;
-			return url;
+			return window.encodeURIComponent(url);
 		};
   }
 ]);
