@@ -61,7 +61,6 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
       try {
         tmpGrid.updated = new Date();
         tmpGrid.$save();
-        console.info('Saving grid');
       } catch (err) {
         console.error(err);
       }
