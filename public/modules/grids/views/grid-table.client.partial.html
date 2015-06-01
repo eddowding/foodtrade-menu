@@ -145,9 +145,9 @@
         <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}'>
           <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
             <a class="priced" editable-text="row.item.price">{{row.item.price || 0}}</a>
-            <div class="name" ng-click='toggleItemEditFn(row.item)' ng-hide="row.item.isEdit">{{row.item.name}}</div>
+            <span class="name" ng-click='toggleItemEditFn(row.item)' ng-hide="row.item.isEdit">{{row.item.name}}</span>
             <input type="text" ng-model='row.item.name' class='form-control' ng-show="row.item.isEdit" ng-keypress='saveItemEditFn($event, $index, row.item)' ng-blur='nameEditBlurFn(row.item)' autofocus />
-            <a class="note" editable-textarea="row.item.note">{{row.item.note || 'empty note'}}</a>
+            <a class="note" editable-textarea="row.item.note">{{row.item.note || 'add note'}}</a>
             <div class="characteristic" ng-if="row.item.hasCharacteristic">
               <span ng-repeat="char in row.item.characteristic" ng-show='!charEditStatus[$index]'>{{char.text}}</span><div ng-click='toggleCharEditFn($index)' ng-show="!charEditStatus[$index]">edit</div>
               <tags-input data-ng-model="row.item.characteristic" data-ng-show="charEditStatus[$index]" replace-spaces-with-dashes='false' placeholder='Add a characteristic' add-from-autocomplete-only='true'>
@@ -155,7 +155,7 @@
               </tags-input><div ng-click='toggleCharEditFn($index)' ng-show="charEditStatus[$index]">done</div>
             </div>
           </td>
-          <td><a ng-click='deleteRowFn($index)'><i class="fa fa-trash-o text-danger"></i></a></td>
+          <td class="trash"><a ng-click='deleteRowFn($index)'><i class="fa fa-trash-o text-danger"></i></a></td>
           <td>
             <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'icon-vegetarian': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan', 'fa fa-square-o': !row.veggie.type}" ng-click='toggleVeggieEditFn(row.veggie)'></i>
             <select data-ng-model='row.veggie.type' ng-show='row.veggie.edit' ng-blur='toggleVeggieEditFn(row.veggie)'>
