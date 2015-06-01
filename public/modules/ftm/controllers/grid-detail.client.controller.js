@@ -7,8 +7,13 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
 
     // Find existing Grid
     $scope.findOne = function() {
-      $scope.grid = Grids.get({
+      Grids.get({
         gridId: $stateParams.gridId
+      })
+      .$promise
+      .then(function(grid) {
+        $scope.grid = grid;
+        $('#allergygrid').floatThead();
       });
     };
 
@@ -278,7 +283,5 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
 				$scope.saveGridFn();
 			}
 		});
-
-		$('#allergygrid').floatThead();
   }
 ]);
