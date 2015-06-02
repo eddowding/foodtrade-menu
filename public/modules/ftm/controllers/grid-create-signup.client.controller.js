@@ -6,7 +6,7 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
 		$scope.authentication = Authentication;
 
 		// Create new Grid
-        $scope.grid = {name: moment().format('LLL')};
+        $scope.grid = {name: 'Menu '+moment().format('LL')};
         $scope.user = {};
         $scope.account = {};
         $scope.establishment = {};
