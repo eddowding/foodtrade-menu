@@ -60,7 +60,6 @@ angular.module('grids').directive('grid', [function() {
           tmpGrid.updated = new Date();
           tmpGrid.$save();
         } catch (err) {
-          console.error(err);
         }
       };
 
