@@ -2,8 +2,8 @@
 
 angular.module('ftm').controller('GridCreateController', ['$scope', 'Authentication', '$stateParams', 'Grids', '$state',
 	function($scope, Authentication, $stateParams, Grids, $state) {
-		$scope.authentication = Authentication;
-		$scope.grid = {name: moment().format('MMM')};
+		$scope.authentication = Authentication; 
+		$scope.grid = {name: 'Menu '+moment().format('LL')};
 
 		$scope.create = function() {
 			// Create new Grid object
