@@ -39,8 +39,9 @@ angular.module('ftm').controller('DashboardController', ['$scope', 'Grids', 'Aut
 			if (!($location.port() == 80 || $location.port() == 443)) {
 				url += ':' + $location.port();
 			}
-			url += '/#!/grid-detail/' + grid._id;
-			return window.encodeURIComponent(url);
+			url += '/?_escaped_fragment_=/grid-detail/' + grid._id;
+      return url;
+			// return window.encodeURIComponent(url);
 		};
   }
 ]);
