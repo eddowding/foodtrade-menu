@@ -143,7 +143,6 @@ angular.module('grids').directive('grid', [function() {
             scope.placeholderRow.item.name += '\n';
           } else {
             $event.preventDefault();
-            scope.placeholderRow.item.isEdit = true;
             scope.newRowLogicFn();
           }
         }
