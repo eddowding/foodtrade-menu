@@ -59,8 +59,7 @@ angular.module('grids').directive('grid', [function() {
         try {
           tmpGrid.updated = new Date();
           tmpGrid.$save();
-        } catch (err) {
-        }
+        } catch (err) {}
       };
 
       scope.updateSectionsFn = function() {
@@ -239,6 +238,17 @@ angular.module('grids').directive('grid', [function() {
           } else if (item.name.length == 0) {
             scope.grid.tableData.splice($index, 1);
           } else {
+            if (item.name.charAt(item.name.length - 1) == ':') {
+              item.type = 1;
+            } else if (item.name.charAt(0) == '-') {
+              item.name = item.name.substring(1, item.name.length);
+              item.type = 3;
+            } else if (item.name.charAt(0) == '*') {
+              item.name = item.name.substring(1, item.name.length);
+              item.type = 3;
+            } else {
+              item.type = 2;
+            }
             scope.grid.tableData.splice($index + 1, 0, angular.copy(scope.resetRow));
             scope.grid.tableData[$index + 1].item.isEdit = true;
           }
