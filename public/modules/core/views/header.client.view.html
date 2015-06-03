@@ -49,7 +49,8 @@
             <!-- only show if user is logged in -->
             <li ng-if='authentication.user'><a ui-sref='dashboard'>Dashboard</a></li>
             <!--or if not, show -->
-            <li ng-if='!authentication.user'><a ui-sref='signin'>Login</a></li>
+            <li ng-if='!authentication.user'><a data-toggle="modal" data-target="#signinModal">Login</a></li>
+            <li ng-if='authentication.user'><a href='/auth/signout'>Log Out</a></li>
 
             <li><a ui-sref='about'>About</a></li>
             <li><a href="mailto:hello@foodtrade.com">Feedback</a></li>
