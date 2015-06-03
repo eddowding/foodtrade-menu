@@ -16,9 +16,9 @@
 
 									<div class="input-group input-group-sm  pull-right mR10 col-sm-4">
 											<span class="input-group-addon">Share</span>
-											<input type="text" class="form-control" aria-label="URL" ng-model='shareUrl'>
+											<input type="text" class="form-control" aria-label="URL" value='{{getPrintAbsoluteUrlFn(grid)}}' readonly>
 											<span class="input-group-btn">
-											<button clip-copy="shareUrl" class="btn btn-sm btn-default"><i class="fa fa-copy"></i></button>
+											<button clip-copy="getPrintAbsoluteUrlFn(grid)" class="btn btn-sm btn-default"><i class="fa fa-copy"></i></button>
 											</span>
 									</div>
 							</div>

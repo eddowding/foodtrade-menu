@@ -16,9 +16,9 @@ module.exports = function(app) {
 
   app.route('/grids/by/user/:userId')
     .get(grids.gridsByUserID);
-  
+
   app.route('/grids/:gridId/print')
-    .get(users.requiresLogin, grids.hasAuthorization, grids.gridPrint)
+    .get(grids.gridPrint)
   // Finish by binding the Grid middleware
   app.param('gridId', grids.gridByID);
 };

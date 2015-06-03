@@ -2,7 +2,6 @@
 
 angular.module('ftm').controller('GridDetailController', ['$scope', 'Authentication', '$stateParams', 'Grids', '$location',
   function($scope, Authentication, $stateParams, Grids, $location) {
-    $scope.shareUrl = $location.absUrl();
     $scope.authentication = Authentication;
     $scope.gridId = $stateParams.gridId;
 
@@ -15,5 +14,17 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
       $scope.grid = grid;
       $('#allergygrid').floatThead();
     });
+
+    $scope.getPrintAbsoluteUrlFn = function(grid) {
+      if (!grid) {
+        return '';
+      }
+      var url = $location.protocol() + '://' + $location.host();
+      if (!($location.port() == 80 || $location.port() == 443)) {
+        url += ':' + $location.port();
+      }
+      url += '/grids/' + grid._id + '/print';
+      return url;
+    };
   }
 ]);
