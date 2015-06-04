@@ -288,6 +288,10 @@ angular.module('grids').controller('GridsController', ['$scope', '$rootScope', '
           $scope.user.username = $scope.user.email;
           $http.post('/auth/signup', $scope.user).success(function(response) {
             $scope.authentication.user = response;
+						analytics.identify(response._id, {
+		          name: response.displayName,
+		          email: response.email
+		        });
             $scope.account.user = response._id;
             Accounts.save($scope.account)
             .$promise

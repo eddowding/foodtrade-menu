@@ -63,6 +63,10 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       $scope.user.username = $scope.user.email;
       $http.post('/auth/signup', $scope.user).success(function(response) {
         $scope.authentication.user = response;
+        analytics.identify(response._id, {
+          name: response.displayName,
+          email: response.email
+        });
         $scope.account.user = response._id;
         Accounts.save($scope.account)
           .$promise
@@ -85,6 +89,10 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       $http.post('/auth/signin', $scope.user).success(function(response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
+        analytics.identify(response._id, {
+          name: response.displayName,
+          email: response.email
+        });
         $scope.grid.user = response._id;
         Grids.save($scope.grid)
         .$promise
