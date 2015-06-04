@@ -14,10 +14,11 @@ angular.module('users').config(['$httpProvider',
 								Authentication.user = null;
 
 								// Redirect to signin page
-								$location.path('signin');
+								$('#commonSigninModal').modal('show');
 								break;
 							case 403:
 								// Add unauthorized behaviour
+								$('#commonSigninModal').modal('show');
 								break;
 						}
 
