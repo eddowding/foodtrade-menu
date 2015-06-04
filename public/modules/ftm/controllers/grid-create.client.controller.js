@@ -14,6 +14,10 @@ angular.module('ftm').controller('GridCreateController', ['$scope', 'Authenticat
 
       // Redirect after save
       grid.$save(function(response) {
+        analytics.track('Grid Created', {
+  				gridId: response._id,
+          gridName: response.name
+				});
         $state.go('grid-detail', {
           gridId: response._id
         });

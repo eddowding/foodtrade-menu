@@ -24,6 +24,9 @@ angular.module('ftm').controller('DashboardController', ['$scope', 'Grids', 'Aut
         },
         function(isConfirm) {
           if (isConfirm) {
+            analytics.track('Grid Deleted', {
+      				gridId: grid._id
+    				});
             grid.$delete();
 						$scope.grids.forEach(function(value, index) {
 							if (grid._id == value._id) {

@@ -50,6 +50,10 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
 
       // Redirect after save
       grid.$save(function(response) {
+        analytics.track('Grid Created', {
+  				gridId: response._id,
+          gridName: response.name
+				});
         $location.path('grids/' + response._id);
 
         // Clear form fields
@@ -72,12 +76,19 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
           .$promise
           .then(function(account) {
             $scope.account = account;
+            analytics.track('Account Created', {
+      				accountId: account._id
+    				});
           });
         $scope.establishment.user = response._id;
         Establishments.save($scope.establishment)
           .$promise
           .then(function(establishment) {
             $scope.establishment = establishment;
+            analytics.track('Establishment Created', {
+      				establishmentId: establishment._id,
+              businessName: establishment.BusinessName
+    				});
           });
         $scope.create();
       }).error(function(response) {
@@ -97,6 +108,10 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
         Grids.save($scope.grid)
         .$promise
         .then(function(grid) {
+          analytics.track('Grid Created', {
+    				gridId: grid._id,
+            gridName: grid.name
+  				});
           $location.path('/dashboard');
         });
       }).error(function(response) {
