@@ -35,7 +35,8 @@
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 	<!--Application CSS Files-->
-	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
+	{% for cssFile in cssFiles %}
+	<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
 
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
@@ -52,13 +53,51 @@
 
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
-		var user = {{ user | json | safe }};
+		var user = {
+			{
+				user | json | safe
+			}
+		};
+	</script>
+
+	<script type="text/javascript">
+		! function() {
+			var analytics = window.analytics = window.analytics || [];
+			if (!analytics.initialize)
+				if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");
+				else {
+					analytics.invoked = !0;
+					analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "group", "track", "ready", "alias", "page", "once", "off", "on"];
+					analytics.factory = function(t) {
+						return function() {
+							var e = Array.prototype.slice.call(arguments);
+							e.unshift(t);
+							analytics.push(e);
+							return analytics
+						}
+					};
+					for (var t = 0; t < analytics.methods.length; t++) {
+						var e = analytics.methods[t];
+						analytics[e] = analytics.factory(e)
+					}
+					analytics.load = function(t) {
+						var e = document.createElement("script");
+						e.type = "text/javascript";
+						e.async = !0;
+						e.src = ("https:" === document.location.protocol ? "https://" : "http://") + "cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
+						var n = document.getElementsByTagName("script")[0];
+						n.parentNode.insertBefore(e, n)
+					};
+					analytics.SNIPPET_VERSION = "3.0.1";
+					analytics.load("FVQBpRqubj7q6USVKrGrPeLG08SmADaC");
+					analytics.page()
+				}
+		}();
 	</script>
 
 	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
-
-	{% if process.env.NODE_ENV === 'development' %}
+	{% for jsFile in jsFiles %}
+	<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} {% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
 	<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
 	{% endif %}
