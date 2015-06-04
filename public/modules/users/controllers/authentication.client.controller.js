@@ -20,6 +20,10 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
           email: response.email
         });
 
+				analytics.track('Signed Up', {
+  				plan: 'Regular'
+				});
+
                 $scope.account.user = response._id;
                 Accounts.save($scope.account)
                 .$promise
