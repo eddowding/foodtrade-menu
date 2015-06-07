@@ -19,6 +19,10 @@ module.exports = function(app) {
 
   app.route('/grids/:gridId/print')
     .get(grids.gridPrint)
+
+  app.route('/grids/:gridId/pdf')
+    .get(grids.gridPdf)
+    
   // Finish by binding the Grid middleware
   app.param('gridId', grids.gridByID);
 };

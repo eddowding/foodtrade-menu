@@ -3,10 +3,12 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-  errorHandler = require('./errors.server.controller'),
-  Grid = mongoose.model('Grid'),
-  _ = require('lodash');
+var mongoose = require('mongoose');
+var errorHandler = require('./errors.server.controller');
+var Grid = mongoose.model('Grid');
+var _ = require('lodash');
+var path = require('path');
+var phantom = require('phantom');
 
 /**
  * Create a Grid
@@ -117,7 +119,24 @@ exports.gridPrint = function(req, res) {
     'other'
   ];
   Grid.findById(req.params.gridId).exec(function(err, grid) {
-    res.render('grid-print', {grid: grid, gridColumns: gridColumns});
+    res.render('grid-print', {
+      grid: grid,
+      gridColumns: gridColumns
+    });
+  });
+};
+
+exports.gridPdf = function(req, res) {
+  phantom.create(function(ph) {
+    ph.createPage(function(page) {
+      page.open('http:/localhost:3000/grids/' + req.params.gridId + '/print', function(status) {
+        page.render(path.join(path.dirname(path.dirname(__dirname)), 'downloads', 'grid-' + req.params.gridId + '.pdf'), function() {
+          console.log('Page Rendered');
+          res.download(path.join(path.dirname(path.dirname(__dirname)), 'downloads', 'grid-' + req.params.gridId + '.pdf'));
+          ph.exit();
+        });
+      });
+    });
   });
 };
 
