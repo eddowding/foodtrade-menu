@@ -126,12 +126,12 @@ exports.gridPrint = function(req, res) {
   });
 };
 
+
 exports.gridPdf = function(req, res) {
   phantom.create(function(ph) {
     ph.createPage(function(page) {
-      page.open('http:/localhost:3000/grids/' + req.params.gridId + '/print', function(status) {
+      page.open(req.headers.host + '/grids/' + req.params.gridId + '/print', function(status) {
         page.render(path.join(path.dirname(path.dirname(__dirname)), 'downloads', 'grid-' + req.params.gridId + '.pdf'), function() {
-          console.log('Page Rendered');
           res.download(path.join(path.dirname(path.dirname(__dirname)), 'downloads', 'grid-' + req.params.gridId + '.pdf'));
           ph.exit();
         });
@@ -139,6 +139,7 @@ exports.gridPdf = function(req, res) {
     });
   });
 };
+
 
 /**
  * Grid middleware
