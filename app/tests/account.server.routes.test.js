@@ -115,7 +115,7 @@ describe('Account CRUD tests', function() {
 					.end(function(accountSaveErr, accountSaveRes) {
 						// Set message assertion
 						(accountSaveRes.body.message).should.match('Please fill Account name');
-						
+
 						// Handle Account save error
 						done(accountSaveErr);
 					});
@@ -238,7 +238,7 @@ describe('Account CRUD tests', function() {
 	});
 
 	it('should not be able to delete Account instance if not signed in', function(done) {
-		// Set Account user 
+		// Set Account user
 		account.user = user;
 
 		// Create new Account model instance
@@ -251,7 +251,7 @@ describe('Account CRUD tests', function() {
 			.expect(401)
 			.end(function(accountDeleteErr, accountDeleteRes) {
 				// Set message assertion
-				(accountDeleteRes.body.message).should.match('User is not logged in');
+				(accountDeleteRes.body.message).should.match('You are not logged in');
 
 				// Handle Account error error
 				done(accountDeleteErr);
