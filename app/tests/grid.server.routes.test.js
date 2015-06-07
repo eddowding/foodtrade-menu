@@ -251,7 +251,7 @@ describe('Grid CRUD tests', function() {
 			.expect(401)
 			.end(function(gridDeleteErr, gridDeleteRes) {
 				// Set message assertion
-				(gridDeleteRes.body.message).should.match('User is not logged in');
+				(gridDeleteRes.body.message).should.match('You are not logged in');
 
 				// Handle Grid error error
 				done(gridDeleteErr);
