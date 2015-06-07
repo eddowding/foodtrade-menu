@@ -130,7 +130,8 @@ exports.gridPrint = function(req, res) {
 exports.gridPdf = function(req, res) {
   phantom.create(function(ph) {
     ph.createPage(function(page) {
-      page.open(req.headers.host + '/grids/' + req.params.gridId + '/print', function(status) {
+      page.set('viewportSize', { height : 2100, width : 2900});
+      page.open('http://' + req.headers.host + '/grids/' + req.params.gridId + '/print', function(status) {
         page.render(path.join(path.dirname(path.dirname(__dirname)), 'downloads', 'grid-' + req.params.gridId + '.pdf'), function() {
           res.download(path.join(path.dirname(path.dirname(__dirname)), 'downloads', 'grid-' + req.params.gridId + '.pdf'));
           ph.exit();
