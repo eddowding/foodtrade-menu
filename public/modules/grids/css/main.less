@@ -8,7 +8,7 @@
     margin-right: 10px;
 }
 body {
-    background: #f9f9f9 !important;
+    background: #ffff !important;
 }
 #packshot {
     .box-shadow(2px 2px 20px #ccc);
@@ -38,21 +38,55 @@ h5 {
         padding: 5px 10px;
     }
     th {
-        background: @light;
+        background: lighten(@light,7%);
         font-weight: normal;
         font-size: 12px;
         border-color: @dark;
         border-collapse: collapse;
+        border-bottom: 1px solid #999;
         @media (max-width: 992px) {
             img {
                 width: 30px;
                 height: 30px;
             }
         }
+        &.white {
+            background: #fff;
+            border: 1px solid #fff;
+            border-bottom: 1px solid #999;
+        }
+        &.trash {
+            border-right: 1px solid #999;
+        }
+        &.diet {
+            background: #eee;
+            border: 1px solid #ccc;
+            border-bottom: 1px solid #999;
+            border-right: 1px solid rgb(208, 74, 5);
+        }
+        &.nuts {
+            background: lighten(rgb(208, 74, 5),50%);
+            border: 1px solid rgb(208, 74, 5);
+            border-bottom: 1px solid #999;
+        }
+        &.sea {
+            background: lighten(rgb(140, 211, 230),18%);
+            border: 1px solid rgb(140, 211, 230);
+        }
+        &.dairy {
+            background: lighten(rgb(237, 218, 162),15%);
+            border: 1px solid rgb(237, 218, 162);
+            border-bottom: 1px solid #999;
+        }
+        &.sulphites {
+            background: lighten(rgb(193, 72, 149),38%);
+            border: 1px solid  rgb(193, 72, 149);
+            border-bottom: 1px solid #999;
+        }
     }
     th.rotate {
         @media (max-width: 992px) {
-            height: 170px;
+            height: 125px;
             white-space: nowrap;
             > div {
                 .rotate(-90deg);
@@ -225,7 +259,7 @@ h5 {
     }
     .newdish {
         td {
-            background: #eee;
+            background: #ffe;
         }
     }
     td {
@@ -254,8 +288,16 @@ h5 {
     .navbar-nav {
         li {
             a {
-                padding: 2px 10px;
                 margin-top: 1px;
+                padding: 5px 10px;
+                &.btn {
+                    text-transform: uppercase !Important;
+                    padding: 8px 10px;
+                    margin-top: -3px;
+                }
+                & i {
+                    font-weight: bold;
+                }
             }
         }
     }
@@ -464,24 +506,40 @@ tags-input .tags .tag-item {
 }
 
 
+#survey {
+    position: fixed !important;
+    bottom: 20px;
+    left: 0;
+    font-size: 16px;
+    // color: #fff;
+    width: 100%;
+    padding: 5px 10px;
+    text-align: center;
+    background: #ffc;
+    border-top: 2px solid #f90;
+    // background: url('https://s3-eu-west-1.amazonaws.com/content.cleanipedia.com/wp-content/uploads/2013/08/N19-2_CleanChoppingBoard-575x375.jpg');
+    // background-size: cover;
+    .btn {
+        font-size: 16px;
+        padding: 4px 15px;
+        text-shadow: 1px 1px 2px #000;
+    }
+}
+
 #footer {
     position: fixed !important;
     bottom: 0;
     left: 0;
-    font-size: 20px;
+    font-size: 12px;
     color: #fff;
     width: 100%;
-    padding: 10px;
-    text-align: center;
-    background: #eee;
-    border-top: 2px solid red;
-    background: url('https://s3-eu-west-1.amazonaws.com/content.cleanipedia.com/wp-content/uploads/2013/08/N19-2_CleanChoppingBoard-575x375.jpg');
-    background-size: cover;
-    text-shadow: 1px 1px 2px #000;
-    .btn {
-        font-size: 20px;
-        padding: 8px 20px;
-        margin-top: 10px;
-        font-weight: normal;
+    padding: 2px 10px;
+    text-align: left;
+    background: #000;
+    a {
+        color: #ccc;
+        &:hover {
+            color: #fff;
+        }
     }
 }

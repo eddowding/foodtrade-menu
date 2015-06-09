@@ -8,57 +8,57 @@
     <table class="table table-condensed table-bordered table-header-rotated" id="allergygrid">
       <thead>
         <tr>
-          <th></th>
-          <th></th>
-          <th class="rotate">
+          <th class="white"></th>
+          <th class="white trash"></th>
+          <th class="rotate diet">
             <div>
               <span>Veggie?</span>
             </div>
           </th>
 
-          <th class="rotate">
+          <th class="rotate nuts">
             <div>
               <span>Nuts</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate nuts">
             <div>
               <span>Peanuts</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate nuts">
             <div>
               <span>Sesame seeds</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate sea">
             <div>
               <span>Fish</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate sea">
             <div>
               <span>Crustaceans</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate sea">
             <div>
               <span>Molluscs</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate dairy">
             <div>
               <span>Eggs</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate dairy">
             <div>
               <span>Milk</span>
             </div>
           </th>
           <th class="rotate">
             <div>
-              <span>Cereals containing gluten</span>
+              <span>Cereals cont. gluten</span>
             </div>
           </th>
           <th class="rotate">
@@ -76,17 +76,17 @@
               <span>Mustard</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate sulphites">
             <div>
               <span>Soya</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate sulphites">
             <div>
               <span>Sulphur dioxide</span>
             </div>
           </th>
-          <th class="rotate">
+          <th class="rotate sulphites">
             <div>
               <span>Other</span>
             </div>
@@ -94,33 +94,33 @@
         </tr>
         <tr id="svg">
           <th class="itemname" nowrap>Item name</th>
-          <th><i class="fa fa-trash-o"></i></th>
-          <th>
+          <th class="trash"><i class="fa fa-trash-o"></i></th>
+          <th class="diet">
             <img src="modules/grids/img/bones.svg">
           </th>
 
-          <th>
+          <th class="nuts">
             <img src="modules/grids/img/nuts.svg">
           </th>
-          <th>
+          <th class="nuts">
             <img src="modules/grids/img/peanuts.svg">
           </th>
-          <th>
+          <th class="nuts">
             <img src="modules/grids/img/sesame.svg">
           </th>
-          <th>
+          <th class="sea">
             <img src="modules/grids/img/fish.svg">
           </th>
-          <th>
+          <th class="sea">
             <img src="modules/grids/img/crustacean.svg">
           </th>
-          <th>
+          <th class="sea">
             <img src="modules/grids/img/mollusc.svg">
           </th>
-          <th>
+          <th class="dairy">
             <img src="modules/grids/img/eggs.svg">
           </th>
-          <th>
+          <th class="dairy">
             <img src="modules/grids/img/milk.svg">
           </th>
           <th>
@@ -132,17 +132,17 @@
           <th>
             <img src="modules/grids/img/celery.svg">
           </th>
-          <th>
+          <th class="">
             <img src="modules/grids/img/mustard.svg">
           </th>
-          <th>
+          <th class="sulphites">
             <img src="modules/grids/img/soy.svg">
           </th>
-          <th>
+          <th class="sulphites">
             <img src="modules/grids/img/sulphur.svg">
           </th>
-          <th>
-            Other
+          <th class="sulphites">
+            <img src="modules/grids/img/other.svg">
           </th>
         </tr>
       </thead>
@@ -181,7 +181,7 @@
               <button class="btn btn-sm btn-success" ng-click='newRowLogicFn()' ng-class="{'disabled': !placeholderRow.item.name}" id="save">
                 <i class="fa fa-check"></i>
               </button>
-              <textarea class="form-control msd-elastic dish" placeholder="Dish name" data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
+              <textarea class="form-control msd-elastic dish" placeholder="Type a dish..." data-ng-model="placeholderRow.item.name" data-ng-keypress="addNewRowFn($event)"></textarea>
 
             </div>
 
@@ -227,16 +227,6 @@
       </tbody>
     </table>
 
-    <p class="text-muted small">
-      <strong><i class="fa fa-fw fa-lg fa-keyboard-o"></i></strong>
-      Add a : to make a new section,
-      <em>eg</em>
-      <span class="b">Lunch:</span> or
-      <span class="b">Dinner:</span>
-      <strong style="color: #000; margin: 0 5px;">&bull;</strong>
-      Use - or * to add components / ingredients to the dish.
-      <strong style="color: #000; margin: 0 5px;">&bull;</strong>
-      You can edit anything, any time.
-    </p>
+
   </div>
 </div>

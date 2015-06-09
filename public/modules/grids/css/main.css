@@ -122,7 +122,7 @@
   margin-right: 10px;
 }
 body {
-  background: #f9f9f9 !important;
+  background: #ffff !important;
 }
 #packshot {
   -webkit-box-shadow: 2px 2px 20px #cccccc;
@@ -150,11 +150,12 @@ h5 {
   padding: 5px 10px;
 }
 #allergygrid th {
-  background: #d9e6c2;
+  background: #e9f0db;
   font-weight: normal;
   font-size: 12px;
   border-color: #95ba55;
   border-collapse: collapse;
+  border-bottom: 1px solid #999;
 }
 @media (max-width: 992px) {
   #allergygrid th img {
@@ -162,9 +163,42 @@ h5 {
     height: 30px;
   }
 }
+#allergygrid th.white {
+  background: #fff;
+  border: 1px solid #fff;
+  border-bottom: 1px solid #999;
+}
+#allergygrid th.trash {
+  border-right: 1px solid #999;
+}
+#allergygrid th.diet {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #999;
+  border-right: 1px solid #d04a05;
+}
+#allergygrid th.nuts {
+  background: #fee4d6;
+  border: 1px solid #d04a05;
+  border-bottom: 1px solid #999;
+}
+#allergygrid th.sea {
+  background: #d7f0f6;
+  border: 1px solid #8cd3e6;
+}
+#allergygrid th.dairy {
+  background: #f9f3e2;
+  border: 1px solid #eddaa2;
+  border-bottom: 1px solid #999;
+}
+#allergygrid th.sulphites {
+  background: #f2d9e9;
+  border: 1px solid #c14895;
+  border-bottom: 1px solid #999;
+}
 @media (max-width: 992px) {
   #allergygrid th.rotate {
-    height: 170px;
+    height: 125px;
     white-space: nowrap;
   }
   #allergygrid th.rotate > div {
@@ -318,7 +352,7 @@ h5 {
   border-right: 1px solid #ccc !Important;
 }
 #allergygrid .newdish td {
-  background: #eee;
+  background: #ffe;
 }
 #allergygrid td {
   vertical-align: middle;
@@ -346,8 +380,16 @@ h5 {
   height: auto;
 }
 .navbar .navbar-nav li a {
-  padding: 2px 10px;
   margin-top: 1px;
+  padding: 5px 10px;
+}
+.navbar .navbar-nav li a.btn {
+  text-transform: uppercase !Important;
+  padding: 8px 10px;
+  margin-top: -3px;
+}
+.navbar .navbar-nav li a i {
+  font-weight: bold;
 }
 #menus {
   -webkit-border-radius: 20px;
@@ -520,24 +562,36 @@ tags-input .tags .tag-item .remove-button {
 .floatThead-table th img {
   width: 30px;
 }
+#survey {
+  position: fixed !important;
+  bottom: 20px;
+  left: 0;
+  font-size: 16px;
+  width: 100%;
+  padding: 5px 10px;
+  text-align: center;
+  background: #ffc;
+  border-top: 2px solid #f90;
+}
+#survey .btn {
+  font-size: 16px;
+  padding: 4px 15px;
+  text-shadow: 1px 1px 2px #000;
+}
 #footer {
   position: fixed !important;
   bottom: 0;
   left: 0;
-  font-size: 20px;
+  font-size: 12px;
   color: #fff;
   width: 100%;
-  padding: 10px;
-  text-align: center;
-  background: #eee;
-  border-top: 2px solid red;
-  background: url('https://s3-eu-west-1.amazonaws.com/content.cleanipedia.com/wp-content/uploads/2013/08/N19-2_CleanChoppingBoard-575x375.jpg');
-  background-size: cover;
-  text-shadow: 1px 1px 2px #000;
+  padding: 2px 10px;
+  text-align: left;
+  background: #000;
 }
-#footer .btn {
-  font-size: 20px;
-  padding: 8px 20px;
-  margin-top: 10px;
-  font-weight: normal;
+#footer a {
+  color: #ccc;
+}
+#footer a:hover {
+  color: #fff;
 }
