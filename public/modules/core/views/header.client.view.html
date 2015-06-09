@@ -1,3 +1,14 @@
+<div id="top">
+    <a ui-sref='about'>About</a>
+    <a ui-sref='privacy'>Terms of use</a>
+
+    <div class="pull-right">
+        <a href='https://www.facebook.com/foodtradeHQ' target="_blank"><i class="fa fa-facebook-square"></i></a>
+        <a href='https://twitter.com/foodtradeHQ' target="_blank"><i class="fa fa-twitter-square"></i></a>
+    </div>
+
+</div>
+
 <div class="container-reponsive" data-ng-controller="HeaderController">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -49,7 +60,7 @@
             <!-- only show if user is logged in -->
             <li ng-if='authentication.user'><a ui-sref='dashboard'>Dashboard</a></li>
             <!--or if not, show -->
-            <li ng-if='!authentication.user'><a data-toggle="modal" data-target="#signinModal">Already have an account? <strong> Log in</strong></a></li>
+            <li ng-if='!authentication.user'><a data-toggle="modal" data-target="#signinModal">Already registered? <strong> Log in</strong></a></li>
             <li ng-if='authentication.user'><a href='/auth/signout'>Log Out</a></li>
 
             <!-- <li><a ui-sref='about'>About</a></li> -->
@@ -95,8 +106,8 @@
 
 
 <div id="survey">
-    <strong>We're new!</strong> Please will you help us by answering a few quick questions?
-    <a target="_blank" href="https://docs.google.com/forms/d/1CQ_4FY6AsF6cFng9kBILxQEvR9ftwVDGEeNXeiWN4bY/viewform" class="btn btn-warning">Sure! Ask me!</a>
+    Please take <strong>2 minutes to help us improve</strong>  by answering a few quick questions
+    <a target="_blank" href="https://docs.google.com/forms/d/1CQ_4FY6AsF6cFng9kBILxQEvR9ftwVDGEeNXeiWN4bY/viewform" class="btn btn-warning">Sure, I'll help!</a>
 </div>
 <div id="footer">
     <a ui-sref='about'>About</a>
