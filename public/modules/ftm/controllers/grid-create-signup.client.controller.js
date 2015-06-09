@@ -7,7 +7,7 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
 
     // Create new Grid
     $scope.grid = {
-      name: moment().format('LLL')
+        name: "My Menu ("+moment().format('Do MMM')+")"
     };
     $scope.user = {};
     $scope.account = {};
@@ -119,6 +119,6 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       });
     };
 
-    
+
   }
 ]);
