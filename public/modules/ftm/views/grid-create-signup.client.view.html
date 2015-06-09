@@ -73,7 +73,7 @@
 							<div class="form-group">
 								<label class="col-md-3 control-label" for="postcode">Postal code</label>
 								<div class="col-md-8">
-									<input id="postcode" name="postcode" type="text" placeholder="Postal code" class="form-control input-md" required="" ng-model='establishment.PostCode' ng-keypress='establishmentFsaSuggestionFn(establishment.PostCode)'>
+									<input id="postcode" name="postcode" type="text" placeholder="Postal code" class="form-control input-md" required="" ng-model='establishment.PostCode' ng-keyup='establishmentFsaSuggestionFn()'>
 									<span class="help-block">Business postal / zip code</span>
 									<p class='bg-success'>
 										<ul>

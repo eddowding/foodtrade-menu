@@ -119,12 +119,13 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       });
     };
 
-    $scope.establishmentFsaSuggestionFn = function(postcode) {
+    $scope.establishmentFsaSuggestionFn = function() {
+      var postcode = $scope.establishment.PostCode;
       $scope.fsaEstablishments = [];
       if (!postcode) {
         return;
       }
-      if (postcode.length % 3) {
+      if (postcode.length >= 2) {
         var fsaReq = {
           method: 'GET',
           url: 'http://api.ratings.food.gov.uk/Establishments',
