@@ -119,7 +119,8 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       });
     };
 
-    $scope.establishmentFsaSuggestionFn = function(postcode) {
+    $scope.establishmentFsaSuggestionFn = function() {
+      var postcode = $scope.establishment.PostCode;
       $scope.fsaEstablishments = [];
       if (!postcode) {
         return;
