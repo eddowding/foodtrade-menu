@@ -141,7 +141,7 @@ h5 {
   border-color: slategrey;
 }
 #main {
-  margin-top: 60px;
+  margin-top: 80px;
   padding: 10px 10px 80px 10px;
   background: #fff;
 }
@@ -361,6 +361,7 @@ h5 {
 }
 .navbar {
   border-bottom: 1px solid #ccc;
+  top: 18px;
   height: 51px;
   background: #fff;
   min-height: 28px;
@@ -500,10 +501,20 @@ tags-input .tags .tag-item {
 tags-input .tags .tag-item .remove-button {
   color: rgba(255, 255, 255, 0.6);
 }
+.modal-header {
+  background: #d9e6c2;
+  padding: 6px 15px 0 15px;
+}
 @media (max-width: 992px) {
   .modal-body .form-group {
     margin-bottom: 3px;
   }
+}
+.modal-body ul {
+  padding: 0 20px 20px 20px;
+}
+.modal-body h4 {
+  border-bottom: 1px solid #ccc;
 }
 .itemname .name {
   font-weight: bold;
@@ -576,8 +587,9 @@ tags-input .tags .tag-item .remove-button {
 #survey .btn {
   font-size: 16px;
   padding: 4px 15px;
-  text-shadow: 1px 1px 2px #000;
+  text-shadow: 1px 1px 2px #610;
 }
+#top,
 #footer {
   position: fixed !important;
   bottom: 0;
@@ -589,9 +601,16 @@ tags-input .tags .tag-item .remove-button {
   text-align: left;
   background: #000;
 }
+#top a,
 #footer a {
   color: #ccc;
 }
+#top a:hover,
 #footer a:hover {
   color: #fff;
+}
+#top {
+  top: 0;
+  bottom: auto;
+  background: #444;
 }

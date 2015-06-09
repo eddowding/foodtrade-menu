@@ -44,26 +44,25 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h4 class="modal-title" id="myModalLabel">How to...</h4>
+	        <span class="pull-right" data-dismiss="modal"><i class="fa fa-times"></i></span>
+	        <h3 class="modal-title" id="myModalLabel">How to...</h3>
 	      </div>
 	      <div class="modal-body">
-
-			<h4><i class="fa fa-fw fa-lg fa-keyboard-o"></i> Keyboard shortcuts</h4>
-			<p class="">
-
-		      Add a : to make a new section,
-		      <em>eg</em>
-		      <span class="b">Lunch:</span> or
-		      <span class="b">Dinner:</span>
-		      <strong style="color: #000; margin: 0 5px;">&bull;</strong>
-		      Use - or * to add components / ingredients to the dish.
-		      <strong style="color: #000; margin: 0 5px;">&bull;</strong>
-		      You can edit anything, any time.
-		    </p>
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click='commonSigninFn()'>Signin</button>
+			<h4>Entering items</h4>
+			<ul>
+				<li>
+					<strong>Add a new section</strong> by typing a : (colon) after the section name. Eg <code>Lunch:</code>
+				</li>
+				<li>
+					<strong>Add ingredients to dishes</strong> by adding a - or * before the item. Eg <code>- fried egg</code> or <code>* salad dressing</code>
+				</li>
+			</ul>
+			<h4>Tips</h4>
+			<ul>
+				<li>
+					You can edit anything, any time - just click on it!
+				</li> 
+			</ul>
 	      </div>
 	    </div>
 	  </div>

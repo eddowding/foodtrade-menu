@@ -28,7 +28,7 @@ h5 {
   border-color: slategrey;
 }
 #main {
-    margin-top: 60px;
+    margin-top: 80px;
     padding: 10px 10px 80px 10px;
     background: #fff;
 }
@@ -270,6 +270,7 @@ h5 {
 }
 .navbar {
     border-bottom: 1px solid #ccc;
+    top: 18px;
     height: 51px;
     background: #fff;
     min-height: 28px;
@@ -413,11 +414,25 @@ tags-input .tags .tag-item {
 }
 
 
+
+.modal-header {
+    background: @light;
+    padding: 6px 15px 0 15px;
+    h3 {
+        // color:
+    }
+}
 .modal-body {
     .form-group {
         @media (max-width: 992px) {
             margin-bottom: 3px;
         }
+    }
+    ul {
+        padding: 0 20px 20px 20px;
+    }
+    h4 {
+        border-bottom: 1px solid #ccc;
     }
 }
 
@@ -522,10 +537,11 @@ tags-input .tags .tag-item {
     .btn {
         font-size: 16px;
         padding: 4px 15px;
-        text-shadow: 1px 1px 2px #000;
+        text-shadow: 1px 1px 2px #610;
     }
 }
 
+#top,
 #footer {
     position: fixed !important;
     bottom: 0;
@@ -542,4 +558,10 @@ tags-input .tags .tag-item {
             color: #fff;
         }
     }
+}
+
+#top {
+    top: 0;
+    bottom: auto;
+    background: #444;
 }
