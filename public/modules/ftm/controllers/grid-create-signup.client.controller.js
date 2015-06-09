@@ -124,7 +124,7 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       if (!postcode) {
         return;
       }
-      if (postcode.length % 3) {
+      if (postcode.length >= 2) {
         var fsaReq = {
           method: 'GET',
           url: 'http://api.ratings.food.gov.uk/Establishments',
