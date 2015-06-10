@@ -96,12 +96,12 @@
                     </li>
                 </ul>
             </li> -->
-            <li ng-show="$state.includes('grid-create-signup')">
+            <li ng-show="$state.includes('grid-create-signup')" id="save">
                 <p class="navbar-btn nomargin">
 
-                <a ng-show="authentication.user" onclick='$(".create-grid-submit").trigger("click")' class="btn btn-lg btn-info" ng-class="{'disabled': !enableSaveBtn}"> <i class="fa fa-save fa-lg fa-fw"></i> Save</a>
+                <a ng-show="authentication.user" onclick='$(".create-grid-submit").trigger("click")' class="btn btn-lg btn-info save" ng-class="{'disabled': !enableSaveBtn}"> <i class="fa fa-save fa-lg fa-fw "></i> Save</a>
 
-                <a ng-hide="authentication.user" data-toggle="modal" data-target="#signupModal" class="btn btn-lg btn-success" ng-class="{'disabled': !enableSaveBtn}"><i class="fa  fa-lg fa-save fa-fw"></i> Save</a>
+                <a ng-hide="authentication.user" data-toggle="modal" data-target="#signupModal" class=" save btn btn-lg btn-success" ng-class="{'disabled': !enableSaveBtn}"><i class="fa  fa-lg fa-save fa-fw "></i> Save</a>
 
                 </p>
             </li>

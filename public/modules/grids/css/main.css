@@ -470,6 +470,7 @@ h5 {
 .actions {
   text-align: left;
   margin: 0;
+  background: #ffe;
 }
 .actions a {
   margin-right: 3px;
@@ -621,4 +622,17 @@ tags-input .tags .tag-item .remove-button {
 #top .btn {
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #fff !important;
+}
+.onboarding-focus {
+  z-index: 100000;
+  position: relative;
+}
+td.onboarding-focus .popover {
+  position: absolute;
+  left: -85px !important;
+  top: 50px !important;
+  width: 210px;
+}
+.onboarding-popover.onboarding-top {
+  margin-top: 80px;
 }
