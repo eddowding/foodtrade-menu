@@ -12,55 +12,65 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       $scope.onboardingEnabled = true;
     }, 2000);
 
-    $scope.onboardingSteps = [{
+    $scope.onboardingSteps = [
+
+        {
       title: "Welcome",
       position: "centered",
-      description: "Welcome to Algo, we will take you through the steps to create your first grid"
-    }, {
+      description: "Welcome to FoodTrade. Let's take a 20 second tour so show you how this works."
+    }, 
+
+    {
       title: "Dish Input",
       position: "top",
       description: "Just start typing your first dish to get started",
-      attachTo: "textarea.dish"
+      attachTo: "td.itemname",
+      xOffset: "-80",
     }, {
       title: "Detail Links",
       position: "top",
-      description: "You can add more details if you wish",
-      attachTo: ".note-toggle"
+      description: "You can add a description, price, and other characteristics. These are not required.",
+      attachTo: ".actions"
     }, {
       title: "Diet Select",
       position: "top",
-      description: "Say if it's vegetarian / vegan etc",
+      description: "Say if the dish is vegetarian, vegan, pescatarian...",
       attachTo: ".veggie-select"
     }, {
       title: "Allergen Box",
       position: "top",
       description: "Click the box if it contains an allergen. Allergens can be removable or fixed, and some require more details",
-      attachTo: ".cell-edit-new:first"
-    }, {
-      title: "Green Tick Submit Button",
-      position: "top",
-      description: "Press the return key or click this button to save",
-      attachTo: "#save"
-    }, {
-      title: "Menu Name",
-      position: "bottom",
-      description: "You can change the name of your menu here. You can have unlimited menus, so maybe have one for different seasons or times of day",
-      attachTo: "#name"
-    }, {
-      title: "Share Links",
-      position: "bottom",
-      description: "Since we're in the top left corner, please share us if you like it. We're free and your clicks make us want to do more",
-      attachTo: ".btn-twitter"
-    }, {
+    //   attachTo: ".cell-edit-new:first"
+      attachTo: "#allergygrid .newdish td:nth-child(4)"
+    },
+
+    //  {
+    //   title: "Menu Name",
+    //   position: "centered",
+    //   description: "You can change the name of your menu. You can have unlimited menus, so maybe have one for different seasons or times of day",
+    //   attachTo: "#name"
+    // },
+    // {
+    //   title: "Share Links",
+    //   position: "bottom",
+    //   description: "Since we're in the top left corner, please share us if you like it. We're free and your clicks make us want to do more",
+    //   attachTo: ".btn-twitter"
+    // },
+
+    {
       title: "Save Button",
-      position: "bottom",
-      description: "Save your list by creating a free account",
-      attachTo: ".btn.btn-lg.btn-success"
-    }, {
-      title: "Help Link in Header",
       position: "centered",
-      description: "Click 'help' for more information and tips"
-    }];
+      description: "Save your list by clicking the green 'Save' button at the top of the page",
+      attachTo: "#save .save"
+    },
+
+    // {
+    //   title: "Help Link in Header",
+    //   position: "centered",
+    //   description: "Click 'help' in the top right for more information and tips"
+    // }
+
+    ];
     $scope.onboardingIndex = 0;
     $scope.onboardingFinishFn = function() {
       $('.cell-edit-new:first').trigger('click');
