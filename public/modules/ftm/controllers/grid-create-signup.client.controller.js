@@ -145,5 +145,19 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
     $scope.selectFsaEstFn = function(fsaEst) {
       $scope.establishment = fsaEst;
     };
+
+    $scope.$watch('fullName', function(newValue, oldValue) {
+      if (newValue) {
+        var nameSplit = newValue.split(' ');
+        if (nameSplit.length > 0) {
+          if (nameSplit.length == 1) {
+            $scope.user.firstName = nameSplit[0];
+          } else {
+            $scope.user.firstName = nameSplit[0];
+            $scope.user.lastName = nameSplit[nameSplit - 1];
+          }
+        }
+      }
+    });
   }
 ]);
