@@ -1,11 +1,17 @@
 'use strict';
 
 // Grids controller
-angular.module('grids').controller('GridCreateSignupController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http',
-  function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http) {
+angular.module('grids').controller('GridCreateSignupController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http', '$timeout',
+  function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http, $timeout) {
     $scope.authentication = Authentication;
     //onboarding
-    $scope.onboardingEnabled = true;
+    $scope.onboardingEnabled = false;
+
+    $timeout(function () {
+      $('.cell-edit-new:first').trigger('click');
+      $scope.onboardingEnabled = true;
+    }, 2000);
+
     $scope.onboardingSteps = [{
       title: "Welcome",
       position: "centered",
@@ -25,6 +31,35 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       position: "top",
       description: "Say if it's vegetarian / vegan etc",
       attachTo: ".veggie-select"
+    }, {
+      title: "Allergen Box",
+      position: "top",
+      description: "Click the box if it contains an allergen. Allergens can be removable or fixed, and some require more details",
+      attachTo: ".cell-edit-new:first"
+    }, {
+      title: "Green Tick Submit Button",
+      position: "top",
+      description: "Press the return key or click this button to save",
+      attachTo: "#save"
+    }, {
+      title: "Menu Name",
+      position: "bottom",
+      description: "You can change the name of your menu here. You can have unlimited menus, so maybe have one for different seasons or times of day",
+      attachTo: "#name"
+    }, {
+      title: "Share Links",
+      position: "bottom",
+      description: "Since we're in the top left corner, please share us if you like it. We're free and your clicks make us want to do more",
+      attachTo: ".btn-twitter"
+    }, {
+      title: "Save Button",
+      position: "bottom",
+      description: "Save your list by creating a free account",
+      attachTo: ".btn.btn-lg.btn-success"
+    }, {
+      title: "Help Link in Header",
+      position: "centered",
+      description: "Click 'help' for more information and tips"
     }];
     $scope.onboardingIndex = 0;
     $scope.onboardingFinishFn = function() {
