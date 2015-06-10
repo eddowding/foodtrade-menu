@@ -63,7 +63,8 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
     }];
     $scope.onboardingIndex = 0;
     $scope.onboardingFinishFn = function() {
-      console.log('Onboard finished');
+      $('.cell-edit-new:first').trigger('click');
+      console.info('Onboard finished');
     };
 
 
