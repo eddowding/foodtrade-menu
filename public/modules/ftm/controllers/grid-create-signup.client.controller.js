@@ -4,10 +4,37 @@
 angular.module('grids').controller('GridCreateSignupController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http',
   function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http) {
     $scope.authentication = Authentication;
+    //onboarding
+    $scope.onboardingEnabled = true;
+    $scope.onboardingSteps = [{
+      title: "Welcome",
+      position: "centered",
+      description: "Welcome to Algo, we will take you through the steps to create your first grid"
+    }, {
+      title: "Dish Input",
+      position: "top",
+      description: "Just start typing your first dish to get started",
+      attachTo: "textarea.dish"
+    }, {
+      title: "Detail Links",
+      position: "top",
+      description: "You can add more details if you wish",
+      attachTo: ".note-toggle"
+    }, {
+      title: "Diet Select",
+      position: "top",
+      description: "Say if it's vegetarian / vegan etc",
+      attachTo: ".veggie-select"
+    }];
+    $scope.onboardingIndex = 0;
+    $scope.onboardingFinishFn = function() {
+      console.log('Onboard finished');
+    };
+
 
     // Create new Grid
     $scope.grid = {
-       name: "My Menu ("+moment().format('Do MMM')+")"
+      name: "My Menu (" + moment().format('Do MMM') + ")"
     };
     $scope.user = {};
     $scope.account = {};
@@ -51,9 +78,9 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       // Redirect after save
       grid.$save(function(response) {
         analytics.track('Grid Created', {
-  				gridId: response._id,
+          gridId: response._id,
           gridName: response.name
-				});
+        });
         $location.path('grids/' + response._id);
 
         // Clear form fields
@@ -77,8 +104,8 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
           .then(function(account) {
             $scope.account = account;
             analytics.track('Account Created', {
-      				accountId: account._id
-    				});
+              accountId: account._id
+            });
           });
         $scope.establishment.user = response._id;
         Establishments.save($scope.establishment)
@@ -86,9 +113,9 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
           .then(function(establishment) {
             $scope.establishment = establishment;
             analytics.track('Establishment Created', {
-      				establishmentId: establishment._id,
+              establishmentId: establishment._id,
               businessName: establishment.BusinessName
-    				});
+            });
           });
         $scope.create();
       }).error(function(response) {
@@ -106,14 +133,14 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
         });
         $scope.grid.user = response._id;
         Grids.save($scope.grid)
-        .$promise
-        .then(function(grid) {
-          analytics.track('Grid Created', {
-    				gridId: grid._id,
-            gridName: grid.name
-  				});
-          $location.path('/dashboard');
-        });
+          .$promise
+          .then(function(grid) {
+            analytics.track('Grid Created', {
+              gridId: grid._id,
+              gridName: grid.name
+            });
+            $location.path('/dashboard');
+          });
       }).error(function(response) {
         $scope.error = response.message;
       });
@@ -129,7 +156,9 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
         var fsaReq = {
           method: 'GET',
           url: 'http://api.ratings.food.gov.uk/Establishments',
-          params: {address: postcode.slice(0, 3)},
+          params: {
+            address: postcode.slice(0, 3)
+          },
           headers: {
             'x-api-version': 2
           }

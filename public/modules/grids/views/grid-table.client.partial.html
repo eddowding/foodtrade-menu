@@ -200,7 +200,7 @@
 
             <div class="actions" ng-show="!placeholderRow.item.hasNote || !placeholderRow.item.hasPrice || !placeholderRow.item.hasCharacteristic">
               add:
-              <a data-toggle="collapse" ng-click='toggleNoteFn()' ng-show="!placeholderRow.item.hasNote">notes</a>
+              <a data-toggle="collapse" ng-click='toggleNoteFn()' ng-show="!placeholderRow.item.hasNote" class='note-toggle'>notes</a>
               <a data-toggle="collapse" ng-click='togglePriceFn()' ng-show="!placeholderRow.item.hasPrice">price</a>
               <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
             </div>
@@ -208,7 +208,7 @@
           </td>
           <td></td>
           <td>
-            <select data-ng-model='placeholderRow.veggie.type'>
+            <select data-ng-model='placeholderRow.veggie.type' class='veggie-select'>
               <option value='Meat'>Meat</option>
               <option value='Veggie'>Veggie</option>
               <option value='Fish'>Fish</option>
