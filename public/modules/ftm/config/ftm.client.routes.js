@@ -10,7 +10,7 @@ angular.module('ftm').config(['$stateProvider',
 			templateUrl: 'modules/ftm/views/terms.client.view.html'
 		}).
 		state('grid-create-signup', {
-			url: '/grid-create-signup',
+			url: '/',
 			templateUrl: 'modules/ftm/views/grid-create-signup.client.view.html'
 		}).
 		state('about', {
