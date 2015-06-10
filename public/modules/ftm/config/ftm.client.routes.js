@@ -5,9 +5,9 @@ angular.module('ftm').config(['$stateProvider',
 	function($stateProvider) {
 		// Ftm state routing
 		$stateProvider.
-		state('privacy', {
-			url: '/privacy',
-			templateUrl: 'modules/ftm/views/privacy.client.view.html'
+		state('terms', {
+			url: '/terms',
+			templateUrl: 'modules/ftm/views/terms.client.view.html'
 		}).
 		state('grid-create-signup', {
 			url: '/grid-create-signup',

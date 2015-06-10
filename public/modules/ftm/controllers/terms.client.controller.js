@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ftm').controller('PrivacyController', ['$scope',
+angular.module('ftm').controller('TermsController', ['$scope',
 	function($scope) {
 		// Controller Logic
 		// ...
