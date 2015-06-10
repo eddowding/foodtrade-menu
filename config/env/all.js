@@ -19,7 +19,8 @@ module.exports = {
                 'public/lib/ng-tags-input/ng-tags-input.css',
                 'public/lib/ng-tags-input/ng-tags-input.bootstrap.css',
                 'public/lib/sweetalert/dist/sweetalert.css',
-								'public/lib/angular-xeditable/dist/css/xeditable.css'
+								'public/lib/angular-xeditable/dist/css/xeditable.css',
+								'public/lib/ngOnboarding/dist/ng-onboarding.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -42,7 +43,8 @@ module.exports = {
 								'public/lib/angular-xeditable/dist/js/xeditable.js',
 								'public/lib/ng-autofocus/dist/ng-autofocus.js',
 								'public/lib/floatThead/dist/jquery.floatThead.js',
-								'public/lib/moment/moment.js'
+								'public/lib/moment/moment.js',
+								'public/lib/ngOnboarding/dist/ng-onboarding.js'
 
 			]
 		},

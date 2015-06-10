@@ -23,6 +23,7 @@
     "angular-xeditable": "~0.1.9",
     "ng-autofocus": "~0.0.1",
     "floatThead": "~1.2.12",
-    "moment": "~2.10.3"
+    "moment": "~2.10.3",
+    "ngOnboarding": "~0.1.7"
   }
 }
