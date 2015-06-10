@@ -125,17 +125,18 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
         $scope.fsaEstablishments = [];
         return;
       }
-      if (postcode.length >= 2) {
+      if (postcode.length >= 3) {
         var fsaReq = {
           method: 'GET',
           url: 'http://api.ratings.food.gov.uk/Establishments',
-          params: {address: postcode, pageSize: 10},
+          params: {address: postcode.slice(0, 3)},
           headers: {
             'x-api-version': 2
           }
         };
 
         $http(fsaReq).success(function(data) {
+          $scope.establishment.BusinessName = null;
           $scope.fsaEstablishments = data.establishments;
         });
       }
