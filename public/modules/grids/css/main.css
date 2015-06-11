@@ -636,3 +636,24 @@ td.onboarding-focus .popover {
 .onboarding-popover.onboarding-top {
   margin-top: 80px;
 }
+#fsa_results {
+  max-height: 10em;
+  overflow: scroll;
+  border: 1px solid #ccc;
+  padding: 0;
+}
+#fsa_results li {
+  list-style: none;
+  border-bottom: 1px solid #eee;
+  line-height: 1.7;
+}
+#fsa_results li a {
+  color: navy;
+  padding: 0 10px;
+  width: 100%;
+  display: block;
+}
+#fsa_results li a:hover {
+  background: #eee;
+  text-decoration: none;
+}
