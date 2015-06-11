@@ -8,8 +8,10 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
     $scope.onboardingEnabled = false;
 
     $timeout(function () {
-      $('.cell-edit-new:first').trigger('click');
-      $scope.onboardingEnabled = true;
+      if (!$scope.authentication.user) {
+        $('.cell-edit-new:first').trigger('click');
+        $scope.onboardingEnabled = true;
+      }
     }, 2000);
 
     $scope.onboardingSteps = [
@@ -18,7 +20,7 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       title: "Welcome",
       position: "centered",
       description: "Welcome to FoodTrade. Let's take a 20 second tour so show you how this works."
-    }, 
+    },
 
     {
       title: "Dish Input",
@@ -73,7 +75,8 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
     ];
     $scope.onboardingIndex = 0;
     $scope.onboardingFinishFn = function() {
-      console.log('Onboard finished');
+      $('.cell-edit-new:first').trigger('click');
+      console.info('Onboard finished');
     };
 
 
