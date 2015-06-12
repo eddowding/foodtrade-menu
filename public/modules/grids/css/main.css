@@ -237,7 +237,7 @@ h5 {
 }
 .floatThead-table .itemname,
 #allergygrid .itemname {
-  white-space: nowrap !important;
+  white-space: normal !important;
   text-align: left !important;
 }
 .floatThead-table .itemname textarea,
@@ -566,6 +566,22 @@ h5 {
 .help-block {
   font-size: 12px;
   color: #999;
+}
+.required {
+  background: rgba(200, 50, 50, 0.03);
+  border: 1px solid #c00;
+}
+.required::-webkit-input-placeholder {
+  color: #cc0000;
+}
+.required:-moz-placeholder {
+  color: #cc0000;
+}
+.required::-moz-placeholder {
+  color: #cc0000;
+}
+.required:-ms-input-placeholder {
+  color: #cc0000;
 }
 tags-input .tags .tag-item {
   font-size: 12px;

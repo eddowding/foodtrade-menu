@@ -76,7 +76,7 @@ h5 {
         }
         &.sea {
             background: lighten(rgb(140, 211, 230),18%) !important;
-            border: 1px solid rgb(140, 211, 230); 
+            border: 1px solid rgb(140, 211, 230);
         }
         &.green {
             background: lighten(@light,7%) !important;
@@ -107,7 +107,7 @@ h5 {
         }
     }
     .itemname {
-        white-space: nowrap !important;
+        white-space: normal !important;
         text-align: left !important;
         textarea {
             height: 30px;
@@ -195,7 +195,7 @@ h5 {
     #svg th {
         background: none;
         vertical-align: middle;
-        text-align: center; 
+        text-align: center;
         .foodicon {
             font-size: 30px;
             color: #000;
@@ -215,7 +215,7 @@ h5 {
         .itemname{
             color: #fff;
              &:hover {
-                .name:after {  
+                .name:after {
                     color: #eee !important;
                     text-transform: none;
                 }
@@ -423,6 +423,11 @@ h5 {
     font-size: 12px;
     color: #999;
 }
+.required {
+    background: rgba(200,50,50,0.03);
+    border: 1px solid #c00;
+    .placeholder(#c00);
+}
 
 // TAGS
 tags-input .tags .tag-item {
@@ -539,12 +544,12 @@ tags-input .tags .tag-item {
         font-weight: normal;
         font-size: 10px;
         height: 70px;
-        z-index: 10000; 
+        z-index: 10000;
         i {
             font-size: 30px;
         }
     }
-    .hm, 
+    .hm,
     #allergynames {
         display: none;
     }
