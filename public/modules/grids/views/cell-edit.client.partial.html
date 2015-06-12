@@ -17,7 +17,7 @@
 
             <div class="form- group">
                 <label for="exampleInputName2" class="sr-only">Allergen name</label>
-                <input type="text" class="form-control input-sm" id="nnn" placeholder="Notes / specify allergen(s)" ng-model='placeholderCell.allergens' ng-hide='placeholderCell.allergenType=="No allergen"' ng-keypress='inputDismissFn($event)'>
+                <input type="text" class="form-control input-sm" id="nnn" placeholder="Notes / specify allergen(s)" ng-model='placeholderCell.allergens' ng-hide='placeholderCell.allergenType=="No allergen"' ng-keypress='inputDismissFn($event)' ng-class="{'required': specialColumnAllergenReqFn()}">
             </div>
         </div>
 
