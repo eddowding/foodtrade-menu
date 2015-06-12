@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/alrg-dev',
+	db: 'mongodb://localhost/alrg',
 	app: {
 		title: 'FoodTrade Menu - simple allergen compliance'
 	},
