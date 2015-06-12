@@ -274,12 +274,13 @@ angular.module('grids').directive('grid', [function() {
 
       scope.nameEditBlurFn = function(item) {
         item.isEdit = false;
+        return;
         scope.updateSectionsFn();
         scope.saveGridFn();
       };
 
       scope.$watch('grid.name', function(newValue, oldValue) {
-        if (newValue) {
+        if (newValue && newValue !== oldValue) {
           scope.saveGridFn();
         }
       });
