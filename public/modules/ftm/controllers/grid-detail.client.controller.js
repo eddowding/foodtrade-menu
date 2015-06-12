@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('ftm').controller('GridDetailController', ['$scope', 'Authentication', '$stateParams', 'Grids', '$location',
-  function($scope, Authentication, $stateParams, Grids, $location) {
+angular.module('ftm').controller('GridDetailController', ['$scope', 'Authentication', '$stateParams', 'Grids', '$location', 'ngProgress',
+  function($scope, Authentication, $stateParams, Grids, $location, ngProgress) {
+    ngProgress.start();
     $scope.authentication = Authentication;
     $scope.gridId = $stateParams.gridId;
 
@@ -13,6 +14,7 @@ angular.module('ftm').controller('GridDetailController', ['$scope', 'Authenticat
     .then(function(grid) {
       $scope.grid = grid;
       $('#allergygrid').floatThead();
+      ngProgress.complete();
     });
 
     $scope.getPrintAbsoluteUrlFn = function(grid) {

@@ -1,8 +1,9 @@
 'use strict';
 
 // Grids controller
-angular.module('grids').controller('GridCreateSignupController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http', '$timeout',
-  function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http, $timeout) {
+angular.module('grids').controller('GridCreateSignupController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http', '$timeout', 'ngProgress',
+  function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http, $timeout, ngProgress) {
+    ngProgress.start();
     $scope.authentication = Authentication;
     //onboarding
     $scope.onboardingEnabled = false;
@@ -237,5 +238,6 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
       }
     });
     $('[data-toggle="tooltip"]').tooltip();
+    ngProgress.complete();
   }
 ]);
