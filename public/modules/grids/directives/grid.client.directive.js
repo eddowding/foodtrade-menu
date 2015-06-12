@@ -275,7 +275,7 @@ angular.module('grids').directive('grid', [function() {
       scope.nameEditBlurFn = function(item) {
         item.isEdit = false;
         scope.updateSectionsFn();
-        scope.saveGridFn();
+        // scope.saveGridFn();
       };
 
       scope.$watch('grid.name', function(newValue, oldValue) {
