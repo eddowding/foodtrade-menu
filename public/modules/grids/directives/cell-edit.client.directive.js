@@ -41,6 +41,9 @@ angular.module('grids').directive('cellEdit', ['$compile',
               };
 
               scope.$watch('placeholderCell.allergenType', function(newValue, oldValue) {
+								if(newValue == oldValue) {
+									return;
+								}
                 if (newValue == 'No allergen') {
                   scope.saveCellEditFn();
                 }
