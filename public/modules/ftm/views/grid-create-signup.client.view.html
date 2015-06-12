@@ -86,7 +86,7 @@
 									<input id="establishment" name="establishment" type="text" placeholder="Start typing to match.. " class="form-control input-md" required="" ng-model='establishment.BusinessName' ng-disabled='!establishment.PostCode'>
 									<span class="help-block">This pulls information from the Food Standards Agency database. If you're not listed, click here</span>
 									<p class='bg-success'>
-										<ul>
+										<ul id="fsa_results">
 											<li ng-repeat='fsa in fsaEstablishments | filter: {BusinessName: establishment.BusinessName}'><a ng-click='selectFsaEstFn(fsa)'>{{fsa.BusinessName}}</a></li>
 										</ul>
 									</p>
