@@ -18,7 +18,7 @@ var GridSchema = new Schema({
 	},
     tableData: {
       type: Array,
-      default: {}
+      required: false
     },
 	created: {
 		type: Date,
