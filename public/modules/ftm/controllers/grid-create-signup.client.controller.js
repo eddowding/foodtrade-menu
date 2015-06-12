@@ -236,5 +236,6 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
         }
       }
     });
+    $('[data-toggle="tooltip"]').tooltip();
   }
 ]);
