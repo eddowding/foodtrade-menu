@@ -145,10 +145,12 @@ h5 {
   padding: 10px 10px 80px 10px;
   background: #fff;
 }
+.floatThead-table #save,
 #allergygrid #save {
   float: right;
   padding: 5px 10px;
 }
+.floatThead-table th,
 #allergygrid th {
   background: #e9f0db;
   font-weight: normal;
@@ -158,49 +160,68 @@ h5 {
   border-bottom: 1px solid #999;
 }
 @media (max-width: 992px) {
+  .floatThead-table th img,
   #allergygrid th img {
     width: 30px;
     height: 30px;
   }
 }
+.floatThead-table th.white,
 #allergygrid th.white {
-  background: #fff;
+  background: #fff !important;
   border: 1px solid #fff;
   border-bottom: 1px solid #999;
 }
+.floatThead-table th.trash,
 #allergygrid th.trash {
   border-right: 1px solid #999;
 }
+.floatThead-table th.diet,
 #allergygrid th.diet {
-  background: #eee;
+  background: #eee !important;
   border: 1px solid #ccc;
   border-bottom: 1px solid #999;
   border-right: 1px solid #d04a05;
 }
+.floatThead-table th.diet i,
+#allergygrid th.diet i {
+  color: #999 !important;
+}
+.floatThead-table th.nuts,
 #allergygrid th.nuts {
-  background: #fee4d6;
+  background: #fee4d6 !important;
   border: 1px solid #d04a05;
   border-bottom: 1px solid #999;
 }
+.floatThead-table th.sea,
 #allergygrid th.sea {
-  background: #d7f0f6;
+  background: #d7f0f6 !important;
   border: 1px solid #8cd3e6;
 }
+.floatThead-table th.green,
+#allergygrid th.green {
+  background: #e9f0db !important;
+  border: 1px solid #acc87a;
+}
+.floatThead-table th.dairy,
 #allergygrid th.dairy {
-  background: #f9f3e2;
+  background: #f9f3e2 !important;
   border: 1px solid #eddaa2;
   border-bottom: 1px solid #999;
 }
+.floatThead-table th.sulphites,
 #allergygrid th.sulphites {
-  background: #f2d9e9;
+  background: #f2d9e9 !important;
   border: 1px solid #c14895;
   border-bottom: 1px solid #999;
 }
 @media (max-width: 992px) {
+  .floatThead-table th.rotate,
   #allergygrid th.rotate {
     height: 125px;
     white-space: nowrap;
   }
+  .floatThead-table th.rotate > div,
   #allergygrid th.rotate > div {
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
@@ -209,14 +230,17 @@ h5 {
     transform: rotate(-90deg);
     width: 30px;
   }
+  .floatThead-table th.rotate > div > span,
   #allergygrid th.rotate > div > span {
     padding: 5px;
   }
 }
+.floatThead-table .itemname,
 #allergygrid .itemname {
   white-space: nowrap !important;
   text-align: left !important;
 }
+.floatThead-table .itemname textarea,
 #allergygrid .itemname textarea {
   height: 30px;
   padding: 1px 5px;
@@ -224,57 +248,72 @@ h5 {
   margin: 0 0 4px;
   width: 210px;
 }
+.floatThead-table .itemname .dish,
 #allergygrid .itemname .dish {
   float: left;
   width: 75%;
   height: 30px !important;
 }
+.floatThead-table .itemname input,
 #allergygrid .itemname input {
   margin-bottom: 4px;
   padding: 2px 5px;
   height: auto;
   width: 80%;
 }
+.floatThead-table .itemname select,
 #allergygrid .itemname select {
   width: 200px;
 }
+.floatThead-table .itemname small a,
 #allergygrid .itemname small a {
   margin-right: 2px;
   font-size: 10px;
   border-bottom: 1px dotted #aaa;
 }
+.floatThead-table .itemname small a:hover,
 #allergygrid .itemname small a:hover {
   text-decoration: none;
   border-bottom: 1px solid;
 }
+.floatThead-table .itemname .editable-click,
 #allergygrid .itemname .editable-click,
+.floatThead-table .itemname a.editable-click,
 #allergygrid .itemname a.editable-click {
   border: 0;
   display: block;
 }
+.floatThead-table .itemname .editable-empty,
 #allergygrid .itemname .editable-empty {
   visibility: hidden;
   display: inline-block !important;
 }
+.floatThead-table .itemname:hover .name:after,
 #allergygrid .itemname:hover .name:after {
   content: 'edit';
   font-weight: normal;
   color: #337ab7;
   padding: 0 5px;
 }
+.floatThead-table .itemname:hover .editable-empty,
 #allergygrid .itemname:hover .editable-empty {
   visibility: visible;
 }
+.floatThead-table .itemname:hover .editable-click,
 #allergygrid .itemname:hover .editable-click,
+.floatThead-table .itemname:hover a.editable-click,
 #allergygrid .itemname:hover a.editable-click {
   border-bottom: 1px dashed #337ab7;
 }
+.floatThead-table .ingredient,
 #allergygrid .ingredient {
   padding-left: 18px;
 }
+.floatThead-table .ingredient *,
 #allergygrid .ingredient * {
   font-weight: normal !important;
 }
+.floatThead-table td,
 #allergygrid td {
   border-top: 1px solid #999;
   border-right: 1px solid #ccc;
@@ -282,78 +321,113 @@ h5 {
   border-collapse: collapse;
   padding: 4px 3px;
 }
+.floatThead-table td i,
 #allergygrid td i {
   font-size: 16px !important;
 }
+.floatThead-table td i.text-muted,
 #allergygrid td i.text-muted {
   color: #bbb !important;
 }
+.floatThead-table td:hover i.text-muted,
 #allergygrid td:hover i.text-muted {
   color: #666 !important;
 }
+.floatThead-table #svg th,
 #allergygrid #svg th {
   background: none;
   vertical-align: middle;
   text-align: center;
 }
-#allergygrid #svg th img,
-#allergygrid #svg th svg {
-  width: 30px;
-  max-height: 80px;
-  margin: 0 auto;
+.floatThead-table #svg th .foodicon,
+#allergygrid #svg th .foodicon {
+  font-size: 30px;
+  color: #000;
 }
+.floatThead-table .section,
 #allergygrid .section {
   background: #444;
   color: #fff;
   text-align: left;
   border: 0;
 }
+.floatThead-table .section a,
+#allergygrid .section a {
+  color: #ccc;
+}
+.floatThead-table .section a:hover,
+#allergygrid .section a:hover {
+  color: #fff;
+}
+.floatThead-table .section .itemname,
+#allergygrid .section .itemname {
+  color: #fff;
+}
+.floatThead-table .section .itemname:hover .name:after,
+#allergygrid .section .itemname:hover .name:after {
+  color: #eee !important;
+  text-transform: none;
+}
+.floatThead-table .section td,
 #allergygrid .section td {
   border: 0;
 }
+.floatThead-table .section td i,
 #allergygrid .section td i {
   display: none;
 }
+.floatThead-table .section td.trash,
 #allergygrid .section td.trash {
   border: 0;
 }
+.floatThead-table .section td.trash i,
 #allergygrid .section td.trash i {
   display: block;
   color: #fff;
 }
+.floatThead-table .section .editable-empty,
 #allergygrid .section .editable-empty {
   display: none;
 }
+.floatThead-table .child,
 #allergygrid .child {
   border: 0;
 }
+.floatThead-table .child td,
 #allergygrid .child td {
   border: 1px dotted #ccc;
 }
+.floatThead-table .dish div,
 #allergygrid .dish div {
   text-align: left;
   white-space: nowrap;
   width: 10%;
 }
+.floatThead-table .ingredient .dish,
 #allergygrid .ingredient .dish {
   font-style: italic;
   text-indent: 20px;
 }
+.floatThead-table .ingredient td,
 #allergygrid .ingredient td {
   border: 1px dashed #ccc;
   border-right: 1px solid #ccc !Important;
 }
+.floatThead-table .parent .dish,
 #allergygrid .parent .dish {
   font-weight: bold;
 }
+.floatThead-table .parent td,
 #allergygrid .parent td {
   border: 1px dashed #ccc;
   border-top: 2px solid #ccc !Important;
   border-right: 1px solid #ccc !Important;
 }
+.floatThead-table .newdish td,
 #allergygrid .newdish td {
   background: #ffe;
 }
+.floatThead-table td,
 #allergygrid td {
   vertical-align: middle;
   text-align: center;
@@ -563,16 +637,22 @@ tags-input .tags .tag-item .remove-button {
 #print .text-muted {
   color: #eee !important;
 }
-.floatThead-table {
-  top: 50px;
-  position: relative;
+.floatThead-floatContainer {
+  margin-top: 70px !important;
 }
-.floatThead-table th {
-  background: #d9e6c2 !important;
+.floatThead-table thead th {
   text-align: center;
+  font-weight: normal;
+  font-size: 10px;
+  height: 70px;
+  z-index: 10000;
 }
-.floatThead-table th img {
-  width: 30px;
+.floatThead-table thead th i {
+  font-size: 30px;
+}
+.floatThead-table .hm,
+.floatThead-table #allergynames {
+  display: none;
 }
 .text-white {
   color: #fff !important;

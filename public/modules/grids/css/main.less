@@ -32,6 +32,8 @@ h5 {
     padding: 10px 10px 80px 10px;
     background: #fff;
 }
+
+.floatThead-table,
 #allergygrid {
     #save {
         float: right;
@@ -51,7 +53,7 @@ h5 {
             }
         }
         &.white {
-            background: #fff;
+            background: #fff !important;
             border: 1px solid #fff;
             border-bottom: 1px solid #999;
         }
@@ -59,27 +61,34 @@ h5 {
             border-right: 1px solid #999;
         }
         &.diet {
-            background: #eee;
+            background: #eee !important;
             border: 1px solid #ccc;
             border-bottom: 1px solid #999;
             border-right: 1px solid rgb(208, 74, 5);
+            i {
+                color: #999 !important;
+            }
         }
         &.nuts {
-            background: lighten(rgb(208, 74, 5),50%);
+            background: lighten(rgb(208, 74, 5),50%) !important;
             border: 1px solid rgb(208, 74, 5);
             border-bottom: 1px solid #999;
         }
         &.sea {
-            background: lighten(rgb(140, 211, 230),18%);
-            border: 1px solid rgb(140, 211, 230);
+            background: lighten(rgb(140, 211, 230),18%) !important;
+            border: 1px solid rgb(140, 211, 230); 
+        }
+        &.green {
+            background: lighten(@light,7%) !important;
+            border: 1px solid darken(@light,20%);
         }
         &.dairy {
-            background: lighten(rgb(237, 218, 162),15%);
+            background: lighten(rgb(237, 218, 162),15%) !important;
             border: 1px solid rgb(237, 218, 162);
             border-bottom: 1px solid #999;
         }
         &.sulphites {
-            background: lighten(rgb(193, 72, 149),38%);
+            background: lighten(rgb(193, 72, 149),38%) !important;
             border: 1px solid  rgb(193, 72, 149);
             border-bottom: 1px solid #999;
         }
@@ -186,12 +195,10 @@ h5 {
     #svg th {
         background: none;
         vertical-align: middle;
-        text-align: center;
-        img,
-        svg {
-            width: 30px;
-            max-height: 80px;
-            margin: 0 auto;
+        text-align: center; 
+        .foodicon {
+            font-size: 30px;
+            color: #000;
         }
     }
     .section {
@@ -199,12 +206,26 @@ h5 {
         color: #fff;
         text-align: left;
         border: 0;
+        a {
+            color: #ccc;
+            &:hover {
+                color: #fff;
+            }
+        }
+        .itemname{
+            color: #fff;
+             &:hover {
+                .name:after {  
+                    color: #eee !important;
+                    text-transform: none;
+                }
+            }
+        }
         td {
             border: 0;
             i {
                 display: none;
             }
-
         }
         td.trash {
             border: 0;
@@ -508,16 +529,24 @@ tags-input .tags .tag-item {
     }
 }
 
-
+.floatThead-floatContainer {
+    margin-top: 70px !important;
+}
 .floatThead-table {
-    top: 50px;
-    position: relative;
-    th {
-        background: @light !important;
+    thead th {
+        // background: @light !important;
         text-align: center;
-        img {
-          width: 30px;
+        font-weight: normal;
+        font-size: 10px;
+        height: 70px;
+        z-index: 10000; 
+        i {
+            font-size: 30px;
         }
+    }
+    .hm, 
+    #allergynames {
+        display: none;
     }
 }
 

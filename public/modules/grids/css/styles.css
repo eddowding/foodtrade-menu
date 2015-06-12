@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "thumbs";
-  src:url("/modules/grids/css/fonts/thumbs.eot");
-  src:url("/modules/grids/css/fonts/thumbs.eot?#iefix") format("embedded-opentype"),
-    url("/modules/grids/css/fonts/thumbs.woff") format("woff"),
-    url("/modules/grids/css/fonts/thumbs.ttf") format("truetype"),
-    url("/modules/grids/css/fonts/thumbs.svg#thumbs") format("svg");
+  font-family: "menu";
+  src:url("fonts/menu.eot");
+  src:url("fonts/menu.eot?#iefix") format("embedded-opentype"),
+    url("fonts/menu.woff") format("woff"),
+    url("fonts/menu.ttf") format("truetype"),
+    url("fonts/menu.svg#menu") format("svg");
   font-weight: normal;
   font-style: normal;
 
 }
 
 [data-icon]:before {
-  font-family: "thumbs" !important;
+  font-family: "menu" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -27,7 +27,7 @@
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "thumbs" !important;
+  font-family: "menu" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -44,9 +44,51 @@
 .icon-meat:before {
   content: "m";
 }
-.icon-vegan:before {
-  content: "v";
-}
 .icon-vegetarian:before {
   content: "g";
+}
+.icon-peanuts:before {
+  content: "a";
+}
+.icon-celery:before {
+  content: "b";
+}
+.icon-crustacean:before {
+  content: "d";
+}
+.icon-nuts:before {
+  content: "e";
+}
+.icon-eggs:before {
+  content: "h";
+}
+.icon-other:before {
+  content: "i";
+}
+.icon-sesame:before {
+  content: "k";
+}
+.icon-soy:before {
+  content: "l";
+}
+.icon-gluten:before {
+  content: "n";
+}
+.icon-lupin:before {
+  content: "p";
+}
+.icon-milk:before {
+  content: "q";
+}
+.icon-mollusc:before {
+  content: "r";
+}
+.icon-mustard:before {
+  content: "s";
+}
+.icon-vegan:before {
+  content: "o";
+}
+.icon-suplurdioxide:before {
+  content: "j";
 }
