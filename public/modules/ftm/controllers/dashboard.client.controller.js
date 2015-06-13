@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('ftm').controller('DashboardController', ['$scope', 'Grids', 'Authentication', 'SweetAlert', '$location', 'ngProgress',
-  function($scope, Grids, Authentication, SweetAlert, $location, ngProgress) {
+angular.module('ftm').controller('DashboardController', ['$scope', 'Grids', 'Authentication', 'SweetAlert', '$location', 'ngProgress', 'Establishments',
+  function($scope, Grids, Authentication, SweetAlert, $location, ngProgress, Establishments) {
     ngProgress.start();
     $scope.authentication = Authentication;
 
@@ -12,6 +12,18 @@ angular.module('ftm').controller('DashboardController', ['$scope', 'Grids', 'Aut
       .then(function(grids) {
         $scope.grids = grids;
         ngProgress.complete();
+      });
+
+    Establishments.query({
+        user: $scope.authentication.user._id
+      })
+      .$promise
+      .then(function(establishments) {
+        if (establishments.length) {
+          $scope.establishment = establishments[0];
+        } else {
+          $scope.establishment = {};
+        }
       });
 
     $scope.deleteGridFn = function(grid) {
