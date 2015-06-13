@@ -6,6 +6,7 @@
 var mongoose = require('mongoose');
 var errorHandler = require('./errors.server.controller');
 var Grid = mongoose.model('Grid');
+var Establishment = mongoose.model('Establishment');
 var _ = require('lodash');
 var path = require('path');
 var phantom = require('phantom');
@@ -119,10 +120,16 @@ exports.gridPrint = function(req, res) {
     'other'
   ];
   Grid.findById(req.params.gridId).exec(function(err, grid) {
-    res.render('grid-print', {
-      grid: grid,
-      gridColumns: gridColumns
-    });
+    Establishment.findOne({
+        user: grid.user
+      })
+      .exec(function(err, establishment) {
+        res.render('grid-print', {
+          grid: grid,
+          gridColumns: gridColumns,
+          establishment: establishment
+        });
+      });
   });
 };
 
@@ -130,7 +137,10 @@ exports.gridPrint = function(req, res) {
 exports.gridPdf = function(req, res) {
   phantom.create(function(ph) {
     ph.createPage(function(page) {
-      page.set('viewportSize', { height : 2100, width : 2900});
+      page.set('viewportSize', {
+        height: 2100,
+        width: 2900
+      });
       page.open('http://' + req.headers.host + '/grids/' + req.params.gridId + '/print', function(status) {
         page.render(path.join(path.dirname(path.dirname(__dirname)), 'downloads', 'grid-' + req.params.gridId + '.pdf'), function() {
           res.download(path.join(path.dirname(path.dirname(__dirname)), 'downloads', 'grid-' + req.params.gridId + '.pdf'));

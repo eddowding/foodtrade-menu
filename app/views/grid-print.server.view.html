@@ -42,7 +42,21 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
-
+<div class='row'>
+	<div class="col-xs-8" style="border-right: 1px solid #ccc;">
+		<div class=" " style="background: #fff; margin:0; padding: 10px 5px; border-bottom: 1px solid #999;">
+			FHRSID: {{establishment.FHRSID}}<br/>
+			BusinessType: {{establishment.BusinessType}}<br/>
+			RatingValue: {{establishment.RatingValue}}<br/>
+			RatingDate: {{establishment.RatingDate|date('F jS, Y')}}<br/>
+			LocalAuthorityWebSite: {{establishment.LocalAuthorityWebSite}}<br/>
+			LocalAuthorityEmailAddress: {{establishment.LocalAuthorityEmailAddress}}<br/>
+			Hygiene: {{establishment.scores.Hygiene}}<br/>
+			Structural: {{establishment.scores.Structural}}<br/>
+			ConfidenceInManagement: {{establishment.scores.ConfidenceInManagement}}<br/>
+		</div>
+	</div>
+</div>
 <body id="print" onload="window.print()">
 
 	<section class="container-responsive">
@@ -77,20 +91,20 @@
                     </tr>
                     <tr id="svg">
                         <th class="itemname" nowrap>Item name</th>
-                        <th class="diet"> 
+                        <th class="diet">
 				            <i class="foodicon icon-vegan"></i>
 				          </th>
 
-				          <th class="nuts"> 
+				          <th class="nuts">
 				            <i class="foodicon icon-nuts"></i>
 				          </th>
-				          <th class="nuts"> 
+				          <th class="nuts">
 				            <i class="foodicon icon-peanuts"></i>
 				          </th>
-				          <th class="nuts"> 
+				          <th class="nuts">
 				            <i class="foodicon icon-sesame"></i>
 				          </th>
-				          <th class="sea"> 
+				          <th class="sea">
 				            <i class="foodicon icon-fish"></i>
 				          </th>
 				          <th class="sea">
@@ -114,16 +128,16 @@
 				          <th>
 				            <i class="foodicon icon-celery"></i>
 				          </th>
-				          <th class=""> 
+				          <th class="">
 				            <i class="foodicon icon-mustard"></i>
 				          </th>
-				          <th class="sulphites"> 
+				          <th class="sulphites">
 				            <i class="foodicon icon-soy"></i>
 				          </th>
-				          <th class="sulphites"> 
+				          <th class="sulphites">
 				            <i class="foodicon icon-suplurdioxide"></i>
 				          </th>
-				          <th class="sulphites"> 
+				          <th class="sulphites">
 				            <i class="foodicon icon-other"></i>
 				          </th>
                     </tr>
