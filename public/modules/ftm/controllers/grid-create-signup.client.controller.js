@@ -5,6 +5,9 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
   function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http, $timeout, ngProgress) {
     ngProgress.start();
     $scope.authentication = Authentication;
+    if ($scope.authentication.user) {
+      $state.go('dashboard');
+    }
     //onboarding
     $scope.onboardingEnabled = false;
 
