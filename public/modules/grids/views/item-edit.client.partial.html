@@ -1,7 +1,7 @@
 <a class="priced">{{row.item.price || 0}}</a>
 <span class="name">{{row.item.name}}</span>
 <a class="note">{{row.item.note || 'add note'}}</a>
-<div class="characteristic" ng-if="row.item.hasCharacteristic">
+<div class="characteristic">
   <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
 </div>
 
