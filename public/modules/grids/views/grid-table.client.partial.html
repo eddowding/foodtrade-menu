@@ -90,20 +90,20 @@
         <tr id="svg">
           <th class="itemname white" nowrap>Item name</th>
           <th class="trash white"><i class="fa fa-trash-o hm"></i></th>
-          <th class="diet"> 
+          <th class="diet">
             <i class="foodicon icon-vegan"></i>
           </th>
 
-          <th class="nuts"> 
+          <th class="nuts">
             <i class="foodicon icon-nuts"></i>
           </th>
-          <th class="nuts"> 
+          <th class="nuts">
             <i class="foodicon icon-peanuts"></i>
           </th>
-          <th class="nuts"> 
+          <th class="nuts">
             <i class="foodicon icon-sesame"></i>
           </th>
-          <th class="sea"> 
+          <th class="sea">
             <i class="foodicon icon-fish"></i>
           </th>
           <th class="sea">
@@ -130,10 +130,10 @@
           <th class="green">
             <i class="foodicon icon-mustard"></i>
           </th>
-          <th class="sulphites"> 
+          <th class="sulphites">
             <i class="foodicon icon-soy"></i>
           </th>
-          <th class="sulphites"> 
+          <th class="sulphites">
             <i class="foodicon icon-suplurdioxide"></i>
           </th>
           <th class="green">
@@ -144,16 +144,7 @@
       <tbody>
         <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}'>
           <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
-            <a class="priced" editable-text="row.item.price">{{row.item.price || 0}}</a>
-            <span class="name" ng-click='toggleItemEditFn(row.item)' ng-hide="row.item.isEdit">{{row.item.name}}</span>
-            <input type="text" ng-model='row.item.name' class='form-control' ng-show="row.item.isEdit" ng-keypress='saveItemEditFn($event, $index, row.item)' ng-blur='nameEditBlurFn(row.item)' autofocus />
-            <a class="note" editable-textarea="row.item.note">{{row.item.note || 'add note'}}</a>
-            <div class="characteristic" ng-if="row.item.hasCharacteristic">
-              <span ng-repeat="char in row.item.characteristic" ng-show='!charEditStatus[$index]'>{{char.text}}</span><div ng-click='toggleCharEditFn($index)' ng-show="!charEditStatus[$index]">edit</div>
-              <tags-input data-ng-model="row.item.characteristic" data-ng-show="charEditStatus[$index]" replace-spaces-with-dashes='false' placeholder='Add a characteristic' add-from-autocomplete-only='true'>
-                <auto-complete source="loadCharTagFn($query)"></auto-complete>
-              </tags-input><div ng-click='toggleCharEditFn($index)' ng-show="charEditStatus[$index]">done</div>
-            </div>
+            <item-edit row-number='$index'></item-edit>
           </td>
           <td class="trash"><a ng-click='deleteRowFn($index)'><i class="fa fa-trash-o text-danger"></i></a></td>
           <td>
@@ -205,7 +196,7 @@
               <a data-toggle="collapse" ng-click='toggleCharacteristicFn()' ng-show="!placeholderRow.item.hasCharacteristic">characteristics</a>
             </div>
 
-          </td> 
+          </td>
           <td>
             <select data-ng-model='placeholderRow.veggie.type' class='veggie-select'>
               <option value='Meat'>Meat</option>
