@@ -1,13 +1,8 @@
-<a class="priced" editable-text="row.item.price">{{row.item.price || 0}}</a>
+<a class="priced">{{row.item.price || 0}}</a>
 <span class="name">{{row.item.name}}</span>
-<a class="note" editable-textarea="row.item.note">{{row.item.note || 'add note'}}</a>
+<a class="note">{{row.item.note || 'add note'}}</a>
 <div class="characteristic" ng-if="row.item.hasCharacteristic">
-  <span ng-repeat="char in row.item.characteristic" ng-show='!charEditStatus[$index]'>{{char.text}}</span>
-  <div ng-click='toggleCharEditFn($index)' ng-show="!charEditStatus[$index]">edit</div>
-  <tags-input data-ng-model="row.item.characteristic" data-ng-show="charEditStatus[$index]" replace-spaces-with-dashes='false' placeholder='Add a characteristic' add-from-autocomplete-only='true'>
-    <auto-complete source="loadCharTagFn($query)"></auto-complete>
-  </tags-input>
-  <div ng-click='toggleCharEditFn($index)' ng-show="charEditStatus[$index]">done</div>
+  <span ng-repeat="char in row.item.characteristic">{{char.text}}</span>
 </div>
 
 <div class="item-edit-form hidden item-{{rowNumber}}">
@@ -16,6 +11,19 @@
       <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control input-sm" placeholder="Item name" ng-model='row.item.name' />
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input type="text" class="form-control input-sm" placeholder="Item price" ng-model='row.item.price' />
+      </div>
+      <div class="form-group">
+        <label>Note</label>
+        <textarea class="form-control" placeholder="Item note" ng-model='row.item.note'></textarea>
+      </div>
+      <div class='form-group'>
+        <tags-input data-ng-model="row.item.characteristic" replace-spaces-with-dashes='false' placeholder='Add a characteristic' add-from-autocomplete-only='true'>
+          <auto-complete source="$parent.loadCharTagFn($query)"></auto-complete>
+        </tags-input>
       </div>
     </div>
     <div class="form-actions">

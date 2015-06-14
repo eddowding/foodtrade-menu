@@ -401,7 +401,7 @@ h5 {
 #allergygrid .dish div {
   text-align: left;
   white-space: nowrap;
-  width: 10%;
+  /*width: 10%;*/
 }
 .floatThead-table .ingredient .dish,
 #allergygrid .ingredient .dish {

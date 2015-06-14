@@ -25,6 +25,7 @@ angular.module('grids').directive('itemEdit', ['$compile',
 				};
 
 				scope.saveItemEditFn = function() {
+					scope.$parent.updateTableDataRowCellFn('item', scope.rowNumber, angular.copy(scope.row.item));
 					$(element).popover('hide');
 				};
       }
