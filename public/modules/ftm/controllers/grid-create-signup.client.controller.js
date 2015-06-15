@@ -1,8 +1,15 @@
 'use strict';
 
 // Grids controller
-angular.module('grids').controller('GridCreateSignupController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http', '$timeout', 'ngProgress',
-  function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http, $timeout, ngProgress) {
+angular.module('grids').controller('GridCreateSignupController', ['$scope', '$rootScope', '$stateParams', '$location', 'Authentication', 'Grids', 'SweetAlert', '$state', 'Users', 'Accounts', 'Establishments', '$http', '$timeout', 'ngProgress', '$window',
+  function($scope, $rootScope, $stateParams, $location, Authentication, Grids, SweetAlert, $state, Users, Accounts, Establishments, $http, $timeout, ngProgress, $window) {
+    window.onbeforeunload = function(e) {
+      if ($scope.isSaveBtnClicked) {
+        return true;
+      } else {
+        return 'Your grid is unsaved.'
+      }
+    };
     ngProgress.start();
     $scope.authentication = Authentication;
     if ($scope.authentication.user) {
