@@ -1,6 +1,9 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
+	<!--[if lt IE 9]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
 	<section data-ui-view></section>
 	<div class="modal fade" id="commonSigninModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
@@ -61,7 +64,7 @@
 			<ul>
 				<li>
 					You can edit anything, any time - just click on it!
-				</li> 
+				</li>
 			</ul>
 	      </div>
 	    </div>
