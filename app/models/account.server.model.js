@@ -17,6 +17,10 @@ var AccountSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
+	},
+	client: {
+		type: Schema.ObjectId,
+		ref: 'Client'
 	}
 });
 
