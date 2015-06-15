@@ -14,6 +14,7 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
   var establishment = new Establishment(req.body);
   establishment.user = req.user;
+  establishment.client = req.user.client;
 
   establishment.save(function(err) {
     if (err) {

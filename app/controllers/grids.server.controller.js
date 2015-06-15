@@ -17,6 +17,7 @@ var phantom = require('phantom');
 exports.create = function(req, res) {
   var grid = new Grid(req.body);
   grid.user = req.user;
+  grid.client = req.user.client;
 
   grid.save(function(err) {
     if (err) {
