@@ -18,7 +18,8 @@ var ClientSchema = new Schema({
 	},
 	subdomain: {
 		type: String,
-		required: true
+		required: false,
+		unique: true
 	},
 	logo: {
 		type: Buffer,
