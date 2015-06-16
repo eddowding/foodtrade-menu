@@ -42,20 +42,16 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
-<div class='row'>
-	<div class="col-xs-8" style="border-right: 1px solid #ccc;">
-		<div class=" " style="background: #fff; margin:0; padding: 10px 5px; border-bottom: 1px solid #999;">
-			FHRSID: {{establishment.FHRSID}}<br/>
-			BusinessType: {{establishment.BusinessType}}<br/>
-			RatingValue: {{establishment.RatingValue}}<br/>
-			RatingDate: {{establishment.RatingDate|date('F jS, Y')}}<br/>
-			LocalAuthorityWebSite: {{establishment.LocalAuthorityWebSite}}<br/>
-			LocalAuthorityEmailAddress: {{establishment.LocalAuthorityEmailAddress}}<br/>
-			Hygiene: {{establishment.scores.Hygiene}}<br/>
-			Structural: {{establishment.scores.Structural}}<br/>
-			ConfidenceInManagement: {{establishment.scores.ConfidenceInManagement}}<br/>
-		</div>
-	</div>
+<div id="FSAinfo">
+	FHRSID: {{establishment.FHRSID}}<br/>
+	BusinessType: {{establishment.BusinessType}}<br/>
+	RatingValue: {{establishment.RatingValue}}<br/>
+	RatingDate: {{establishment.RatingDate|date('F jS, Y')}}<br/>
+	LocalAuthorityWebSite: {{establishment.LocalAuthorityWebSite}}<br/>
+	LocalAuthorityEmailAddress: {{establishment.LocalAuthorityEmailAddress}}<br/>
+	Hygiene: {{establishment.scores.Hygiene}}<br/>
+	Structural: {{establishment.scores.Structural}}<br/>
+	ConfidenceInManagement: {{establishment.scores.ConfidenceInManagement}}<br/>
 </div>
 <body id="print" onload="window.print()">
 
@@ -69,7 +65,7 @@
             <table class="table table-condensed table-bordered table-header-rotated" id="allergygrid">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th class="white"></th>
                         <th class="rotate"><img src="/modules/grids/img/green.png" />
 							<div><span>Veggie?</span></div></th>
 
@@ -81,7 +77,7 @@
                         <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Molluscs</span></div></th>
                         <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Eggs</span></div></th>
                         <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Milk</span></div></th>
-                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Cereals containing gluten</span></div></th>
+                        <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Cereals cont. gluten</span></div></th>
                         <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Lupin</span></div></th>
                         <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Celery</span></div></th>
                         <th class="rotate"><img src="/modules/grids/img/green.png" /><div><span>Mustard</span></div></th>
@@ -162,19 +158,17 @@
 							{% endif %}
                         </td>
                         <td>
-							<i class="{% if row.veggie.type == 'Meat' %}icon-meat{% endif %}{% if row.veggie.type == 'Veggie' %}icon-vegetarian{% endif %}{% if row.veggie.type == 'Fish' %}icon-fish{% endif %}{% if row.veggie.type == 'Vegan' %}icon-vegan{% endif %}"></i>
+							<i class="{% if row.veggie.type == 'Meat' %}icon-meat{% endif %}{% if row.veggie.type == 'Veggie' %}fa fa-leaf{% endif %}{% if row.veggie.type == 'Fish' %}icon-fish{% endif %}{% if row.veggie.type == 'Vegan' %}icon-vegan{% endif %}"></i>
                         </td>
 						{% for column in gridColumns %}
-							<td>
-								<div>
-									<div class="clearfix">
-										<i class="fa {% if row[column] && row[column].allergenType == 'Removable' %}fa-minus-square-o{% endif %}{% if row[column] && row[column].allergenType == 'Fixed' %}fa-check-square-o{% endif %}"></i>
-									</div>
-
-									{% if row[column] && row[column].allergens %}
-										<span ng-show="cell.allergens">{{row[column].allergens}}</span>
-									{% endif %}
+							<td class="allergen">
+								<div class="clearfix">
+									<i class="fa {% if row[column] && row[column].allergenType == 'Removable' %}fa-minus-square-o{% endif %}{% if row[column] && row[column].allergenType == 'Fixed' %}fa-check-square-o{% endif %}"></i>
 								</div>
+
+								{% if row[column] && row[column].allergens %}
+									<span ng-show="cell.allergens">{{row[column].allergens}}</span>
+								{% endif %}
 							</td>
 						{% endfor %}
                     </tr>
@@ -192,7 +186,7 @@
 	<strong style="padding-left: 0px; padding-right: 10px;">Diet key:</strong>
 	<i class="icon-meat fa-fw"></i>Meat
 	<span class="text-muted">&mdash;</span>
-	<i class="icon-vegetarian fa-fw"></i> Vegetarian
+	<i class="fa fa-leaf fa-fw"></i> Vegetarian
 	<span class="text-muted">&mdash;</span>
 	<i class="icon-fish fa-fw"></i> Pescatarian
 	<span class="text-muted">&mdash;</span>

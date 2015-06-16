@@ -531,19 +531,29 @@ tags-input .tags .tag-item {
             }
         }
     }
+    #FSAinfo {
+        display: none;
+    }
     #allergygrid {
         th.rotate {
             background-color: #fff !important;
             // background: url('/modules/grids/img/green.png') repeat;
             padding: 0;
             img {
-                height: 100% !important;
-                width: 100% !important;
-                position: relative;
-                top: 27px;
+                height: 125px !important;
+                width: 100%;
+                position: absolute;
+                top: 0;
             }
             div {
                 padding: 5px;
+            }
+        }
+        td.allergen {
+            font-size: 11px;
+            line-height: 1;
+            span {
+                color: #666;
             }
         }
     }
@@ -551,6 +561,8 @@ tags-input .tags .tag-item {
         color: #eee !important;
     }
 }
+
+// FLOATHEAD
 
 .floatThead-floatContainer {
     margin-top: 70px !important;

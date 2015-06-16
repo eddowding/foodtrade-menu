@@ -657,18 +657,28 @@ tags-input .tags .tag-item .remove-button {
 #print tr.child td .name {
   font-weight: normal !important;
 }
+#print #FSAinfo {
+  display: none;
+}
 #print #allergygrid th.rotate {
   background-color: #fff !important;
   padding: 0;
 }
 #print #allergygrid th.rotate img {
-  height: 100% !important;
-  width: 100% !important;
-  position: relative;
-  top: 27px;
+  height: 125px !important;
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
 #print #allergygrid th.rotate div {
   padding: 5px;
+}
+#print #allergygrid td.allergen {
+  font-size: 11px;
+  line-height: 1;
+}
+#print #allergygrid td.allergen span {
+  color: #666;
 }
 #print .text-muted {
   color: #eee !important;
