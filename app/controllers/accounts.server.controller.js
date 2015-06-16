@@ -74,7 +74,11 @@ exports.delete = function(req, res) {
  * List of Accounts
  */
 exports.list = function(req, res) {
-	Account.find(req.query).sort('-created').populate('user', 'displayName').exec(function(err, accounts) {
+	var query = req.query;
+	if (!req.isAdminUser) {
+		query.client = req.client._id;
+	}
+	Account.find(query).sort('-created').populate('user', 'displayName').exec(function(err, accounts) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -89,7 +93,11 @@ exports.list = function(req, res) {
  * Account middleware
  */
 exports.accountByID = function(req, res, next, id) {
-	Account.findById(id).populate('user', 'displayName').exec(function(err, account) {
+	var query = {_id: id};
+	if (!req.isAdminUser) {
+		query.client = req.client._id;
+	}
+	Account.findOne(query).populate('user', 'displayName').exec(function(err, account) {
 		if (err) return next(err);
 		if (! account) return next(new Error('Failed to load Account ' + id));
 		req.account = account ;

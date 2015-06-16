@@ -48,6 +48,11 @@ module.exports = function(db) {
 	});
 
 	app.use(function(req, res, next) {
+		if (req.user && req.user.roles.indexOf('admin') > -1) {
+			req.isAdminUser = true;
+		} else {
+			req.isAdminUser = false;
+		}
 		var Client = mongoose.model('Client');
 		var subdomain = req.subdomains.join('.');
 		Client.findOne({'subdomain': subdomain})
