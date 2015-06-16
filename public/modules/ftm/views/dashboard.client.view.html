@@ -8,10 +8,7 @@
           <!-- &nbsp;&nbsp;
           &nbsp;&nbsp;
           <a href="#" class="text-success"><i class="fa fa-fw fa-folder-open-o"></i> New Folder</a> -->
-
-		<div class="pull-right">
-	          <a href="/auth/signout" class="btn btn-default"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
-		</div>
+ 
 
         </div>
 
@@ -64,19 +61,73 @@
 			<p class="bold">Meantime, happy cooking!</p>
 		</div>
 
-		<div id="FSAinfo">
+		<div id="FSAinfo" class="alert alert-warning">
+			<h4 class="text-center">Hygiene Inspections</h4>
+			<hr style="margin: 8px 0 15px 0;" />
+			<p>
+				Your local authority is really keen to help you succeed and be popular with customers. Do reach out to them if you need anything.
+			</p>
 
-			<a href="mailto:{{establishment.LocalAuthorityEmailAddress}}?subject={{establishment.FHRSID}}&body={{establishment.FHRSID}}" class="btn btn-info btn-lg btn-block"><i class="fa fa-briefcase fa-fw fa-lg"></i> Email your local EHO</a>
+			<div class="innerTB">
 
-			FHRSID: {{establishment.FHRSID}}<br/>
-			BusinessType: {{establishment.BusinessType}}<br/>
-			RatingValue: {{establishment.RatingValue}}<br/>
-			RatingDate: {{establishment.RatingDate | date: 'short'}}<br/>
-			LocalAuthorityWebSite: {{establishment.LocalAuthorityWebSite}}<br/>
-			LocalAuthorityEmailAddress: {{establishment.LocalAuthorityEmailAddress}}<br/>
-			Hygiene: {{establishment.scores.Hygiene}}<br/>
-			Structural: {{establishment.scores.Structural}}<br/>
-			ConfidenceInManagement: {{establishment.scores.ConfidenceInManagement}}<br/>
+				<a href="mailto:{{establishment.LocalAuthorityEmailAddress}}?subject={{establishment.FHRSID}}&body={{establishment.FHRSID}}" class="btn btn-warning btn-lg btn-block"><i class="fa fa-briefcase fa-fw fa-lg"></i> Email your local EHO</a>
+				<div class="text-center">
+					<a href="{{establishment.LocalAuthorityWebSite}}" target="_blank">{{establishment.LocalAuthorityWebSite}}</a>
+				</div>
+
+			</div>
+
+
+			<h5>Your details</h5>
+			<dl>
+				<dt>
+					FHRS ID
+				</dt>
+				<dd>
+					{{establishment.FHRSID}} 123
+				</dd>
+				<dt>
+					Type
+				</dt>
+				<dd>
+					{{establishment.BusinessType}} 123
+				</dd>
+			</dl>
+
+
+			<h5>Your rating: {{establishment.RatingDate | date: 'short'}}</h5>
+
+			<dl>
+				<dt>
+					Overall
+				</dt>
+				<dd>
+					{{establishment.RatingValue}} 123
+				</dd>
+				<dt>
+					Hygiene
+				</dt>
+				<dd>
+					{{establishment.scores.Hygiene}}
+				</dd>
+				<dt>
+					Structural
+				</dt>
+				<dd>
+					{{establishment.scores.Structural}}
+				</dd>
+				<dt>
+					Confidence in management
+				</dt>
+				<dd>
+					{{establishment.scores.ConfidenceInManagement}}
+				</dd>
+			</dl>
+
+			<hr />
+
+
+
 		</div>
 
 

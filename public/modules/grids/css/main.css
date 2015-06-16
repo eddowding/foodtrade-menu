@@ -137,6 +137,17 @@ h5 {
   font-family: 'Fira Sans', sans-serif;
   font-weight: bold;
 }
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
 .ng-valid.ng-dirty {
   border-color: slategrey;
 }
@@ -748,6 +759,38 @@ tags-input .tags .tag-item .remove-button {
 #top .btn {
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #fff !important;
+}
+#FSAinfo h5 {
+  margin-top: 1.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#FSAinfo dl {
+  zoom: 1;
+  padding: 0em;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+#FSAinfo dl:before,
+#FSAinfo dl:after {
+  content: "";
+  display: table;
+}
+#FSAinfo dl:after {
+  clear: both;
+}
+#FSAinfo dt {
+  float: left;
+  clear: left;
+  width: 100px;
+  text-align: left;
+  line-height: 1;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+#FSAinfo dd {
+  margin: 0 0 0 30px;
+  padding: 0 0 0.1em 0;
+  text-align: left;
 }
 .onboarding-focus {
   z-index: 100000;
