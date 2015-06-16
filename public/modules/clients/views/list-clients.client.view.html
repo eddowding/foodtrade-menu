@@ -3,7 +3,7 @@
         <h1>Clients</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="client in clients" data-ng-href="#!/clients/{{client._id}}" class="list-group-item">
+        <a data-ng-repeat="client in clients" data-ng-href="#!/clients/{{client._id}}/edit" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="client.created | date:'medium'"></span>

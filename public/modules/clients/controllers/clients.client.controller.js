@@ -8,16 +8,11 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
 		// Create new Client
 		$scope.create = function() {
 			// Create new Client object
-			var client = new Clients ({
-				name: this.name
-			});
+			var client = new Clients ($scope.client);
 
 			// Redirect after save
 			client.$save(function(response) {
 				$location.path('clients/' + response._id);
-
-				// Clear form fields
-				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -25,7 +20,7 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
 
 		// Remove existing Client
 		$scope.remove = function(client) {
-			if ( client ) { 
+			if ( client ) {
 				client.$remove();
 
 				for (var i in $scope.clients) {
@@ -58,7 +53,7 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
 
 		// Find existing Client
 		$scope.findOne = function() {
-			$scope.client = Clients.get({ 
+			$scope.client = Clients.get({
 				clientId: $stateParams.clientId
 			});
 		};
