@@ -75,7 +75,7 @@ exports.delete = function(req, res) {
  */
 exports.list = function(req, res) {
 	var query = req.query;
-	if (!req.isAdminUser) {
+	if (!req.isAdminUser && req.client) {
 		query.client = req.client._id;
 	}
 	Account.find(query).sort('-created').populate('user', 'displayName').exec(function(err, accounts) {
@@ -94,7 +94,7 @@ exports.list = function(req, res) {
  */
 exports.accountByID = function(req, res, next, id) {
 	var query = {_id: id};
-	if (!req.isAdminUser) {
+	if (!req.isAdminUser && req.client) {
 		query.client = req.client._id;
 	}
 	Account.findOne(query).populate('user', 'displayName').exec(function(err, account) {
