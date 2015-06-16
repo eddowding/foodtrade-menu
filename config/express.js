@@ -22,6 +22,7 @@ var fs = require('fs'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
 	path = require('path');
+var mongoose = require('mongoose');
 
 module.exports = function(db) {
 	// Initialize express app
@@ -44,6 +45,21 @@ module.exports = function(db) {
 	app.use(function(req, res, next) {
 		res.locals.url = req.protocol + '://' + req.headers.host + req.url;
 		next();
+	});
+
+	app.use(function(req, res, next) {
+		var Client = mongoose.model('Client');
+		var subdomain = req.subdomains.join('.');
+		Client.findOne({'subdomain': subdomain})
+		.exec(function(err, client) {
+			if (err) {
+				throw err;
+				next();
+			} else {
+				req.client = client;
+				next();
+			}
+		});
 	});
 
 	// Should be placed before express.static
