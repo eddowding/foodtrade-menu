@@ -239,6 +239,7 @@ h5 {
 #allergygrid .itemname {
   white-space: normal !important;
   text-align: left !important;
+  min-width: 200px;
 }
 .floatThead-table .itemname textarea,
 #allergygrid .itemname textarea {
@@ -259,11 +260,6 @@ h5 {
   margin-bottom: 4px;
   padding: 2px 5px;
   height: auto;
-  width: 80%;
-}
-.floatThead-table .itemname select,
-#allergygrid .itemname select {
-  width: 200px;
 }
 .floatThead-table .itemname small a,
 #allergygrid .itemname small a {
@@ -290,8 +286,9 @@ h5 {
 }
 .floatThead-table .itemname:hover .name:after,
 #allergygrid .itemname:hover .name:after {
-  /*content: 'edit';*/
+  content: 'edit';
   font-weight: normal;
+  font-size: 11px;
   color: #337ab7;
   padding: 0 5px;
 }
@@ -320,6 +317,15 @@ h5 {
   border-left: 1px solid #ccc;
   border-collapse: collapse;
   padding: 4px 3px;
+}
+.floatThead-table td cell-edit,
+#allergygrid td cell-edit {
+  font-size: 11px;
+  line-height: 1;
+}
+.floatThead-table td cell-edit span,
+#allergygrid td cell-edit span {
+  color: #666;
 }
 .floatThead-table td i,
 #allergygrid td i {
@@ -400,8 +406,6 @@ h5 {
 .floatThead-table .dish div,
 #allergygrid .dish div {
   text-align: left;
-  white-space: nowrap;
-  /*width: 10%;*/
 }
 .floatThead-table .ingredient .dish,
 #allergygrid .ingredient .dish {
@@ -432,6 +436,21 @@ h5 {
   vertical-align: middle;
   text-align: center;
   width: 6.5%;
+}
+.floatThead-table td.diet,
+#allergygrid td.diet {
+  padding: 0;
+  margin: 0;
+}
+.floatThead-table td.diet i,
+#allergygrid td.diet i {
+  color: #222 !important;
+  font-size: 23px !important;
+}
+.floatThead-table td.diet i.fa-square-o,
+#allergygrid td.diet i.fa-square-o {
+  color: #ddd !important;
+  font-size: 16px !important;
 }
 .navbar {
   border-bottom: 1px solid #ccc;
@@ -617,6 +636,7 @@ tags-input .tags .tag-item .remove-button {
 }
 .itemname .priced {
   float: right;
+  color: #999;
   margin-right: 3px;
 }
 .itemname .priced::before {

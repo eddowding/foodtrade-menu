@@ -35,8 +35,8 @@
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabel">Create an account - it's free.</h4>
 				</div>
+				<form class="form-horizontal">
 				<div class="modal-body">
-					<form class="form-horizontal">
 						<fieldset>
 
 							<div class="form-group">
@@ -115,12 +115,12 @@
 							</div>
 
 						</fieldset>
-					</form>
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click='signupSubmitFn()'>Save</button>
+					<button type="submit" class="btn btn-success" data-dismiss="modal" ng-click='signupSubmitFn()'>Save</button>
 				</div>
+			</form>
 			</div>
 		</div>
 	</div>
@@ -131,8 +131,8 @@
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabel">Login</h4>
 				</div>
-				<div class="modal-body">
 					<form class="signin form-horizontal innerAll" autocomplete="off">
+				<div class="modal-body">
 						<fieldset>
 							<div class="form-group">
 								<label for="username" class="col-sm-2">Email</label>
@@ -156,12 +156,12 @@
 								</div>
 							</div>
 						</fieldset>
-					</form>
 
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click='signin()'>Sign in</button>
+					<button type="submit" class="btn btn-success" data-dismiss="modal" ng-click='signin()'>Sign in</button>
 				</div>
+			</form>
 			</div>
 		</div>
 	</div>

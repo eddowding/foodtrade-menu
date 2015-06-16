@@ -109,6 +109,7 @@ h5 {
     .itemname {
         white-space: normal !important;
         text-align: left !important;
+        min-width: 200px;
         textarea {
             height: 30px;
             padding: 1px 5px;
@@ -125,10 +126,10 @@ h5 {
             margin-bottom: 4px;
             padding: 2px 5px;
             height: auto;
-            width: 80%;
+            // width: 150px;
         }
         select {
-            width: 200px;
+            // width: 200px;
         }
         small {
             a {
@@ -154,6 +155,7 @@ h5 {
             .name:after {
                 content: 'edit';
                 font-weight: normal;
+                font-size: 11px;
                 color: #337ab7;
                 padding: 0 5px;
             }
@@ -178,6 +180,13 @@ h5 {
         border-left: 1px solid #ccc;
         border-collapse: collapse;
         padding: 4px 3px;
+        cell-edit {
+            font-size: 11px;
+            line-height: 1;
+            span {
+                color: #666;
+            }
+        }
         i {
             font-size: 16px !important;
             &.text-muted {
@@ -247,8 +256,8 @@ h5 {
     }
     .dish div {
         text-align: left;
-        white-space: nowrap;
-        width: 10%;
+        // white-space: nowrap;
+        // width: 10%;
         // &::before {
         //     content: ':: ';
         //     color: #ccc;
@@ -287,6 +296,18 @@ h5 {
         vertical-align: middle;
         text-align: center;
         width: 6.5%;
+        &.diet {
+            padding: 0;
+            margin: 0;
+            i {
+                color: #222 !important;
+                font-size: 23px !important;
+            }
+            i.fa-square-o {
+                color: #ddd !important;
+                font-size: 16px !important;
+            }
+        }
     }
 }
 .navbar {
@@ -479,14 +500,11 @@ tags-input .tags .tag-item {
     }
     .priced {
         float: right;
+        color: #999;
         margin-right: 3px;
         &::before {
             content: '£';
             // color: #ccc;
-            // font-weight: bold;
-            // &:hover {
-            //     cursor: move;
-            // }
         }
     }
     .characteristic {
