@@ -77,7 +77,11 @@ exports.delete = function(req, res) {
  * List of Grids
  */
 exports.list = function(req, res) {
-  Grid.find(req.query).sort('-created').populate('user').exec(function(err, grids) {
+  var query = req.query;
+	if (!req.isAdminUser) {
+		query.client = req.client._id;
+	}
+  Grid.find(query).sort('-created').populate('user').exec(function(err, grids) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -89,9 +93,12 @@ exports.list = function(req, res) {
 };
 
 exports.gridsByUserID = function(req, res) {
-  Grid.find({
-    user: req.params.userId
-  }).sort('-created').exec(function(err, grids) {
+  var query = req.query;
+  query.user = req.params.userId;
+	if (!req.isAdminUser) {
+		query.client = req.client._id;
+	}
+  Grid.find(query).sort('-created').exec(function(err, grids) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -157,7 +164,11 @@ exports.gridPdf = function(req, res) {
  * Grid middleware
  */
 exports.gridByID = function(req, res, next, id) {
-  Grid.findById(id).populate('user', 'displayName').exec(function(err, grid) {
+  var query = {_id: id};
+	if (!req.isAdminUser) {
+		query.client = req.client._id;
+	}
+  Grid.findOne(query).populate('user', 'displayName').exec(function(err, grid) {
     if (err) return next(err);
     if (!grid) return next(new Error('Failed to load Grid ' + id));
     req.grid = grid;
