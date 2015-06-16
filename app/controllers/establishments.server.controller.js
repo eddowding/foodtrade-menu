@@ -74,7 +74,11 @@ exports.delete = function(req, res) {
  * List of Establishments
  */
 exports.list = function(req, res) {
-  Establishment.find(req.query).sort('-created').populate('user', 'displayName').exec(function(err, establishments) {
+  var query = req.query;
+	if (!req.isAdminUser) {
+		query.client = req.client._id;
+	}
+  Establishment.find(query).sort('-created').populate('user', 'displayName').exec(function(err, establishments) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -86,7 +90,12 @@ exports.list = function(req, res) {
 };
 
 exports.establishmentsByUserID = function(req, res) {
-  Establishment.find({user: req.params.userId}).sort('-created').exec(function(err, establishments) {
+  var query = req.query;
+  query.user = req.params.userId;
+	if (!req.isAdminUser) {
+		query.client = req.client._id;
+	}
+  Establishment.find(query).sort('-created').exec(function(err, establishments) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -101,7 +110,11 @@ exports.establishmentsByUserID = function(req, res) {
  * Establishment middleware
  */
 exports.establishmentByID = function(req, res, next, id) {
-  Establishment.findById(id).populate('user', 'displayName').exec(function(err, establishment) {
+  var query = {_id: id};
+	if (!req.isAdminUser) {
+		query.client = req.client._id;
+	}
+  Establishment.findOne(query).populate('user', 'displayName').exec(function(err, establishment) {
     if (err) return next(err);
     if (!establishment) return next(new Error('Failed to load Establishment ' + id));
     req.establishment = establishment;

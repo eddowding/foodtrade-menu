@@ -16,7 +16,7 @@ var ClientSchema = new Schema({
 		required: 'Please fill Client name',
 		trim: true
 	},
-	domain: {
+	subdomain: {
 		type: String,
 		required: true
 	},
