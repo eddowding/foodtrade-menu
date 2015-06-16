@@ -1,32 +1,14 @@
 <section data-ng-controller="DashboardController">
 	<div class="container-responsive" role="main" id="main">
-		<div class='row'>
-			<div class="col-xs-8" style="border-right: 1px solid #ccc;">
-        <div class=" " style="background: #fff; margin:0; padding: 10px 5px; border-bottom: 1px solid #999;">
-					FHRSID: {{establishment.FHRSID}}<br/>
-					BusinessType: {{establishment.BusinessType}}<br/>
-					RatingValue: {{establishment.RatingValue}}<br/>
-					RatingDate: {{establishment.RatingDate | date: 'short'}}<br/>
-					LocalAuthorityWebSite: {{establishment.LocalAuthorityWebSite}}<br/>
-					LocalAuthorityEmailAddress: {{establishment.LocalAuthorityEmailAddress}}<br/>
-					Hygiene: {{establishment.scores.Hygiene}}<br/>
-					Structural: {{establishment.scores.Structural}}<br/>
-					ConfidenceInManagement: {{establishment.scores.ConfidenceInManagement}}<br/>
-				</div>
-			</div>
-		</div>
     <div class="row">
       <div class="col-xs-8" style="border-right: 1px solid #ccc;">
         <div class=" " style="background: #fff; margin:0; padding: 10px 5px; border-bottom: 1px solid #999;">
 
-          <a ui-sref='grid-create' class="btn btn-success"><i class="fa fa-fw fa-plus-circle"></i> Create a new allergen grid</a>
+          <a ui-sref='grid-create' class="btn btn-success"><i class="fa fa-fw fa-plus-circle"></i> Add a new allergen grid</a>
           <!-- &nbsp;&nbsp;
           &nbsp;&nbsp;
           <a href="#" class="text-success"><i class="fa fa-fw fa-folder-open-o"></i> New Folder</a> -->
 
-		<div class="pull-right">
-	          <a href="/auth/signout" class="btn btn-default"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
-		</div>
 
         </div>
 
@@ -68,16 +50,85 @@
             <small class="pull-left text-muted">for menu management, sourcing, promotion &amp; more.</small>
           </div>
         </div>
-		<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10961_10155391655265051_3328845962715856450_n.jpg?oh=1bdf1823078665bbdec0ac93e3c45613&amp;oe=55A395CC&amp;__gda__=1437268823_650b9b6c8a3c7db2bc7a4ee556d13888" class="center-block img-circle img-thumbnail" width="80">
-		<p class="lead">
 
-        Hi - I'm Ed, CEO of FoodTrade.
+		<div class="alert alert-info">
+			<img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10961_10155391655265051_3328845962715856450_n.jpg?oh=1bdf1823078665bbdec0ac93e3c45613&amp;oe=55A395CC&amp;__gda__=1437268823_650b9b6c8a3c7db2bc7a4ee556d13888" class="center-block img-circle img-thumbnail" width="80">
+			<p class="innerT">
+		        Hi - I'm Ed, CEO of FoodTrade.
 			</p>
-			<p class="lead"> If there's anything you need, or if you have any ideas how it could be better, just call me on 0207 193 2999 or <a href="mailto:hello@foodtrade.com">email us</a>!
+			<p>If there's anything you need (eg help with using it, reporting a problem, or sharing an idea) just call me on 0207 193 2999 or <a href="mailto:hello@foodtrade.com">email me directly</a>!
+			</p>
+			<p class="bold">Meantime, happy cooking!</p>
+		</div>
 
+		<div id="FSAinfo" class="alert alert-warning">
+			<h4 class="text-center">Hygiene Inspections</h4>
+			<hr style="margin: 8px 0 15px 0;" />
+			<p>
+				Your local authority is really keen to help you succeed and be popular with customers. Do reach out to them if you need anything.
 			</p>
-			<p class="lead">Meantime, happy cooking!
-	</p>
+
+			<div class="innerTB">
+
+				<a href="mailto:{{establishment.LocalAuthorityEmailAddress}}?subject={{establishment.FHRSID}}&body={{establishment.FHRSID}}" class="btn btn-warning btn-lg btn-block"><i class="fa fa-briefcase fa-fw fa-lg"></i> Email your local EHO</a>
+				<div class="text-center">
+					<a href="{{establishment.LocalAuthorityWebSite}}" target="_blank">{{establishment.LocalAuthorityWebSite}}</a>
+				</div>
+
+			</div>
+
+
+			<h5>Your details</h5>
+			<dl>
+				<dt>
+					FHRS ID
+				</dt>
+				<dd>
+					{{establishment.FHRSID}}
+				</dd>
+				<dt>
+					Type
+				</dt>
+				<dd>
+					{{establishment.BusinessType}}
+				</dd>
+			</dl>
+
+
+			<h5>Your rating: {{establishment.RatingDate | date: 'short'}}</h5>
+
+			<dl>
+				<dt>
+					Overall
+				</dt>
+				<dd>
+					{{establishment.RatingValue}}
+				</dd>
+				<dt>
+					Hygiene
+				</dt>
+				<dd>
+					{{establishment.scores.Hygiene}}
+				</dd>
+				<dt>
+					Structural
+				</dt>
+				<dd>
+					{{establishment.scores.Structural}}
+				</dd>
+				<dt>
+					Confidence in management
+				</dt>
+				<dd>
+					{{establishment.scores.ConfidenceInManagement}}
+				</dd>
+			</dl>
+
+			<hr />
+
+
+
+		</div>
 
 
 

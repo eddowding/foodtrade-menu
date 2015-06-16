@@ -24,6 +24,13 @@ h5 {
     font-family: 'Fira Sans', sans-serif;
     font-weight: bold;
 }
+
+.clearfix{
+  zoom:1;
+  &:before, &:after{ content:""; display:table; }
+  &:after{ clear: both; }
+}
+
 .ng-valid.ng-dirty {
   border-color: slategrey;
 }
@@ -109,6 +116,7 @@ h5 {
     .itemname {
         white-space: normal !important;
         text-align: left !important;
+        min-width: 200px;
         textarea {
             height: 30px;
             padding: 1px 5px;
@@ -125,10 +133,10 @@ h5 {
             margin-bottom: 4px;
             padding: 2px 5px;
             height: auto;
-            width: 80%;
+            // width: 150px;
         }
         select {
-            width: 200px;
+            // width: 200px;
         }
         small {
             a {
@@ -154,6 +162,7 @@ h5 {
             .name:after {
                 content: 'edit';
                 font-weight: normal;
+                font-size: 11px;
                 color: #337ab7;
                 padding: 0 5px;
             }
@@ -178,6 +187,13 @@ h5 {
         border-left: 1px solid #ccc;
         border-collapse: collapse;
         padding: 4px 3px;
+        cell-edit {
+            font-size: 11px;
+            line-height: 1;
+            span {
+                color: #666;
+            }
+        }
         i {
             font-size: 16px !important;
             &.text-muted {
@@ -247,8 +263,8 @@ h5 {
     }
     .dish div {
         text-align: left;
-        white-space: nowrap;
-        width: 10%;
+        // white-space: nowrap;
+        // width: 10%;
         // &::before {
         //     content: ':: ';
         //     color: #ccc;
@@ -287,6 +303,18 @@ h5 {
         vertical-align: middle;
         text-align: center;
         width: 6.5%;
+        &.diet {
+            padding: 0;
+            margin: 0;
+            i {
+                color: #222 !important;
+                font-size: 23px !important;
+            }
+            i.fa-square-o {
+                color: #ddd !important;
+                font-size: 16px !important;
+            }
+        }
     }
 }
 .navbar {
@@ -479,14 +507,11 @@ tags-input .tags .tag-item {
     }
     .priced {
         float: right;
+        color: #999;
         margin-right: 3px;
         &::before {
             content: '£';
             // color: #ccc;
-            // font-weight: bold;
-            // &:hover {
-            //     cursor: move;
-            // }
         }
     }
     .characteristic {
@@ -513,19 +538,29 @@ tags-input .tags .tag-item {
             }
         }
     }
+    #FSAinfo {
+        display: none;
+    }
     #allergygrid {
         th.rotate {
             background-color: #fff !important;
             // background: url('/modules/grids/img/green.png') repeat;
             padding: 0;
             img {
-                height: 100% !important;
-                width: 100% !important;
-                position: relative;
-                top: 27px;
+                height: 125px !important;
+                width: 100%;
+                position: absolute;
+                top: 0;
             }
             div {
                 padding: 5px;
+            }
+        }
+        td.allergen {
+            font-size: 11px;
+            line-height: 1;
+            span {
+                color: #666;
             }
         }
     }
@@ -533,6 +568,8 @@ tags-input .tags .tag-item {
         color: #eee !important;
     }
 }
+
+// FLOATHEAD
 
 .floatThead-floatContainer {
     margin-top: 70px !important;
@@ -609,7 +646,35 @@ tags-input .tags .tag-item {
     }
 }
 
+#FSAinfo {
+    h5 {
+        margin-top: 1.5em;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    p {
+    }
+    dl {
+        .clearfix;
+      padding: 0em;
+      margin-bottom: 0;
+      font-size: 13px;
+    }
+    dt {
+      float: left;
+      clear: left;
+      width: 100px;
+      text-align: left;
+      line-height: 1;
+      margin-bottom: 5px;
+      font-weight: normal;
+    }
+    dd {
+      margin: 0 0 0 30px;
+      padding: 0 0 0.1em 0;
+      text-align: left;
+    }
 
+}
 
 
 .onboarding-focus {
