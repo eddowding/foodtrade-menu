@@ -55,6 +55,7 @@ module.exports = function(db) {
 		}
 		var Client = mongoose.model('Client');
 		var subdomain = req.subdomains.join('.');
+		console.info('Found subdomain >>>', subdomain);
 		Client.findOne({'subdomain': subdomain})
 		.exec(function(err, client) {
 			if (err) {
@@ -62,6 +63,9 @@ module.exports = function(db) {
 				next();
 			} else {
 				req.client = client;
+				if (req.client) {
+					console.info('Found client >>', req.client._id);
+				}
 				next();
 			}
 		});
