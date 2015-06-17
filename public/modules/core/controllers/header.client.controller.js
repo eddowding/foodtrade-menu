@@ -3,6 +3,7 @@
 angular.module('core').controller('HeaderController', ['$scope', '$rootScope', 'Authentication', 'Menus', '$http',
 	function($scope, $rootScope, Authentication, Menus, $http) {
 		$scope.authentication = Authentication;
+		$scope.logo = logo;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
 

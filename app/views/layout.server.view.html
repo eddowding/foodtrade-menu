@@ -54,6 +54,11 @@
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{user | json | safe}};
+		{% if request.client %}
+			var logo = '{{request.client.logo}}';
+		{% else %}
+			var logo = null;
+		{% endif %}
 	</script>
 
 	<script type="text/javascript">
