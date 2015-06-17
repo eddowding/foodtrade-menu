@@ -200,7 +200,10 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
             });
             $location.path('/dashboard');
           });
-      }).error(function(response) {
+      }).error(function(response, status) {
+        if (status == 301) {
+					window.location = 'http://' + response.subdomain + '.foodtrade.menu';
+				}
         $scope.error = response.message;
       });
     };

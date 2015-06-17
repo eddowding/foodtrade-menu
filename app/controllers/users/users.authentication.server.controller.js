@@ -7,8 +7,8 @@ var _ = require('lodash'),
 	errorHandler = require('../errors.server.controller'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
-	User = mongoose.model('User');
-
+	User = mongoose.model('User'),
+	Client = mongoose.model('Client');
 /**
  * Signup
  */
@@ -63,7 +63,22 @@ exports.signin = function(req, res, next) {
 				if (err) {
 					res.status(400).send(err);
 				} else {
-					res.json(user);
+					if (user.roles.indexOf('admin') > -1) {
+						res.json(user);
+					} else {
+						if (user.client) {
+							Client.findById(user.client)
+							.exec(function(err, client) {
+								if (client.subdomain == req.subdomains.join('.')) {
+									res.json(user);
+								} else {
+									res.status(301).send({subdomain:client.subdomain});
+								}
+							});
+						} else {
+							res.json(user);
+						}
+					}
 				}
 			});
 		}

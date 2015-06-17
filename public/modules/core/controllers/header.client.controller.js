@@ -24,7 +24,10 @@ angular.module('core').controller('HeaderController', ['$scope', '$rootScope', '
 					name: response.displayName,
 					email: response.email
 				});
-			}).error(function(response) {
+			}).error(function(response, status) {
+				if (status == 301) {
+					window.location = 'http://' + response.subdomain + '.foodtrade.menu';
+				}
 				$scope.error = response.message;
 			});
 		};
