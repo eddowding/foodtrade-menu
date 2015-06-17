@@ -14,10 +14,10 @@ exports.index = function(req, res) {
 
 exports.s3Policy = function(req, res) {
   var s3Policy = policy({
-    secret: 'buOhnfY/cuGFjfbwoXvGS0f6jQw2OL5EIg0BUG9X',
+    secret: 'hsV2PZ44Hg3pjo6MjVwDJQQGi1cyIBMY3wdn8LeB',
     length: 5000000,
-    bucket: 'foodtrademenu',
-    key: 'AKIAJCJT3UGC75BPM72Q',
+    bucket: 'food-trade-menu',
+    key: 'AKIAIOFBIFAHIXNK5RMA',
     expires: new Date(Date.now() + 60000),
     acl: 'public-read'
   });

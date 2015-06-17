@@ -5,7 +5,7 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
   function($scope, $stateParams, $location, Authentication, Clients, $http, Upload) {
     $scope.authentication = Authentication;
 		$scope.uploadMsg = 'Click to upload asset';
-		
+
     $http.get('/s3/policy')
       .success(function(data) {
         $scope.policy = data.policy;
@@ -17,11 +17,11 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
         for (var i = 0; i < files.length; i++) {
           var file = files[i];
           Upload.upload({
-            url: 'https://foodtrademenu.s3-website-eu-west-1.amazonaws.com/', //S3 upload url including bucket name
+            url: 'https://food-trade-menu.s3.amazonaws.com/', //S3 upload url including bucket name
             method: 'POST',
             fields: {
               key: 'logos/' + file.name, // the key to store the file on S3, could be file name or customized
-              AWSAccessKeyId: 'AKIAJCJT3UGC75BPM72Q',
+              AWSAccessKeyId: 'AKIAIOFBIFAHIXNK5RMA',
               acl: 'public-read', // sets the access to the uploaded file in the bucket: private or public
               policy: $scope.policy, // base64-encoded json policy (see article below)
               signature: $scope.signature, // base64-encoded signature based on policy string (see article below)
@@ -34,7 +34,7 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
             $scope.uploadMsg = 'progress: ' + progressPercentage + '% ' + evt.config.file.name;
           }).success(function(data, status, headers, config) {
             $scope.uploadMsg = 'file ' + config.file.name + ' uploaded.';
-            $scope.client.logo = 'https://s3.amazonaws.com/foodtrademenu/logos/' + config.file.name;
+            $scope.client.logo = 'https://s3.amazonaws.com/food-trade-menu/logos/' + config.file.name;
           });
         }
       }
