@@ -22,7 +22,7 @@ var ClientSchema = new Schema({
 		unique: true
 	},
 	logo: {
-		type: Buffer,
+		type: String,
 		required: false
 	},
 	created: {

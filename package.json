@@ -41,6 +41,7 @@
     "passport-local": "~1.0.0",
     "passport-twitter": "~1.0.2",
     "phantom": "^0.7.2",
+    "s3-policy": "^0.2.0",
     "swig": "~1.4.1"
   },
   "devDependencies": {
