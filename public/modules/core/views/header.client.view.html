@@ -65,6 +65,7 @@
 
             <!-- only show if user is logged in -->
             <li ng-if='authentication.user'><a ui-sref='dashboard'>Dashboard</a></li>
+            <li ng-if='authentication.user'><a ui-sref='profile'>Profile</a></li>
             <!--or if not, show -->
             <li ng-if='!authentication.user'><a data-toggle="modal" data-target="#signinModal">Already registered? <strong> Log in</strong></a></li>
             <li ng-if='authentication.user'><a href='/auth/signout'>Log Out</a></li>

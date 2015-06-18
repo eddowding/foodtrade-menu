@@ -1,13 +1,21 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication', 'Establishments',
+	function($scope, $http, $location, Users, Authentication, Establishments) {
 		$scope.user = Authentication.user;
+
+		Establishments.query({user: $scope.user._id})
+		.$promise
+		.then(function(establishments) {
+			if(establishments.length) {
+				$scope.establishment = establishments[0];
+			}
+		});
 
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');
 
-		// Check if there are additional accounts 
+		// Check if there are additional accounts
 		$scope.hasConnectedAdditionalSocialAccounts = function(provider) {
 			for (var i in $scope.user.additionalProvidersData) {
 				return true;
@@ -40,7 +48,6 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 
 		// Update a user profile
 		$scope.updateUserProfile = function(isValid) {
-			if (isValid) {
 				$scope.success = $scope.error = null;
 				var user = new Users($scope.user);
 
@@ -50,9 +57,8 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 				}, function(response) {
 					$scope.error = response.data.message;
 				});
-			} else {
-				$scope.submitted = true;
-			}
+
+				$scope.establishment.$save();
 		};
 
 		// Change user password
