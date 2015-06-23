@@ -164,7 +164,16 @@
             </select>
           </td>
           <td data-ng-repeat="column in gridColumns">
-            <cell-edit row-number='$parent.$index' column-name='column'></cell-edit>
+            <div ng-if='!rowEditStatus[$parent.$index]'>
+              <div class="clearfix">
+                <i class="fa" data-ng-class="{'fa-minus-square-o': row[column].allergenType == 'Removable', 'fa-square-o text-muted': row[column].allergenType == 'No allergen', 'fa-check-square-o': row[column].allergenType == 'Fixed'}"></i>
+              </div>
+
+              <span ng-show="row[column].allergens">{{row[column].allergens}}</span>
+            </div>
+            <div ng-if='rowEditStatus[$parent.$index]'>
+              <cell-edit row-number='$parent.$parent.$index' column-name='column'></cell-edit>
+            </div>
           </td>
         </tr>
         <tr class="newdish">
