@@ -8,8 +8,9 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
   function($locationProvider) {
     $locationProvider.hashPrefix('!');
   }
-]).config(['ngClipProvider', function(ngClipProvider) {
+]).config(['ngClipProvider', '$httpProvider', function(ngClipProvider, $httpProvider) {
   ngClipProvider.setPath("lib/zeroclipboard/dist/ZeroClipboard.swf");
+  $httpProvider.useApplyAsync(true);
 }]).run(function($rootScope, $state, $stateParams) {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
