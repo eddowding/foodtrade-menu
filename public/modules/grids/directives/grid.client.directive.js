@@ -284,6 +284,16 @@ angular.module('grids').directive('grid', [function() {
           scope.saveGridFn();
         }
       });
+
+      scope.rowEditStatus = {};
+
+      scope.toggleEditRowFn = function($index) {
+        if (scope.rowEditStatus[$index]) {
+          scope.rowEditStatus[$index] = false;
+        } else {
+          scope.rowEditStatus[$index] = true;
+        }
+      };
     }
   };
 }]);
