@@ -39,6 +39,8 @@ module.exports = {
         'public/lib/ngprogress/build/ngProgress.min.js',
         'public/lib/ng-file-upload/ng-file-upload-shim.min.js',
         'public/lib/ng-file-upload/ng-file-upload.min.js',
+        'public/lib/elasticsearch/elasticsearch.angular.min.js',
+        'public/lib/elastic.js/dist/elastic.min.js'
       ]
     },
     css: 'public/dist/application.min.css',
