@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('ftm').controller('SearchController', ['$scope', 'Es',
-  function($scope, Es) {
+angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi',
+  function($scope, Es, uiGmapGoogleMapApi) {
     var esClient = Es.client();
     esClient.search({
       index: 'twitter',
@@ -11,6 +11,16 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es',
       var hits = resp.hits.hits;
     }, function(err) {
       console.error(err);
+    });
+
+    uiGmapGoogleMapApi.then(function(maps) {
+      $scope.map = {
+        center: {
+          latitude: 45,
+          longitude: -73
+        },
+        zoom: 8
+      };
     });
   }
 ]);

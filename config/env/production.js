@@ -45,7 +45,9 @@ module.exports = {
         'public/lib/ng-file-upload/ng-file-upload-shim.min.js',
         'public/lib/ng-file-upload/ng-file-upload.min.js',
         'public/lib/elasticsearch/elasticsearch.angular.min.js',
-        'public/lib/elastic.js/dist/elastic.min.js'
+        'public/lib/elastic.js/dist/elastic.min.js',
+        'public/lib/angular-google-maps/dist/angular-google-maps.min.js',
+        'public/lib/lodash/lodash.min.js'
       ]
     },
     css: 'public/dist/application.min.css',

@@ -28,7 +28,8 @@
     "ngprogress": "~1.0.7",
     "ng-file-upload": "~5.0.7",
     "elastic.js": "~1.2.0",
-    "elasticsearch": "~5.0.0"
+    "elasticsearch": "~5.0.0",
+    "angular-google-maps": "~2.1.5"
   },
   "resolutions": {
     "angular": "~1.3"

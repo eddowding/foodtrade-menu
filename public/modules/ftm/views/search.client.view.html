@@ -1,8 +1,8 @@
 <section data-ng-controller="SearchController">
 	<div class="container-responsive" role="main" id="main">
 			<div class="row">
-					<div class="col-xs-12">
-						Search bar
+					<div class="col-xs-2">
+						<input class='form-control' type='text' ng-model='query' placeholder='Type to search...'/>
 					</div>
 			</div>
 			<div class='row'>
@@ -10,7 +10,7 @@
 					Search bar
 				</div>
 				<div class="col-xs-6">
-					Search bar
+					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
 				</div>
 			</div>
 	</div>
