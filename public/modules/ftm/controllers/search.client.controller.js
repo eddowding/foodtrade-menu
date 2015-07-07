@@ -4,8 +4,8 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
   function($scope, Es, uiGmapGoogleMapApi) {
     var esClient = Es.client();
     esClient.search({
-      index: 'twitter',
-      type: 'tweets',
+      index: 'ftm',
+      type: 'establishment',
       body: ejs.Request().query(ejs.MatchQuery('body', 'elasticsearch'))
     }).then(function(resp) {
       var hits = resp.hits.hits;
