@@ -107,7 +107,8 @@ var EstablishmentSchema = new Schema({
   },
   geocode: {
     type: [Number],
-    index: '2dsphere'
+    index: '2dsphere',
+    es_type: 'geo_point'
   },
   RightToReply: {
     type: String,
@@ -133,3 +134,6 @@ var EstablishmentSchema = new Schema({
 
 EstablishmentSchema.plugin(mongoosastic, {index: 'ftm', type: 'establishment'});
 mongoose.model('Establishment', EstablishmentSchema);
+
+var Establishment = mongoose.model('Establishment');
+Establishment.createMapping(function(err, mapping){});

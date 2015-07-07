@@ -7,7 +7,9 @@
 			</div>
 			<div class='row'>
 				<div class="col-xs-6">
-					Search result
+					<ul>
+						<li ng-repeat='hit in hits'>{{hit._source.BusinessName}}</li>
+					</ul>
 				</div>
 				<div class="col-xs-6">
 					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>

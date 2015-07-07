@@ -3,14 +3,24 @@
 angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi',
   function($scope, Es, uiGmapGoogleMapApi) {
     var esClient = Es.client();
-    esClient.search({
-      index: 'ftm',
-      type: 'establishment',
-      body: ejs.Request().query(ejs.MatchQuery('body', 'elasticsearch'))
-    }).then(function(resp) {
-      var hits = resp.hits.hits;
-    }, function(err) {
-      console.error(err);
+
+    $scope.searchFn = function() {
+      esClient.search({
+        index: 'ftm',
+        type: 'establishment',
+        body: ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query))
+      }).then(function(resp) {
+        $scope.hits = resp.hits.hits;
+        console.info('Search Query', ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query)).toJSON());
+      }, function(err) {
+        console.error(err);
+      });
+    };
+
+    $scope.$watch('query', function(newValue, oldValue) {
+      if (newValue && newValue.length >= 2) {
+        $scope.searchFn();
+      };
     });
 
     uiGmapGoogleMapApi.then(function(maps) {
