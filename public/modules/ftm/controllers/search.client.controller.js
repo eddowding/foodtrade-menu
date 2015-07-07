@@ -20,7 +20,9 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     $scope.$watch('query', function(newValue, oldValue) {
       if (newValue && newValue.length >= 2) {
         $scope.searchFn();
-      };
+      } else {
+				$scope.hits = [];
+			}
     });
 
     uiGmapGoogleMapApi.then(function(maps) {
