@@ -11,7 +11,6 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
         body: ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query))
       }).then(function(resp) {
         $scope.hits = resp.hits.hits;
-        console.info('Search Query', ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query)).toJSON());
       }, function(err) {
         console.error(err);
       });
