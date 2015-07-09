@@ -10,6 +10,21 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     $scope.currentPage = 1;
     $scope.pageLimit = 5;
 
+    $scope.getLocationByAddressFn = function(address, cb) {
+      $scope.geocoder.geocode({
+        address: address
+      }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          cb(null, {
+            longitude: results[0].geometry.location.lng(),
+            latitude: results[0].geometry.location.lat()
+          });
+        } else {
+          cb(status, null);
+        }
+      });
+    };
+
     $scope.searchFn = function() {
       esClient.search({
         index: 'ftm',
@@ -20,6 +35,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
       }).then(function(resp) {
         $scope.totalItems = resp.hits.total;
         $scope.hits = resp.hits.hits;
+        $scope.hitMarkers = [];
         $scope.hits.forEach(function(value, index) {
           if (value._source.geocode) {
             $scope.hitMarkers.push({
@@ -27,6 +43,28 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
               latitude: value._source.geocode[1],
               id: value._source._id,
               title: value._source.BusinessName
+            });
+          } else {
+            var address = [];
+            if (value._source.AddressLine1) {
+              address.push(value._source.AddressLine1);
+            }
+            if (value._source.AddressLine2) {
+              address.push(value._source.AddressLine2);
+            }
+            if (value._source.AddressLine3) {
+              address.push(value._source.AddressLine3);
+            }
+            if (value._source.AddressLine4) {
+              address.push(value._source.AddressLine4);
+            }
+            if (value._source.PostCode) {
+              address.push(value._source.PostCode);
+            }
+            $scope.getLocationByAddressFn(address.join(','), function(err, location) {
+              location.id = value._source._id;
+              location.title = value._source.BusinessName;
+              $scope.hitMarkers.push(location);
             });
           }
         });
@@ -46,6 +84,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     });
 
     uiGmapGoogleMapApi.then(function(maps) {
+      $scope.geocoder = new maps.Geocoder();
       $scope.map = {
         center: {
           latitude: 45,
