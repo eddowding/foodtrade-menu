@@ -24,13 +24,13 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/#!/" ng-if='!authentication.user'>
-            <img ng-src="{{logo || 'http://www.foodtrade.com/static/images/logo_28.png'}}" height=28 width=250 alt="alrg">
+            <img ng-src="{{logo || 'http://www.foodtrade.com/static/images/logo_28.png'}}"   alt="alrg">
         </a>
         <a class="navbar-brand" href="/#!/grids" ng-if='item.shouldRender(authentication.user)'>
-            <img ng-src="{{logo || 'http://www.foodtrade.com/static/images/logo_28.png'}}" height=28 width=250 alt="alrg">
+            <img ng-src="{{logo || 'http://www.foodtrade.com/static/images/logo_28.png'}}"  alt="alrg">
         </a>
         <a class="navbar-brand" href="/#!/dashboard" ng-if='authentication.user && !item.shouldRender(authentication.user)'>
-            <img ng-src="{{logo || 'http://www.foodtrade.com/static/images/logo_28.png'}}" height=28 width=250 alt="alrg">
+            <img ng-src="{{logo || 'http://www.foodtrade.com/static/images/logo_28.png'}}"   alt="alrg">
         </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">

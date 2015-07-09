@@ -148,8 +148,10 @@
           </td>
           <td class="trash">
             <a ng-click='deleteRowFn($index)' ng-if='rowEditStatus[$index]'><i class="fa fa-trash-o text-danger"></i></a>
+
             <a ng-click='toggleEditRowFn($index)' ng-if='!rowEditStatus[$index]'><i class='glyphicon glyphicon-edit'></i></a>
             <a ng-click='toggleEditRowFn($index)' ng-if='rowEditStatus[$index]'><i class='glyphicon glyphicon-edit text-danger'></i></a>
+
           </td>
           <td class="diet" ng-if='!rowEditStatus[$index]'>
             <i class="" ng-class="{'icon-meat': row.veggie.type == 'Meat', 'fa fa-leaf': row.veggie.type == 'Veggie', 'icon-fish': row.veggie.type == 'Fish', 'icon-vegan': row.veggie.type == 'Vegan', 'fa fa-square-o': !row.veggie.type}"></i>
