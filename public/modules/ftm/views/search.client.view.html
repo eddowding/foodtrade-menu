@@ -13,7 +13,11 @@
 			</div>
 			<div class="col-xs-6">
 				<ui-gmap-google-map center='map.center' zoom='map.zoom'>
-					<ui-gmap-markers models="hits" coords="'_source.geocode'" idkey="'_id'"></ui-gmap-markers>
+					<ui-gmap-markers models="hitMarkers" coords="'self'" idkey="'id'" doRebuildAll='true' fit='true' events="markerEvents">
+						<ui-gmap-windows>
+							{{clickedMarker.title}}
+						</ui-gmap-windows>
+					</ui-gmap-markers>
 				</ui-gmap-google-map>
 			</div>
 		</div>
