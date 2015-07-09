@@ -6,12 +6,19 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
 
     $scope.hitMarkers = [];
 
+    $scope.totalItems = 0;
+    $scope.currentPage = 1;
+    $scope.pageLimit = 5;
+
     $scope.searchFn = function() {
       esClient.search({
         index: 'ftm',
         type: 'establishment',
+        from: ($scope.currentPage - 1) * $scope.pageLimit,
+        size: $scope.pageLimit,
         body: ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query))
       }).then(function(resp) {
+        $scope.totalItems = resp.hits.total;
         $scope.hits = resp.hits.hits;
         $scope.hits.forEach(function(value, index) {
           if (value._source.geocode) {
@@ -33,6 +40,8 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
         $scope.searchFn();
       } else {
         $scope.hits = [];
+        $scope.totalItems = 0;
+        $scope.currentPage = 1;
       }
     });
 
@@ -47,11 +56,19 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     });
 
     $scope.markerClickEvent = function(marker, eventName, model, arguments) {
-			$scope.clickedMarker = model;
+      $scope.clickedMarker = model;
     };
 
     $scope.markerEvents = {
       click: $scope.markerClickEvent
+    };
+
+    $scope.setPage = function(pageNo) {
+      $scope.currentPage = pageNo;
+    };
+
+    $scope.pageChanged = function() {
+      $scope.searchFn();
     };
   }
 ]);
