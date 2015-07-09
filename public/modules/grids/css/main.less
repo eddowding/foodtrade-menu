@@ -4,6 +4,7 @@
 @import url(http://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,700);
 @light: #d9e6c2;
 @dark: darken(@light, 30%);
+@link: rgb(90, 163, 209);
 .mR10 {
     margin-right: 10px;
 }
@@ -715,4 +716,105 @@ td.onboarding-focus {
                 }
             }
         }
+}
+
+
+
+
+// search
+.locationimage {
+    height: 150px;
+    overflow: hidden;
+    display: block;
+    background-size: cover;
+    position: relative;
+    h4 {
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        display: block;
+        padding: 10px;
+        width: 100%;
+        background: rgba(0,0,0,0.7);
+        a {
+            color: #fff;
+        }
+        .rating {
+            float: right;
+        }
+        i {
+            color: #fff;
+        }
+    }
+    // .transition(all 0.2s);
+    // &:hover {
+    //     height: 300px;
+    // }
+}
+
+.single {
+    .btn-group {
+        margin: 30px 0;
+        .btn {
+            padding: 10px 0;
+            background: none;
+            border: 1px solid @link;
+            border-collapse: collapse;
+            font-size: 12px;
+            color: @link;
+            &:hover {
+                color: #444;
+                border: 1px solid #444;
+            }
+            i {
+                display: block;
+                font-size: 6vw;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+.menu {
+    h4 {
+        border-bottom: 1px solid #ccc;
+        margin: 20px 0;
+    }
+    .menuitem {
+        h5 {
+            font-size: 16px;
+            margin: 0;
+        }
+        .price {
+            float: right;
+            font-size: 1em;
+        }
+        .order {
+            // border: 1px solid #ccc;
+            // padding: 3px 5px;
+            // .border-radius(5px);
+        }
+        p {
+            margin: 0;
+        }
+        .tags {
+            font-size: 11px;
+            a {
+                color: #999;
+                &::after {
+                    content: ', ';
+                }
+            }
+        }
+        .ingredients {
+            .allergen {
+                // font-weight: bold;
+                color: #900;
+            }
+            span {
+                &::after {
+                content: ', ';
+                }
+            }
+        }
+    }
 }
