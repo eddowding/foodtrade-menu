@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+  mongoosastic = require('mongoosastic'),
   Schema = mongoose.Schema;
 
 /**
@@ -106,7 +107,8 @@ var EstablishmentSchema = new Schema({
   },
   geocode: {
     type: [Number],
-    index: '2dsphere'
+    index: '2dsphere',
+    es_type: 'geo_point'
   },
   RightToReply: {
     type: String,
@@ -124,10 +126,14 @@ var EstablishmentSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
-	client: {
-		type: Schema.ObjectId,
-		ref: 'Client'
-	}
+  client: {
+    type: Schema.ObjectId,
+    ref: 'Client'
+  }
 });
 
+EstablishmentSchema.plugin(mongoosastic, {index: 'ftm', type: 'establishment'});
 mongoose.model('Establishment', EstablishmentSchema);
+
+var Establishment = mongoose.model('Establishment');
+Establishment.createMapping(function(err, mapping){});

@@ -1,0 +1,21 @@
+<section data-ng-controller="SearchController">
+	<div class="container-responsive" role="main" id="main">
+		<div class="row">
+			<div class="col-xs-2">
+				<input class='form-control' type='text' ng-model='query' placeholder='Type to search...' />
+			</div>
+		</div>
+		<div class='row'>
+			<div class="col-xs-6">
+				<ul>
+					<li ng-repeat='hit in hits'>{{hit._source.BusinessName}}</li>
+				</ul>
+			</div>
+			<div class="col-xs-6">
+				<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+					<ui-gmap-markers models="hits" coords="'_source.geocode'" idkey="'_id'"></ui-gmap-markers>
+				</ui-gmap-google-map>
+			</div>
+		</div>
+	</div>
+</section>

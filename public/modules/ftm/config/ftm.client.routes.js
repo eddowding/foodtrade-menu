@@ -5,6 +5,10 @@ angular.module('ftm').config(['$stateProvider',
 	function($stateProvider) {
 		// Ftm state routing
 		$stateProvider.
+		state('search', {
+			url: '/search',
+			templateUrl: 'modules/ftm/views/search.client.view.html'
+		}).
 		state('terms', {
 			url: '/terms',
 			templateUrl: 'modules/ftm/views/terms.client.view.html'

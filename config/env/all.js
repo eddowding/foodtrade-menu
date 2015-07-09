@@ -49,6 +49,10 @@ module.exports = {
         'public/lib/ngprogress/build/ngProgress.js',
         'public/lib/ng-file-upload/ng-file-upload-shim.js',
         'public/lib/ng-file-upload/ng-file-upload.js',
+        'public/lib/elasticsearch/elasticsearch.angular.js',
+        'public/lib/elastic.js/dist/elastic.js',
+        'public/lib/angular-google-maps/dist/angular-google-maps.js',
+        'public/lib/lodash/lodash.js'
 
       ]
     },

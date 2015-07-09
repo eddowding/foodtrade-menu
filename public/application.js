@@ -8,9 +8,14 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
   function($locationProvider) {
     $locationProvider.hashPrefix('!');
   }
-]).config(['ngClipProvider', '$httpProvider', function(ngClipProvider, $httpProvider) {
+]).config(['ngClipProvider', '$httpProvider', 'uiGmapGoogleMapApiProvider', function(ngClipProvider, $httpProvider, uiGmapGoogleMapApiProvider) {
   ngClipProvider.setPath("lib/zeroclipboard/dist/ZeroClipboard.swf");
   $httpProvider.useApplyAsync(true);
+  uiGmapGoogleMapApiProvider.configure({
+      //    key: 'your api key',
+       v: '3.17',
+       libraries: 'weather,geometry,visualization'
+   });
 }]).run(function($rootScope, $state, $stateParams) {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
