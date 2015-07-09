@@ -101,33 +101,33 @@
 						72-76 Lamb's Conduit Street, London WC1N 3LP
 					</small>
 					<div class="collapse" id="ratingInfo">
-						<div id="FSAinfo" >
-						<dl>
-							<dt>
-								Overall
-							</dt>
-							<dd class="ng-binding">
+						<div id="FSAinfo">
+							<dl>
+								<dt>
+									Overall
+								</dt>
+								<dd class="ng-binding">
 
-							</dd>
-							<dt>
-								Hygiene
-							</dt>
-							<dd class="ng-binding">
+								</dd>
+								<dt>
+									Hygiene
+								</dt>
+								<dd class="ng-binding">
 
-							</dd>
-							<dt>
-								Structural
-							</dt>
-							<dd class="ng-binding">
+								</dd>
+								<dt>
+									Structural
+								</dt>
+								<dd class="ng-binding">
 
-							</dd>
-							<dt>
-								Confidence in management
-							</dt>
-							<dd class="ng-binding">
+								</dd>
+								<dt>
+									Confidence in management
+								</dt>
+								<dd class="ng-binding">
 
-							</dd>
-						</dl>
+								</dd>
+							</dl>
 						</div>
 
 					</div>
@@ -139,7 +139,7 @@
 						<a class="btn btn-default action">
 							<i class="fa fa-globe"></i> Website
 						</a>
-						<a class="btn btn-default action" >
+						<a class="btn btn-default action">
 							<i class="fa fa-location-arrow"></i> Directions
 						</a>
 					</div>
@@ -151,7 +151,7 @@
 
 								<h5>
 									Lasagne al Verde
-										<span class="price"> £8.75</span>
+									<span class="price"> £8.75</span>
 								</h5>
 								<p class="text-muted ingredients">
 									<span class="allergen gluten">Pasta (wheat flour)</span>
@@ -172,12 +172,7 @@
 						</section>
 
 						<pre>
-							if no menu..
-							upload a photo (camera, mobile)
-						    email us a phioto
-							add twitter  email for biz
-							add tags
-							claim
+							if no menu.. upload a photo (camera, mobile) email us a phioto add twitter email for biz add tags claim
 						</pre>
 					</div>
 				</div>
@@ -220,7 +215,11 @@
 			</div>
 			<div class="col-xs-6">
 				<ui-gmap-google-map center='map.center' zoom='map.zoom'>
-					<ui-gmap-markers models="hits" coords="'_source.geocode'" idkey="'_id'"></ui-gmap-markers>
+					<ui-gmap-markers models="hitMarkers" coords="'self'" idkey="'id'" doRebuildAll='true' fit='true' events="markerEvents">
+						<ui-gmap-windows>
+							{{clickedMarker.title}}
+						</ui-gmap-windows>
+					</ui-gmap-markers>
 				</ui-gmap-google-map>
 			</div>
 		</div>

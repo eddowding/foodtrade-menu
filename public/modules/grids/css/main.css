@@ -902,3 +902,4 @@ td.onboarding-focus .popover {
 .menu .menuitem .ingredients span::after {
   content: ', ';
 }
+.angular-google-map-container { height: 400px; }
