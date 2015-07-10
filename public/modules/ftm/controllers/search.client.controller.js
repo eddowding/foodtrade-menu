@@ -8,7 +8,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
 
     $scope.totalItems = 0;
     $scope.currentPage = 1;
-    $scope.pageLimit = 5;
+    $scope.pageLimit = 2;
 
     $scope.getLocationByAddressFn = function(address, cb) {
       $scope.geocoder.geocode({
@@ -26,6 +26,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     };
 
     $scope.searchFn = function() {
+			console.log('search called');
       esClient.search({
         index: 'ftm',
         type: 'establishment',

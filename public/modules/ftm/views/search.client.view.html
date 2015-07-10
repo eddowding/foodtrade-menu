@@ -222,8 +222,8 @@
 				<ui-gmap-google-map center='map.center' zoom='map.zoom'>
 					<ui-gmap-markers models="hitMarkers" coords="'self'" idkey="'id'" doRebuildAll='true' fit='true' events="markerEvents">
 						<ui-gmap-windows>
-							{{clickedMarker.title}}
-						</ui-gmap-windows>
+							<div ng-non-bindable>{{title}}</div>
+						</ui-gmap-window>
 					</ui-gmap-markers>
 				</ui-gmap-google-map>
 			</div>
