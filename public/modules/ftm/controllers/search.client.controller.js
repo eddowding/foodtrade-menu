@@ -62,9 +62,11 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
               address.push(value._source.PostCode);
             }
             $scope.getLocationByAddressFn(address.join(','), function(err, location) {
-              location.id = value._source._id;
-              location.title = value._source.BusinessName;
-              $scope.hitMarkers.push(location);
+              if (location) {
+                location.id = value._source._id;
+                location.title = value._source.BusinessName;
+                $scope.hitMarkers.push(location);
+              }
             });
           }
         });
