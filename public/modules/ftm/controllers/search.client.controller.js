@@ -5,6 +5,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     var esClient = Es.client();
 
     $scope.hitMarkers = [];
+		$scope.markerControl = {};
 
     $scope.totalItems = 0;
     $scope.currentPage = 1;
@@ -57,6 +58,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
         $scope.totalItems = resp.hits.total;
         $scope.hits = resp.hits.hits;
         $scope.hitMarkers = [];
+				$scope.markerControl.clean();
         $scope.hits.forEach(function(value, index) {
           if (value._source.geocode) {
             $scope.hitMarkers.push({
@@ -65,6 +67,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
               id: value._source._id,
               title: value._source.BusinessName
             });
+						$scope.markerControl.managerDraw();
           } else {
             $scope.getLocationByAddressFn($scope.getAddressByEstablishmentFn(value), function(err, location) {
               if (location) {
@@ -74,10 +77,12 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
                   id: value._source._id,
                   title: value._source.BusinessName
                 });
+								$scope.markerControl.managerDraw();
               }
             });
           }
         });
+				$scope.markerControl.managerDraw();
       }, function(err) {
         console.error(err);
       });
