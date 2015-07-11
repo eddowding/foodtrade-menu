@@ -148,9 +148,9 @@
 								<button class="btn btn-default" type="button">
 									<i class="fa fa-globe"></i> Website
 								</button> -->
-								<button class="btn btn-default" type="button">
+								<a ng-href='https://www.google.com/maps/dir/Current+Location/{{hit._source.geocode[1]}},{{hit._source.geocode[0]}}' target="_blank">
 									<i class="fa fa-location-arrow"></i> Directions
-								</button>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -165,6 +165,9 @@
 					<ui-gmap-markers models="hitMarkers" coords="'self'" idkey="'id'" doRebuildAll=true fit=true events="markerEvents" control='markerControl'>
 						<ui-gmap-windows>
 							<div ng-non-bindable>{{title}}</div>
+							<a ng-href='https://www.google.com/maps/dir/Current+Location/{{latitude}},{{longitude}}' target="_blank">
+								<i class="fa fa-location-arrow"></i> Directions
+							</a>
 							</ui-gmap-window>
 					</ui-gmap-markers>
 				</ui-gmap-google-map>

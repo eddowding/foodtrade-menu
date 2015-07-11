@@ -94,6 +94,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
           } else {
             $scope.getLocationByAddressFn($scope.getAddressByEstablishmentFn(value), function(err, location) {
               if (location) {
+								value._source.geocode = [location.longitude, location.latitude];
                 $scope.hitMarkers.push({
                   latitude: location.latitude,
                   longitude: location.longitude,
