@@ -2,11 +2,33 @@
 
 angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi', '$timeout',
   function($scope, Es, uiGmapGoogleMapApi, $timeout) {
+    $scope.map = {
+      center: {
+        latitude: 45,
+        longitude: -73
+      },
+      zoom: 8
+    };
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(location) {
+        console.log(location);
+        $scope.myLocation = {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude
+        };
+        $scope.map.center.latitude = location.coords.latitude;
+        $scope.map.center.longitude = location.coords.longitude;
+      });
+    } else {
+      $scope.myLocation = null;
+      console.info('Geo Location is not supported');
+    }
+
     var esClient = Es.client();
 
-		$scope.mapControl = {};
+    $scope.mapControl = {};
     $scope.hitMarkers = [];
-		$scope.markerControl = {};
+    $scope.markerControl = {};
 
     $scope.totalItems = 0;
     $scope.currentPage = 1;
@@ -59,7 +81,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
         $scope.totalItems = resp.hits.total;
         $scope.hits = resp.hits.hits;
         $scope.hitMarkers = [];
-				$scope.markerControl.clean();
+        $scope.markerControl.clean();
         $scope.hits.forEach(function(value, index) {
           if (value._source.geocode) {
             $scope.hitMarkers.push({
@@ -68,7 +90,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
               id: value._source._id,
               title: value._source.BusinessName
             });
-						$scope.markerControl.managerDraw();
+            $scope.markerControl.managerDraw();
           } else {
             $scope.getLocationByAddressFn($scope.getAddressByEstablishmentFn(value), function(err, location) {
               if (location) {
@@ -78,15 +100,15 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
                   id: value._source._id,
                   title: value._source.BusinessName
                 });
-								$scope.markerControl.managerDraw();
+                $scope.markerControl.managerDraw();
               }
             });
           }
         });
-				$scope.markerControl.managerDraw();
-				$timeout(function() {
-					$scope.mapControl.refresh();
-				}, 500);
+        $scope.markerControl.managerDraw();
+        $timeout(function() {
+          $scope.mapControl.refresh();
+        }, 500);
       }, function(err) {
         console.error(err);
       });
@@ -104,13 +126,6 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
 
     uiGmapGoogleMapApi.then(function(maps) {
       $scope.geocoder = new maps.Geocoder();
-      $scope.map = {
-        center: {
-          latitude: 45,
-          longitude: -73
-        },
-        zoom: 8
-      };
     });
 
     $scope.markerClickEvent = function(marker, eventName, model, arguments) {
