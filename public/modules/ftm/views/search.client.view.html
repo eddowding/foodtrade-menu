@@ -161,8 +161,8 @@
 				</div>
 			</div>
 			<div class="col-xs-5">
-				<ui-gmap-google-map center='map.center' zoom='map.zoom'>
-					<ui-gmap-markers models="hitMarkers" coords="'self'" idkey="'id'" doRebuildAll='true' fit='true' events="markerEvents" control='markerControl'>
+				<ui-gmap-google-map center='map.center' zoom='map.zoom' control='mapControl'>
+					<ui-gmap-markers models="hitMarkers" coords="'self'" idkey="'id'" doRebuildAll=true fit=true events="markerEvents" control='markerControl'>
 						<ui-gmap-windows>
 							<div ng-non-bindable>{{title}}</div>
 							</ui-gmap-window>

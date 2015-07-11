@@ -1,15 +1,16 @@
 // 'use strict';
 
-angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi',
-  function($scope, Es, uiGmapGoogleMapApi) {
+angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi', '$timeout',
+  function($scope, Es, uiGmapGoogleMapApi, $timeout) {
     var esClient = Es.client();
 
+		$scope.mapControl = {};
     $scope.hitMarkers = [];
 		$scope.markerControl = {};
 
     $scope.totalItems = 0;
     $scope.currentPage = 1;
-    $scope.pageLimit = 2;
+    $scope.pageLimit = 5;
 
     $scope.getLocationByAddressFn = function(address, cb) {
       $scope.geocoder.geocode({
@@ -83,6 +84,9 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
           }
         });
 				$scope.markerControl.managerDraw();
+				$timeout(function() {
+					$scope.mapControl.refresh();
+				}, 500);
       }, function(err) {
         console.error(err);
       });
