@@ -2,6 +2,7 @@
 
 angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi', '$timeout',
   function($scope, Es, uiGmapGoogleMapApi, $timeout) {
+    $scope.isSearchView = true;
     $scope.map = {
       center: {
         latitude: 45,
@@ -11,7 +12,6 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     };
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(location) {
-        console.log(location);
         $scope.myLocation = {
           latitude: location.coords.latitude,
           longitude: location.coords.longitude
@@ -20,7 +20,10 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
         $scope.map.center.longitude = location.coords.longitude;
       });
     } else {
-      $scope.myLocation = null;
+      $scope.myLocation = {
+        latitude: 45,
+        longitude: -73
+      };
       console.info('Geo Location is not supported');
     }
 
@@ -50,6 +53,9 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     };
 
     $scope.getAddressByEstablishmentFn = function(establishment) {
+      if (!establishment) {
+        return '';
+      }
       var address = [];
       if (establishment._source.AddressLine1) {
         address.push(establishment._source.AddressLine1);
@@ -70,7 +76,6 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     };
 
     $scope.searchFn = function() {
-      console.log('search called');
       esClient.search({
         index: 'ftm',
         type: 'establishment',
@@ -94,7 +99,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
           } else {
             $scope.getLocationByAddressFn($scope.getAddressByEstablishmentFn(value), function(err, location) {
               if (location) {
-								value._source.geocode = [location.longitude, location.latitude];
+                value._source.geocode = [location.longitude, location.latitude];
                 $scope.hitMarkers.push({
                   latitude: location.latitude,
                   longitude: location.longitude,
@@ -142,6 +147,24 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     };
 
     $scope.pageChanged = function() {
+      $scope.searchFn();
+    };
+
+    $scope.showDetailViewFn = function(hit) {
+      $scope.isSearchView = false;
+      $scope.detailViewHit = hit;
+      $scope.hitMarkers = [{
+        longitude: hit._source.geocode[0],
+        latitude: hit._source.geocode[1],
+        id: hit._source._id,
+        title: hit._source.BusinessName
+      }];
+      $scope.map.center.latitude = hit._source.geocode[1];
+      $scope.map.center.longitude = hit._source.geocode[0];
+    };
+
+    $scope.showSearchViewFn = function() {
+      $scope.isSearchView = true;
       $scope.searchFn();
     };
   }
