@@ -25,8 +25,28 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
       });
     };
 
+    $scope.getAddressByEstablishmentFn = function(establishment) {
+      var address = [];
+      if (establishment._source.AddressLine1) {
+        address.push(establishment._source.AddressLine1);
+      }
+      if (establishment._source.AddressLine2) {
+        address.push(establishment._source.AddressLine2);
+      }
+      if (establishment._source.AddressLine3) {
+        address.push(establishment._source.AddressLine3);
+      }
+      if (establishment._source.AddressLine4) {
+        address.push(establishment._source.AddressLine4);
+      }
+      if (establishment._source.PostCode) {
+        address.push(establishment._source.PostCode);
+      }
+      return address.join(', ');
+    };
+
     $scope.searchFn = function() {
-			console.log('search called');
+      console.log('search called');
       esClient.search({
         index: 'ftm',
         type: 'establishment',
@@ -46,27 +66,14 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
               title: value._source.BusinessName
             });
           } else {
-            var address = [];
-            if (value._source.AddressLine1) {
-              address.push(value._source.AddressLine1);
-            }
-            if (value._source.AddressLine2) {
-              address.push(value._source.AddressLine2);
-            }
-            if (value._source.AddressLine3) {
-              address.push(value._source.AddressLine3);
-            }
-            if (value._source.AddressLine4) {
-              address.push(value._source.AddressLine4);
-            }
-            if (value._source.PostCode) {
-              address.push(value._source.PostCode);
-            }
-            $scope.getLocationByAddressFn(address.join(','), function(err, location) {
+            $scope.getLocationByAddressFn($scope.getAddressByEstablishmentFn(value), function(err, location) {
               if (location) {
-                location.id = value._source._id;
-                location.title = value._source.BusinessName;
-                $scope.hitMarkers.push(location);
+                $scope.hitMarkers.push({
+                  latitude: location.latitude,
+                  longitude: location.longitude,
+                  id: value._source._id,
+                  title: value._source.BusinessName
+                });
               }
             });
           }
