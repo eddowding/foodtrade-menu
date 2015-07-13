@@ -5,8 +5,8 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     $scope.isSearchView = true;
     $scope.map = {
       center: {
-        latitude: 45,
-        longitude: -73
+        latitude: 54.559322,
+        longitude: -4.174804
       },
       zoom: 8
     };
@@ -21,8 +21,8 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
       });
     } else {
       $scope.myLocation = {
-        latitude: 45,
-        longitude: -73
+        latitude: 55.028022,
+        longitude: -2.658691
       };
       console.info('Geo Location is not supported');
     }
@@ -39,7 +39,9 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
 
     $scope.getLocationByAddressFn = function(address, cb) {
       $scope.geocoder.geocode({
-        address: address
+        address: address,
+        region: 'UK',
+        componentRestrictions: {country: 'UK'}
       }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           cb(null, {
