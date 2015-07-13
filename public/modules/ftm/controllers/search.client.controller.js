@@ -77,6 +77,19 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
       return address.join(', ');
     };
 
+    $scope.getPlaceForLocationFn = function(location) {
+      if (!$scope.placesService) {
+        $scope.placesService = new $scope.mapsService.places.PlacesService($scope.mapControl.getGMap());
+      }
+      var request = {
+        location: new $scope.mapsService.LatLng(location.latitude, location.longitude),
+        radius: '10'
+      };
+      $scope.placesService.nearbySearch(request, function(results, status) {
+        console.log(results, status);
+      });
+    }
+
     $scope.searchFn = function() {
       esClient.search({
         index: 'ftm',
@@ -108,6 +121,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
                   id: value._source._id,
                   title: value._source.BusinessName
                 });
+                $scope.getPlaceForLocationFn({latitude: location.latitude, longitude: location.longitude});
                 $scope.markerControl.managerDraw();
               }
             });
@@ -133,6 +147,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     });
 
     uiGmapGoogleMapApi.then(function(maps) {
+      $scope.mapsService = maps;
       $scope.geocoder = new maps.Geocoder();
     });
 
