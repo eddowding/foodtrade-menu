@@ -16,6 +16,10 @@
 						<h4 class="media-heading">
 							<a>{{detailViewHit._source.BusinessName}}</a>
 							<rating ng-model="detailViewHit._source.RatingValue" max="5" readonly="true"></rating>
+							<span class="" data-toggle="collapse" data-target="#ratingInfo">
+								<i class="fa fa-info-circle"></i>
+							</span>
+
 						</h4>
 					</div>
 
@@ -28,28 +32,22 @@
 						<div id="FSAinfo">
 							<dl>
 								<dt>
-									Overall
-								</dt>
-								<dd class="ng-binding">
-
-								</dd>
-								<dt>
 									Hygiene
 								</dt>
 								<dd class="ng-binding">
-
+									{{detailViewHit._source.scores.Hygiene}}
 								</dd>
 								<dt>
 									Structural
 								</dt>
 								<dd class="ng-binding">
-
+									{{detailViewHit._source.scores.Structural}}
 								</dd>
 								<dt>
 									Confidence in management
 								</dt>
 								<dd class="ng-binding">
-
+									{{detailViewHit._source.scores.ConfidenceInManagement}}
 								</dd>
 							</dl>
 						</div>
