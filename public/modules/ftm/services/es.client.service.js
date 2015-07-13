@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('ftm').factory('Es', ['esFactory',
+angular.module('ftm').factory('Es', ['esFactory', '$location',
 
-  function(esFactory) {
+  function(esFactory, $location) {
     // Es service logic
     // ...
 
@@ -10,7 +10,7 @@ angular.module('ftm').factory('Es', ['esFactory',
     return {
       client: function() {
         return esFactory({
-          host: 'localhost:9200'
+          host: $location.host() + ':9200'
         });
       }
     };
