@@ -77,6 +77,10 @@ GridSchema.post('save', function(doc) {
     }
     var indexObj = results.establishment;
     indexObj.user = results.user;
+    delete indexObj.user.salt;
+    delete indexObj.user.password;
+    delete indexObj.user.displayName;
+    delete indexObj.user.roles;
     indexObj.grids = results.grids;
     esClient.delete({
       index: 'ftm',
@@ -92,7 +96,6 @@ GridSchema.post('save', function(doc) {
         if (err) {
           throw err;
         }
-        console.log(response);
       });
     });
   });
