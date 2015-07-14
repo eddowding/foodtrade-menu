@@ -1,12 +1,10 @@
-<section data-ng-controller="SearchController">
-	<div class="container" role="main" id="main">
-		<div class="row">
+<section data-ng-controller="SearchController" id="searchWrapper">
 
+	<div class="container-responsive" role="main" id="main">
 
-		</div>
 		<div class='row'>
 			<div class="col-xs-7">
-				<form class="form-horizontal">
+				<form class="form-horizontal innerTB innerL">
 					<fieldset>
 						<!-- BUSINESS input-->
 						<div class="form-group">
@@ -24,13 +22,6 @@
 							</div>
 						</div>
 
-						<!-- LOCATION -->
-						<div class="form-group">
-							<label class="col-sm-3 col-md-2 control-label" for="location">Location</label>
-							<div class="col-sm-9 col-md-10">
-								<input id="location" name="location" type="search" placeholder="eg 'Bristol'" class="form-control input-md">
-							</div>
-						</div>
 
 						<!-- HAS MENU -->
 						<div class="form-group">
@@ -42,36 +33,44 @@
 							</div>
 						</div>
 
-						<span class="btn btn-default" data-toggle="collapse" data-target="#advsearch">
+						<span class="btn btn-default btn-sm" data-toggle="collapse" data-target="#advsearch" style="background: white; margin-bottom: 10px;"  ng-show='hits.length'>
+							<i class="fa fa-sliders"></i>
 							More Filters
 						</span>
 
+
+
 						<div id="advsearch" class="collapse">
 
-
-							<!-- <div class="checkbox-group filters-section panel-body">
+							<!-- LOCATION -->
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label" for="location">Location</label>
+								<div class="col-sm-9 col-md-10">
+									<input id="location" name="location" type="search" placeholder="eg 'Bristol'" class="form-control input-md">
+								</div>
+							</div>
 
 
 							<!-- BIZ TYPE Checkboxes -->
 							<div class="form-group">
 								<label class="col-sm-3 col-md-2 control-label" for="businesstype">Business type</label>
 								<div class="col-sm-9 col-md-10">
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="businesstype-0">
 											<input type="checkbox" name="businesstype" id="businesstype-0" value=""> list
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="businesstype-1">
 											<input type="checkbox" name="businesstype" id="businesstype-1" value=""> from
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="businesstype-2">
 											<input type="checkbox" name="businesstype" id="businesstype-2" value=""> fsa
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="businesstype-3">
 											<input type="checkbox" name="businesstype" id="businesstype-3" value=""> data
 										</label>
@@ -115,27 +114,27 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-md-2 control-label" for="Rating">Hygiene</label>
 								<div class="col-sm-9 col-md-10">
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-0">
 											<input type="checkbox" name="Rating" id="Rating-0" value="5"> 5 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-1">
 											<input type="checkbox" name="Rating" id="Rating-1" value="4"> 4 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-2">
 											<input type="checkbox" name="Rating" id="Rating-2" value="3"> 3 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-3">
 											<input type="checkbox" name="Rating" id="Rating-3" value="2"> 2 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-4">
 											<input type="checkbox" name="Rating" id="Rating-4" value="1"> 1 star
 										</label>
@@ -147,27 +146,27 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-md-2 control-label" for="Rating">Confidence in management</label>
 								<div class="col-sm-9 col-md-10">
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-0">
 											<input type="checkbox" name="Rating" id="Rating-0" value="5"> 5 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-1">
 											<input type="checkbox" name="Rating" id="Rating-1" value="4"> 4 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-2">
 											<input type="checkbox" name="Rating" id="Rating-2" value="3"> 3 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-3">
 											<input type="checkbox" name="Rating" id="Rating-3" value="2"> 2 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-4">
 											<input type="checkbox" name="Rating" id="Rating-4" value="1"> 1 star
 										</label>
@@ -179,27 +178,27 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-md-2 control-label" for="Rating">Structural</label>
 								<div class="col-sm-9 col-md-10">
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-0">
 											<input type="checkbox" name="Rating" id="Rating-0" value="5"> 5 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-1">
 											<input type="checkbox" name="Rating" id="Rating-1" value="4"> 4 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-2">
 											<input type="checkbox" name="Rating" id="Rating-2" value="3"> 3 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-3">
 											<input type="checkbox" name="Rating" id="Rating-3" value="2"> 2 stars
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="Rating-4">
 											<input type="checkbox" name="Rating" id="Rating-4" value="1"> 1 star
 										</label>
@@ -233,27 +232,27 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-md-2 control-label" for="diet">Diet choices</label>
 								<div class="col-sm-9 col-md-10">
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="diet-0">
 											<input type="checkbox" name="diet" id="diet-0" value=""> MSC fish
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="diet-1">
 											<input type="checkbox" name="diet" id="diet-1" value=""> Locally sourced
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="diet-2">
 											<input type="checkbox" name="diet" id="diet-2" value=""> Vegetarian options
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="diet-3">
 											<input type="checkbox" name="diet" id="diet-3" value=""> Vegan options
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="diet-4">
 											<input type="checkbox" name="diet" id="diet-4" value=""> Organic
 										</label>
@@ -265,77 +264,77 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-md-2 control-label" for="allergies">Allergies</label>
 								<div class="col-sm-9 col-md-10">
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-0">
 											<input type="checkbox" name="allergies" id="allergies-0" value=""> Nuts
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-1">
 											<input type="checkbox" name="allergies" id="allergies-1" value=""> Peanuts
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-2">
 											<input type="checkbox" name="allergies" id="allergies-2" value=""> Sesame seeds
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-3">
 											<input type="checkbox" name="allergies" id="allergies-3" value=""> Fish
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-4">
 											<input type="checkbox" name="allergies" id="allergies-4" value=""> Crustaceans
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-5">
 											<input type="checkbox" name="allergies" id="allergies-5" value=""> Molluscs
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-6">
 											<input type="checkbox" name="allergies" id="allergies-6" value=""> Eggs
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-7">
 											<input type="checkbox" name="allergies" id="allergies-7" value=""> Milk
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-8">
 											<input type="checkbox" name="allergies" id="allergies-8" value=""> Cereals cont. gluten
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-9">
 											<input type="checkbox" name="allergies" id="allergies-9" value=""> Lupin
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-10">
 											<input type="checkbox" name="allergies" id="allergies-10" value=""> Celery
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-11">
 											<input type="checkbox" name="allergies" id="allergies-11" value=""> Mustard
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-12">
 											<input type="checkbox" name="allergies" id="allergies-12" value=""> Soya
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-13">
 											<input type="checkbox" name="allergies" id="allergies-13" value=""> Sulphur dioxide
 										</label>
 									</div>
-									<div class="checkbox">
+									<div class="checkbox-inline">
 										<label for="allergies-14">
 											<input type="checkbox" name="allergies" id="allergies-14" value=""> Other
 										</label>
@@ -349,8 +348,8 @@
 					</fieldset>
 				</form>
 
-				<div ng-hide='isSearchView'>
-					<hr />
+				<div ng-hide='isSearchView' class="innerTB innerL">
+ 
 					<a ng-click='showSearchViewFn()'><i class="fa fa-chevron-left"></i> Back to results</a>
 					<hr />
 					<div class="single">
@@ -444,40 +443,40 @@
 
 					<hr />
 				</div>
-				<div ng-show='isSearchView'>
-					<div class='row' ng-hide='hits.length'>
+				<div ng-show='isSearchView' id="results" class="innerTB innerL">
+					<!-- <div class='row' ng-hide='hits.length'>
 						No matches, please search something else.
-					</div>
-					<div class='row' ng-repeat='hit in hits' ng-show='hits.length'>
-						<hr/>
-						<div class="media">
-							<a href="#" class="pull-right">
-								<img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object">
-							</a>
-							<div class="media-body">
-								<h4 class="media-heading">
-									<a ng-click='showDetailViewFn(hit)'>{{hit._source.BusinessName}}</a>
-									<rating ng-model="hit._source.RatingValue" max="5" readonly="true"></rating>
-								</h4>
-								<span class="label label-default  ">{{hit._source.BusinessType || 'Restaurant'}}</span>
-								<small>
-									{{getAddressByEstablishmentFn(hit)}}
-								</small>
-								<div class="btn-group btn-group-sm" style="margin-top: 10px;">
+					</div> -->
 
-									<!-- <button class="btn btn-default" type="button">
+
+					<div class='result' ng-repeat='hit in hits' ng-show='hits.length' ng-click='showDetailViewFn(hit)'>
+						<div class="media">
+							<!-- <a href="#" class="pull-right">
+								<img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object">
+							</a> -->
+							<div class="media-body">
+								<h4 >
+									<a ng-click='showDetailViewFn(hit)'>{{hit._source.BusinessName}}</a>
+									<rating ng-model="hit._source.RatingValue" max="5" readonly="true" class="pull-right"></rating>
+								</h4>
+								<p class="small tag ">{{hit._source.BusinessType || 'Restaurant'}}</p>
+								<!-- <p class="small">
+									{{getAddressByEstablishmentFn(hit)}}
+								</p> -->
+								<!-- <div class="btn-group btn-group-sm" style="margin-top: 10px;">
+
+									<button class="btn btn-default" type="button">
 										<i class="fa fa-phone"></i> Call
 									</button>
 									<button class="btn btn-default" type="button">
 										<i class="fa fa-globe"></i> Website
-									</button> -->
+									</button>
 									<a ng-href='https://www.google.com/maps/dir/Current+Location/{{hit._source.geocode[1]}},{{hit._source.geocode[0]}}' target="_blank">
 										<i class="fa fa-location-arrow"></i> Directions
 									</a>
-								</div>
+								</div> -->
 							</div>
 						</div>
-						<hr/>
 					</div>
 					<div class='row' ng-show='hits.length'>
 						<pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page='pageLimit'></pagination>
@@ -486,7 +485,7 @@
 
 
 			</div>
-			<div class="col-xs-5">
+			<div class="col-xs-5" id="mapWrapper">
 				<ui-gmap-google-map center='map.center' zoom='map.zoom' control='mapControl'>
 					<ui-gmap-markers models="hitMarkers" coords="'self'" idkey="'id'" doRebuildAll=true fit=true events="markerEvents" control='markerControl'>
 						<ui-gmap-windows>
