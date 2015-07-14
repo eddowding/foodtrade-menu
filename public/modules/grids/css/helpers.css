@@ -20,8 +20,12 @@
 .innerR {
   padding-right: 1em;
 }
+.innerL {
+  padding-left: 1em;
+}
 .innerTB {
-  padding: 1em 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 .innerT {
   padding-top: 1em;

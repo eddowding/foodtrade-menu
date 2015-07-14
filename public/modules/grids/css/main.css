@@ -22,8 +22,12 @@
 .innerR {
   padding-right: 1em;
 }
+.innerL {
+  padding-left: 1em;
+}
 .innerTB {
-  padding: 1em 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 .innerT {
   padding-top: 1em;
@@ -153,7 +157,7 @@ h5 {
 }
 #main {
   margin-top: 100px;
-  padding: 10px 10px 80px 10px;
+  padding: 0px 10px 80px 10px;
   background: #fff;
 }
 .floatThead-table #save,
@@ -466,7 +470,7 @@ h5 {
 .navbar {
   border-bottom: 1px solid #ccc;
   top: 25px;
-  height: 71px;
+  height: 75px;
   background: #fff;
   min-height: 28px;
   -webkit-box-shadow: 0 0 8px #cccccc;
@@ -902,4 +906,87 @@ td.onboarding-focus .popover {
 .menu .menuitem .ingredients span::after {
   content: ', ';
 }
-.angular-google-map-container { height: 400px; }
+#searchWrapper #main {
+  padding: 0px 0 80px 0;
+}
+#searchWrapper label {
+  color: #565a5c;
+  font-weight: normal;
+}
+#searchWrapper #mapWrapper {
+  width: 40vw;
+  height: 100vw;
+}
+#searchWrapper .angular-google-map-container {
+  height: 400px;
+  width: 41vw;
+  height: 100vw;
+}
+#searchWrapper #advsearch .checkbox-inline {
+  float: left;
+  width: 25%;
+  margin-left: 0;
+  color: #565a5c;
+}
+#searchWrapper #advsearch .form-group {
+  border-top: 1px solid #ddd;
+  zoom: 1;
+  padding-bottom: 15px;
+}
+#searchWrapper #advsearch .form-group:before,
+#searchWrapper #advsearch .form-group:after {
+  content: "";
+  display: table;
+}
+#searchWrapper #advsearch .form-group:after {
+  clear: both;
+}
+#searchWrapper #results .result {
+  padding: 15px 5px;
+  margin: 0 -5px;
+  border: 1px solid #fff;
+  -webkit-border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 3px;
+  -moz-background-clip: padding;
+  border-radius: 3px;
+  background-clip: padding-box;
+}
+#searchWrapper #results .result:hover {
+  border: 1px solid #5aa3d1;
+  background: #f9f9f9;
+}
+#searchWrapper #results .result:hover h4 a {
+  color: #5aa3d1;
+}
+#searchWrapper #results .result:hover i {
+  color: #5aa3d1;
+}
+#searchWrapper h4 {
+  margin: 0 0 3px 0;
+}
+#searchWrapper h4 a {
+  font-weight: normal;
+  color: #666;
+}
+#searchWrapper h4 a:hover {
+  text-decoration: none;
+}
+#searchWrapper h4 i {
+  color: #999;
+}
+#searchWrapper .tag {
+  border: 1px solid #aaa;
+  -webkit-border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 3px;
+  -moz-background-clip: padding;
+  border-radius: 3px;
+  background-clip: padding-box;
+  padding: 1px 3px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #aaa;
+  display: inline-block;
+  margin: 0 0 3px 0;
+}
