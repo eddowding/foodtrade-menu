@@ -10,7 +10,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 col-md-2 control-label" for="name">Business name</label>
 							<div class="col-sm-9 col-md-10">
-								<input id="name" name="name" type="search" ng-model='query' placeholder="eg Black Horse" class="form-control input-md">
+								<input id="name" name="name" type="search" ng-model='query.businessName' placeholder="eg Black Horse" class="form-control input-md">
 							</div>
 						</div>
 
@@ -18,7 +18,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 col-md-2 control-label" for="dish">Dish / food</label>
 							<div class="col-sm-9 col-md-10">
-								<input id="dish" name="dish" type="search" placeholder="eg 'Lasagne'" class="form-control input-md">
+								<input id="dish" name="dish" type="search" placeholder="eg 'Lasagne'" class="form-control input-md" ng-model='query.dish'>
 							</div>
 						</div>
 
@@ -349,7 +349,7 @@
 				</form>
 
 				<div ng-hide='isSearchView' class="innerTB innerL">
- 
+
 					<a ng-click='showSearchViewFn()'><i class="fa fa-chevron-left"></i> Back to results</a>
 					<hr />
 					<div class="single">

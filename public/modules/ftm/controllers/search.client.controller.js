@@ -2,24 +2,24 @@
 
 angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi', '$timeout',
   function($scope, Es, uiGmapGoogleMapApi, $timeout) {
-//     {
-//   "query": {
-//     "filtered": {
-//       "query": {
-//         "match_all": {}
-//       },
-//       "filter": {
-//         "and": [
-//           {
-//             "term": {
-//               "grids.tableData.item.name": "so"
-//             }
-//           }
-//         ]
-//       }
-//     }
-//   }
-// }
+    //     {
+    //   "query": {
+    //     "filtered": {
+    //       "query": {
+    //         "match_all": {}
+    //       },
+    //       "filter": {
+    //         "and": [
+    //           {
+    //             "term": {
+    //               "grids.tableData.item.name": "so"
+    //             }
+    //           }
+    //         ]
+    //       }
+    //     }
+    //   }
+    // }
     $scope.isSearchView = true;
     $scope.map = {
       center: {
@@ -59,7 +59,9 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
       $scope.geocoder.geocode({
         address: address,
         region: 'UK',
-        componentRestrictions: {country: 'UK'}
+        componentRestrictions: {
+          country: 'UK'
+        }
       }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           cb(null, {
@@ -109,12 +111,17 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     }
 
     $scope.searchFn = function() {
+      if ($scope.query.dish) {
+        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchQuery('BusinessName', $scope.query.businessName), ejs.AndFilter(ejs.TermFilter('grids.tableData.item.name', $scope.query.dish))));
+      } else {
+        var esQuery = ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query.businessName));
+      }
       esClient.search({
         index: 'ftm',
         type: 'establishment',
         from: ($scope.currentPage - 1) * $scope.pageLimit,
         size: $scope.pageLimit,
-        body: ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query))
+        body: esQuery
       }).then(function(resp) {
         $scope.totalItems = resp.hits.total;
         $scope.hits = resp.hits.hits;
@@ -139,7 +146,10 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
                   id: value._source._id,
                   title: value._source.BusinessName
                 });
-                $scope.getPlaceForLocationFn({latitude: location.latitude, longitude: location.longitude});
+                $scope.getPlaceForLocationFn({
+                  latitude: location.latitude,
+                  longitude: location.longitude
+                });
                 $scope.markerControl.managerDraw();
               }
             });
@@ -155,14 +165,14 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     };
 
     $scope.$watch('query', function(newValue, oldValue) {
-      if (newValue && newValue.length >= 2) {
+      if (newValue && newValue.businessName && newValue.businessName.length >= 2) {
         $scope.searchFn();
       } else {
         $scope.hits = [];
         $scope.totalItems = 0;
         $scope.currentPage = 1;
       }
-    });
+    }, true);
 
     uiGmapGoogleMapApi.then(function(maps) {
       $scope.mapsService = maps;
