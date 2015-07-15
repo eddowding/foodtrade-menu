@@ -2,6 +2,24 @@
 
 angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi', '$timeout',
   function($scope, Es, uiGmapGoogleMapApi, $timeout) {
+//     {
+//   "query": {
+//     "filtered": {
+//       "query": {
+//         "match_all": {}
+//       },
+//       "filter": {
+//         "and": [
+//           {
+//             "term": {
+//               "grids.tableData.item.name": "so"
+//             }
+//           }
+//         ]
+//       }
+//     }
+//   }
+// }
     $scope.isSearchView = true;
     $scope.map = {
       center: {
