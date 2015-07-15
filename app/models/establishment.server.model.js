@@ -132,8 +132,22 @@ var EstablishmentSchema = new Schema({
   }
 });
 
-EstablishmentSchema.plugin(mongoosastic, {index: 'ftm', type: 'establishment'});
+EstablishmentSchema.plugin(mongoosastic, {
+  index: 'ftm',
+  type: 'establishment'
+});
 mongoose.model('Establishment', EstablishmentSchema);
 
-var Establishment = mongoose.model('Establishment');
-Establishment.createMapping(function(err, mapping){});
+// var Establishment = mongoose.model('Establishment');
+// var stream = Establishment.synchronize();
+// var count = 0;
+//
+// stream.on('data', function(err, doc) {
+//   count++;
+// });
+// stream.on('close', function() {
+//   console.log('indexed ' + count + ' documents!');
+// });
+// stream.on('error', function(err) {
+//   console.log(err);
+// });
