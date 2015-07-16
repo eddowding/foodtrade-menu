@@ -26,7 +26,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
         latitude: 54.559322,
         longitude: -4.174804
       },
-      zoom: 8
+      zoom: 7
     };
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(location) {

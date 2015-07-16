@@ -476,7 +476,7 @@
 
 			</div>
 			<div class="col-xs-5" id="mapWrapper">
-				<ui-gmap-google-map center='map.center' zoom='map.zoom' control='mapControl'>
+				<ui-gmap-google-map center='map.center' zoom='map.zoom' control='mapControl' pan='true' refresh='true'>
 					<ui-gmap-markers models="hitMarkers" coords="'self'" idkey="'id'" doRebuildAll=true fit=true events="markerEvents" control='markerControl'>
 						<ui-gmap-windows>
 							<div ng-non-bindable>{{title}}</div>
