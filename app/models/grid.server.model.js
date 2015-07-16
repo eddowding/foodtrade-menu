@@ -46,6 +46,9 @@ var GridSchema = new Schema({
 GridSchema.set('versionKey', false);
 
 GridSchema.post('save', function(doc) {
+  if (!doc.user) {
+    return;
+  }
   var User = mongoose.model('User');
   var Establishment = mongoose.model('Establishment');
   var Grid = mongoose.model('Grid');
