@@ -407,15 +407,14 @@
 								<i class="fa fa-location-arrow"></i> Directions
 							</a>
 						</div>
-						<div class="menu hidden">
-
-							<section>
-								<h4>Lunch</h4>
-								<div class="menuitem">
+						<div class="menu">
+							<section ng-show='detailViewHit._source.grids.length' ng-repeat='grid in detailViewHit._source.grids'>
+								<h4>{{grid.name}}</h4>
+								<div class="menuitem" ng-repeat='entry in grid.tableData'>
 
 									<h5>
-										Lasagne al Verde
-										<span class="price"> £8.75</span>
+										{{entry.item.name}}
+										<span class="price"> £{{entry.item.price || 0}}</span>
 									</h5>
 									<p class="text-muted ingredients">
 										<span class="allergen gluten">Pasta (wheat flour)</span>
@@ -425,17 +424,13 @@
 										<span class="allergen allium">garlic</span>
 										<span class="allergen peanuts">peanuts</span>
 									</p>
-									<p class="tags">
+									<p class="tags" ng-show='entry.item.characteristic.length'>
 										<i class="fa fa-tags text-muted"></i>
-										<a href="#">organic</a>
-										<a href="#">MSC3</a>
-										<a href="#">locally sourced</a>
+										<a ng-repeat='tag in entry.item.characteristic'>{{tag.text}}</a>
 									</p>
-
 								</div>
 							</section>
-
-							<pre>
+							<pre ng-hide='detailViewHit._source.grids.length'>
 								if no menu.. upload a photo (camera, mobile) email us a phioto add twitter email for biz add tags claim
 							</pre>
 						</div>
