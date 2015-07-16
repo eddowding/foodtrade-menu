@@ -78,29 +78,31 @@ GridSchema.post('save', function(doc) {
     if (err) {
       throw err;
     }
-    var indexObj = results.establishment;
-    indexObj.user = results.user;
-    delete indexObj.user.salt;
-    delete indexObj.user.password;
-    delete indexObj.user.displayName;
-    delete indexObj.user.roles;
-    indexObj.grids = results.grids;
-    esClient.delete({
-      index: 'ftm',
-      type: 'establishment',
-      id: indexObj._id.toString()
-    }, function(err, response) {
-      esClient.create({
+    if (results.user && results.establishment && results.grids) {
+      var indexObj = results.establishment;
+      indexObj.user = results.user;
+      delete indexObj.user.salt;
+      delete indexObj.user.password;
+      delete indexObj.user.displayName;
+      delete indexObj.user.roles;
+      indexObj.grids = results.grids;
+      esClient.delete({
         index: 'ftm',
         type: 'establishment',
-        id: indexObj._id.toString(),
-        body: indexObj
+        id: indexObj._id.toString()
       }, function(err, response) {
-        if (err) {
-          throw err;
-        }
+        esClient.create({
+          index: 'ftm',
+          type: 'establishment',
+          id: indexObj._id.toString(),
+          body: indexObj
+        }, function(err, response) {
+          if (err) {
+            throw err;
+          }
+        });
       });
-    });
+    }
   });
 });
 
