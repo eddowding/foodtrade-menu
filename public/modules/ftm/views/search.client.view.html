@@ -407,8 +407,8 @@
 								<i class="fa fa-location-arrow"></i> Directions
 							</a>
 						</div>
-						<div class="menu">
-							<section ng-show='detailViewHit._source.grids.length' ng-repeat='grid in detailViewHit._source.grids'>
+						<div class="menu" ng-show='detailViewHit._source.grids.length'>
+							<section ng-repeat='grid in detailViewHit._source.grids' ng-show='grid.tableData.length'>
 								<h4>{{grid.name}}</h4>
 								<div class="menuitem" ng-repeat='entry in grid.tableData'>
 
@@ -417,12 +417,7 @@
 										<span class="price"> £{{entry.item.price || 0}}</span>
 									</h5>
 									<p class="text-muted ingredients">
-										<span class="allergen gluten">Pasta (wheat flour)</span>
-										<!-- NOTE: in above example 'wheat flour' in brackets is the allergen detail that goes below the checkbox in the allergen grid -->
-										<span class="">tomato</span>
-										<span class="">mince beef</span>
-										<span class="allergen allium">garlic</span>
-										<span class="allergen peanuts">peanuts</span>
+										<span ng-repeat='(key, value) in entry' ng-class='{"allergen": value.allergenType == "Fixed" || value.allergenType == "Removable"}'>{{key}} <span ng-show='value.allergens'>({{value.allergens}})</span></span>
 									</p>
 									<p class="tags" ng-show='entry.item.characteristic.length'>
 										<i class="fa fa-tags text-muted"></i>
