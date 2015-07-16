@@ -111,10 +111,12 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     }
 
     $scope.searchFn = function() {
-      if ($scope.query.dish) {
+      if ($scope.query.businessName && $scope.query.dish) {
         var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchQuery('BusinessName', $scope.query.businessName), ejs.AndFilter(ejs.TermFilter('grids.tableData.item.name', $scope.query.dish))));
-      } else {
+      } else if ($scope.query.businessName) {
         var esQuery = ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query.businessName));
+      } else {
+        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchAllQuery(), ejs.AndFilter(ejs.TermFilter('grids.tableData.item.name', $scope.query.dish))));
       }
       esClient.search({
         index: 'ftm',
@@ -165,7 +167,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
     };
 
     $scope.$watch('query', function(newValue, oldValue) {
-      if (newValue && newValue.businessName && newValue.businessName.length >= 2) {
+      if (newValue && (newValue.businessName || newValue.dish)) {
         $scope.searchFn();
       } else {
         $scope.hits = [];
