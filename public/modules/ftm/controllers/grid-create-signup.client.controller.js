@@ -176,6 +176,7 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
               businessName: establishment.BusinessName
             });
           });
+        $('#signupModal').modal('hide');
         $scope.create();
       }).error(function(response) {
         $scope.error = response.message;
@@ -200,6 +201,7 @@ angular.module('grids').controller('GridCreateSignupController', ['$scope', '$ro
             });
             $location.path('/dashboard');
           });
+          $('#signinModal').modal('hide');
       }).error(function(response, status) {
         if (status == 301) {
 					window.location = 'http://' + response.subdomain + '.foodtrade.menu';
