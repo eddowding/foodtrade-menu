@@ -112,11 +112,11 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
 
     $scope.searchFn = function() {
       if ($scope.query.businessName && $scope.query.dish) {
-        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchQuery('BusinessName', $scope.query.businessName), ejs.AndFilter(ejs.TermFilter('grids.tableData.item.name', $scope.query.dish))));
+        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchQuery('BusinessName', $scope.query.businessName), ejs.AndFilter(ejs.PrefixFilter('grids.tableData.item.name', $scope.query.dish))));
       } else if ($scope.query.businessName) {
         var esQuery = ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query.businessName));
       } else {
-        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchAllQuery(), ejs.AndFilter(ejs.TermFilter('grids.tableData.item.name', $scope.query.dish))));
+        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchAllQuery(), ejs.AndFilter(ejs.PrefixFilter('grids.tableData.item.name', $scope.query.dish))));
       }
       esClient.search({
         index: 'ftm',
