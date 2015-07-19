@@ -208,6 +208,7 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
       }];
       $scope.map.center.latitude = hit._source.geocode[1];
       $scope.map.center.longitude = hit._source.geocode[0];
+      $scope.map.zoom = 7;
     };
 
     $scope.showSearchViewFn = function() {
