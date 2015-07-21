@@ -6,8 +6,12 @@
     <form class="form-horizontal" data-ng-submit="update()" novalidate>
       <fieldset>
         <div class='form-group'>
-          <div class="button" ngf-select ngf-change="upload($files)">{{uploadMsg}}</div>
+          <div class="button" ngf-select ngf-change="uploadLogo($files)">{{uploadMsg}}</div>
           <img ng-src='{{client.logo}}' height=150 width=150 />
+        </div>
+        <div class='form-group'>
+          <div class="button" ngf-select ngf-change="uploadFavicon($files)">{{uploadMsg}}</div>
+          <img ng-src='{{client.favicon}}' height=150 width=150 />
         </div>
         <div class="form-group">
           <label class="control-label" for="name">Name</label>

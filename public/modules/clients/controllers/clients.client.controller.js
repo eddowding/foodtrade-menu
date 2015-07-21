@@ -12,7 +12,7 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
         $scope.signature = data.signature;
       });
 
-    $scope.upload = function(files) {
+    $scope.uploadLogo = function(files) {
       if (files && files.length) {
         for (var i = 0; i < files.length; i++) {
           var file = files[i];
@@ -35,6 +35,34 @@ angular.module('clients').controller('ClientsController', ['$scope', '$statePara
           }).success(function(data, status, headers, config) {
             $scope.uploadMsg = 'file ' + config.file.name + ' uploaded.';
             $scope.client.logo = 'https://s3.amazonaws.com/food-trade-menu/logos/' + config.file.name;
+          });
+        }
+      }
+    };
+
+    $scope.uploadFavicon = function(files) {
+      if (files && files.length) {
+        for (var i = 0; i < files.length; i++) {
+          var file = files[i];
+          Upload.upload({
+            url: 'https://food-trade-menu.s3.amazonaws.com/', //S3 upload url including bucket name
+            method: 'POST',
+            fields: {
+              key: 'favicons/' + file.name, // the key to store the file on S3, could be file name or customized
+              AWSAccessKeyId: 'AKIAIOFBIFAHIXNK5RMA',
+              acl: 'public-read', // sets the access to the uploaded file in the bucket: private or public
+              policy: $scope.policy, // base64-encoded json policy (see article below)
+              signature: $scope.signature, // base64-encoded signature based on policy string (see article below)
+              "Content-Type": file.type != '' ? file.type : 'application/octet-stream', // content type of the file (NotEmpty)
+              "Content-Length": ''
+            },
+            file: file,
+          }).progress(function(evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.uploadMsg = 'progress: ' + progressPercentage + '% ' + evt.config.file.name;
+          }).success(function(data, status, headers, config) {
+            $scope.uploadMsg = 'file ' + config.file.name + ' uploaded.';
+            $scope.client.favicon = 'https://s3.amazonaws.com/food-trade-menu/favicons/' + config.file.name;
           });
         }
       }

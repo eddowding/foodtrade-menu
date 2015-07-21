@@ -25,6 +25,10 @@ var ClientSchema = new Schema({
 		type: String,
 		required: false
 	},
+	favicon: {
+		type: String,
+		required: false
+	},
 	created: {
 		type: Date,
 		default: Date.now
