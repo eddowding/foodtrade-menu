@@ -32,7 +32,7 @@
 	<meta name="twitter:image" content="/img/brand/logo.png">
 
 	<!-- Fav Icon -->
-	<link href="/modules/grids/img/favicon.png" rel="shortcut icon" type="image/x-icon">
+	<link href="{% if client.favicon %}{{client.favicon}}{% else %}/modules/grids/img/favicon.png{% endif %}" rel="shortcut icon" type="image/x-icon">
 
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}
@@ -56,8 +56,10 @@
 		var user = {{user | json | safe}};
 		{% if request.client %}
 			var logo = '{{request.client.logo}}';
+			var favicon = '{{request.client.favicon}}';
 		{% else %}
 			var logo = null;
+			var favicon = null;
 		{% endif %}
 	</script>
 
