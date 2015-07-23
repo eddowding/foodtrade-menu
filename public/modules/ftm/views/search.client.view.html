@@ -450,6 +450,24 @@
 									<rating ng-model="hit._source.RatingValue" max="5" readonly="true" class="pull-right"></rating>
 								</h4>
 								<p class="small tag ">{{hit._source.BusinessType || 'Restaurant'}}</p>
+								<div class="menu" ng-show='hit.inner_hits'>
+									<section>
+										<div class="menuitem" ng-repeat='entry in hit.inner_hits["grids.tableData"].hits.hits'>
+
+											<h5>
+												{{entry._source.item.name}}
+												<span class="price"> £{{entry._source.item.price || 0}}</span>
+											</h5>
+											<p class="text-muted ingredients">
+												<span ng-repeat='(key, value) in entry._source' ng-class='{"allergen": value.allergenType == "Fixed" || value.allergenType == "Removable"}'>{{key}} <span ng-show='value.allergens'>({{value.allergens}})</span></span>
+											</p>
+											<p class="tags" ng-show='entry._source.item.characteristic.length'>
+												<i class="fa fa-tags text-muted"></i>
+												<a ng-repeat='tag in entry._source.item.characteristic'>{{tag.text}}</a>
+											</p>
+										</div>
+									</section>
+								</div>
 								<!-- <p class="small">
 									{{getAddressByEstablishmentFn(hit)}}
 								</p> -->

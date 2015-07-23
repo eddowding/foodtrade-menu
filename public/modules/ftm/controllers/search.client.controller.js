@@ -2,24 +2,6 @@
 
 angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoogleMapApi', '$timeout',
   function($scope, Es, uiGmapGoogleMapApi, $timeout) {
-    //     {
-    //   "query": {
-    //     "filtered": {
-    //       "query": {
-    //         "match_all": {}
-    //       },
-    //       "filter": {
-    //         "and": [
-    //           {
-    //             "term": {
-    //               "grids.tableData.item.name": "so"
-    //             }
-    //           }
-    //         ]
-    //       }
-    //     }
-    //   }
-    // }
     $scope.isSearchView = true;
     $scope.map = {
       center: {
@@ -112,12 +94,17 @@ angular.module('ftm').controller('SearchController', ['$scope', 'Es', 'uiGmapGoo
 
     $scope.searchFn = function() {
       if ($scope.query.businessName && $scope.query.dish) {
-        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchQuery('BusinessName', $scope.query.businessName), ejs.AndFilter(ejs.PrefixFilter('grids.tableData.item.name', $scope.query.dish))));
+        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchQuery('BusinessName', $scope.query.businessName), ejs.NestedFilter('grids.tableData').filter(ejs.PrefixFilter('grids.tableData.item.name', $scope.query.dish))));
+        esQuery = esQuery.toJSON();
+        esQuery.query.filtered.filter.nested.inner_hits = {};
       } else if ($scope.query.businessName) {
         var esQuery = ejs.Request().query(ejs.MatchQuery('BusinessName', $scope.query.businessName));
       } else {
-        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchAllQuery(), ejs.AndFilter(ejs.PrefixFilter('grids.tableData.item.name', $scope.query.dish))));
+        var esQuery = ejs.Request().query(ejs.FilteredQuery(ejs.MatchAllQuery(), ejs.NestedFilter('grids.tableData').filter(ejs.PrefixFilter('grids.tableData.item.name', $scope.query.dish))));
+        esQuery = esQuery.toJSON();
+        esQuery.query.filtered.filter.nested.inner_hits = {};
       }
+      
       esClient.search({
         index: 'ftm',
         type: 'establishment',
