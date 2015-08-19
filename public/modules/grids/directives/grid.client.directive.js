@@ -289,8 +289,12 @@ angular.module('grids').directive('grid', [function() {
 
       scope.toggleEditRowFn = function($index) {
         for (var key in scope.rowEditStatus) {
+          if (key == $index) {
+            continue;
+          }
           scope.rowEditStatus[key] = false;
         }
+        $('.popover').popover('hide');
         if (scope.rowEditStatus[$index]) {
           scope.rowEditStatus[$index] = false;
         } else {
