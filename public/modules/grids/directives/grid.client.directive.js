@@ -288,6 +288,9 @@ angular.module('grids').directive('grid', [function() {
       scope.rowEditStatus = {};
 
       scope.toggleEditRowFn = function($index) {
+        for (var key in scope.rowEditStatus) {
+          scope.rowEditStatus[key] = false;
+        }
         if (scope.rowEditStatus[$index]) {
           scope.rowEditStatus[$index] = false;
         } else {
