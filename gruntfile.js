@@ -1,177 +1,229 @@
 'use strict';
+var request = require('request');
+var mongoose = require('mongoose');
+var _ = require('lodash');
+var async = require('async');
+var deepcopy = require('deepcopy');
 
 module.exports = function(grunt) {
-	// Unified Watch Object
-	var watchFiles = {
-		serverViews: ['app/views/**/*.*'],
-		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
-		clientViews: ['public/modules/**/views/**/*.html'],
-		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
-		clientCSS: ['public/modules/**/*.css'],
-		mochaTests: ['app/tests/**/*.js']
-	};
+  // Unified Watch Object
+  var watchFiles = {
+    serverViews: ['app/views/**/*.*'],
+    serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
+    clientViews: ['public/modules/**/views/**/*.html'],
+    clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
+    clientCSS: ['public/modules/**/*.css'],
+    mochaTests: ['app/tests/**/*.js']
+  };
 
-	// Project Configuration
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		watch: {
-			serverViews: {
-				files: watchFiles.serverViews,
-				options: {
-					livereload: true
-				}
-			},
-			serverJS: {
-				files: watchFiles.serverJS,
-				tasks: ['jshint'],
-				options: {
-					livereload: true
-				}
-			},
-			clientViews: {
-				files: watchFiles.clientViews,
-				options: {
-					livereload: true,
-				}
-			},
-			clientJS: {
-				files: watchFiles.clientJS,
-				tasks: ['jshint'],
-				options: {
-					livereload: true
-				}
-			},
-			clientCSS: {
-				files: watchFiles.clientCSS,
-				tasks: ['csslint'],
-				options: {
-					livereload: true
-				}
-			}
-		},
-		jshint: {
-			all: {
-				src: watchFiles.clientJS.concat(watchFiles.serverJS),
-				options: {
-					jshintrc: true
-				}
-			}
-		},
-		csslint: {
-			options: {
-				csslintrc: '.csslintrc',
-			},
-			all: {
-				src: watchFiles.clientCSS
-			}
-		},
-		uglify: {
-			production: {
-				options: {
-					mangle: false
-				},
-				files: {
-					'public/dist/application.min.js': 'public/dist/application.js'
-				}
-			}
-		},
-		cssmin: {
-			combine: {
-				files: {
-					'public/dist/application.min.css': '<%= applicationCSSFiles %>'
-				}
-			}
-		},
-		nodemon: {
-			dev: {
-				script: 'server.js',
-				options: {
-					nodeArgs: ['--debug'],
-					ext: 'js,html',
-					watch: watchFiles.serverViews.concat(watchFiles.serverJS)
-				}
-			}
-		},
-		'node-inspector': {
-			custom: {
-				options: {
-					'web-port': 1337,
-					'web-host': 'localhost',
-					'debug-port': 5858,
-					'save-live-edit': true,
-					'no-preload': true,
-					'stack-trace-limit': 50,
-					'hidden': []
-				}
-			}
-		},
-		ngAnnotate: {
-			production: {
-				files: {
-					'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
-				}
-			}
-		},
-		concurrent: {
-			default: ['nodemon', 'watch'],
-			debug: ['nodemon', 'watch', 'node-inspector'],
-			options: {
-				logConcurrentOutput: true,
-				limit: 10
-			}
-		},
-		env: {
-			test: {
-				NODE_ENV: 'test'
-			},
-			secure: {
-				NODE_ENV: 'secure'
-			}
-		},
-		mochaTest: {
-			src: watchFiles.mochaTests,
-			options: {
-				reporter: 'spec',
-				require: 'server.js'
-			}
-		},
-		karma: {
-			unit: {
-				configFile: 'karma.conf.js'
-			}
-		}
-	});
+  // Project Configuration
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    watch: {
+      serverViews: {
+        files: watchFiles.serverViews,
+        options: {
+          livereload: true
+        }
+      },
+      serverJS: {
+        files: watchFiles.serverJS,
+        tasks: ['jshint'],
+        options: {
+          livereload: true
+        }
+      },
+      clientViews: {
+        files: watchFiles.clientViews,
+        options: {
+          livereload: true,
+        }
+      },
+      clientJS: {
+        files: watchFiles.clientJS,
+        tasks: ['jshint'],
+        options: {
+          livereload: true
+        }
+      },
+      clientCSS: {
+        files: watchFiles.clientCSS,
+        tasks: ['csslint'],
+        options: {
+          livereload: true
+        }
+      }
+    },
+    jshint: {
+      all: {
+        src: watchFiles.clientJS.concat(watchFiles.serverJS),
+        options: {
+          jshintrc: true
+        }
+      }
+    },
+    csslint: {
+      options: {
+        csslintrc: '.csslintrc',
+      },
+      all: {
+        src: watchFiles.clientCSS
+      }
+    },
+    uglify: {
+      production: {
+        options: {
+          mangle: false
+        },
+        files: {
+          'public/dist/application.min.js': 'public/dist/application.js'
+        }
+      }
+    },
+    cssmin: {
+      combine: {
+        files: {
+          'public/dist/application.min.css': '<%= applicationCSSFiles %>'
+        }
+      }
+    },
+    nodemon: {
+      dev: {
+        script: 'server.js',
+        options: {
+          nodeArgs: ['--debug'],
+          ext: 'js,html',
+          watch: watchFiles.serverViews.concat(watchFiles.serverJS)
+        }
+      }
+    },
+    'node-inspector': {
+      custom: {
+        options: {
+          'web-port': 1337,
+          'web-host': 'localhost',
+          'debug-port': 5858,
+          'save-live-edit': true,
+          'no-preload': true,
+          'stack-trace-limit': 50,
+          'hidden': []
+        }
+      }
+    },
+    ngAnnotate: {
+      production: {
+        files: {
+          'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+        }
+      }
+    },
+    concurrent: {
+      default: ['nodemon', 'watch'],
+      debug: ['nodemon', 'watch', 'node-inspector'],
+      options: {
+        logConcurrentOutput: true,
+        limit: 10
+      }
+    },
+    env: {
+      test: {
+        NODE_ENV: 'test'
+      },
+      secure: {
+        NODE_ENV: 'secure'
+      }
+    },
+    mochaTest: {
+      src: watchFiles.mochaTests,
+      options: {
+        reporter: 'spec',
+        require: 'server.js'
+      }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    }
+  });
 
-	// Load NPM tasks
-	require('load-grunt-tasks')(grunt);
+  // Load NPM tasks
+  require('load-grunt-tasks')(grunt);
 
-	// Making grunt default to force in order not to break the project.
-	grunt.option('force', true);
+  // Making grunt default to force in order not to break the project.
+  grunt.option('force', true);
 
-	// A Task for loading the configuration object
-	grunt.task.registerTask('loadConfig', 'Task that loads the config into a grunt option.', function() {
-		var init = require('./config/init')();
-		var config = require('./config/config');
+  // A Task for loading the configuration object
+  grunt.task.registerTask('loadConfig', 'Task that loads the config into a grunt option.', function() {
+    var init = require('./config/init')();
+    var config = require('./config/config');
 
-		grunt.config.set('applicationJavaScriptFiles', config.assets.js);
-		grunt.config.set('applicationCSSFiles', config.assets.css);
-	});
+    grunt.config.set('applicationJavaScriptFiles', config.assets.js);
+    grunt.config.set('applicationCSSFiles', config.assets.css);
+  });
 
-	// Default task(s).
-	grunt.registerTask('default', ['lint', 'concurrent:default']);
+  // Default task(s).
+  grunt.registerTask('default', ['lint', 'concurrent:default']);
 
-	// Debug task.
-	grunt.registerTask('debug', ['lint', 'concurrent:debug']);
+  // Debug task.
+  grunt.registerTask('debug', ['lint', 'concurrent:debug']);
 
-	// Secure task(s).
-	grunt.registerTask('secure', ['env:secure', 'lint', 'concurrent:default']);
+  // Secure task(s).
+  grunt.registerTask('secure', ['env:secure', 'lint', 'concurrent:default']);
 
-	// Lint task(s).
-	grunt.registerTask('lint', ['jshint', 'csslint']);
+  // Lint task(s).
+  grunt.registerTask('lint', ['jshint', 'csslint']);
 
-	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'uglify', 'cssmin']);
+  // Build task(s).
+  grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'uglify', 'cssmin']);
 
-	// Test task.
-	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+  // Test task.
+  grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+
+  // Fsa data fetch
+  grunt.registerTask('fsafetch', 'fetch establishments from FSA APIs', function() {
+    require('./app/models/establishment.server.model.js');
+    var Establishment = mongoose.model('Establishment');
+    var done = this.async();
+    var pageLimit = 10000;
+    var basicUrl = 'http://api.ratings.food.gov.uk/Establishments/basic/';
+    var detailUrl = 'http://api.ratings.food.gov.uk/Establishments/';
+    var options = {
+      headers: {
+        'x-api-version': 2
+      }
+    };
+
+    var tmpOptions1 = deepcopy(options);
+    tmpOptions1.url = basicUrl + '1/1';
+    request(tmpOptions1, function(error1, response1, body1) {
+      if (!error1 && response1.statusCode == 200) {
+        var data = JSON.parse(body1);
+        var totalCount = data.meta.totalCount;
+        var totalPages = parseInt(totalCount / pageLimit);
+        grunt.log.writeln('Total Count:', totalCount);
+        grunt.log.writeln('Total Page Count:', totalPages);
+        // var pageRange = _.range(1, totalPages + 1);
+				var pageRange = _.range(1, 3);
+        var basicRequestPromises = [];
+        pageRange.forEach(function(page, index) {
+          var tmpOptions2 = deepcopy(options);
+          tmpOptions2.url = basicUrl + page + '/' + pageLimit + '/';
+          basicRequestPromises.push(function(cb) {
+            request(tmpOptions2, function(error2, response2, body2) {
+							cb(error2, response2, body2);
+						});
+          });
+        });
+
+        async.parallel(basicRequestPromises, function(err, results) {
+          results.forEach(function(result, index) {
+						var data = JSON.parse(result[1]);
+						grunt.log.writeln('Processing page:', data.meta.pageNumber);
+					});
+        	done();
+        });
+      }
+    })
+  });
 };
