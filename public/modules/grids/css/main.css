@@ -642,6 +642,12 @@ tags-input .tags .tag-item .remove-button {
 .modal-body h4 {
   border-bottom: 1px solid #ccc;
 }
+.itemname .popover {
+  width: 320px !important;
+}
+.itemname .popover textarea {
+  width: 250px !important;
+}
 .itemname .name {
   font-weight: bold;
   text-transform: capitalize;

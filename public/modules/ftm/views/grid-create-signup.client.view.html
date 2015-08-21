@@ -23,7 +23,11 @@
 			<button type="button" class="btn btn-sm btn-default pull-right disabled"><i class="fa fa-print fa-fw"></i> Print</button>
 		</span>
 
-		<div ng-show='grid.tableData.length'>Please save the grid.</div>
+
+		<div ng-show='grid.tableData.length' class="alert lead alert-danger text-center" style="clear: both;">
+			Don't forget to  <a ng-click='signupSubmitFn()' class="text-danger bold underline">save your menu</a>!</div>
+
+
 		<div ng-show='grid.tableData.length > 2'>did you know.</div>
 		<grid grid='grid'></grid>
 	</div>
