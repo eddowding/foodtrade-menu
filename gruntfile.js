@@ -214,6 +214,14 @@ module.exports = function(grunt) {
           request(options, function(error2, response2, body2) {
             grunt.log.writeln('Processing data for URL:', options.url);
             callback(error2, response2, body2);
+						if (error2) {
+							grunt.log.error(error2);
+						} else {
+							var data2 = JSON.parse(body2);
+							data2.establishments.forEach(function(establishment, index) {
+								grunt.log.writeln('Establishment:', establishment.FHRSID);
+							});
+						}
           });
         }, 2);
 
