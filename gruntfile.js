@@ -220,7 +220,14 @@ module.exports = function(grunt) {
               grunt.log.error(error3);
             } else {
               var data3 = JSON.parse(body3);
-              console.log(body3);
+							var establishment = Establishment(data3);
+							establishment.save(function(err) {
+								if (err) {
+									grunt.log.error(err);
+								} else {
+									grunt.log.writeln('Save establishment:', establishment.FHRSID);
+								}
+							});
             }
           });
         }, 10);

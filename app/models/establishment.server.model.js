@@ -87,17 +87,17 @@ var EstablishmentSchema = new Schema({
   scores: {
     Hygiene: {
       type: Number,
-      required: true,
+      required: false,
       default: 0
     },
     Structural: {
       type: Number,
-      required: true,
+      required: false,
       default: 0
     },
     ConfidenceInManagement: {
       type: Number,
-      required: true,
+      required: false,
       default: 0
     }
   },
