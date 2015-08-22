@@ -195,33 +195,40 @@ module.exports = function(grunt) {
     };
 
     var tmpOptions1 = deepcopy(options);
-    tmpOptions1.url = basicUrl + '1/1';
+    tmpOptions1.url = basicUrl + '1/1/';
+
     request(tmpOptions1, function(error1, response1, body1) {
       if (!error1 && response1.statusCode == 200) {
         var data = JSON.parse(body1);
+
         var totalCount = data.meta.totalCount;
         var totalPages = parseInt(totalCount / pageLimit);
+
         grunt.log.writeln('Total Count:', totalCount);
         grunt.log.writeln('Total Page Count:', totalPages);
+
         // var pageRange = _.range(1, totalPages + 1);
-				var pageRange = _.range(1, 3);
-        var basicRequestPromises = [];
+        var pageRange = _.range(1, 3);
+
+        var requestQueue = async.queue(function(options, callback) {
+          request(options, function(error2, response2, body2) {
+            grunt.log.writeln('Processing data for URL:', options.url);
+            callback(error2, response2, body2);
+          });
+        }, 2);
+
+        requestQueue.drain = function() {
+          grunt.log.writeln('All requests processed.');
+					done();
+        };
+
         pageRange.forEach(function(page, index) {
           var tmpOptions2 = deepcopy(options);
           tmpOptions2.url = basicUrl + page + '/' + pageLimit + '/';
-          basicRequestPromises.push(function(cb) {
-            request(tmpOptions2, function(error2, response2, body2) {
-							cb(error2, response2, body2);
-						});
+					grunt.log.writeln('Queuing URL:', tmpOptions2.url);
+          requestQueue.push(tmpOptions2, function(err) {
+            grunt.log.writeln('Finished processing request.');
           });
-        });
-
-        async.parallel(basicRequestPromises, function(err, results) {
-          results.forEach(function(result, index) {
-						var data = JSON.parse(result[1]);
-						grunt.log.writeln('Processing page:', data.meta.pageNumber);
-					});
-        	done();
         });
       }
     })
