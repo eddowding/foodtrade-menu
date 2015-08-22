@@ -210,32 +210,53 @@ module.exports = function(grunt) {
         // var pageRange = _.range(1, totalPages + 1);
         var pageRange = _.range(1, 3);
 
-        var requestQueue = async.queue(function(options, callback) {
+        var detailRequestQueue = async.queue(function(id, callback) {
+          var tmpOptions3 = deepcopy(options);
+          tmpOptions3.url = detailUrl + id;
+          request(tmpOptions3, function(error3, response3, body3) {
+            grunt.log.writeln('Processing data for URL:', tmpOptions3.url);
+            callback(error3, response3, body3);
+            if (error3) {
+              grunt.log.error(error3);
+            } else {
+              var data3 = JSON.parse(body3);
+              console.log(body3);
+            }
+          });
+        }, 10);
+
+        detailRequestQueue.drain = function() {
+          grunt.log.writeln('All detail requests processed.');
+          done();
+        };
+
+        var basicRequestQueue = async.queue(function(options, callback) {
           request(options, function(error2, response2, body2) {
             grunt.log.writeln('Processing data for URL:', options.url);
             callback(error2, response2, body2);
-						if (error2) {
-							grunt.log.error(error2);
-						} else {
-							var data2 = JSON.parse(body2);
-							data2.establishments.forEach(function(establishment, index) {
-								grunt.log.writeln('Establishment:', establishment.FHRSID);
-							});
-						}
+            if (error2) {
+              grunt.log.error(error2);
+            } else {
+              var data2 = JSON.parse(body2);
+              data2.establishments.forEach(function(establishment, index) {
+                detailRequestQueue.push(establishment.FHRSID, function(err) {
+                  grunt.log.writeln('Finished processing detail request.');
+                });
+              });
+            }
           });
         }, 2);
 
-        requestQueue.drain = function() {
-          grunt.log.writeln('All requests processed.');
-					done();
+        basicRequestQueue.drain = function() {
+          grunt.log.writeln('All basic requests processed.');
         };
 
         pageRange.forEach(function(page, index) {
           var tmpOptions2 = deepcopy(options);
           tmpOptions2.url = basicUrl + page + '/' + pageLimit + '/';
-					grunt.log.writeln('Queuing URL:', tmpOptions2.url);
-          requestQueue.push(tmpOptions2, function(err) {
-            grunt.log.writeln('Finished processing request.');
+          grunt.log.writeln('Queuing URL:', tmpOptions2.url);
+          basicRequestQueue.push(tmpOptions2, function(err) {
+            grunt.log.writeln('Finished processing basic request.');
           });
         });
       }
