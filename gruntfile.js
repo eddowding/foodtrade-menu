@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var _ = require('lodash');
 var async = require('async');
 var deepcopy = require('deepcopy');
+var init = require('./config/init')();
+var config = require('./config/config');
 
 module.exports = function(grunt) {
   // Unified Watch Object
@@ -182,6 +184,7 @@ module.exports = function(grunt) {
 
   // Fsa data fetch
   grunt.registerTask('fsafetch', 'fetch establishments from FSA APIs', function() {
+		mongoose.connect(config.db);
     require('./app/models/establishment.server.model.js');
     var Establishment = mongoose.model('Establishment');
     var done = this.async();
@@ -208,26 +211,19 @@ module.exports = function(grunt) {
         grunt.log.writeln('Total Page Count:', totalPages);
 
         // var pageRange = _.range(1, totalPages + 1);
-        var pageRange = _.range(1, 3);
+        var pageRange = [1];
 
         var detailRequestQueue = async.queue(function(id, callback) {
           var tmpOptions3 = deepcopy(options);
           tmpOptions3.url = detailUrl + id;
           request(tmpOptions3, function(error3, response3, body3) {
             grunt.log.writeln('Processing data for URL:', tmpOptions3.url);
-            callback(error3, response3, body3);
             if (error3) {
               grunt.log.error(error3);
             } else {
               var data3 = JSON.parse(body3);
-							var establishment = Establishment(data3);
-							establishment.save(function(err) {
-								if (err) {
-									grunt.log.error(err);
-								} else {
-									grunt.log.writeln('Save establishment:', establishment.FHRSID);
-								}
-							});
+              grunt.log.writeln('saving establishment:', data3.FHRSID);
+              callback(error3, response3, body3);
             }
           });
         }, 10);
@@ -246,7 +242,15 @@ module.exports = function(grunt) {
             } else {
               var data2 = JSON.parse(body2);
               data2.establishments.forEach(function(establishment, index) {
-                detailRequestQueue.push(establishment.FHRSID, function(err) {
+                detailRequestQueue.push(establishment.FHRSID, function(error3, response3, body3) {
+                  var data3 = JSON.parse(body3);
+                  Establishment.create(data3, function(err, establishment) {
+                    if (err) {
+                      grunt.log.error(err);
+                    } else {
+                      grunt.log.writeln('saved establishment:', establishment.FHRSID);
+                    }
+                  });
                   grunt.log.writeln('Finished processing detail request.');
                 });
               });
