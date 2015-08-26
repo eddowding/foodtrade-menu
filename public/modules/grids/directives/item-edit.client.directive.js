@@ -20,6 +20,10 @@ angular.module('grids').directive('itemEdit', ['$compile',
           }
         });
 
+        $('.item-edit').on('click', function (e) {
+          $('.item-edit').not(this).popover('hide');
+        });
+
 				scope.cancelItemEditFn = function() {
 					$(element).popover('hide');
 				};
