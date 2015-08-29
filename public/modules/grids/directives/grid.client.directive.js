@@ -303,9 +303,8 @@ angular.module('grids').directive('grid', [function () {
       };
 
       scope.sortableOptions = {
-        update: function (e, ui) {
-//          scope.updateSectionsFn();
-//          scope.saveGridFn();
+        stop: function (e, ui) {
+          scope.saveGridFn();
         }
       };
     }
