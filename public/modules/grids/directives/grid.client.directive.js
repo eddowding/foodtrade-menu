@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('grids').directive('grid', [function() {
+angular.module('grids').directive('grid', [function () {
   return {
     templateUrl: 'modules/grids/views/grid-table.client.partial.html',
     scope: {
       grid: '=grid'
     },
     restrict: 'E',
-    controller: function($scope) {
+    controller: function ($scope) {
 
-      $scope.updateTableDataRowCellFn = function(columnName, rowNumber, cell) {
+      $scope.updateTableDataRowCellFn = function (columnName, rowNumber, cell) {
         $scope.grid.tableData[rowNumber][columnName] = cell;
         $scope.updateSectionsFn();
         $scope.saveGridFn();
@@ -17,10 +17,10 @@ angular.module('grids').directive('grid', [function() {
 
       $scope.characterList = ['MSC 5', 'MSC 4', 'MSC 3', 'MSC 2', 'MSC 1', 'Organic', 'Local 30m/50km', 'Local 50m/80km', 'Local 100m/160km', 'Fairtrade'];
 
-      $scope.loadCharTagFn = function($query) {
+      $scope.loadCharTagFn = function ($query) {
         var retList = [];
         var regex = new RegExp('^' + $query, 'i');
-        $scope.characterList.forEach(function(value, index) {
+        $scope.characterList.forEach(function (value, index) {
           if (regex.test(value)) {
             retList.push({
               text: value
@@ -30,7 +30,7 @@ angular.module('grids').directive('grid', [function() {
         return retList;
       };
     },
-    link: function(scope, element, attrs) {
+    link: function (scope, element, attrs) {
       scope.gridColumns = [
         'nut',
         'peanut',
@@ -57,7 +57,7 @@ angular.module('grids').directive('grid', [function() {
         },
       };
 
-      scope.gridColumns.forEach(function(column, index) {
+      scope.gridColumns.forEach(function (column, index) {
         scope.placeholderRow[column] = {
           allergenType: 'No allergen'
         };
@@ -65,11 +65,11 @@ angular.module('grids').directive('grid', [function() {
 
       scope.resetRow = angular.copy(scope.placeholderRow);
 
-      scope.updatePlaceholderRowCellFn = function(columnName, cell) {
+      scope.updatePlaceholderRowCellFn = function (columnName, cell) {
         scope.placeholderRow[columnName] = cell;
       };
 
-      scope.saveGridFn = function() {
+      scope.saveGridFn = function () {
         var tmpGrid = angular.copy(scope.grid);
         try {
           tmpGrid.updated = new Date();
@@ -77,7 +77,7 @@ angular.module('grids').directive('grid', [function() {
         } catch (err) {}
       };
 
-      scope.updateSectionsFn = function() {
+      scope.updateSectionsFn = function () {
         var columnValues = null;
         for (var i = scope.grid.tableData.length - 1; i >= 0; i--) {
           var row = scope.grid.tableData[i];
@@ -100,7 +100,7 @@ angular.module('grids').directive('grid', [function() {
           }
           if (!columnValues) {
             columnValues = {};
-            scope.gridColumns.forEach(function(value, index) {
+            scope.gridColumns.forEach(function (value, index) {
               columnValues[value] = [];
             });
           }
@@ -111,12 +111,12 @@ angular.module('grids').directive('grid', [function() {
       };
 
 
-      scope.newRowLogicFn = function() {
+      scope.newRowLogicFn = function () {
         if (!scope.placeholderRow.item.name) {
           return;
         }
         var lineSplit = scope.placeholderRow.item.name.split('\n');
-        lineSplit.forEach(function(line, index) {
+        lineSplit.forEach(function (line, index) {
           line = line.trim();
           if (line.length == 0) {
             return;
@@ -152,7 +152,7 @@ angular.module('grids').directive('grid', [function() {
         console.info('New grid entry >>>', scope.grid.tableData);
       };
 
-      scope.addNewRowFn = function($event) {
+      scope.addNewRowFn = function ($event) {
         if ($event.keyCode == 13 || $event.keyCode == 10) {
           if ($event.ctrlKey) {
             scope.placeholderRow.item.name += '\n';
@@ -163,12 +163,12 @@ angular.module('grids').directive('grid', [function() {
         }
       };
 
-      scope.editCellFn = function(cell) {
+      scope.editCellFn = function (cell) {
         scope.selectedEditCell = cell;
         $('#cellEditModal').modal('show');
       };
 
-      scope.toggleNoteFn = function() {
+      scope.toggleNoteFn = function () {
         if (scope.placeholderRow.item.hasNote) {
           scope.placeholderRow.item.hasNote = false;
         } else {
@@ -176,7 +176,7 @@ angular.module('grids').directive('grid', [function() {
         }
       };
 
-      scope.togglePriceFn = function() {
+      scope.togglePriceFn = function () {
         if (scope.placeholderRow.item.hasPrice) {
           scope.placeholderRow.item.hasPrice = false;
         } else {
@@ -184,7 +184,7 @@ angular.module('grids').directive('grid', [function() {
         }
       };
 
-      scope.toggleCharacteristicFn = function() {
+      scope.toggleCharacteristicFn = function () {
         if (scope.placeholderRow.item.hasCharacteristic) {
           scope.placeholderRow.item.hasCharacteristic = false;
         } else {
@@ -192,7 +192,7 @@ angular.module('grids').directive('grid', [function() {
         }
       };
 
-      scope.toggleVeggieEditFn = function(veggie) {
+      scope.toggleVeggieEditFn = function (veggie) {
         if (veggie.edit) {
           veggie.edit = false;
         } else {
@@ -200,19 +200,19 @@ angular.module('grids').directive('grid', [function() {
         }
       };
 
-      scope.addToCharFn = function(val) {
+      scope.addToCharFn = function (val) {
         scope.placeholderRow.item.characteristic.push({
           text: val
         });
       };
 
-      scope.checkIfCharAddedFn = function(val) {
+      scope.checkIfCharAddedFn = function (val) {
         var retStatus = false;
         if (!scope.placeholderRow.item.characteristic) {
           return retStatus;
         }
 
-        scope.placeholderRow.item.characteristic.forEach(function(value, index) {
+        scope.placeholderRow.item.characteristic.forEach(function (value, index) {
           if (value.text == val) {
             retStatus = true;
           }
@@ -221,7 +221,7 @@ angular.module('grids').directive('grid', [function() {
         return retStatus;
       };
 
-      scope.toggleItemEditFn = function(item) {
+      scope.toggleItemEditFn = function (item) {
         if (item.isEdit) {
           item.isEdit = false;
         } else {
@@ -229,7 +229,7 @@ angular.module('grids').directive('grid', [function() {
         }
       };
 
-      scope.saveItemEditFn = function($event, $index, item) {
+      scope.saveItemEditFn = function ($event, $index, item) {
         if ($event.keyCode == 13 || $event.keyCode == 10) {
           scope.toggleItemEditFn(item);
           if (!item.name) {
@@ -256,7 +256,7 @@ angular.module('grids').directive('grid', [function() {
         }
       };
 
-      scope.deleteRowFn = function($index) {
+      scope.deleteRowFn = function ($index) {
         scope.grid.tableData.splice($index, 1);
         scope.updateSectionsFn();
         scope.saveGridFn();
@@ -264,7 +264,7 @@ angular.module('grids').directive('grid', [function() {
 
       scope.charEditStatus = {};
 
-      scope.toggleCharEditFn = function($index) {
+      scope.toggleCharEditFn = function ($index) {
         if (scope.charEditStatus[$index]) {
           scope.charEditStatus[$index] = false;
         } else {
@@ -272,14 +272,14 @@ angular.module('grids').directive('grid', [function() {
         }
       };
 
-      scope.nameEditBlurFn = function(item) {
+      scope.nameEditBlurFn = function (item) {
         item.isEdit = false;
         return;
         scope.updateSectionsFn();
         scope.saveGridFn();
       };
 
-      scope.$watch('grid.name', function(newValue, oldValue) {
+      scope.$watch('grid.name', function (newValue, oldValue) {
         if (newValue && newValue !== oldValue) {
           scope.saveGridFn();
         }
@@ -287,7 +287,7 @@ angular.module('grids').directive('grid', [function() {
 
       scope.rowEditStatus = {};
 
-      scope.toggleEditRowFn = function($index) {
+      scope.toggleEditRowFn = function ($index) {
         for (var key in scope.rowEditStatus) {
           if (key == $index) {
             continue;
@@ -299,6 +299,13 @@ angular.module('grids').directive('grid', [function() {
           scope.rowEditStatus[$index] = false;
         } else {
           scope.rowEditStatus[$index] = true;
+        }
+      };
+
+      scope.sortableOptions = {
+        update: function (e, ui) {
+//          scope.updateSectionsFn();
+//          scope.saveGridFn();
         }
       };
     }

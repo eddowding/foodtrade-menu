@@ -141,8 +141,8 @@
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}'>
+      <tbody ui-sortable='sortableOptions' ng-model="grid.tableData">
+        <tr data-ng-repeat='row in grid.tableData' ng-class='{"section": row.item.type == 1, "child": row.item.type == 3}' style="cursor: move;">
           <td data-ng-class='{"section": row.item.type == 1, "dish": row.item.type == 2, "ingredient": row.item.type == 3}' class="itemname" nowrap>
             <item-edit row-number='$index' class='item-edit'></item-edit>
           </td>

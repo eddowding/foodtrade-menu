@@ -24,6 +24,8 @@ module.exports = {
         'public/lib/ngprogress/ngProgress.css'
       ],
       js: [
+        'public/lib/jquery/dist/jquery.js',
+        'public/lib/jquery-ui/jquery-ui.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-cookies/angular-cookies.js',
@@ -33,7 +35,6 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-        'public/lib/jquery/dist/jquery.js',
         'public/lib/bootstrap/dist/js/bootstrap.js',
         'public/lib/angular-elastic/elastic.js',
         'public/lib/ng-tags-input/ng-tags-input.js',
@@ -52,7 +53,8 @@ module.exports = {
         'public/lib/elasticsearch/elasticsearch.angular.js',
         'public/lib/elastic.js/dist/elastic.js',
         'public/lib/angular-google-maps/dist/angular-google-maps.js',
-        'public/lib/lodash/lodash.js'
+        'public/lib/lodash/lodash.js',
+        'public/lib/angular-ui-sortable/sortable.js'
 
       ]
     },

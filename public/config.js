@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'alrg';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'monospaced.elastic', 'ngTagsInput', 'oitozero.ngSweetAlert', 'ngClipboard', 'xeditable', 'ng-autofocus', 'ngOnboarding', 'ngProgress', 'ngFileUpload', 'elasticsearch', 'uiGmapgoogle-maps'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'monospaced.elastic', 'ngTagsInput', 'oitozero.ngSweetAlert', 'ngClipboard', 'xeditable', 'ng-autofocus', 'ngOnboarding', 'ngProgress', 'ngFileUpload', 'elasticsearch', 'uiGmapgoogle-maps', 'ui.sortable'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
