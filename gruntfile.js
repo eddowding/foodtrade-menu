@@ -189,6 +189,7 @@ module.exports = function(grunt) {
     var Establishment = mongoose.model('Establishment');
     var done = this.async();
     var pageLimit = 10000;
+    var queueWorkers = 20;
     var basicUrl = 'http://api.ratings.food.gov.uk/Establishments/basic/';
     var detailUrl = 'http://api.ratings.food.gov.uk/Establishments/';
     var options = {
@@ -210,8 +211,8 @@ module.exports = function(grunt) {
         grunt.log.writeln('Total Count:', totalCount);
         grunt.log.writeln('Total Page Count:', totalPages);
 
-        // var pageRange = _.range(1, totalPages + 1);
-        var pageRange = [1];
+         var pageRange = _.range(1, totalPages + 1);
+//        var pageRange = [1];
 
         var detailRequestQueue = async.queue(function(id, callback) {
           var tmpOptions3 = deepcopy(options);
@@ -226,7 +227,7 @@ module.exports = function(grunt) {
               callback(error3, response3, body3);
             }
           });
-        }, 10);
+        }, queueWorkers);
 
         detailRequestQueue.drain = function() {
           grunt.log.writeln('All detail requests processed.');
